@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-tab: 810px;
+  --breakpoint-desk: 1200px;
+
+  --font-sans: "General Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --color-bg: #edebe8;
+  --color-sidebar: #e9e7e3;
+  --color-surface: #f4f3f1;
+  --color-surface-hover: #f7f6f4;
+  --color-surface-active: #f6f5f3;
+  --color-connect: #f0eeeb;
+
+  --color-ink: #131210;
+  --color-ink-secondary: #4b4a46;
+  --color-ink-tertiary: #5d5c58;
+  --color-ink-muted: #6e6d69;
+  --color-ink-faint: #8b8984;
+  --color-ink-num: #9a9893;
+
+  --color-line: #e2e0db;
+  --color-line-strong: #dcd9d4;
+  --color-line-soft: #e1dfda;
+  --color-line-hairline: #d9d6d0;
+  --color-line-hover: #d6d3cc;
+
+  --color-accent: #4a3b33;
+  --color-accent-hover: #5c4a40;
+  --color-accent-cream: #f2f0ed;
+  --color-status: #b08a5e;
+
+  --color-placeholder-a: #e6e4df;
+  --color-placeholder-b: #e0ded8;
+  --color-image-bg: #dedbd5;
+
+  --ease-std: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  color: var(--color-ink);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+::selection {
+  background: #dedbd5;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes enterSoft {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@media print {
+  aside,
+  header,
+  footer,
+  [data-intro] {
+    display: none !important;
+  }
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  main {
+    margin-left: 0 !important;
+  }
+  a {
+    color: #000 !important;
+    text-decoration: underline !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  button {
+    display: none !important;
+  }
+}
