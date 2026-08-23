@@ -221,13 +221,10 @@ export const WORK_STUBS: Record<string, { label: string; title: string; body: st
   },
 };
 
-export const MORE_WORK = [
-  { name: "Xbox Game Camp" },
-  { name: "Ticketify" },
-  { name: "X-PASS" },
-  { name: "Inventory System UI" },
-  { name: "ZoomBuddy+" },
-];
+// Ticketify, X-PASS, and Inventory System UI were removed after a targeted
+// verification pass (local files + GitHub) found no repo, design export, or
+// other real material behind any of the three — see the evidence summary.
+export const MORE_WORK = [{ name: "Xbox Game Camp" }, { name: "ZoomBuddy+" }];
 
 export const PHOTO_CATEGORIES = ["Portraits", "Events", "Street", "Architecture", "Places", "Details"] as const;
 
