@@ -36,7 +36,7 @@ export function Sidebar() {
           </span>
         </Link>
 
-        <nav className="flex flex-col gap-1">
+        <nav aria-label="Primary" className="flex flex-col gap-1">
           {NAV_ITEMS.map((item) => {
             const Icon = ICONS[item.id];
             const active = isActive(pathname, item.id);
@@ -59,7 +59,7 @@ export function Sidebar() {
         </nav>
       </div>
 
-      <div className="flex flex-col gap-[13px]">
+      <nav aria-label="Social" className="flex flex-col gap-[13px]">
         <span className="text-[13px] text-ink-faint">Follow me</span>
         {SOCIAL_LINKS.map((s) => (
           <a
@@ -67,12 +67,13 @@ export function Sidebar() {
             href={s.href}
             target="_blank"
             rel="noopener"
+            aria-label={`${s.label} (opens in a new tab)`}
             className="w-fit whitespace-nowrap text-[13.5px] text-ink-secondary transition-all duration-[180ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:translate-x-1 hover:text-ink"
           >
             {s.label}
           </a>
         ))}
-      </div>
+      </nav>
     </aside>
   );
 }

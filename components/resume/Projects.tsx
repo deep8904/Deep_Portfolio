@@ -38,7 +38,7 @@ export function Projects() {
                 <p className="m-0 mt-1.5 text-[11.5px] font-medium uppercase tracking-[0.04em] text-ink-faint">
                   {p.stack}
                 </p>
-                <ul className="m-0 mt-3 flex flex-col gap-1.5 pl-[19px]">
+                <ul className="m-0 mt-3 flex flex-col gap-1.5 pl-4 tab:pl-[19px]">
                   {p.bullets.map((b) => (
                     <li key={b} className="text-[13.5px] leading-[1.6] text-ink-secondary">
                       {b}

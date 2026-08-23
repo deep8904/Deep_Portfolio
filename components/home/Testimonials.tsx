@@ -40,8 +40,12 @@ export function Testimonials() {
     el.scrollBy({ left: dir * amount, behavior: "smooth" });
   };
 
+  // Outer button is a full 44x44 hit target (WCAG 2.5.5); the visible circle
+  // inside it stays the original 34px so the design doesn't visually change.
   const btnBase =
-    "flex h-[34px] w-[34px] items-center justify-center rounded-full border border-line-strong bg-surface text-ink transition-[background,transform,opacity] duration-[180ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] enabled:hover:bg-[#E6E4DF] enabled:active:scale-[0.94] disabled:opacity-40";
+    "group flex h-11 w-11 items-center justify-center rounded-full transition-transform duration-[180ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] enabled:active:scale-[0.94] disabled:opacity-40";
+  const btnCircle =
+    "flex h-[34px] w-[34px] items-center justify-center rounded-full border border-line-strong bg-surface text-ink transition-colors duration-[180ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-enabled:group-hover:bg-[#E6E4DF]";
 
   return (
     <Section>
@@ -54,17 +58,24 @@ export function Testimonials() {
             </h2>
           </div>
           <div className="flex gap-2">
-            <button type="button" onClick={() => step(-1)} disabled={atStart} aria-label="Previous testimonials" className={btnBase}>
-              <ChevronLeft size={14} strokeWidth={2} />
+            <button type="button" onClick={() => step(-1)} disabled={atStart} aria-label="Previous testimonial" className={btnBase}>
+              <span className={btnCircle}>
+                <ChevronLeft size={14} strokeWidth={2} />
+              </span>
             </button>
-            <button type="button" onClick={() => step(1)} disabled={atEnd} aria-label="Next testimonials" className={btnBase}>
-              <ChevronRight size={14} strokeWidth={2} />
+            <button type="button" onClick={() => step(1)} disabled={atEnd} aria-label="Next testimonial" className={btnBase}>
+              <span className={btnCircle}>
+                <ChevronRight size={14} strokeWidth={2} />
+              </span>
             </button>
           </div>
         </div>
 
         <div
           ref={trackRef}
+          role="region"
+          aria-label="Testimonials"
+          tabIndex={0}
           className="no-scrollbar mt-9 flex snap-x snap-mandatory gap-3.5 overflow-x-auto scroll-smooth p-1 tab:mt-11"
         >
           {TESTIMONIALS.map((q) => (

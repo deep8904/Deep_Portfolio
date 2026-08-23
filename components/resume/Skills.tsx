@@ -17,10 +17,19 @@ export function Skills() {
           <div className="mt-7 grid grid-cols-1 gap-6 tab:grid-cols-2 tab:gap-8">
             {RESUME_SKILLS.map((s) => (
               <div key={s.category}>
-                <h3 className="m-0 mb-2.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-faint">
+                <h3 className="m-0 mb-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-faint">
                   {s.category}
                 </h3>
-                <p className="m-0 text-[13.5px] leading-[1.7] text-ink-secondary">{s.items.join(" · ")}</p>
+                <ul className="m-0 flex list-none flex-wrap gap-1.5 p-0">
+                  {s.items.map((item) => (
+                    <li
+                      key={item}
+                      className="rounded-md border border-line bg-surface px-2.5 py-1 text-[12.5px] leading-[1.4] text-ink-secondary"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>

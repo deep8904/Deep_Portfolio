@@ -29,7 +29,7 @@ export function Experience() {
                   </div>
                   <span className="whitespace-nowrap text-[13px] text-ink-faint">{x.dates}</span>
                 </div>
-                <ul className="m-0 mt-3.5 flex flex-col gap-2 pl-[19px]">
+                <ul className="m-0 mt-3.5 flex flex-col gap-2 pl-4 tab:pl-[19px]">
                   {x.bullets.map((b) => (
                     <li key={b} className="text-[13.75px] leading-[1.62] text-ink-secondary">
                       {b}

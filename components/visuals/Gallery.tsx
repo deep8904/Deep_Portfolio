@@ -1,6 +1,12 @@
 import type { Photo } from "@/lib/data";
 
-export function Gallery({ photos, onOpen }: { photos: Photo[]; onOpen: (index: number) => void }) {
+export function Gallery({
+  photos,
+  onOpen,
+}: {
+  photos: Photo[];
+  onOpen: (index: number, trigger: HTMLElement) => void;
+}) {
   if (photos.length === 0) {
     return <p className="py-10 text-center text-sm text-ink-faint">No photographs in this collection yet.</p>;
   }
@@ -11,7 +17,7 @@ export function Gallery({ photos, onOpen }: { photos: Photo[]; onOpen: (index: n
         <button
           key={photo.id}
           type="button"
-          onClick={() => onOpen(i)}
+          onClick={(e) => onOpen(i, e.currentTarget)}
           aria-label={photo.alt}
           style={{ aspectRatio: `${photo.width}/${photo.height}`, animationDelay: `${Math.min(i, 8) * 40}ms` }}
           className="group relative mb-2.5 block w-full break-inside-avoid animate-[enter_460ms_var(--ease-std)_both] overflow-hidden rounded-[10px] border-0 bg-transparent p-0 tab:mb-3.5 desk:mb-4"

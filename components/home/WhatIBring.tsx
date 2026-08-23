@@ -17,7 +17,7 @@ export function WhatIBring() {
           {PILLARS.map((p) => (
             <article
               key={p.title}
-              className="group flex min-h-[250px] flex-col rounded-[10px] border border-line bg-surface p-[18px_18px_16px] transition-[transform,border-color,background] duration-[240ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:-translate-y-0.5 hover:border-line-hover hover:bg-surface-hover"
+              className="group flex flex-col rounded-[10px] border border-line bg-surface p-[18px_18px_16px] transition-[transform,border-color,background] duration-[240ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:-translate-y-0.5 hover:border-line-hover hover:bg-surface-hover tab:min-h-[250px]"
             >
               <h3 className="m-0 mb-3.5 text-[14.5px] font-medium tracking-[-0.01em]">
                 <span className="text-ink-num transition-colors duration-[240ms] ease-linear group-hover:text-accent">

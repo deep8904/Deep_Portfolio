@@ -20,7 +20,7 @@ export default function AboutPage() {
             <div className="flex flex-col items-start gap-4">
               <SectionLabel>Who Am I</SectionLabel>
               <h1 className="m-0 text-[34px] font-medium leading-[1.1] tracking-[-0.03em] tab:text-[42px] desk:text-[48px]">
-                Hey I am Deep
+                Hey, I’m Deep
               </h1>
               <p className="m-0 text-[15px] leading-[1.72] text-ink-secondary text-pretty">
                 I’m Deep Chadamiya, a software engineer, product designer, and visual storyteller based in Arizona. My

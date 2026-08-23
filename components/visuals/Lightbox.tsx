@@ -23,6 +23,7 @@ export function Lightbox({
   onNext: () => void;
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const touchX = useRef<number | null>(null);
 
   useEffect(() => {
@@ -31,9 +32,25 @@ export function Lightbox({
     closeRef.current?.focus();
 
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-      else if (e.key === "ArrowLeft") onPrev();
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (e.key === "ArrowLeft") onPrev();
       else if (e.key === "ArrowRight") onNext();
+
+      if (e.key !== "Tab") return;
+      const focusable = dialogRef.current?.querySelectorAll<HTMLElement>("button");
+      if (!focusable || !focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => {
@@ -46,6 +63,7 @@ export function Lightbox({
 
   return (
     <div
+      ref={dialogRef}
       role="dialog"
       aria-modal="true"
       aria-label="Photograph viewer"

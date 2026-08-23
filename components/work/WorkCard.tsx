@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import { WorkCover } from "@/components/work/WorkCover";
 import type { WorkProject } from "@/lib/data";
@@ -14,14 +15,30 @@ const titleClass =
 const categoryClass = "text-[11px] font-medium tracking-[0.07em] text-ink-faint";
 const yearClass = "whitespace-nowrap text-[13px] text-ink-faint";
 
+/**
+ * Mobile always renders one consistent hierarchy — number, title + year,
+ * discipline/status, description, CTA — regardless of desktop variant.
+ * Tablet/desktop keep each project's approved bespoke arrangement.
+ */
 function TitleBlock({ project }: { project: WorkProject }) {
   const title = <h3 data-title className={titleClass}>{project.title}</h3>;
   const category = <span className={categoryClass}>{project.category}</span>;
   const year = <span className={yearClass}>{project.year}</span>;
 
+  const mobile = (
+    <div className="flex flex-col gap-3 tab:hidden">
+      <div className="flex flex-wrap items-baseline justify-between gap-4">
+        {title}
+        {year}
+      </div>
+      {category}
+    </div>
+  );
+
+  let desktop: ReactNode;
   switch (project.titleBlock) {
     case "title-year_category":
-      return (
+      desktop = (
         <>
           <div className="flex flex-wrap items-baseline justify-between gap-4">
             {title}
@@ -30,8 +47,9 @@ function TitleBlock({ project }: { project: WorkProject }) {
           {category}
         </>
       );
+      break;
     case "category-year_title":
-      return (
+      desktop = (
         <>
           <div className="flex flex-wrap items-center gap-2.5">
             {category}
@@ -40,8 +58,9 @@ function TitleBlock({ project }: { project: WorkProject }) {
           {title}
         </>
       );
+      break;
     case "title_category-year":
-      return (
+      desktop = (
         <>
           {title}
           <div className="flex flex-wrap items-center gap-2.5">
@@ -50,8 +69,9 @@ function TitleBlock({ project }: { project: WorkProject }) {
           </div>
         </>
       );
+      break;
     case "title-category-year":
-      return (
+      desktop = (
         <div className="flex flex-wrap items-baseline justify-between gap-4">
           {title}
           <div className="flex items-center gap-2.5">
@@ -60,7 +80,15 @@ function TitleBlock({ project }: { project: WorkProject }) {
           </div>
         </div>
       );
+      break;
   }
+
+  return (
+    <>
+      {mobile}
+      <div className="hidden flex-col gap-3 tab:flex">{desktop}</div>
+    </>
+  );
 }
 
 const PlaceholderFill = () => (
