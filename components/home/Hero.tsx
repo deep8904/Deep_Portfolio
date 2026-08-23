@@ -142,14 +142,24 @@ export function Hero() {
       </section>
 
       <section className="mx-auto w-full max-w-[1240px] flex-none px-5 pb-0 tab:max-w-[1260px] tab:px-[30px] tab:pb-[52px] desk:max-w-[1268px] desk:px-[34px]">
-        <div className="grid grid-cols-1 gap-3 tab:grid-cols-3 tab:gap-3.5">
+        {/*
+          Mobile: one wide primary shot + two small supporting shots, to keep
+          the photography without it consuming most of the viewport height.
+          Tablet+ restores the original even 3-column row, untouched.
+        */}
+        <div className="grid grid-cols-2 gap-3 [grid-template-areas:'a_a'_'b_c'] tab:grid-cols-3 tab:gap-3.5 tab:[grid-template-areas:none]">
           {HERO_PHOTOS.map((photo, i) => (
             <div
               key={photo.src}
               ref={(el) => {
                 photoRefs.current[i] = el;
               }}
-              className="group aspect-[4/3] max-h-none overflow-hidden rounded-xl bg-image-bg tab:aspect-[3/2] tab:max-h-[250px]"
+              className={[
+                "group max-h-none overflow-hidden rounded-xl bg-image-bg tab:aspect-[3/2] tab:max-h-[250px] tab:[grid-area:auto]",
+                i === 0 ? "aspect-[16/9] [grid-area:a]" : "aspect-square",
+                i === 1 ? "[grid-area:b]" : "",
+                i === 2 ? "[grid-area:c]" : "",
+              ].join(" ")}
             >
               <Image
                 data-img

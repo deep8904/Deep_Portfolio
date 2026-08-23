@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import { WorkCover } from "@/components/work/WorkCover";
-import type { WorkProject } from "@/lib/data";
+import { WORK_STUBS, type WorkProject } from "@/lib/data";
 
 const COVER_RATIO: Record<WorkProject["layout"], string> = {
   landscape: "aspect-[4/3] desk:aspect-[16/9]",
@@ -100,6 +100,7 @@ const PlaceholderFill = () => (
 );
 
 export function WorkCard({ project }: { project: WorkProject }) {
+  const isStub = !!WORK_STUBS[project.slug];
   const cover = (
     <WorkCover className={COVER_RATIO[project.layout]}>
       <PlaceholderFill />
@@ -117,8 +118,14 @@ export function WorkCard({ project }: { project: WorkProject }) {
         {project.description}
       </p>
       <div className="flex flex-wrap items-center gap-3.5">
-        <span className="inline-flex w-fit items-center gap-[7px] text-[13.5px] font-medium text-ink">
-          View Case Study{" "}
+        <span
+          className={
+            isStub
+              ? "inline-flex w-fit items-center gap-[7px] text-[13.5px] font-medium text-ink-faint"
+              : "inline-flex w-fit items-center gap-[7px] text-[13.5px] font-medium text-ink"
+          }
+        >
+          {isStub ? "Case study in progress" : "View Case Study"}
           <span className="inline-flex items-center transition-transform duration-[240ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:translate-x-1">
             <ArrowRight size={13} strokeWidth={2} />
           </span>
@@ -135,7 +142,7 @@ export function WorkCard({ project }: { project: WorkProject }) {
   return (
     <Link
       href={`/work/${project.slug}`}
-      aria-label={`${project.title} case study`}
+      aria-label={isStub ? `${project.title} — case study in progress` : `${project.title} case study`}
       className="group block border-b border-line-soft pb-[52px] tab:pb-[74px]"
     >
       {project.layout === "split" ? (

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { WORK_STUBS } from "@/lib/data";
@@ -16,7 +18,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const stub = WORK_STUBS[slug];
   if (!stub) return {};
-  return { title: stub.label };
+  return { title: stub.label, description: stub.body };
 }
 
 export default async function WorkCaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -37,6 +39,17 @@ export default async function WorkCaseStudyPage({ params }: { params: Promise<{ 
             <span className="h-1.5 w-1.5 rounded-full bg-status" />
             NOT YET BUILT
           </span>
+          <Link
+            href="/work"
+            className="group mt-2 inline-flex items-center gap-2 text-[13.5px] font-medium text-ink-secondary transition-colors duration-200 hover:text-ink"
+          >
+            <ArrowLeft
+              size={15}
+              strokeWidth={2}
+              className="transition-transform duration-200 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:-translate-x-0.5"
+            />
+            Back to Work
+          </Link>
         </div>
       </Container>
     </section>

@@ -18,11 +18,13 @@
   --color-ink-tertiary: #5d5c58;
   /* ink-muted/faint/num darkened from the original design's #6e6d69/#8b8984/#9a9893 —
      those failed WCAG AA (2.4-4.35:1 on --color-bg/--color-surface, verified via
-     the WCAG contrast formula). These hit >=4.5:1 on both, same hue, same relative
-     ordering (muted > faint > num). */
-  --color-ink-muted: #6a6965;
-  --color-ink-faint: #6a6864;
-  --color-ink-num: #6c6a67;
+     the WCAG contrast formula and confirmed by axe-core). A first pass landed at
+     ~4.6-4.7:1, which axe still flagged, so these carry a real margin (>=5.2:1 on
+     both bg and surface) rather than sitting right at the 4.5 line. Same hue, same
+     relative ordering (muted > faint > num) — they read as one quiet tier now. */
+  --color-ink-muted: #62615d;
+  --color-ink-faint: #61605c;
+  --color-ink-num: #61605d;
 
   --color-line: #e2e0db;
   --color-line-strong: #dcd9d4;
@@ -42,36 +44,47 @@
   --ease-std: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  background: var(--color-bg);
-}
+/*
+  Base resets live in Tailwind's own `base` layer (not left unlayered) so that
+  utility classes — e.g. text-accent-cream on a <Link> — always win over these
+  defaults, the same as Tailwind's own preflight. An unlayered rule sits after
+  every @layer regardless of specificity, which silently overrides any color/
+  utility applied directly to an <a>; that was a real bug here (the Download
+  Resume button rendered near-black text on its dark background) until this
+  was moved into @layer base.
+*/
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--color-bg);
+  }
 
-body {
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  color: var(--color-ink);
-}
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    color: var(--color-ink);
+  }
 
-* {
-  box-sizing: border-box;
-}
+  * {
+    box-sizing: border-box;
+  }
 
-a {
-  color: var(--color-ink);
-  text-decoration: none;
-}
+  a {
+    color: var(--color-ink);
+    text-decoration: none;
+  }
 
-::selection {
-  background: #dedbd5;
-}
+  ::selection {
+    background: #dedbd5;
+  }
 
-:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
-  border-radius: 6px;
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
 }
 
 @keyframes enter {
@@ -115,13 +128,14 @@ a {
   aside,
   header,
   footer,
-  [data-intro] {
+  a[download],
+  [data-intro-overlay] {
     display: none !important;
   }
-  html,
-  body {
+  * {
     background: #fff !important;
     color: #000 !important;
+    box-shadow: none !important;
   }
   main {
     margin-left: 0 !important;
