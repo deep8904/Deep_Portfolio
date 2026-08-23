@@ -32,12 +32,23 @@ export function SiteChrome({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+    let cleanup = () => {};
     const frame = requestAnimationFrame(() => {
-      const cleanup = buildRevealScene();
+      cleanup = buildRevealScene();
       ScrollTrigger.refresh();
-      return cleanup;
     });
-    return () => cancelAnimationFrame(frame);
+    // Web fonts and below-the-fold images can resize content after this
+    // route's initial reveal-scene is built; re-measure so ScrollTrigger's
+    // start positions don't go stale for a route the user is still on.
+    const refresh = () => ScrollTrigger.refresh();
+    document.fonts?.ready?.then(refresh).catch(() => {});
+    window.addEventListener("load", refresh);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      cleanup();
+      window.removeEventListener("load", refresh);
+    };
   }, [pathname]);
 
   return (
