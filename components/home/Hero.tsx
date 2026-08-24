@@ -167,6 +167,8 @@ export function Hero() {
                 alt={photo.alt}
                 width={photo.w}
                 height={photo.h}
+                priority={i === 0}
+                sizes={i === 0 ? "(min-width: 810px) 33vw, 100vw" : "(min-width: 810px) 33vw, 50vw"}
                 className="block h-full w-full object-cover transition-transform duration-[420ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.022]"
               />
             </div>
