@@ -20,6 +20,34 @@ and it applies EXIF rotation, resizes to a 2400px long edge, encodes JPEG
 quality 85 with mozjpeg, and strips all EXIF/GPS by omitting
 `.withMetadata()`.
 
+## Curation correction: portfolio vs. archive (2026-08-24)
+
+After the full 120-image publish, the owner asked for an editorial correction:
+`/visuals` should not render all 120 photographs as one long wall on load. The
+underlying library, all metadata, titles, alt text, and categories from the
+full-publish pass are unchanged — this only changes what's shown by default.
+
+`Photo.visibility` is now `"portfolio" | "archive"`. **34 photographs** are
+tagged `portfolio` and are what `/visuals` shows by default, hand-sequenced
+for visual rhythm (orientation, color, subject) rather than sorted
+mechanically. The other **86** are `archive` — reachable via the "Explore
+full archive" control at the bottom of the curated gallery, which reveals
+them in batches of 40 then +24 per "Load more" click rather than all at once.
+Filters show only portfolio categories by default; once archive mode is
+open, all 8 categories (including Food) become selectable. Lightbox
+navigation always follows whatever set is currently rendered — the curated
+34, a filtered subset, or the currently-revealed archive batch.
+
+Selection for the 34: started from the 32 photos Stage 1 had marked `KEEP`
+after real visual review (the original best-of curation), dropped `Blue
+Classic` as a near-duplicate of the already-included `Classic Blue`, and
+added the 3 strongest Events photos (`Wall of Faces`, `Stage Light`, `On
+Stage` — chosen for the most distinctive lighting/color among the 7; the
+other 4 Events photos are archive-only). Food (3 images) did not make the
+portfolio — all three read as casual iPhone snapshots next to the rest of
+the deliberate photography, so the category doesn't appear on the default
+view at all; it's still selectable once "Explore full archive" is open.
+
 ## Owner decision: full publish (2026-08-24)
 
 Earlier in this project, several images were held back from the public
@@ -117,18 +145,23 @@ Note: `Skye/IMG_3674.jpg` ("Purple Dusk") and `ASu/IMG_3674.jpg` ("Dusk
 Walk") share a filename purely by coincidence — they are two genuinely
 different photographs and are both published separately.
 
-## Category totals (120 published)
+## Category totals
 
-Places 31, Automotive 29, Architecture 20, Nature 11, Street 10, Details 9,
-Events 7, Food 3. All 8 categories are live; `PHOTO_CATEGORIES` in
-`lib/photography-data.ts` derives this automatically from the published data.
+Full library (120): Places 31, Automotive 29, Architecture 20, Nature 11,
+Street 10, Details 9, Events 7, Food 3.
+
+Portfolio tier (34, shown by default): Places 10, Architecture 7, Automotive
+6, Nature 4, Street 3, Events 3, Details 1, Food 0. `PHOTO_CATEGORIES` in
+`lib/photography-data.ts` derives from the portfolio tier only;
+`ARCHIVE_CATEGORIES` derives from the full 120 and is used once the visitor
+opens the archive.
 
 ## Featured set (unchanged from the prior curated pass)
 
 Gilded, Teal Wheel, Desert Hauler, Watching the Water, Sunrise, Waterfront
 Glow — chosen from the smaller curated set on technical quality/composition
-grounds. Not re-evaluated against the other 93 photos added in the full
-publish; re-visit if a broader featured set is wanted later.
+grounds, all 6 also in the portfolio tier. Not re-evaluated against the rest
+of the library; re-visit if a broader featured set is wanted later.
 
 ## Recommendations for Home / About (not applied — Visuals only this phase)
 

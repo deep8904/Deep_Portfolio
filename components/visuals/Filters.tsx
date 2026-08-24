@@ -2,18 +2,18 @@
 
 import { useEffect, useRef } from "react";
 import clsx from "clsx";
-import { PHOTO_CATEGORIES } from "@/lib/photography-data";
-
-const CATEGORIES = ["All", ...PHOTO_CATEGORIES] as const;
 
 export function Filters({
   active,
+  categories,
   onChange,
 }: {
   active: string;
+  categories: string[];
   onChange: (category: string) => void;
 }) {
   const rowRef = useRef<HTMLDivElement>(null);
+  const CATEGORIES = ["All", ...categories];
 
   useEffect(() => {
     const active_ = rowRef.current?.querySelector<HTMLElement>('[aria-pressed="true"]');
