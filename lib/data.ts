@@ -199,11 +199,6 @@ export const WORK_PROJECTS: WorkProject[] = [
 ];
 
 export const WORK_STUBS: Record<string, { label: string; title: string; body: string }> = {
-  creatorflow: {
-    label: "CreatorFlow",
-    title: "CreatorFlow — case study in progress.",
-    body: "The full case study, covering product thinking, system design, and build, is coming in the next phase.",
-  },
   kramflow: {
     label: "KramFlow",
     title: "KramFlow — case study in progress.",
