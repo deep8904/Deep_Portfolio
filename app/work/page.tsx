@@ -5,9 +5,13 @@ import { WorkCard } from "@/components/work/WorkCard";
 import { MoreWork } from "@/components/work/MoreWork";
 import { WORK_PROJECTS } from "@/lib/data";
 
+const description = "Products, interfaces, and systems across product design, UX, software engineering, and research.";
+
 export const metadata: Metadata = {
   title: "Work",
-  description: "Products, interfaces, and systems across product design, UX, software engineering, and research.",
+  description,
+  alternates: { canonical: "/work" },
+  openGraph: { title: "Work — Deep Chadamiya", description, url: "/work" },
 };
 
 export default function WorkPage() {

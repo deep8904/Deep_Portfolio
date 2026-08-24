@@ -18,7 +18,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const stub = WORK_STUBS[slug];
   if (!stub) return {};
-  return { title: stub.label, description: stub.body };
+  return {
+    title: stub.label,
+    description: stub.body,
+    alternates: { canonical: `/work/${slug}` },
+    openGraph: { title: `${stub.label} — Deep Chadamiya`, description: stub.body, url: `/work/${slug}` },
+  };
 }
 
 export default async function WorkCaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {

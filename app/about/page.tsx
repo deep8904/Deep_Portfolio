@@ -6,9 +6,13 @@ import { Capabilities } from "@/components/about/Capabilities";
 import { Journey } from "@/components/about/Journey";
 import { Interests } from "@/components/about/Interests";
 
+const description = "Software engineer, product designer, and visual storyteller based in Arizona.";
+
 export const metadata: Metadata = {
   title: "About",
-  description: "Software engineer, product designer, and visual storyteller based in Arizona.",
+  description,
+  alternates: { canonical: "/about" },
+  openGraph: { title: "About — Deep Chadamiya", description, url: "/about" },
 };
 
 export default function AboutPage() {

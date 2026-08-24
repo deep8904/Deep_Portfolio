@@ -3,9 +3,13 @@ import { Container, Section } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { VisualsExperience } from "@/components/visuals/VisualsExperience";
 
+const description = "Photography exploring light, composition, people, places, and moments.";
+
 export const metadata: Metadata = {
   title: "Visuals",
-  description: "Photography exploring light, composition, people, places, and moments.",
+  description,
+  alternates: { canonical: "/visuals" },
+  openGraph: { title: "Visuals — Deep Chadamiya", description, url: "/visuals" },
 };
 
 export default function VisualsPage() {

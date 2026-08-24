@@ -9,9 +9,13 @@ import { Projects } from "@/components/resume/Projects";
 import { ResumeEducation } from "@/components/resume/ResumeEducation";
 import { RESUME_SUMMARY } from "@/lib/data";
 
+const description = "Product Designer, Design Engineer, and Front-End Developer — full resume.";
+
 export const metadata: Metadata = {
   title: "Resume",
-  description: "Product Designer, Design Engineer, and Front-End Developer — full resume.",
+  description,
+  alternates: { canonical: "/resume" },
+  openGraph: { title: "Resume — Deep Chadamiya", description, url: "/resume" },
 };
 
 export default function ResumePage() {
