@@ -225,6 +225,14 @@
   color: var(--color-ink);
 }
 
+/* Scoped only to After Hours — the sitewide ::selection stays untouched.
+   Reuses --color-line-hover (already the "hover highlight" token) rather
+   than a new hardcoded color; verified at 8.4:1 against --color-ink. */
+.ah-scope ::selection {
+  background: var(--color-line-hover);
+  color: var(--color-ink);
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
