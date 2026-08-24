@@ -27,21 +27,18 @@ export function SelectedWork() {
             >
               <span
                 data-img
-                className="absolute inset-0 transition-transform duration-[380ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.028]"
-                style={{
-                  background: "repeating-linear-gradient(135deg,#E6E4DF 0 11px,#E0DED8 11px 22px)",
-                }}
+                className="placeholder-stripe absolute inset-0 transition-transform duration-[380ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.028]"
               />
               <span className="absolute inset-0 flex items-center justify-center px-6 text-center text-[11.5px] font-medium tracking-[0.09em] text-ink-num">
                 {p.placeholder}
               </span>
               <span
-                className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3.5 px-[18px] py-4 transition-[background] duration-[320ms] ease-[cubic-bezier(0.22,0.61,0.36,1)]"
+                className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-x-3.5 gap-y-1 px-[18px] py-4 transition-[background] duration-[320ms] ease-[cubic-bezier(0.22,0.61,0.36,1)]"
                 style={{
                   background: "linear-gradient(to top, rgba(20,18,16,0.68), rgba(20,18,16,0))",
                 }}
               >
-                <span className="inline-flex items-center gap-[7px] text-[15px] font-medium text-accent-cream transition-transform duration-[320ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:-translate-y-0.5">
+                <span className="inline-flex items-center gap-[7px] text-balance text-[15px] font-medium text-accent-cream transition-transform duration-[320ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:-translate-y-0.5">
                   {p.name}
                   <span className="text-xs opacity-0 transition-opacity duration-[320ms] group-hover:opacity-100">↗</span>
                 </span>

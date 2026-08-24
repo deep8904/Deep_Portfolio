@@ -18,7 +18,7 @@ export function Experience() {
             {RESUME_EXPERIENCE.map((x) => (
               <article
                 key={x.id}
-                className="group border-b border-line-soft py-5 transition-colors duration-[220ms] ease-linear tab:py-[26px] hover:border-[#CFCCC5]"
+                className="group border-b border-line-soft py-5 transition-colors duration-[220ms] ease-linear tab:py-[26px] hover:border-line-hover"
               >
                 <div className="flex flex-wrap items-baseline justify-between gap-4">
                   <div>

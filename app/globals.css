@@ -117,6 +117,20 @@
   }
 }
 
+/*
+  Shared placeholder-image texture. Previously copy-pasted as a literal hex
+  repeating-linear-gradient in 4 separate components (SelectedWork, MoreWork,
+  WorkCard, Gallery) — consolidated here against the actual placeholder
+  tokens so all placeholder imagery stays in sync if that texture ever changes.
+*/
+.placeholder-stripe {
+  background: repeating-linear-gradient(
+    135deg,
+    var(--color-placeholder-a) 0 11px,
+    var(--color-placeholder-b) 11px 22px
+  );
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

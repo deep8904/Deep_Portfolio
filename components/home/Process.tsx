@@ -19,7 +19,7 @@ export function Process() {
               <div
                 key={step.num}
                 tabIndex={0}
-                className="group flex flex-col gap-3 border-b border-line-soft pb-[26px] mb-[26px] transition-[border-color] duration-[260ms] ease-linear hover:border-[#CFCCC5] focus-visible:border-[#CFCCC5]"
+                className="group flex flex-col gap-3 border-b border-line-soft pb-[26px] mb-[26px] transition-[border-color] duration-[260ms] ease-linear hover:border-line-hover focus-visible:border-line-hover"
               >
                 <span className="flex items-start gap-[5px] text-[15px] font-medium tracking-[-0.01em]">
                   {step.title}

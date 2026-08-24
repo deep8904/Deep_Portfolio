@@ -94,8 +94,7 @@ function TitleBlock({ project }: { project: WorkProject }) {
 const PlaceholderFill = () => (
   <span
     data-img
-    className="absolute inset-0 transition-transform duration-[380ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.025]"
-    style={{ background: "repeating-linear-gradient(135deg,#E6E4DF 0 11px,#E0DED8 11px 22px)" }}
+    className="placeholder-stripe absolute inset-0 transition-transform duration-[380ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.025]"
   />
 );
 

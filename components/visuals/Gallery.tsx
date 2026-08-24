@@ -22,10 +22,7 @@ export function Gallery({
           style={{ aspectRatio: `${photo.width}/${photo.height}`, animationDelay: `${Math.min(i, 8) * 40}ms` }}
           className="group relative mb-2.5 block w-full break-inside-avoid animate-[enter_460ms_var(--ease-std)_both] overflow-hidden rounded-[10px] border-0 bg-transparent p-0 tab:mb-3.5 desk:mb-4"
         >
-          <span
-            className="absolute inset-0 transition-transform duration-[420ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.02]"
-            style={{ background: "repeating-linear-gradient(135deg,#E6E4DF 0 11px,#E0DED8 11px 22px)" }}
-          />
+          <span className="placeholder-stripe absolute inset-0 transition-transform duration-[420ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.02]" />
           <span className="absolute inset-0 flex items-center justify-center px-4 text-center text-[10px] font-medium tracking-[0.08em] text-ink-num">
             {photo.placeholderLabel}
           </span>

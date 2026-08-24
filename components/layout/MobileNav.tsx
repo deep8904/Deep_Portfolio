@@ -109,13 +109,17 @@ export function MobileNav() {
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   onClick={() => setOpen(false)}
-                  className="flex h-[52px] items-center justify-between border-b border-line-soft px-1 text-[17px] font-medium transition-colors duration-[180ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] active:opacity-60"
-                  style={{ color: active ? "#131210" : "#5D5C58" }}
+                  className={[
+                    "flex h-[52px] items-center justify-between border-b border-line-soft px-1 text-[17px] font-medium transition-colors duration-[180ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] active:opacity-60",
+                    active ? "text-ink" : "text-ink-tertiary",
+                  ].join(" ")}
                 >
                   <span>{item.label}</span>
                   <span
-                    className="h-1.5 w-1.5 rounded-full transition-colors duration-200"
-                    style={{ background: active ? "#131210" : "transparent" }}
+                    className={[
+                      "h-1.5 w-1.5 rounded-full transition-colors duration-200",
+                      active ? "bg-ink" : "bg-transparent",
+                    ].join(" ")}
                   />
                 </Link>
               );

@@ -17,10 +17,7 @@ export function MoreWork() {
           {MORE_WORK.map((m) => (
             <div key={m.name} className="flex flex-col gap-3">
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-image-bg">
-                <span
-                  className="absolute inset-0"
-                  style={{ background: "repeating-linear-gradient(135deg,#E6E4DF 0 11px,#E0DED8 11px 22px)" }}
-                />
+                <span className="placeholder-stripe absolute inset-0" />
                 <span className="absolute inset-0 flex items-center justify-center px-6 text-center text-[11.5px] font-medium tracking-[0.09em] text-ink-num">
                   [ {m.name} ]
                 </span>
