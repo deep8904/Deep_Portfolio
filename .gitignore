@@ -41,7 +41,7 @@ yarn-error.log*
 /qa-screenshots/
 /qa-screenshots-v2/
 /qa-screenshots*/
-*-qa-screenshots.zip
+*-qa-screenshots*.zip
 
 # typescript
 *.tsbuildinfo
