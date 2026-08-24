@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Section } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/ui/Reveal";
@@ -28,6 +30,17 @@ export function Interests() {
                 </div>
               ))}
             </div>
+            <Link
+              href="/after-hours"
+              className="group mt-1 inline-flex w-fit items-center gap-1.5 text-[13.5px] font-medium text-ink-secondary transition-colors duration-200 hover:text-ink"
+            >
+              Enter After Hours
+              <ArrowRight
+                size={14}
+                strokeWidth={2}
+                className="transition-transform duration-200 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:translate-x-1"
+              />
+            </Link>
           </div>
 
           <div

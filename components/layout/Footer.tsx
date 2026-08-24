@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { SITE } from "@/lib/data";
 
@@ -43,7 +44,17 @@ export function Footer() {
 
       <div className="flex flex-wrap items-center justify-between gap-3.5 pt-[18px]">
         <span className="text-[12.5px] text-ink-faint">© 2026 Deep Chadamiya</span>
-        <span className="text-[12.5px] text-ink-faint">Built by Deep</span>
+        <Link
+          href="/after-hours"
+          className="group inline-flex items-center text-[12.5px] text-ink-faint transition-colors duration-200 hover:text-ink-secondary"
+          aria-label="Built by Deep — open After Hours, an optional personal corner of this site"
+        >
+          Built by Deep
+          <span className="footer-built-hint" aria-hidden="true">
+            {" "}
+            · After Hours
+          </span>
+        </Link>
       </div>
     </footer>
   );

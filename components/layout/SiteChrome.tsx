@@ -13,6 +13,10 @@ import { buildRevealScene, prefersReducedMotion, registerGsap } from "@/lib/moti
 
 export function SiteChrome({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  // After Hours renders its own Footer instance inside its dark, route-scoped
+  // theme (.ah-scope) — rendering the default one here too would duplicate it
+  // in the light theme right after.
+  const rendersOwnFooter = pathname === "/after-hours";
 
   useEffect(() => {
     registerGsap();
@@ -64,7 +68,7 @@ export function SiteChrome({ children }: { children: ReactNode }) {
       <Sidebar />
       <main id="main-content" tabIndex={-1} className="outline-none tab:ml-[214px] desk:ml-[264px]">
         {children}
-        <Footer />
+        {!rendersOwnFooter && <Footer />}
       </main>
     </div>
   );

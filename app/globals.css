@@ -98,6 +98,36 @@
   }
 }
 
+@keyframes ahFlash {
+  from {
+    opacity: 0.45;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes ahPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ahPulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 @keyframes enterSoft {
   from {
     opacity: 0;
@@ -129,6 +159,70 @@
     var(--color-placeholder-a) 0 11px,
     var(--color-placeholder-b) 11px 22px
   );
+}
+
+/*
+  Footer's "Built by Deep" doubles as the After Hours entry point. Desktop:
+  hidden until hover/focus (no flash, just a quiet reveal). Touch has no
+  hover, so it stays permanently visible there at reduced emphasis instead —
+  the (hover: hover) query is what tells the two cases apart.
+*/
+.footer-built-hint {
+  opacity: 0.55;
+  transition: opacity 200ms var(--ease-std);
+}
+@media (hover: hover) {
+  .footer-built-hint {
+    opacity: 0;
+  }
+  .group:hover .footer-built-hint,
+  .group:focus-visible .footer-built-hint {
+    opacity: 1;
+  }
+}
+
+/*
+  After Hours: "the portfolio after the lights go down." Re-declaring the
+  same --color-* custom properties Tailwind's utilities already reference
+  (bg-surface, text-ink-faint, etc.) means every existing shared component
+  — Section, SectionLabel, Cta, Footer — re-skins to this warm-dark palette
+  automatically inside .ah-scope, with zero component forking. Scoped to
+  this one wrapper only; the rest of the site never sees these values.
+  Contrast re-verified with the same WCAG formula used for the light theme
+  (ink-muted/faint/num carry a >=4.5:1 margin against both bg and surface).
+*/
+.ah-scope {
+  --color-bg: #221e1a;
+  --color-sidebar: #201c18;
+  --color-surface: #2c2620;
+  --color-surface-hover: #332c25;
+  --color-surface-active: #342d26;
+  --color-connect: #2a241f;
+
+  --color-ink: #f3eee6;
+  --color-ink-secondary: #cbc1b4;
+  --color-ink-tertiary: #a89d8f;
+  --color-ink-muted: #9a8f81;
+  --color-ink-faint: #998e80;
+  --color-ink-num: #978c7e;
+
+  --color-line: #362f28;
+  --color-line-strong: #453d33;
+  --color-line-soft: #322b25;
+  --color-line-hairline: #302a24;
+  --color-line-hover: #4c4336;
+
+  --color-accent: #d99a5b;
+  --color-accent-hover: #e3a768;
+  --color-accent-cream: #241c14;
+  --color-status: #d99a5b;
+
+  --color-placeholder-a: #2e2822;
+  --color-placeholder-b: #292319;
+  --color-image-bg: #2e2822;
+
+  background: var(--color-bg);
+  color: var(--color-ink);
 }
 
 .no-scrollbar::-webkit-scrollbar {
