@@ -221,38 +221,7 @@ export const WORK_STUBS: Record<string, { label: string; title: string; body: st
 // other real material behind any of the three — see the evidence summary.
 export const MORE_WORK = [{ name: "Xbox Game Camp" }, { name: "ZoomBuddy+" }];
 
-export const PHOTO_CATEGORIES = ["Portraits", "Events", "Street", "Architecture", "Places", "Details"] as const;
-
-export type Photo = {
-  id: string;
-  title: string;
-  category: (typeof PHOTO_CATEGORIES)[number];
-  width: number;
-  height: number;
-  alt: string;
-  placeholderLabel: string;
-};
-
-export const PHOTOS: Photo[] = [
-  { id: "photo-01", title: "Photograph — Portrait", category: "Portraits", width: 1600, height: 2400, alt: "Placeholder portrait photograph", placeholderLabel: "PHOTO / PORTRAIT / 01" },
-  { id: "photo-02", title: "Photograph — Portrait", category: "Portraits", width: 1500, height: 2000, alt: "Placeholder portrait photograph", placeholderLabel: "PHOTO / PORTRAIT / 02" },
-  { id: "photo-03", title: "Photograph — Portrait", category: "Portraits", width: 1400, height: 1750, alt: "Placeholder portrait photograph", placeholderLabel: "PHOTO / PORTRAIT / 03" },
-  { id: "photo-04", title: "Photograph — Landscape", category: "Events", width: 2400, height: 1600, alt: "Placeholder event photograph", placeholderLabel: "PHOTO / LANDSCAPE / 04" },
-  { id: "photo-05", title: "Photograph — Landscape", category: "Events", width: 2000, height: 1333, alt: "Placeholder event photograph", placeholderLabel: "PHOTO / LANDSCAPE / 05" },
-  { id: "photo-06", title: "Photograph — Square", category: "Events", width: 1800, height: 1800, alt: "Placeholder event photograph", placeholderLabel: "PHOTO / SQUARE / 06" },
-  { id: "photo-07", title: "Photograph — Portrait", category: "Street", width: 1600, height: 2400, alt: "Placeholder street photograph", placeholderLabel: "PHOTO / PORTRAIT / 07" },
-  { id: "photo-08", title: "Photograph — Landscape", category: "Street", width: 2400, height: 1600, alt: "Placeholder street photograph", placeholderLabel: "PHOTO / LANDSCAPE / 08" },
-  { id: "photo-09", title: "Photograph — Landscape", category: "Street", width: 1800, height: 1200, alt: "Placeholder street photograph", placeholderLabel: "PHOTO / LANDSCAPE / 09" },
-  { id: "photo-10", title: "Photograph — Portrait", category: "Architecture", width: 1600, height: 2000, alt: "Placeholder architecture photograph", placeholderLabel: "PHOTO / PORTRAIT / 10" },
-  { id: "photo-11", title: "Photograph — Landscape", category: "Architecture", width: 2400, height: 1500, alt: "Placeholder architecture photograph", placeholderLabel: "PHOTO / LANDSCAPE / 11" },
-  { id: "photo-12", title: "Photograph — Portrait", category: "Architecture", width: 1800, height: 2400, alt: "Placeholder architecture photograph", placeholderLabel: "PHOTO / PORTRAIT / 12" },
-  { id: "photo-13", title: "Photograph — Landscape", category: "Places", width: 2400, height: 1600, alt: "Placeholder place photograph", placeholderLabel: "PHOTO / LANDSCAPE / 13" },
-  { id: "photo-14", title: "Photograph — Portrait", category: "Places", width: 1600, height: 2100, alt: "Placeholder place photograph", placeholderLabel: "PHOTO / PORTRAIT / 14" },
-  { id: "photo-15", title: "Photograph — Landscape", category: "Places", width: 2000, height: 1333, alt: "Placeholder place photograph", placeholderLabel: "PHOTO / LANDSCAPE / 15" },
-  { id: "photo-16", title: "Photograph — Square", category: "Details", width: 1800, height: 1800, alt: "Placeholder detail photograph", placeholderLabel: "PHOTO / SQUARE / 16" },
-  { id: "photo-17", title: "Photograph — Portrait", category: "Details", width: 1500, height: 2000, alt: "Placeholder detail photograph", placeholderLabel: "PHOTO / PORTRAIT / 17" },
-  { id: "photo-18", title: "Photograph — Landscape", category: "Details", width: 2200, height: 1500, alt: "Placeholder detail photograph", placeholderLabel: "PHOTO / LANDSCAPE / 18" },
-];
+// Real photography data now lives in lib/photography-data.ts.
 
 export const RESUME_EXPERIENCE = [
   {

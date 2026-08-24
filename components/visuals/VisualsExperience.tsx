@@ -4,7 +4,7 @@ import { useMemo, useRef, useState } from "react";
 import { Filters } from "@/components/visuals/Filters";
 import { Gallery } from "@/components/visuals/Gallery";
 import { Lightbox } from "@/components/visuals/Lightbox";
-import { PHOTOS } from "@/lib/data";
+import { PHOTOS } from "@/lib/photography-data";
 
 export function VisualsExperience() {
   const [category, setCategory] = useState("All");

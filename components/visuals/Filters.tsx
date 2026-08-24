@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import clsx from "clsx";
-import { PHOTO_CATEGORIES } from "@/lib/data";
+import { PHOTO_CATEGORIES } from "@/lib/photography-data";
 
 const CATEGORIES = ["All", ...PHOTO_CATEGORIES] as const;
 
