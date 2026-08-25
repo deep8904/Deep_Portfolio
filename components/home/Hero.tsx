@@ -144,7 +144,7 @@ export function Hero() {
         </Link>
       </section>
 
-      <section className="mx-auto w-full max-w-[1240px] flex-none px-5 pb-0 tab:max-w-[1260px] tab:px-[30px] tab:pb-[52px] desk:max-w-[1268px] desk:px-[34px]">
+      <section className="mx-auto w-full max-w-[1240px] flex-none px-5 pb-0 tab:max-w-[1260px] tab:px-[30px] tab:pb-8 desk:max-w-[1268px] desk:px-[34px]">
         {/*
           Mobile: one wide primary shot + two small supporting shots, to keep
           the photography without it consuming most of the viewport height.

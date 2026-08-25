@@ -13,7 +13,7 @@ export function WhatIBring() {
             One product. Three perspectives.
           </h2>
         </div>
-        <div className="mt-[34px] grid grid-cols-1 gap-3.5 tab:grid-cols-2 tab:mt-11 desk:grid-cols-3">
+        <div className="mt-[34px] grid grid-cols-1 gap-3.5 tab:mt-11 desk:grid-cols-3">
           {PILLARS.map((p) => (
             <article
               key={p.title}
