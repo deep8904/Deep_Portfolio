@@ -179,7 +179,7 @@ export function Hero() {
           ))}
         </div>
         <div ref={cueRef} className="hidden flex-col items-center gap-2 pt-[26px] tab:flex">
-          <span className="text-[9px] font-medium tracking-[0.2em] text-ink-num">SCROLL</span>
+          <span className="text-[11px] font-medium tracking-[0.2em] text-ink-num">SCROLL</span>
           <span ref={cueLineRef} className="h-[22px] w-px origin-top bg-line-strong" />
         </div>
       </section>

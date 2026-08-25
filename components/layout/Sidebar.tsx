@@ -30,7 +30,7 @@ export function Sidebar() {
           />
           <span className="flex flex-col gap-0.5">
             <span className="whitespace-nowrap text-[15px] font-semibold tracking-[-0.012em]">Deep Chadamiya</span>
-            <span className="whitespace-nowrap text-[8.5px] font-medium tracking-[0.13em] text-ink-faint">
+            <span className="whitespace-nowrap text-[11px] font-medium tracking-[0.13em] text-ink-faint">
               PRODUCT · DESIGN · DEV
             </span>
           </span>

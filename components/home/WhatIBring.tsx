@@ -27,7 +27,7 @@ export function WhatIBring() {
               </h3>
               <div className="mb-auto h-px bg-line transition-colors duration-[240ms] ease-linear group-hover:bg-line-hover" />
               <p className="my-[22px] mb-4 text-[13.5px] leading-[1.55] text-ink-tertiary text-pretty">{p.body}</p>
-              <span className="text-[10.5px] font-medium tracking-[0.07em] text-ink">{p.meta}</span>
+              <span className="text-[11px] font-medium tracking-[0.07em] text-ink">{p.meta}</span>
             </article>
           ))}
         </div>

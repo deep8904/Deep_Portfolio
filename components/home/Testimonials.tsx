@@ -16,17 +16,21 @@ export function Testimonials() {
   const updateEdges = () => {
     const el = trackRef.current;
     if (!el) return;
-    setAtStart(el.scrollLeft <= 2);
-    setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 2);
+    setAtStart(el.scrollLeft <= 8);
+    setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 8);
   };
 
   useEffect(() => {
     updateEdges();
+    // Scroll-snap can settle a frame or two after mount (observed resting at
+    // ~4px instead of 0), which briefly left "Previous" wrongly enabled.
+    const raf = requestAnimationFrame(updateEdges);
     const el = trackRef.current;
     if (!el) return;
     el.addEventListener("scroll", updateEdges, { passive: true });
     window.addEventListener("resize", updateEdges);
     return () => {
+      cancelAnimationFrame(raf);
       el.removeEventListener("scroll", updateEdges);
       window.removeEventListener("resize", updateEdges);
     };

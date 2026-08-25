@@ -21,7 +21,7 @@ export function SelectedWork() {
           {HOME_PROJECTS.map((p) => (
             <Link
               key={p.slug}
-              href="/work"
+              href={`/work/${p.slug}`}
               aria-label={`${p.name} case study`}
               className="group relative block aspect-[16/10] cursor-pointer overflow-hidden rounded-[11px] border border-line"
             >

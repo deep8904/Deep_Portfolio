@@ -7,7 +7,7 @@ export function Process() {
   return (
     <Section>
       <Reveal>
-        <div className="grid grid-cols-1 items-start gap-8 desk:grid-cols-[minmax(0,36%)_minmax(0,60%)] desk:justify-between desk:gap-12">
+        <div className="grid grid-cols-1 items-start gap-8 tab:grid-cols-[minmax(0,38%)_minmax(0,58%)] tab:justify-between tab:gap-10 desk:grid-cols-[minmax(0,36%)_minmax(0,60%)] desk:gap-12">
           <div className="flex flex-col items-start gap-4">
             <SectionLabel>My Process</SectionLabel>
             <h2 className="m-0 max-w-full text-[26px] font-medium leading-[1.16] tracking-[-0.028em] text-balance tab:max-w-[13ch] tab:text-[30px] desk:text-[34px]">
@@ -23,7 +23,7 @@ export function Process() {
               >
                 <span className="flex items-start gap-[5px] text-[15px] font-medium tracking-[-0.01em]">
                   {step.title}
-                  <span className="pt-0.5 text-[9.5px] text-ink-num transition-colors duration-[260ms] ease-linear group-hover:text-accent group-focus-visible:text-accent">
+                  <span className="pt-0.5 text-[11px] text-ink-num transition-colors duration-[260ms] ease-linear group-hover:text-accent group-focus-visible:text-accent">
                     {step.num}
                   </span>
                 </span>

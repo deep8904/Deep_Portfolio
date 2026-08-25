@@ -76,7 +76,7 @@ export function MobileNav() {
           />
           <span className="flex flex-col gap-px">
             <span className="text-[14.5px] font-semibold tracking-[-0.01em]">Deep Chadamiya</span>
-            <span className="whitespace-nowrap text-[8.5px] font-medium tracking-[0.13em] text-ink-faint">
+            <span className="whitespace-nowrap text-[11px] font-medium tracking-[0.13em] text-ink-faint">
               PRODUCT · DESIGN · DEV
             </span>
           </span>
