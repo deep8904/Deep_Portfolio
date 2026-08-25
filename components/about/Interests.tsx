@@ -19,7 +19,7 @@ export function Interests() {
         <div className="grid grid-cols-1 items-start gap-[34px] desk:grid-cols-2 desk:gap-12">
           <div className="flex flex-col items-start gap-4">
             <SectionLabel>Outside the Interface</SectionLabel>
-            <h2 className="m-0 max-w-full text-[26px] font-medium leading-[1.16] tracking-[-0.028em] text-balance tab:max-w-[13ch] tab:text-[30px] desk:text-[34px]">
+            <h2 className="m-0 max-w-full text-h2 font-medium tracking-[-0.028em] text-balance tab:max-w-[13ch]">
               Things that keep me curious.
             </h2>
             <div className="mt-2.5 w-full">

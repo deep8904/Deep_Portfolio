@@ -23,7 +23,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 items-start gap-[30px] desk:grid-cols-[1fr_0.86fr] desk:gap-12">
             <div className="flex flex-col items-start gap-4">
               <SectionLabel>Who Am I</SectionLabel>
-              <h1 className="m-0 text-[34px] font-medium leading-[1.1] tracking-[-0.03em] tab:text-[42px] desk:text-[48px]">
+              <h1 className="m-0 text-h1 font-medium tracking-[-0.03em]">
                 Hey, I’m Deep
               </h1>
               <p className="m-0 text-[15px] leading-[1.72] text-ink-secondary text-pretty">

@@ -12,7 +12,7 @@ export function SelectedWork() {
       <Reveal>
         <div className="flex flex-col items-center justify-center gap-3.5">
           <SectionLabel>Selected Work</SectionLabel>
-          <h2 className="m-0 max-w-full text-center text-[27px] font-medium leading-[1.16] tracking-[-0.028em] text-balance tab:max-w-[620px] tab:text-[32px] desk:text-[37px]">
+          <h2 className="m-0 max-w-full text-center text-h2 font-medium tracking-[-0.028em] text-balance tab:max-w-[620px]">
             Products built from a problem to a working system.
           </h2>
         </div>
@@ -29,7 +29,7 @@ export function SelectedWork() {
                 data-img
                 className="placeholder-stripe absolute inset-0 transition-transform duration-[380ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.028]"
               />
-              <span className="absolute inset-0 flex items-center justify-center px-6 text-center text-[11.5px] font-medium tracking-[0.09em] text-ink-num">
+              <span className="absolute inset-0 flex items-center justify-center px-6 text-center text-meta font-medium tracking-[0.09em] text-ink-num">
                 {p.placeholder}
               </span>
               <span
@@ -38,11 +38,11 @@ export function SelectedWork() {
                   background: "linear-gradient(to top, rgba(20,18,16,0.68), rgba(20,18,16,0))",
                 }}
               >
-                <span className="inline-flex items-center gap-[7px] text-balance text-[16px] font-medium text-accent-cream transition-transform duration-[320ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:-translate-y-0.5">
+                <span className="inline-flex items-center gap-[7px] text-balance text-p2 font-medium text-accent-cream transition-transform duration-[320ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:-translate-y-0.5">
                   {p.name}
                   <span className="text-xs opacity-0 transition-opacity duration-[320ms] group-hover:opacity-100">↗</span>
                 </span>
-                <span className="whitespace-nowrap text-[11px] font-medium tracking-[0.05em] text-accent-cream opacity-[0.66] transition-opacity duration-[320ms] group-hover:opacity-[0.92]">
+                <span className="whitespace-nowrap text-meta font-medium tracking-[0.05em] text-accent-cream opacity-[0.66] transition-opacity duration-[320ms] group-hover:opacity-[0.92]">
                   {p.meta}
                 </span>
               </span>

@@ -15,7 +15,7 @@ export default function NotFound() {
       <Container>
         <div className="flex flex-col items-start gap-[18px] py-10 tab:py-5">
           <SectionLabel>404</SectionLabel>
-          <h1 className="m-0 text-[34px] font-medium leading-[1.1] tracking-[-0.03em] tab:text-[42px] desk:text-[48px]">
+          <h1 className="m-0 text-h1 font-medium tracking-[-0.03em]">
             Page not found.
           </h1>
           <p className="m-0 max-w-[480px] text-[15px] leading-[1.7] text-ink-muted text-pretty">

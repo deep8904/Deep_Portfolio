@@ -26,7 +26,7 @@ export function AfterHoursHero() {
 
       <h1
         data-ah-intro
-        className="m-0 text-[32px] font-medium leading-[1.15] tracking-[-0.03em] text-balance tab:text-[42px] desk:text-[48px]"
+        className="m-0 text-h1 font-medium tracking-[-0.03em] text-balance"
       >
         Things I make when
         <br className="hidden tab:block" />

@@ -36,7 +36,7 @@ export default async function WorkCaseStudyPage({ params }: { params: Promise<{ 
       <Container>
         <div className="flex flex-col items-start gap-[18px] py-10 tab:py-5">
           <SectionLabel>{stub.label}</SectionLabel>
-          <h1 className="m-0 text-[34px] font-medium leading-[1.1] tracking-[-0.03em] tab:text-[42px] desk:text-[48px]">
+          <h1 className="m-0 text-h1 font-medium tracking-[-0.03em]">
             {stub.title}
           </h1>
           <p className="m-0 max-w-[520px] text-[15px] leading-[1.7] text-ink-muted text-pretty">{stub.body}</p>

@@ -16,7 +16,7 @@ export function AboutPreview() {
         <div className="grid grid-cols-1 items-start gap-8 desk:grid-cols-[minmax(0,58%)_minmax(0,34%)] desk:justify-between desk:gap-14">
           <div className="flex flex-col items-start gap-5">
             <SectionLabel>Who Am I</SectionLabel>
-            <p className="m-0 max-w-[66ch] text-[16px] leading-[1.6] text-ink-secondary text-pretty tab:text-[18px] desk:text-[20px]">
+            <p className="m-0 max-w-[66ch] text-p1 text-ink-secondary text-pretty">
               I’m Deep Chadamiya, a software engineer, product designer, and visual storyteller. I enjoy turning
               complex ideas into clear digital experiences, combining systems thinking, UX, interface design, and
               engineering to take products from early concept to working implementation. Outside product work,
@@ -25,7 +25,7 @@ export function AboutPreview() {
               practical way.
             </p>
             <div className="mt-8">
-              <span className="text-[13.5px] text-ink-faint">Experience across</span>
+              <span className="text-label text-ink-faint">Experience across</span>
               <div className="mt-5 flex flex-wrap items-center gap-[30px]">
                 {LOGOS.map((logo) => (
                   <Image

@@ -121,7 +121,7 @@ export function Hero() {
       */}
       <div className="mx-auto flex w-full max-w-[1240px] flex-1 flex-col justify-center gap-8 px-5 py-6 tab:max-w-[1260px] tab:gap-10 tab:px-[30px] tab:py-8 desk:max-w-[1268px] desk:px-[34px]">
         <section className="flex flex-col items-center gap-5 tab:gap-[26px]">
-          <h1 className="m-0 max-w-full text-center text-[32px] font-medium leading-[1.24] tracking-[-0.03em] text-balance tab:max-w-[880px] tab:text-[42px] desk:text-[52px]">
+          <h1 className="m-0 max-w-full text-center text-h1 font-medium tracking-[-0.03em] text-balance tab:max-w-[880px]">
             <span className="block overflow-hidden pb-[0.08em]">
               <span ref={headRef} className="block">
                 Hey, Deep here{" "}
@@ -137,7 +137,7 @@ export function Hero() {
               </span>
             </span>
           </h1>
-          <p ref={subRef} className="m-0 max-w-full text-center text-[16px] leading-[1.6] text-ink-muted text-pretty tab:max-w-[560px] tab:text-[17px] desk:text-[18px]">
+          <p ref={subRef} className="m-0 max-w-full text-center text-p1 text-ink-muted text-pretty tab:max-w-[560px]">
             I work across software, product design, UX, and interactive technology, taking ideas from early systems
             thinking to working products.
           </p>

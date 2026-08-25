@@ -21,7 +21,7 @@ export default function WorkPage() {
         <Container>
           <div className="flex max-w-[680px] flex-col items-start gap-4">
             <SectionLabel>Work</SectionLabel>
-            <h1 className="m-0 text-[34px] font-medium leading-[1.1] tracking-[-0.03em] tab:text-[42px] desk:text-[48px]">
+            <h1 className="m-0 text-h1 font-medium tracking-[-0.03em]">
               Products shaped from problem to working system.
             </h1>
             <p className="m-0 text-[15px] leading-[1.72] text-ink-secondary text-pretty">

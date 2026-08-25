@@ -9,7 +9,7 @@ export function ResumeHeader() {
   return (
     <div className="flex max-w-[720px] flex-col items-start gap-3.5">
       <SectionLabel>Resume</SectionLabel>
-      <h1 className="m-0 text-[34px] font-medium leading-[1.1] tracking-[-0.03em] tab:text-[42px] desk:text-[48px]">
+      <h1 className="m-0 text-h1 font-medium tracking-[-0.03em]">
         Deepkumar Chadamiya
       </h1>
       <p className="m-0 text-[15.5px] text-ink-secondary">

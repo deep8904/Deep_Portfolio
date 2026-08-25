@@ -12,7 +12,7 @@ export function Projects() {
         <Reveal>
           <div className="flex flex-col items-start gap-4">
             <SectionLabel>Selected Projects</SectionLabel>
-            <h2 className="m-0 max-w-full text-[26px] font-medium leading-[1.16] tracking-[-0.028em] text-balance tab:max-w-[13ch] tab:text-[30px] desk:text-[34px]">
+            <h2 className="m-0 max-w-full text-h2 font-medium tracking-[-0.028em] text-balance tab:max-w-[13ch]">
               Selected product work.
             </h2>
           </div>
