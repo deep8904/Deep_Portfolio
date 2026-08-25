@@ -103,7 +103,7 @@ export function Hero() {
   }, []);
 
   return (
-    <div className="flex min-h-[100svh] flex-col tab:min-h-screen">
+    <div className="flex min-h-[100svh] flex-col tab:min-h-0">
       <div className="mx-auto flex w-full max-w-[1240px] flex-none items-center justify-between gap-4 px-5 pt-[18px] text-[12.5px] tab:max-w-[1260px] tab:px-[30px] desk:max-w-[1268px] desk:px-[34px]">
         <div ref={metaRef} className="flex w-full items-center justify-between gap-4">
           <span className="inline-flex items-center gap-[7px] whitespace-nowrap text-ink-tertiary">
@@ -114,7 +114,7 @@ export function Hero() {
         </div>
       </div>
 
-      <section className="mx-auto flex w-full max-w-[1240px] flex-1 flex-col items-center justify-center gap-5 px-5 py-[52px] tab:max-w-[1260px] tab:gap-[26px] tab:px-[30px] tab:py-16 desk:max-w-[1268px] desk:px-[34px]">
+      <section className="mx-auto flex w-full max-w-[1240px] flex-1 flex-col items-center justify-center gap-5 px-5 py-[52px] tab:max-w-[1260px] tab:gap-[26px] tab:px-[30px] tab:py-10 desk:max-w-[1268px] desk:px-[34px]">
         <h1 className="m-0 max-w-full text-center text-[32px] font-medium leading-[1.24] tracking-[-0.03em] text-balance tab:max-w-[880px] tab:text-[42px] desk:text-[52px]">
           <span className="block overflow-hidden pb-[0.08em]">
             <span ref={headRef} className="block">
@@ -131,7 +131,7 @@ export function Hero() {
             </span>
           </span>
         </h1>
-        <p ref={subRef} className="m-0 max-w-full text-center text-[15px] leading-[1.66] text-ink-muted text-pretty tab:max-w-[560px]">
+        <p ref={subRef} className="m-0 max-w-full text-center text-[16.5px] leading-[1.66] text-ink-muted text-pretty tab:max-w-[560px]">
           I work across software, product design, UX, and interactive technology, taking ideas from early systems
           thinking to working products.
         </p>

@@ -5,25 +5,25 @@ import { SITE } from "@/lib/data";
 export function Footer() {
   return (
     <footer className="mx-auto mt-[90px] w-full max-w-[1240px] px-5 pb-6 tab:mt-[130px] tab:max-w-[1260px] tab:px-[30px] tab:pb-[26px] desk:max-w-[1268px] desk:px-[34px]">
-      <div className="flex flex-col gap-2.5 pb-[22px] tab:grid tab:grid-cols-4 tab:items-center tab:gap-0 tab:pb-[26px]">
+      <div className="flex flex-col gap-2.5 pb-[22px] tab:flex-row tab:items-center tab:justify-between tab:gap-4 tab:pb-[26px]">
         <a
           href={`mailto:${SITE.email}`}
-          className="inline-flex w-fit items-center text-[13.5px] text-ink-secondary transition-colors duration-200 hover:text-ink tab:justify-self-start"
+          className="inline-flex w-fit items-center text-[13.5px] text-ink-secondary transition-colors duration-200 hover:text-ink"
         >
           {SITE.email}
         </a>
         <a
           href={`tel:${SITE.phone}`}
-          className="inline-flex w-fit items-center text-[13.5px] text-ink-secondary transition-colors duration-200 hover:text-ink tab:justify-self-center"
+          className="inline-flex w-fit items-center text-[13.5px] text-ink-secondary transition-colors duration-200 hover:text-ink"
         >
           {SITE.phoneDisplay}
         </a>
-        <span className="inline-flex items-center text-[13.5px] text-ink-secondary tab:justify-self-center">
+        <span className="inline-flex items-center text-[13.5px] text-ink-secondary">
           {SITE.location}
         </span>
         <a
           href={`mailto:${SITE.email}`}
-          className="inline-flex items-center text-[13.5px] text-ink-secondary transition-colors duration-200 hover:text-ink tab:justify-self-end"
+          className="inline-flex items-center text-[13.5px] text-ink-secondary transition-colors duration-200 hover:text-ink"
         >
           Have a question
         </a>
