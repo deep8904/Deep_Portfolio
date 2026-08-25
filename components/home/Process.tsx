@@ -21,13 +21,13 @@ export function Process() {
                 tabIndex={0}
                 className="group flex flex-col gap-3 border-b border-line-soft pb-[26px] mb-[26px] transition-[border-color] duration-[260ms] ease-linear hover:border-line-hover focus-visible:border-line-hover"
               >
-                <span className="flex items-start gap-[5px] text-[15px] font-medium tracking-[-0.01em]">
+                <span className="flex items-start gap-[5px] text-[16px] font-medium tracking-[-0.01em]">
                   {step.title}
                   <span className="pt-0.5 text-[11px] text-ink-num transition-colors duration-[260ms] ease-linear group-hover:text-accent group-focus-visible:text-accent">
                     {step.num}
                   </span>
                 </span>
-                <p className="m-0 max-w-[68ch] text-[13.5px] leading-[1.62] text-ink-muted text-pretty transition-colors duration-[260ms] ease-linear group-hover:text-ink-secondary group-focus-visible:text-ink-secondary">
+                <p className="m-0 max-w-[68ch] text-[16px] leading-[1.6] text-ink-muted text-pretty transition-colors duration-[260ms] ease-linear group-hover:text-ink-secondary group-focus-visible:text-ink-secondary">
                   {step.body}
                 </p>
               </div>

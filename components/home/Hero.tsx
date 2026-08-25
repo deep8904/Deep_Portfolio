@@ -103,7 +103,12 @@ export function Hero() {
   }, []);
 
   return (
-    <div className="flex min-h-[100svh] flex-col tab:min-h-0">
+    // Mobile's sticky header (65px, measured) consumes real layout height, so
+    // the hero's min-height is reduced by exactly that to still own one full
+    // viewport without requiring a tiny extra scroll to reveal its own end.
+    // Tablet+ uses the fixed/overlay Sidebar instead (no layout height taken),
+    // so the full 100svh applies there directly.
+    <div className="flex min-h-[calc(100svh-65px)] flex-col tab:min-h-[100svh]">
       <div className="mx-auto flex w-full max-w-[1240px] flex-none items-center justify-between gap-4 px-5 pt-[18px] text-[12.5px] tab:max-w-[1260px] tab:px-[30px] desk:max-w-[1268px] desk:px-[34px]">
         <div ref={metaRef} className="flex w-full items-center justify-between gap-4">
           <span className="inline-flex items-center gap-[7px] whitespace-nowrap text-ink-tertiary">
@@ -114,37 +119,42 @@ export function Hero() {
         </div>
       </div>
 
-      <section className="mx-auto flex w-full max-w-[1240px] flex-1 flex-col items-center justify-center gap-5 px-5 py-[52px] tab:max-w-[1260px] tab:gap-[26px] tab:px-[30px] tab:py-10 desk:max-w-[1268px] desk:px-[34px]">
-        <h1 className="m-0 max-w-full text-center text-[32px] font-medium leading-[1.24] tracking-[-0.03em] text-balance tab:max-w-[880px] tab:text-[42px] desk:text-[52px]">
-          <span className="block overflow-hidden pb-[0.08em]">
-            <span ref={headRef} className="block">
-              Hey, Deep here{" "}
-              <Image
-                ref={stripRef}
-                src="/images/hero/strip-architecture.png"
-                alt="Deep Chadamiya"
-                width={626}
-                height={626}
-                className="inline-block h-7 w-[72px] rounded-[13px] bg-image-bg align-[-0.18em] object-cover transition-transform duration-300 ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:scale-[1.06] tab:h-10 tab:w-[106px] tab:rounded-[17px]"
-              />{" "}
-              I design and build thoughtful digital experiences.
+      {/*
+        Central region: headline block + photo row travel together as one
+        centered group, so extra vertical space on tall viewports becomes
+        balanced outer breathing room instead of one arbitrary gap.
+      */}
+      <div className="mx-auto flex w-full max-w-[1240px] flex-1 flex-col justify-center gap-8 px-5 py-6 tab:max-w-[1260px] tab:gap-10 tab:px-[30px] tab:py-8 desk:max-w-[1268px] desk:px-[34px]">
+        <section className="flex flex-col items-center gap-5 tab:gap-[26px]">
+          <h1 className="m-0 max-w-full text-center text-[32px] font-medium leading-[1.24] tracking-[-0.03em] text-balance tab:max-w-[880px] tab:text-[42px] desk:text-[52px]">
+            <span className="block overflow-hidden pb-[0.08em]">
+              <span ref={headRef} className="block">
+                Hey, Deep here{" "}
+                <Image
+                  ref={stripRef}
+                  src="/images/hero/strip-architecture.png"
+                  alt="Deep Chadamiya"
+                  width={626}
+                  height={626}
+                  className="inline-block h-7 w-[72px] rounded-[13px] bg-image-bg align-[-0.18em] object-cover transition-transform duration-300 ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:scale-[1.06] tab:h-10 tab:w-[106px] tab:rounded-[17px]"
+                />{" "}
+                I design and build thoughtful digital experiences.
+              </span>
             </span>
-          </span>
-        </h1>
-        <p ref={subRef} className="m-0 max-w-full text-center text-[16.5px] leading-[1.66] text-ink-muted text-pretty tab:max-w-[560px]">
-          I work across software, product design, UX, and interactive technology, taking ideas from early systems
-          thinking to working products.
-        </p>
-        <Link
-          ref={ctaRef}
-          href="/about"
-          className="group inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-[9px] bg-accent px-[22px] text-[13.5px] font-medium text-accent-cream transition-[background,transform] duration-[220ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:bg-accent-hover hover:-translate-y-px active:translate-y-0 active:scale-[0.985]"
-        >
-          About Me
-        </Link>
-      </section>
+          </h1>
+          <p ref={subRef} className="m-0 max-w-full text-center text-[16px] leading-[1.6] text-ink-muted text-pretty tab:max-w-[560px] tab:text-[17px] desk:text-[18px]">
+            I work across software, product design, UX, and interactive technology, taking ideas from early systems
+            thinking to working products.
+          </p>
+          <Link
+            ref={ctaRef}
+            href="/about"
+            className="group inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-[9px] bg-accent px-[22px] text-[13.5px] font-medium text-accent-cream transition-[background,transform] duration-[220ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:bg-accent-hover hover:-translate-y-px active:translate-y-0 active:scale-[0.985]"
+          >
+            About Me
+          </Link>
+        </section>
 
-      <section className="mx-auto w-full max-w-[1240px] flex-none px-5 pb-0 tab:max-w-[1260px] tab:px-[30px] tab:pb-8 desk:max-w-[1268px] desk:px-[34px]">
         {/*
           Mobile: one wide primary shot + two small supporting shots, to keep
           the photography without it consuming most of the viewport height.
@@ -178,11 +188,12 @@ export function Hero() {
             </div>
           ))}
         </div>
-        <div ref={cueRef} className="hidden flex-col items-center gap-2 pt-[26px] tab:flex">
-          <span className="text-[11px] font-medium tracking-[0.2em] text-ink-num">SCROLL</span>
-          <span ref={cueLineRef} className="h-[22px] w-px origin-top bg-line-strong" />
-        </div>
-      </section>
+      </div>
+
+      <div ref={cueRef} className="hidden flex-none flex-col items-center gap-2 pb-6 tab:flex tab:pb-8">
+        <span className="text-[11px] font-medium tracking-[0.2em] text-ink-num">SCROLL</span>
+        <span ref={cueLineRef} className="h-[22px] w-px origin-top bg-line-strong" />
+      </div>
     </div>
   );
 }

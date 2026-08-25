@@ -88,7 +88,7 @@ export function Testimonials() {
               data-card
               className="group flex min-h-[210px] flex-none snap-start flex-col rounded-[10px] border border-line bg-surface p-[18px] transition-[transform,background,border-color] duration-[260ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:-translate-y-0.5 hover:border-line-hover hover:bg-surface-hover basis-full tab:basis-[calc((100%-14px)/2)] desk:basis-[calc((100%-28px)/3)]"
             >
-              <blockquote className="m-0 mb-auto text-[13.5px] leading-[1.62] text-ink-secondary text-pretty">
+              <blockquote className="m-0 mb-auto text-[16px] leading-[1.6] text-ink-secondary text-pretty">
                 {q.text}
               </blockquote>
               <figcaption className="mt-6 flex items-center gap-[11px]">

@@ -38,7 +38,7 @@ export function SelectedWork() {
                   background: "linear-gradient(to top, rgba(20,18,16,0.68), rgba(20,18,16,0))",
                 }}
               >
-                <span className="inline-flex items-center gap-[7px] text-balance text-[15px] font-medium text-accent-cream transition-transform duration-[320ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:-translate-y-0.5">
+                <span className="inline-flex items-center gap-[7px] text-balance text-[16px] font-medium text-accent-cream transition-transform duration-[320ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:-translate-y-0.5">
                   {p.name}
                   <span className="text-xs opacity-0 transition-opacity duration-[320ms] group-hover:opacity-100">↗</span>
                 </span>
