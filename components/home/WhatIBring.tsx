@@ -5,7 +5,7 @@ import { PILLARS } from "@/lib/data";
 
 export function WhatIBring() {
   return (
-    <Section className="min-h-[100svh] flex flex-col justify-center">
+    <Section>
       <Reveal>
         <div className="flex flex-col items-center gap-3.5">
           <SectionLabel>What I Bring</SectionLabel>

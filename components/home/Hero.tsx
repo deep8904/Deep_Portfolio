@@ -103,12 +103,7 @@ export function Hero() {
   }, []);
 
   return (
-    // Mobile's sticky header (65px, measured) consumes real layout height, so
-    // the hero's min-height is reduced by exactly that to still own one full
-    // viewport without requiring a tiny extra scroll to reveal its own end.
-    // Tablet+ uses the fixed/overlay Sidebar instead (no layout height taken),
-    // so the full 100svh applies there directly.
-    <div className="flex min-h-[calc(100svh-65px)] flex-col tab:min-h-[100svh]">
+    <div className="flex min-h-[100svh] flex-col tab:min-h-0">
       <div className="mx-auto flex w-full max-w-[1240px] flex-none items-center justify-between gap-4 px-5 pt-[18px] text-[12.5px] tab:max-w-[1260px] tab:px-[30px] desk:max-w-[1268px] desk:px-[34px]">
         <div ref={metaRef} className="flex w-full items-center justify-between gap-4">
           <span className="inline-flex items-center gap-[7px] whitespace-nowrap text-ink-tertiary">

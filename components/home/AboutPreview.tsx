@@ -11,7 +11,7 @@ const LOGOS = [
 
 export function AboutPreview() {
   return (
-    <Section className="min-h-[100svh] flex flex-col justify-center">
+    <Section>
       <Reveal>
         <div className="grid grid-cols-1 items-start gap-8 desk:grid-cols-[minmax(0,58%)_minmax(0,34%)] desk:justify-between desk:gap-14">
           <div className="flex flex-col items-start gap-5">
