@@ -6,10 +6,13 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { prefersReducedMotion, registerGsap } from "@/lib/motion";
 
+// Alt is "" for all three: the H1 + subhead already convey everything
+// meaningful here, and these photos are a purely atmospheric mood collage
+// with no adjacent caption or independent informational role.
 const HERO_PHOTOS = [
-  { src: "/images/hero/photo-workspace.png", alt: "Workspace photograph", w: 1200, h: 1200 },
-  { src: "/images/hero/photo-notebook.png", alt: "Notebook photograph", w: 1168, h: 1752 },
-  { src: "/images/hero/photo-studio.png", alt: "Studio photograph", w: 768, h: 1130 },
+  { src: "/photography/purple-dusk.jpg", alt: "", w: 2400, h: 1350, objectPosition: "center 55%" },
+  { src: "/photography/behind-the-lights.jpg", alt: "", w: 2400, h: 1800, objectPosition: "center" },
+  { src: "/photography/palms-and-stone.jpg", alt: "", w: 2400, h: 1800, objectPosition: "center" },
 ];
 
 export function Hero() {
@@ -169,6 +172,7 @@ export function Hero() {
                 height={photo.h}
                 priority={i === 0}
                 sizes={i === 0 ? "(min-width: 810px) 33vw, 100vw" : "(min-width: 810px) 33vw, 50vw"}
+                style={{ objectPosition: photo.objectPosition }}
                 className="block h-full w-full object-cover transition-transform duration-[420ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.022]"
               />
             </div>

@@ -7,9 +7,9 @@ import { Reveal } from "@/components/ui/Reveal";
 import { INTERESTS } from "@/lib/data";
 
 const COLLAGE = [
-  { area: "a", src: "/images/about/collage-a.jpg" },
-  { area: "b", src: "/images/about/collage-b.jpg" },
-  { area: "c", src: "/images/about/collage-c.jpg" },
+  { area: "a", src: "/images/about/collage-a.jpg", alt: "Wooden garden pavilion roofline framed by tree branches" },
+  { area: "b", src: "/images/about/collage-b.jpg", alt: "Stadium floodlight glowing against a dark night sky" },
+  { area: "c", src: "/images/about/collage-c.jpg", alt: "Backlit collage wall of photographs at night, with a viewer standing before it" },
 ];
 
 export function Interests() {
@@ -51,7 +51,7 @@ export function Interests() {
               <div key={c.area} className="group overflow-hidden rounded-xl bg-image-bg" style={{ gridArea: c.area }}>
                 <Image
                   src={c.src}
-                  alt="Photograph by Deep Chadamiya"
+                  alt={c.alt}
                   width={800}
                   height={800}
                   data-img
