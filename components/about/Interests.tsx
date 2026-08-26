@@ -26,7 +26,7 @@ export function Interests() {
               {INTERESTS.map((i) => (
                 <div key={i.title} className="flex flex-col gap-1.5 border-t border-line-soft py-[18px]">
                   <span className="text-[14.5px] font-medium tracking-[-0.01em]">{i.title}</span>
-                  <span className="text-[13.5px] leading-[1.6] text-ink-muted text-pretty">{i.body}</span>
+                  <span className="text-[15px] leading-[1.6] text-ink-muted text-pretty">{i.body}</span>
                 </div>
               ))}
             </div>
@@ -48,14 +48,18 @@ export function Interests() {
             style={{ gridTemplateAreas: '"a c" "b c"' }}
           >
             {COLLAGE.map((c) => (
-              <div key={c.area} className="group overflow-hidden rounded-xl bg-image-bg" style={{ gridArea: c.area }}>
+              <div
+                key={c.area}
+                className="group relative overflow-hidden rounded-xl bg-image-bg"
+                style={{ gridArea: c.area }}
+              >
                 <Image
                   src={c.src}
                   alt={c.alt}
-                  width={800}
-                  height={800}
+                  fill
+                  sizes="(min-width: 1200px) 25vw, 45vw"
                   data-img
-                  className="h-full w-full object-cover transition-transform duration-[480ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.03]"
+                  className="object-cover transition-transform duration-[480ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.03]"
                 />
               </div>
             ))}

@@ -41,15 +41,17 @@ export function AboutPreview() {
             </div>
           </div>
 
-          <div className="group relative w-full max-w-[440px] overflow-hidden rounded-[14px] bg-image-bg desk:max-w-[400px]">
+          <div
+            className="group relative w-full max-w-[440px] overflow-hidden rounded-[14px] bg-image-bg desk:max-w-[400px]"
+            style={{ aspectRatio: "1023/1120" }}
+          >
             <Image
               src="/images/about/preview-portrait.png"
               alt="Portrait of Deep Chadamiya"
-              width={1023}
-              height={1120}
+              fill
+              sizes="(min-width: 1200px) 400px, (min-width: 810px) 440px, 90vw"
               data-img
-              className="block w-full object-cover transition-transform duration-[480ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.018]"
-              style={{ aspectRatio: "1023/1120" }}
+              className="object-cover transition-transform duration-[480ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.018]"
             />
             <Image
               src="/images/about/signature.png"

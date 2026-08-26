@@ -44,7 +44,7 @@ export function TeamFlowStrip({
 function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <span className="text-[11px] font-semibold tracking-[0.1em] text-ink-num">{label}</span>
+      <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">{label}</span>
       <p className="m-0 text-[14px] leading-[1.65] text-ink-secondary text-pretty">{children}</p>
     </div>
   );
@@ -71,7 +71,7 @@ export function WorkflowBlock({
     <div className="flex flex-col gap-6 border-t border-line-soft pt-8 first:border-t-0 first:pt-0 tab:pt-9">
       <div className="flex flex-col gap-4">
         <div className="flex items-baseline gap-2.5">
-          <span className="text-[11px] font-semibold tracking-[0.1em] text-ink-num">{num}</span>
+          <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">{num}</span>
           <h3 className="m-0 text-[19px] font-medium tracking-[-0.015em]">{title}</h3>
         </div>
         {diagram}

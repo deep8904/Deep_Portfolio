@@ -45,7 +45,7 @@ export function StatusMatrix() {
           <CaseStudyStatus kind={col.kind} label={col.heading} />
           <ul className="m-0 flex list-none flex-col gap-2.5 p-0">
             {col.items.map((item) => (
-              <li key={item} className="text-[13px] leading-[1.55] text-ink-faint text-pretty">
+              <li key={item} className="text-[15px] leading-[1.55] text-ink-faint text-pretty">
                 {item}
               </li>
             ))}

@@ -16,7 +16,7 @@ export function StackList() {
           className="flex flex-col gap-1 border-t border-line-soft py-4 first:border-t-0 first:pt-0 tab:flex-row tab:items-baseline tab:justify-between tab:gap-6"
         >
           <span className="text-[14.5px] font-medium tracking-[-0.01em] tab:w-[240px] tab:shrink-0">{item.name}</span>
-          <span className="text-[13.5px] leading-[1.6] text-ink-faint text-pretty">{item.purpose}</span>
+          <span className="text-[15px] leading-[1.6] text-ink-faint text-pretty">{item.purpose}</span>
         </li>
       ))}
     </ul>

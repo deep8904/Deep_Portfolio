@@ -18,19 +18,22 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-20 hidden w-[214px] flex-col justify-between gap-8 overflow-y-auto overflow-x-hidden bg-sidebar p-[26px_16px] tab:flex desk:w-[264px] desk:p-[30px_20px]">
+    <aside className="fixed inset-y-0 left-0 z-20 hidden w-[264px] flex-col justify-between gap-8 overflow-y-auto overflow-x-hidden bg-sidebar p-[30px_20px] nav:flex">
       <div>
         <Link href="/" className="group mb-14 flex items-center gap-[11px]">
-          <Image
-            src="/images/profile/avatar.png"
-            alt=""
-            width={38}
-            height={38}
-            className="h-[38px] w-[38px] flex-none rounded-full bg-image-bg object-cover transition-transform duration-300 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-105"
-          />
+          <span className="relative h-[38px] w-[38px] flex-none overflow-hidden rounded-full bg-image-bg">
+            <Image
+              src="/images/profile/avatar.png"
+              alt=""
+              fill
+              sizes="38px"
+              priority
+              className="object-cover transition-transform duration-300 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-105"
+            />
+          </span>
           <span className="flex flex-col gap-0.5">
             <span className="whitespace-nowrap text-[15px] font-semibold tracking-[-0.012em]">Deep Chadamiya</span>
-            <span className="whitespace-nowrap text-[11px] font-medium tracking-[0.13em] text-ink-faint">
+            <span className="whitespace-nowrap text-[12px] font-medium tracking-[0.13em] text-ink-faint">
               PRODUCT · DESIGN · DEV
             </span>
           </span>
@@ -68,7 +71,7 @@ export function Sidebar() {
             target="_blank"
             rel="noopener"
             aria-label={`${s.label} (opens in a new tab)`}
-            className="w-fit whitespace-nowrap text-[13.5px] text-ink-secondary transition-all duration-[180ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:translate-x-1 hover:text-ink"
+            className="-my-1.5 inline-flex w-fit items-center whitespace-nowrap py-1.5 text-[13.5px] text-ink-secondary transition-all duration-[180ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:translate-x-1 hover:text-ink"
           >
             {s.label}
           </a>

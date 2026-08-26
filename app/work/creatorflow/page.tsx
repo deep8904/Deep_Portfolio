@@ -205,27 +205,27 @@ export default function CreatorFlowCaseStudy() {
         <div className="grid grid-cols-1 gap-3.5 tab:grid-cols-2">
           <div className="rounded-xl border border-line-soft px-5 py-5">
             <span className="text-[13.5px] font-medium">“Draft reply” / “Review contract” / “AI assist”</span>
-            <p className="m-0 mt-2 text-[13.5px] leading-[1.6] text-ink-faint">
+            <p className="m-0 mt-2 text-[15px] leading-[1.6] text-ink-faint">
               Template-based output, built from a rate card and structure — not a live AI call. Labeled “— preview” on
               the trigger button itself, with a footer disclosure explaining exactly what it is.
             </p>
           </div>
           <div className="rounded-xl border border-line-soft px-5 py-5">
             <span className="text-[13.5px] font-medium">Automations</span>
-            <p className="m-0 mt-2 text-[13.5px] leading-[1.6] text-ink-faint">
+            <p className="m-0 mt-2 text-[15px] leading-[1.6] text-ink-faint">
               Toggling stores a real setting, but nothing executes it yet — labeled “coming in a future update” rather
               than implying a live trigger.
             </p>
           </div>
           <div className="rounded-xl border border-line-soft px-5 py-5">
             <span className="text-[13.5px] font-medium">Gmail / YouTube connections</span>
-            <p className="m-0 mt-2 text-[13.5px] leading-[1.6] text-ink-faint">
+            <p className="m-0 mt-2 text-[15px] leading-[1.6] text-ink-faint">
               No OAuth flow exists yet — shown as a disabled control with a tooltip, not a fake “Connected” state.
             </p>
           </div>
           <div className="rounded-xl border border-line-soft px-5 py-5">
             <span className="text-[13.5px] font-medium">Gmail deal detection</span>
-            <p className="m-0 mt-2 text-[13.5px] leading-[1.6] text-ink-faint">
+            <p className="m-0 mt-2 text-[15px] leading-[1.6] text-ink-faint">
               A real, narrow keyword-based classifier exists in an Edge Function — worth noting honestly as real code, not
               generalized AI, and not confirmed against a live, connected inbox.
             </p>

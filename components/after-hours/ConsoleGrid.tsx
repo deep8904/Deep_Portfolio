@@ -51,18 +51,18 @@ export function ConsoleGrid({
             ].join(" ")}
           >
             <div className="flex w-full items-start justify-between">
-              <span className="text-[11px] font-semibold tracking-[0.1em] text-ink-num">{mode.num}</span>
+              <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">{mode.num}</span>
               <Icon size={18} strokeWidth={1.8} className="text-ink-tertiary transition-colors group-hover:text-accent" />
             </div>
 
             <div className="flex flex-col gap-1.5">
               <span className="text-[17px] font-medium tracking-[-0.015em]">{mode.title}</span>
-              <span className="text-[13px] leading-[1.55] text-ink-muted text-pretty">{mode.description}</span>
+              <span className="text-[15px] leading-[1.55] text-ink-muted text-pretty">{mode.description}</span>
             </div>
 
             {isSignal && <SignalPreview />}
 
-            <span className="mt-auto flex items-center gap-[6px] pt-2 text-[10.5px] font-medium tracking-[0.08em] text-ink-faint">
+            <span className="mt-auto flex items-center gap-[6px] pt-2 text-[12px] font-medium tracking-[0.08em] text-ink-faint">
               {isDone ? (
                 <>
                   <CheckCircle2 size={12} strokeWidth={2} className="text-accent" />
@@ -71,7 +71,7 @@ export function ConsoleGrid({
               ) : (
                 <>
                   <Circle size={8} strokeWidth={2} />
-                  IDLE
+                  OPEN
                 </>
               )}
             </span>

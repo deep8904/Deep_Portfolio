@@ -84,7 +84,7 @@ export function FrameMode({ onComplete }: { onComplete: () => void }) {
           ))}
         </div>
 
-        <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-[11px] font-medium tracking-[0.08em] text-ink-faint">
+        <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-[12px] font-medium tracking-[0.08em] text-ink-faint">
           [ FRAME PLACEHOLDER ]
         </span>
 

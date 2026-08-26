@@ -14,7 +14,7 @@ export function CaseStudyStatus({ kind, label }: { kind: CaseStudyStatusKind; la
   return (
     <span
       className={clsx(
-        "inline-flex h-[26px] shrink-0 items-center gap-[6px] rounded-md border px-2.5 text-[11px] font-medium tracking-[0.02em]",
+        "inline-flex h-[26px] shrink-0 items-center gap-[6px] rounded-md border px-2.5 text-[12px] font-medium tracking-[0.02em]",
         className
       )}
     >

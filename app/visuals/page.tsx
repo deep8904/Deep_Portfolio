@@ -26,7 +26,7 @@ export default function VisualsPage() {
               Photography is another way I explore light, composition, people, places, and the small moments that
               make a scene worth remembering.
             </p>
-            <span className="text-[11px] font-medium tracking-[0.09em] text-ink-faint">
+            <span className="text-[12px] font-medium tracking-[0.09em] text-ink-faint">
               PHOTOGRAPHY · PEOPLE · PLACES · MOMENTS
             </span>
           </div>

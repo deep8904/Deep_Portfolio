@@ -28,6 +28,7 @@ export function Gallery({
             alt={photo.alt}
             fill
             sizes="(min-width: 1200px) 380px, (min-width: 810px) 45vw, 92vw"
+            priority={i === 0}
             className="object-cover transition-transform duration-[420ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.02]"
           />
           <span className="absolute inset-x-0 bottom-0 flex flex-col gap-0.5 px-3.5 py-3 opacity-0 transition-opacity duration-[280ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:opacity-100" style={{ background: "linear-gradient(to top, rgba(20,18,16,0.66), rgba(20,18,16,0))" }}>

@@ -63,7 +63,7 @@ export function SignalMode({ onComplete }: { onComplete: () => void }) {
 
   return (
     <div className="flex flex-col gap-6">
-      <p className="m-0 text-[13.5px] leading-[1.6] text-ink-muted">
+      <p className="m-0 text-[15px] leading-[1.6] text-ink-muted">
         Route the signal — select the four nodes in the order a signal actually travels, from source to screen.
       </p>
 
@@ -82,7 +82,7 @@ export function SignalMode({ onComplete }: { onComplete: () => void }) {
                 aria-label={meta.label}
                 aria-pressed={isCorrectSoFar}
                 className={[
-                  "flex h-[84px] w-[84px] flex-col items-center justify-center gap-1.5 rounded-xl border text-[11.5px] font-medium tracking-[0.02em] transition-all duration-200 disabled:cursor-default",
+                  "flex h-[84px] w-[84px] flex-col items-center justify-center gap-1.5 rounded-xl border text-[12px] font-medium tracking-[0.02em] transition-all duration-200 disabled:cursor-default",
                   isCorrectSoFar
                     ? "border-accent bg-accent/10 text-ink"
                     : "border-line-strong bg-surface text-ink-secondary hover:border-line-hover hover:bg-surface-hover",

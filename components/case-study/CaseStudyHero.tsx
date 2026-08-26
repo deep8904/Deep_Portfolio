@@ -49,7 +49,7 @@ export function CaseStudyHero({
           <div className="mt-9 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-line-soft pt-6 tab:mt-11 tab:grid-cols-4 tab:pt-7">
             {meta.map((item) => (
               <div key={item.label} className="flex flex-col gap-1.5">
-                <span className="text-[11px] font-semibold tracking-[0.1em] text-ink-num">{item.label}</span>
+                <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">{item.label}</span>
                 <span className="text-[14px] leading-[1.4] text-ink-secondary">{item.value}</span>
               </div>
             ))}

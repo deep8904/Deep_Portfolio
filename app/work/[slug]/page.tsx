@@ -40,7 +40,7 @@ export default async function WorkCaseStudyPage({ params }: { params: Promise<{ 
             {stub.title}
           </h1>
           <p className="m-0 max-w-[520px] text-[15px] leading-[1.7] text-ink-muted text-pretty">{stub.body}</p>
-          <span className="inline-flex h-[30px] items-center gap-2 rounded-lg border border-dashed border-line-strong px-[13px] text-[11.5px] font-medium tracking-[0.05em] text-ink-faint">
+          <span className="inline-flex h-[30px] items-center gap-2 rounded-lg border border-dashed border-line-strong px-[13px] text-[12px] font-medium tracking-[0.05em] text-ink-faint">
             <span className="h-1.5 w-1.5 rounded-full bg-status" />
             NOT YET BUILT
           </span>

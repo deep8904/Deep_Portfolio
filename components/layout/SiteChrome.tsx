@@ -66,7 +66,7 @@ export function SiteChrome({ children }: { children: ReactNode }) {
       <IntroOverlay />
       <MobileNav key={pathname} />
       <Sidebar />
-      <main id="main-content" tabIndex={-1} className="outline-none tab:ml-[214px] desk:ml-[264px]">
+      <main id="main-content" tabIndex={-1} className="outline-none nav:ml-[264px]">
         {children}
         {!rendersOwnFooter && <Footer />}
       </main>

@@ -35,12 +35,12 @@ export function Projects() {
                   )}
                   <span className="whitespace-nowrap text-xs text-ink-faint">{p.tagline}</span>
                 </div>
-                <p className="m-0 mt-1.5 text-[11.5px] font-medium uppercase tracking-[0.04em] text-ink-faint">
+                <p className="m-0 mt-1.5 text-[12px] font-medium uppercase tracking-[0.04em] text-ink-faint">
                   {p.stack}
                 </p>
                 <ul className="m-0 mt-3 flex flex-col gap-1.5 pl-4 tab:pl-[19px]">
                   {p.bullets.map((b) => (
-                    <li key={b} className="text-[13.5px] leading-[1.6] text-ink-secondary">
+                    <li key={b} className="text-[15px] leading-[1.6] text-ink-secondary">
                       {b}
                     </li>
                   ))}

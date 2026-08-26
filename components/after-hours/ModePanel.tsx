@@ -16,10 +16,10 @@ export function ModePanel({
   return (
     <div className="overflow-hidden rounded-xl border border-line-strong bg-surface">
       <div className="flex items-center justify-between border-b border-line-soft px-5 py-3">
-        <span className="text-[11px] font-semibold tracking-[0.1em] text-ink-num">
+        <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">
           MODE — {mode.title.toUpperCase()}
         </span>
-        <span className="flex items-center gap-[6px] text-[11px] font-medium tracking-[0.08em] text-ink-faint">
+        <span className="flex items-center gap-[6px] text-[12px] font-medium tracking-[0.08em] text-ink-faint">
           <span className={["h-[6px] w-[6px] rounded-full", isDone ? "bg-accent" : "bg-ink-faint"].join(" ")} />
           {isDone ? "DONE" : "ACTIVE"}
         </span>

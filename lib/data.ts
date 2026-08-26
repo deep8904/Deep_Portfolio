@@ -296,6 +296,10 @@ export const RESUME_PROJECTS = [
   },
 ];
 
+// Split from a single 16-item "Development" bucket into three narrower
+// categories (Frontend / Backend & Data / Delivery & Tooling) so each group
+// scans as one coherent skill area instead of one dense catch-all list.
+// Every item below already existed in the resume — nothing added or removed.
 export const RESUME_SKILLS = [
   {
     category: "Product & UX",
@@ -306,12 +310,20 @@ export const RESUME_SKILLS = [
     items: ["Figma", "Framer", "Design Systems", "Component Libraries", "Auto Layout", "Variables", "Design Tokens", "Responsive Design", "Data Visualization"],
   },
   {
-    category: "Development",
-    items: ["React", "Next.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Angular", "Node.js", "Java", "REST APIs", "Supabase", "PostgreSQL", "Git", "GitHub Actions", "Vercel"],
+    category: "Frontend",
+    items: ["React", "Next.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Angular"],
+  },
+  {
+    category: "Backend / Data",
+    items: ["Node.js", "Java", "REST APIs", "Supabase", "PostgreSQL"],
   },
   {
     category: "AI & Prototyping",
     items: ["LLM Integration", "Gemini API", "Claude Code", "Structured Outputs", "AI-Assisted Prototyping", "Workflow Automation", "Human-in-the-Loop Workflows", "Playtesting"],
+  },
+  {
+    category: "Delivery / Tooling",
+    items: ["Git", "GitHub Actions", "Vercel"],
   },
 ];
 

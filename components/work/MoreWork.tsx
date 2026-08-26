@@ -18,7 +18,7 @@ export function MoreWork() {
             <div key={m.name} className="flex flex-col gap-3">
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-image-bg">
                 <span className="placeholder-stripe absolute inset-0" />
-                <span className="absolute inset-0 flex items-center justify-center px-6 text-center text-[11.5px] font-medium tracking-[0.09em] text-ink-num">
+                <span className="absolute inset-0 flex items-center justify-center px-6 text-center text-[12px] font-medium tracking-[0.09em] text-ink-num">
                   [ {m.name} ]
                 </span>
               </div>

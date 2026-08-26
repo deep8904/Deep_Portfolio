@@ -87,7 +87,7 @@ export function IntroOverlay() {
         <span ref={nameRef} className="text-[26px] font-semibold tracking-[-0.02em] text-ink opacity-0">
           Deep Chadamiya
         </span>
-        <span ref={subRef} className="text-[10px] font-medium tracking-[0.18em] text-ink-faint opacity-0">
+        <span ref={subRef} className="text-[12px] font-medium tracking-[0.18em] text-ink-faint opacity-0">
           PRODUCT · DESIGN · DEV
         </span>
         <span ref={ruleRef} className="mt-1.5 h-px w-14 origin-center scale-x-0 bg-line-strong" />

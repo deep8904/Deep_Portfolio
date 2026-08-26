@@ -28,7 +28,7 @@ export function LabMode({ onComplete }: { onComplete: () => void }) {
 
   return (
     <div className="flex flex-col gap-6">
-      <p className="m-0 max-w-[520px] text-[13.5px] leading-[1.6] text-ink-muted">
+      <p className="m-0 max-w-[520px] text-[15px] leading-[1.6] text-ink-muted">
         A small experiment connected to the design system this portfolio is actually built on — pick two colors and
         see their real WCAG contrast ratio, computed the same way an accessibility audit would.
       </p>
@@ -80,7 +80,7 @@ export function LabMode({ onComplete }: { onComplete: () => void }) {
 
       <div className="flex flex-wrap items-center justify-between gap-4 rounded-lg border border-line-strong bg-surface px-5 py-4">
         <div className="flex flex-col gap-1">
-          <span className="text-[11px] font-semibold tracking-[0.1em] text-ink-num">CONTRAST (NORMAL TEXT)</span>
+          <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">CONTRAST (NORMAL TEXT)</span>
           <span className="text-[19px] font-medium tracking-[-0.01em]">{ratio.toFixed(2)} : 1</span>
         </div>
         <span aria-live="polite" className={["text-[15px] font-semibold tracking-[0.04em]", levelClass].join(" ")}>

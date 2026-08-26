@@ -3,6 +3,13 @@
 @theme {
   --breakpoint-tab: 810px;
   --breakpoint-desk: 1200px;
+  /* Dedicated to the sidebar/top-nav switch only — kept independent of
+     --breakpoint-tab (used broadly for general content layout) so raising
+     this doesn't cascade into every tab: grid/spacing rule sitewide. At
+     810-1199px the 214px sidebar left too little room for editorial content
+     and clipped the brand subtitle; top nav now covers that whole range and
+     the sidebar only activates once there's enough width for it. */
+  --breakpoint-nav: 1200px;
 
   --font-sans: "General Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 

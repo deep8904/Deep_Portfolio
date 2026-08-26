@@ -21,7 +21,7 @@ export function CaseStudyFigure({
       <WorkCover className={aspect}>
         <Image data-img src={src} alt={alt} fill sizes={sizes} className="object-cover object-top" />
         {tag && (
-          <span className="absolute left-3.5 top-3.5 inline-flex h-[26px] items-center rounded-md bg-ink/85 px-2.5 text-[11px] font-medium tracking-[0.03em] text-accent-cream backdrop-blur-sm">
+          <span className="absolute left-3.5 top-3.5 inline-flex h-[26px] items-center rounded-md bg-ink/85 px-2.5 text-[12px] font-medium tracking-[0.03em] text-accent-cream backdrop-blur-sm">
             {tag}
           </span>
         )}

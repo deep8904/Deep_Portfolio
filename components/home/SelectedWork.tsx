@@ -8,7 +8,7 @@ import { HOME_PROJECTS } from "@/lib/data";
 
 export function SelectedWork() {
   return (
-    <Section>
+    <Section id="selected-work">
       <Reveal>
         <div className="flex flex-col items-center justify-center gap-3.5">
           <SectionLabel>Selected Work</SectionLabel>

@@ -25,7 +25,7 @@ export function OwnershipTransferDiagram() {
         <div key={label} className="flex flex-col gap-2.5 rounded-xl border border-line-strong px-4 py-4 tab:px-5 tab:py-5">
           <Icon size={17} strokeWidth={2} className="text-ink-faint" />
           <span className="text-[13.5px] font-medium tracking-[-0.01em]">{label}</span>
-          <span className="text-[13px] leading-[1.6] text-ink-faint text-pretty">{body}</span>
+          <span className="text-[15px] leading-[1.6] text-ink-faint text-pretty">{body}</span>
         </div>
       ))}
     </div>

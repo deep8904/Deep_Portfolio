@@ -86,7 +86,10 @@ export function AfterHoursExperience() {
 
       <Section>
         {activeMode === null ? (
-          <ConsoleGrid completed={completed} onSelect={setActiveMode} />
+          <>
+            <p className="mb-4 text-[13px] text-ink-faint tab:hidden">Tap a mode to explore.</p>
+            <ConsoleGrid completed={completed} onSelect={setActiveMode} />
+          </>
         ) : (
           <div className="flex flex-col gap-4">
             <ModeSwitcher active={activeMode} completed={completed} onSelect={setActiveMode} />
@@ -100,7 +103,7 @@ export function AfterHoursExperience() {
         )}
 
         {allDone && (
-          <p className="mt-8 text-[13.5px] leading-[1.6] text-ink-muted text-pretty" role="status">
+          <p className="mt-8 text-[15px] leading-[1.6] text-ink-muted text-pretty" role="status">
             You found the part of the portfolio I built mostly for myself.
           </p>
         )}

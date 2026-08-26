@@ -92,14 +92,16 @@ export function Testimonials() {
                 {q.text}
               </blockquote>
               <figcaption className="mt-6 flex items-center gap-[11px]">
-                <Image
-                  src={q.avatar}
-                  alt=""
-                  width={32}
-                  height={32}
-                  data-img
-                  className="h-8 w-8 rounded-full bg-image-bg object-cover opacity-85 transition-[opacity,transform] duration-[260ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.04] group-hover:opacity-100"
-                />
+                <span className="relative h-8 w-8 flex-none overflow-hidden rounded-full bg-image-bg">
+                  <Image
+                    src={q.avatar}
+                    alt=""
+                    fill
+                    sizes="32px"
+                    data-img
+                    className="object-cover opacity-85 transition-[opacity,transform] duration-[260ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.04] group-hover:opacity-100"
+                  />
+                </span>
                 <span className="flex flex-col gap-0.5">
                   <span className="text-label font-medium">{q.name}</span>
                   <span className="text-meta text-ink-faint">{q.role}</span>

@@ -136,14 +136,14 @@ export function Lightbox({
         <div className="flex max-w-[560px] flex-col items-center gap-1 text-center text-accent-cream">
           <span className="text-sm font-medium">{photo.title}</span>
           {(photo.location || photo.date) && (
-            <span className="text-[11px] tracking-[0.04em] text-ink-faint">
+            <span className="text-[12px] tracking-[0.04em] text-ink-faint">
               {[photo.location, photo.date].filter(Boolean).join(" — ")}
             </span>
           )}
           {photo.description && (
             <p className="mt-1 max-w-[46ch] text-[12.5px] leading-[1.6] text-ink-faint">{photo.description}</p>
           )}
-          <span className="mt-1 text-[11px] tracking-[0.06em] text-ink-faint">
+          <span className="mt-1 text-[12px] tracking-[0.06em] text-ink-faint">
             {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
           </span>
         </div>

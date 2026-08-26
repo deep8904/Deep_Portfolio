@@ -13,9 +13,9 @@ export function ProductSystemMap() {
   return (
     <div className="flex flex-col items-center gap-8">
       <div className="flex w-full max-w-[360px] flex-col items-center gap-2 rounded-2xl border border-line-strong bg-surface px-6 py-6 text-center">
-        <span className="text-[11px] font-semibold tracking-[0.1em] text-ink-num">ONE ACCOUNT</span>
+        <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">ONE ACCOUNT</span>
         <span className="text-[19px] font-medium tracking-[-0.02em]">CreatorFlow</span>
-        <span className="text-[13px] leading-[1.6] text-ink-faint">
+        <span className="text-[15px] leading-[1.6] text-ink-faint">
           Shared auth, one account per workspace, one role-based permission layer underneath every module.
         </span>
       </div>
@@ -30,12 +30,12 @@ export function ProductSystemMap() {
           <div key={name} className="flex flex-col gap-2.5 rounded-xl border border-line-soft px-4 py-4 tab:px-5 tab:py-5">
             <Icon size={17} strokeWidth={2} className="text-ink-faint" />
             <span className="text-[14px] font-medium tracking-[-0.01em]">{name}</span>
-            <span className="text-[13px] leading-[1.55] text-ink-faint text-pretty">{body}</span>
+            <span className="text-[15px] leading-[1.55] text-ink-faint text-pretty">{body}</span>
           </div>
         ))}
       </div>
 
-      <p className="m-0 max-w-[560px] text-center text-[13px] leading-[1.6] text-ink-faint text-pretty">
+      <p className="m-0 max-w-[560px] text-center text-[15px] leading-[1.6] text-ink-faint text-pretty">
         Search works as a lightweight layer across Ideas and Deals rather than a separate module — this is a
         connected system, not six disconnected screens.
       </p>

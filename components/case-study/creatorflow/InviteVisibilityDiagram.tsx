@@ -30,7 +30,7 @@ export function InviteVisibilityDiagram() {
           </div>
           <div className="flex flex-col gap-1 pb-7">
             <span className="text-[13.5px] font-medium tracking-[-0.01em]">{step.label}</span>
-            <p className="m-0 max-w-[540px] text-[13.5px] leading-[1.65] text-ink-faint text-pretty">{step.body}</p>
+            <p className="m-0 max-w-[540px] text-[15px] leading-[1.65] text-ink-faint text-pretty">{step.body}</p>
           </div>
         </li>
       ))}

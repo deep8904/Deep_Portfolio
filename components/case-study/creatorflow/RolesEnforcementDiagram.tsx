@@ -31,7 +31,7 @@ export function RolesEnforcementDiagram() {
               <step.icon size={17} strokeWidth={2} className="mt-0.5 shrink-0 text-ink-faint" />
               <div className="flex flex-col gap-1">
                 <span className="text-[13.5px] font-medium tracking-[-0.01em]">{step.label}</span>
-                <span className="text-[13px] leading-[1.55] text-ink-faint text-pretty">{step.body}</span>
+                <span className="text-[15px] leading-[1.55] text-ink-faint text-pretty">{step.body}</span>
               </div>
             </div>
             {i < FLOW.length - 1 && <ArrowDown size={15} strokeWidth={2} className="my-2 text-ink-faint" />}
@@ -40,7 +40,7 @@ export function RolesEnforcementDiagram() {
       </div>
 
       <div className="flex flex-col items-center gap-4">
-        <span className="text-[11px] font-semibold tracking-[0.1em] text-ink-num">THE FIVE ENFORCED ROLES</span>
+        <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">THE FIVE ENFORCED ROLES</span>
         <div className="flex flex-wrap justify-center gap-2.5">
           {ROLES.map(({ icon: Icon, name }) => (
             <span
@@ -55,7 +55,7 @@ export function RolesEnforcementDiagram() {
       </div>
 
       <div className="flex flex-col gap-2.5 rounded-xl border border-line-soft px-5 py-5 tab:px-6">
-        <span className="text-[11px] font-semibold tracking-[0.1em] text-ink-num">VERIFIED ACCESS EXAMPLES</span>
+        <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">VERIFIED ACCESS EXAMPLES</span>
         <ul className="m-0 flex list-none flex-col gap-2 p-0">
           {EXAMPLES.map((ex) => (
             <li key={ex.resource} className="flex flex-wrap items-baseline justify-between gap-2 text-[13.5px]">

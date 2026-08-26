@@ -20,7 +20,7 @@ export function Hero() {
   const headRef = useRef<HTMLSpanElement>(null);
   const stripRef = useRef<HTMLImageElement>(null);
   const subRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLAnchorElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
   const photoRefs = useRef<Array<HTMLDivElement | null>>([]);
   const cueRef = useRef<HTMLDivElement>(null);
   const cueLineRef = useRef<HTMLSpanElement>(null);
@@ -141,13 +141,27 @@ export function Hero() {
             I work across software, product design, UX, and interactive technology, taking ideas from early systems
             thinking to working products.
           </p>
-          <Link
-            ref={ctaRef}
-            href="/about"
-            className="group inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-[9px] bg-accent px-[22px] text-[13.5px] font-medium text-accent-cream transition-[background,transform] duration-[220ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:bg-accent-hover hover:-translate-y-px active:translate-y-0 active:scale-[0.985]"
-          >
-            About Me
-          </Link>
+          <div ref={ctaRef} className="flex items-center gap-6">
+            <a
+              href="#selected-work"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("selected-work")?.scrollIntoView({
+                  behavior: prefersReducedMotion() ? "auto" : "smooth",
+                  block: "start",
+                });
+              }}
+              className="group inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-[9px] bg-accent px-[22px] text-[13.5px] font-medium text-accent-cream transition-[background,transform] duration-[220ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:bg-accent-hover hover:-translate-y-px active:translate-y-0 active:scale-[0.985]"
+            >
+              View Selected Work
+            </a>
+            <Link
+              href="/about"
+              className="inline-flex h-10 items-center whitespace-nowrap text-[13.5px] font-medium text-ink-secondary underline decoration-line-strong underline-offset-4 transition-colors duration-200 hover:text-ink"
+            >
+              About Me
+            </Link>
+          </div>
         </section>
 
         {/*
@@ -186,7 +200,7 @@ export function Hero() {
       </div>
 
       <div ref={cueRef} className="hidden flex-none flex-col items-center gap-2 pb-6 tab:flex tab:pb-8">
-        <span className="text-[11px] font-medium tracking-[0.2em] text-ink-num">SCROLL</span>
+        <span className="text-[12px] font-medium tracking-[0.2em] text-ink-num">SCROLL</span>
         <span ref={cueLineRef} className="h-[22px] w-px origin-top bg-line-strong" />
       </div>
     </div>

@@ -12,7 +12,7 @@ const COVER_RATIO: Record<WorkProject["layout"], string> = {
 
 const titleClass =
   "m-0 text-[23px] font-medium tracking-[-0.02em] transition-transform duration-[320ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:-translate-y-0.5 tab:text-[26px] desk:text-[30px]";
-const categoryClass = "text-[11px] font-medium tracking-[0.07em] text-ink-faint";
+const categoryClass = "text-[12px] font-medium tracking-[0.07em] text-ink-faint";
 const yearClass = "whitespace-nowrap text-[13px] text-ink-faint";
 
 /**
@@ -103,7 +103,7 @@ export function WorkCard({ project }: { project: WorkProject }) {
   const cover = (
     <WorkCover className={COVER_RATIO[project.layout]}>
       <PlaceholderFill />
-      <span className="absolute inset-0 flex items-center justify-center px-6 text-center text-[11.5px] font-medium tracking-[0.09em] text-ink-num">
+      <span className="absolute inset-0 flex items-center justify-center px-6 text-center text-[12px] font-medium tracking-[0.09em] text-ink-num">
         {project.coverLabel}
       </span>
     </WorkCover>
@@ -111,7 +111,7 @@ export function WorkCard({ project }: { project: WorkProject }) {
 
   const text = (
     <div className="flex flex-col gap-3">
-      <span className="text-[11px] font-semibold tracking-[0.14em] text-ink-num">{project.num}</span>
+      <span className="text-[12px] font-semibold tracking-[0.14em] text-ink-num">{project.num}</span>
       <TitleBlock project={project} />
       <p className="m-0 max-w-[64ch] text-[15px] leading-[1.7] text-ink-secondary text-pretty">
         {project.description}
@@ -130,7 +130,7 @@ export function WorkCard({ project }: { project: WorkProject }) {
           </span>
         </span>
         {project.status && (
-          <span className="inline-flex h-[22px] w-fit items-center rounded-[6px] bg-surface px-[9px] text-[10.5px] font-medium tracking-[0.06em] text-ink-faint">
+          <span className="inline-flex h-[22px] w-fit items-center rounded-[6px] bg-surface px-[9px] text-[12px] font-medium tracking-[0.06em] text-ink-faint">
             {project.status}
           </span>
         )}
