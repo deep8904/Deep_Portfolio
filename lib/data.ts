@@ -79,7 +79,12 @@ export const TESTIMONIALS = [
     text: "“Reliable, creative, and always willing to take ownership. He consistently delivered thoughtful solutions and was a great person to have on the team.”",
     name: "Arjun Shinojiya",
     role: "CMO, Tibicle",
-    avatar: "/images/testimonials/avatar-1.png",
+    // avatar-1.png was previously assigned here, but it's also the file
+    // assigned to Melissa Dickman and Nicholas Seidel below — three real,
+    // distinct people cannot share one photo. There's no source evidence
+    // (metadata, manifest, or otherwise) confirming which of the three the
+    // photo actually belongs to, so per policy none of them keeps it.
+    avatar: null,
   },
   {
     text: "“The redesign gave our business a completely new presence online. He understood our products, our customers, and created something that genuinely represented our brand.”",
@@ -97,17 +102,15 @@ export const TESTIMONIALS = [
     text: "“He made complicated student data much easier for us to understand and work with. The dashboards and visualizations were clear, practical, and genuinely useful.”",
     name: "Melissa Dickman",
     role: "ASU HIDA",
-    // No verified real photo exists for this person — avatar-1.png belongs to
-    // Arjun Shinojiya (above) and was incorrectly reused here. Falls back to
-    // an initials treatment rather than reusing someone else's photo.
+    // Was previously assigned avatar-1.png — see the note on Arjun Shinojiya
+    // above. No verified photo exists for this person; initials fallback.
     avatar: null,
   },
   {
     text: "“He has a strong eye for design and understands how to turn an idea into something polished. The work he created for our department was consistently excellent.”",
     name: "Nicholas Seidel",
     role: "ASU HIDA",
-    // Same as above — no verified real photo, initials fallback instead of
-    // reusing Arjun Shinojiya's avatar-1.png.
+    // Same as above — no verified real photo; initials fallback.
     avatar: null,
   },
 ];

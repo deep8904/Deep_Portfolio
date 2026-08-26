@@ -1,0 +1,7 @@
+node_modules
+.next
+.git
+qa-screenshots
+qa-screenshots 2
+qa-screenshots-v2
+*-qa-screenshots*.zip
