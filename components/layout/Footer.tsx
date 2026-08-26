@@ -31,7 +31,7 @@ export function Footer() {
 
       <a
         href={`mailto:${SITE.email}`}
-        aria-label="Email Deep Chadamiya"
+        aria-label="Let’s Connect — email Deep Chadamiya"
         className="group relative flex items-center justify-center overflow-hidden rounded-2xl bg-surface px-4 py-[34px] transition-colors duration-300 ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:bg-connect tab:px-6 tab:py-[46px]"
       >
         <h2 className="m-0 whitespace-nowrap text-[37px] font-medium leading-[1.02] tracking-[-0.045em] text-ink tab:text-[69px] desk:text-[110px]">
