@@ -145,6 +145,11 @@ export function Hero() {
             <a
               href="#selected-work"
               onClick={(e) => {
+                // Only intercept a plain, unmodified left-click for the smooth-scroll
+                // enhancement — Cmd/Ctrl/Shift/middle-click "open in new tab/window"
+                // and keyboard activation without modifiers still work either way,
+                // since the real href is always there as the fallback.
+                if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
                 e.preventDefault();
                 document.getElementById("selected-work")?.scrollIntoView({
                   behavior: prefersReducedMotion() ? "auto" : "smooth",

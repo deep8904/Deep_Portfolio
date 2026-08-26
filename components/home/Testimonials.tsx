@@ -92,16 +92,30 @@ export function Testimonials() {
                 {q.text}
               </blockquote>
               <figcaption className="mt-6 flex items-center gap-[11px]">
-                <span className="relative h-8 w-8 flex-none overflow-hidden rounded-full bg-image-bg">
-                  <Image
-                    src={q.avatar}
-                    alt=""
-                    fill
-                    sizes="32px"
-                    data-img
-                    className="object-cover opacity-85 transition-[opacity,transform] duration-[260ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.04] group-hover:opacity-100"
-                  />
-                </span>
+                {q.avatar ? (
+                  <span className="relative h-8 w-8 flex-none overflow-hidden rounded-full bg-image-bg">
+                    <Image
+                      src={q.avatar}
+                      alt=""
+                      fill
+                      sizes="32px"
+                      data-img
+                      className="object-cover opacity-85 transition-[opacity,transform] duration-[260ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.04] group-hover:opacity-100"
+                    />
+                  </span>
+                ) : (
+                  <span
+                    aria-hidden="true"
+                    className="flex h-8 w-8 flex-none items-center justify-center rounded-full border border-line-strong bg-surface text-[11px] font-semibold tracking-[0.02em] text-ink-tertiary"
+                  >
+                    {q.name
+                      .split(" ")
+                      .map((w) => w[0])
+                      .join("")
+                      .slice(0, 2)
+                      .toUpperCase()}
+                  </span>
+                )}
                 <span className="flex flex-col gap-0.5">
                   <span className="text-label font-medium">{q.name}</span>
                   <span className="text-meta text-ink-faint">{q.role}</span>

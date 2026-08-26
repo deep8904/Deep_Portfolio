@@ -20,7 +20,7 @@ export function Sidebar() {
   return (
     <aside className="fixed inset-y-0 left-0 z-20 hidden w-[264px] flex-col justify-between gap-8 overflow-y-auto overflow-x-hidden bg-sidebar p-[30px_20px] nav:flex">
       <div>
-        <Link href="/" className="group mb-14 flex items-center gap-[11px]">
+        <Link href="/" className="group mb-14 flex items-center gap-[11px] py-1">
           <span className="relative h-[38px] w-[38px] flex-none overflow-hidden rounded-full bg-image-bg">
             <Image
               src="/images/profile/avatar.png"
@@ -71,7 +71,7 @@ export function Sidebar() {
             target="_blank"
             rel="noopener"
             aria-label={`${s.label} (opens in a new tab)`}
-            className="-my-1.5 inline-flex w-fit items-center whitespace-nowrap py-1.5 text-[13.5px] text-ink-secondary transition-all duration-[180ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:translate-x-1 hover:text-ink"
+            className="-my-1.5 flex w-full items-center whitespace-nowrap py-1.5 text-[13.5px] text-ink-secondary transition-all duration-[180ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:translate-x-1 hover:text-ink"
           >
             {s.label}
           </a>

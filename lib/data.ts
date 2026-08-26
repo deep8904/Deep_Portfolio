@@ -97,13 +97,18 @@ export const TESTIMONIALS = [
     text: "“He made complicated student data much easier for us to understand and work with. The dashboards and visualizations were clear, practical, and genuinely useful.”",
     name: "Melissa Dickman",
     role: "ASU HIDA",
-    avatar: "/images/testimonials/avatar-1.png",
+    // No verified real photo exists for this person — avatar-1.png belongs to
+    // Arjun Shinojiya (above) and was incorrectly reused here. Falls back to
+    // an initials treatment rather than reusing someone else's photo.
+    avatar: null,
   },
   {
     text: "“He has a strong eye for design and understands how to turn an idea into something polished. The work he created for our department was consistently excellent.”",
     name: "Nicholas Seidel",
     role: "ASU HIDA",
-    avatar: "/images/testimonials/avatar-1.png",
+    // Same as above — no verified real photo, initials fallback instead of
+    // reusing Arjun Shinojiya's avatar-1.png.
+    avatar: null,
   },
 ];
 

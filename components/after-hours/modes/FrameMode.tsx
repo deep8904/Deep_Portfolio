@@ -107,17 +107,17 @@ export function FrameMode({ onComplete }: { onComplete: () => void }) {
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div className="grid grid-cols-3 gap-1" role="group" aria-label="Nudge frame">
           <span />
-          <button type="button" onClick={() => nudge(0, -STEP)} aria-label="Move frame up" className="flex h-10 w-10 items-center justify-center rounded-md border border-line-strong text-ink-secondary hover:bg-surface-hover">
+          <button type="button" onClick={() => nudge(0, -STEP)} aria-label="Move frame up" className="flex h-11 w-11 items-center justify-center rounded-md border border-line-strong text-ink-secondary hover:bg-surface-hover">
             <ChevronUp size={16} strokeWidth={2} />
           </button>
           <span />
-          <button type="button" onClick={() => nudge(-STEP, 0)} aria-label="Move frame left" className="flex h-10 w-10 items-center justify-center rounded-md border border-line-strong text-ink-secondary hover:bg-surface-hover">
+          <button type="button" onClick={() => nudge(-STEP, 0)} aria-label="Move frame left" className="flex h-11 w-11 items-center justify-center rounded-md border border-line-strong text-ink-secondary hover:bg-surface-hover">
             <ChevronLeft size={16} strokeWidth={2} />
           </button>
-          <button type="button" onClick={() => nudge(0, STEP)} aria-label="Move frame down" className="flex h-10 w-10 items-center justify-center rounded-md border border-line-strong text-ink-secondary hover:bg-surface-hover">
+          <button type="button" onClick={() => nudge(0, STEP)} aria-label="Move frame down" className="flex h-11 w-11 items-center justify-center rounded-md border border-line-strong text-ink-secondary hover:bg-surface-hover">
             <ChevronDown size={16} strokeWidth={2} />
           </button>
-          <button type="button" onClick={() => nudge(STEP, 0)} aria-label="Move frame right" className="flex h-10 w-10 items-center justify-center rounded-md border border-line-strong text-ink-secondary hover:bg-surface-hover">
+          <button type="button" onClick={() => nudge(STEP, 0)} aria-label="Move frame right" className="flex h-11 w-11 items-center justify-center rounded-md border border-line-strong text-ink-secondary hover:bg-surface-hover">
             <ChevronRight size={16} strokeWidth={2} />
           </button>
         </div>

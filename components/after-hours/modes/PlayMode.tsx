@@ -113,17 +113,17 @@ export function PlayMode({ onComplete }: { onComplete: () => void }) {
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div className="grid grid-cols-3 gap-1" role="group" aria-label="Move">
           <span />
-          <button type="button" onClick={() => move(0, -STEP)} aria-label="Move up" className="flex h-10 w-10 items-center justify-center rounded-md border border-line-strong text-ink-secondary hover:bg-surface-hover">
+          <button type="button" onClick={() => move(0, -STEP)} aria-label="Move up" className="flex h-11 w-11 items-center justify-center rounded-md border border-line-strong text-ink-secondary hover:bg-surface-hover">
             <ChevronUp size={16} strokeWidth={2} />
           </button>
           <span />
-          <button type="button" onClick={() => move(-STEP, 0)} aria-label="Move left" className="flex h-10 w-10 items-center justify-center rounded-md border border-line-strong text-ink-secondary hover:bg-surface-hover">
+          <button type="button" onClick={() => move(-STEP, 0)} aria-label="Move left" className="flex h-11 w-11 items-center justify-center rounded-md border border-line-strong text-ink-secondary hover:bg-surface-hover">
             <ChevronLeft size={16} strokeWidth={2} />
           </button>
-          <button type="button" onClick={() => move(0, STEP)} aria-label="Move down" className="flex h-10 w-10 items-center justify-center rounded-md border border-line-strong text-ink-secondary hover:bg-surface-hover">
+          <button type="button" onClick={() => move(0, STEP)} aria-label="Move down" className="flex h-11 w-11 items-center justify-center rounded-md border border-line-strong text-ink-secondary hover:bg-surface-hover">
             <ChevronDown size={16} strokeWidth={2} />
           </button>
-          <button type="button" onClick={() => move(STEP, 0)} aria-label="Move right" className="flex h-10 w-10 items-center justify-center rounded-md border border-line-strong text-ink-secondary hover:bg-surface-hover">
+          <button type="button" onClick={() => move(STEP, 0)} aria-label="Move right" className="flex h-11 w-11 items-center justify-center rounded-md border border-line-strong text-ink-secondary hover:bg-surface-hover">
             <ChevronRight size={16} strokeWidth={2} />
           </button>
         </div>

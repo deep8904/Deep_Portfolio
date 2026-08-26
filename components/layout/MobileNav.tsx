@@ -86,7 +86,7 @@ export function MobileNav() {
         ref={headerRef}
         className="sticky top-0 z-30 flex items-center justify-between gap-2 border-b border-line-soft bg-bg/93 px-[18px] py-3 backdrop-blur-[10px]"
       >
-        <Link href="/" className="flex items-center gap-2.5">
+        <Link href="/" className="-my-2 flex items-center gap-2.5 py-2">
           <span className="relative h-[34px] w-[34px] flex-none overflow-hidden rounded-full bg-image-bg">
             <Image src="/images/profile/avatar.png" alt="" fill sizes="34px" priority className="object-cover" />
           </span>
@@ -104,7 +104,7 @@ export function MobileNav() {
           aria-label="Toggle navigation"
           aria-expanded={open}
           aria-controls="mobile-nav-menu"
-          className="h-10 rounded-full border border-line-strong bg-surface px-4 text-xs font-medium tracking-[0.06em] text-ink transition-colors duration-[180ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] active:scale-[0.97]"
+          className="h-11 rounded-full border border-line-strong bg-surface px-4 text-xs font-medium tracking-[0.06em] text-ink transition-colors duration-[180ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] active:scale-[0.97]"
         >
           {open ? "Close" : "Menu"}
         </button>
