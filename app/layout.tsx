@@ -52,7 +52,7 @@ function PersonJsonLd() {
       addressRegion: "AZ",
       addressCountry: "US",
     },
-    sameAs: [SITE.linkedin, SITE.github, SITE.instagram, SITE.twitter, SITE.youtube],
+    sameAs: [SITE.linkedin, SITE.github],
   };
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }

@@ -31,7 +31,7 @@ export function Experience() {
                 </div>
                 <ul className="m-0 mt-3.5 flex flex-col gap-2 pl-4 tab:pl-[19px]">
                   {x.bullets.map((b) => (
-                    <li key={b} className="text-[13.75px] leading-[1.62] text-ink-secondary">
+                    <li key={b} className="text-[15px] leading-[1.62] text-ink-secondary">
                       {b}
                     </li>
                   ))}

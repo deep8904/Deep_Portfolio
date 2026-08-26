@@ -29,11 +29,11 @@ export function ResumeHeader() {
           <Phone size={14} strokeWidth={1.8} className="flex-none" />
           {SITE.phoneDisplay}
         </a>
-        <a href={SITE.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn (opens in a new tab)" className={contactLinkClass}>
+        <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Deep Chadamiya on LinkedIn (opens in a new tab)" className={contactLinkClass}>
           <ExternalLink size={14} strokeWidth={1.8} className="flex-none" />
           LinkedIn
         </a>
-        <a href={SITE.github} target="_blank" rel="noopener" aria-label="GitHub (opens in a new tab)" className={contactLinkClass}>
+        <a href={SITE.github} target="_blank" rel="noopener noreferrer" aria-label="Deep Chadamiya on GitHub (opens in a new tab)" className={contactLinkClass}>
           <ExternalLink size={14} strokeWidth={1.8} className="flex-none" />
           GitHub
         </a>

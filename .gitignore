@@ -43,6 +43,9 @@ yarn-error.log*
 /qa-screenshots*/
 *-qa-screenshots*.zip
 
+# Claude Desktop runtime state (not project source)
+/.claude/scheduled_tasks.lock
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

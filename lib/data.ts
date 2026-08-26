@@ -6,8 +6,8 @@ export const SITE = {
   email: "deeppatel8904@gmail.com",
   phone: "+14805726950",
   phoneDisplay: "+1 (480) 572-6950",
-  linkedin: "https://www.linkedin.com",
-  github: "https://github.com",
+  linkedin: "https://www.linkedin.com/in/deepchadamiya",
+  github: "https://github.com/deep8904",
   instagram: "https://www.instagram.com/",
   twitter: "https://x.com",
   youtube: "https://www.youtube.com/",
@@ -22,10 +22,8 @@ export const NAV_ITEMS = [
 ] as const;
 
 export const SOCIAL_LINKS = [
-  { label: "Instagram", href: SITE.instagram },
-  { label: "Twitter-X", href: SITE.twitter },
-  { label: "Linkedin", href: SITE.linkedin },
-  { label: "Youtube", href: SITE.youtube },
+  { label: "LinkedIn", href: SITE.linkedin },
+  { label: "GitHub", href: SITE.github },
 ];
 
 export const PILLARS = [
@@ -258,12 +256,12 @@ export const RESUME_EXPERIENCE = [
   },
   {
     id: "tibicle",
-    dates: "Jan 2022 — Nov 2023",
+    dates: "Dec 2022 — Nov 2023",
     org: "Tibicle LLP",
     location: "Ahmedabad, India",
-    role: "Software Developer Intern / Full-Stack Software Developer",
+    role: "Software Developer / Full-Stack Developer",
     bullets: [
-      "Worked across product, design, and engineering on 3 SaaS and EdTech products, turning requirements and interface concepts into responsive applications using Angular, TypeScript, Java, REST APIs, and relational databases.",
+      "Worked across product, design, and engineering on SaaS and EdTech products, turning requirements and interface concepts into responsive applications using Angular, TypeScript, Java, REST APIs, and relational databases.",
       "Built reusable UI components, forms, dashboards, navigation, and role-based workflows for platforms supporting 500+ users, improving consistency and usability across product interfaces.",
       "Improved frontend architecture, state management, and API performance, reducing page load times by 40%; rebuilt third-party integrations and reduced integration defects by 60%.",
     ],
@@ -336,4 +334,4 @@ export const RESUME_SKILLS = [
 ];
 
 export const RESUME_SUMMARY =
-  "Product Designer and Design Engineer with 4+ years building digital products across professional, academic, and independent work. Experience spans product design, UI/UX, frontend development, design systems, game technology, data visualization, and AI-powered products. Comfortable taking ideas from research and user flows through prototypes, responsive interfaces, production code, APIs, testing, and deployment.";
+  "Product Designer and Design Engineer building digital products across professional, academic, and independent work. Experience spans product design, UI/UX, frontend development, design systems, game technology, data visualization, and AI-powered products. Comfortable taking ideas from research and user flows through prototypes, responsive interfaces, production code, APIs, testing, and deployment.";
