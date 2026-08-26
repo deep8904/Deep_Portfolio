@@ -21,7 +21,7 @@ const yearClass = "whitespace-nowrap text-[13px] text-ink-faint";
  * Tablet/desktop keep each project's approved bespoke arrangement.
  */
 function TitleBlock({ project }: { project: WorkProject }) {
-  const title = <h3 data-title className={titleClass}>{project.title}</h3>;
+  const title = <h2 data-title className={titleClass}>{project.title}</h2>;
   const category = <span className={categoryClass}>{project.category}</span>;
   const year = <span className={yearClass}>{project.year}</span>;
 
