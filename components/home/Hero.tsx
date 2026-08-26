@@ -103,7 +103,7 @@ export function Hero() {
   }, []);
 
   return (
-    <div className="flex min-h-[100svh] flex-col tab:min-h-0">
+    <div className="flex min-h-[100svh] flex-col">
       <div className="mx-auto flex w-full max-w-[1240px] flex-none items-center justify-between gap-4 px-5 pt-[18px] text-[12.5px] tab:max-w-[1260px] tab:px-[30px] desk:max-w-[1268px] desk:px-[34px]">
         <div ref={metaRef} className="flex w-full items-center justify-between gap-4">
           <span className="inline-flex items-center gap-[7px] whitespace-nowrap text-ink-tertiary">
