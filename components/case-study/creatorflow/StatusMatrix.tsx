@@ -8,13 +8,14 @@ const COLUMNS: Column[] = [
     heading: "Working",
     items: [
       "Auth — real signup / login / password reset",
-      "Deals — kanban pipeline, stage moves, delete, Lost state",
+      "Deals — kanban pipeline, stage moves, delete, Lost state, bulk select/move/delete",
       "Ideas — create, edit, delete, status transitions",
       "Drafts — create, rename, delete, unsaved-changes guard",
       "Team — invite, accept, role change, remove, ownership transfer",
       "Settings — profile, data export",
       "Basic search on Ideas and Deals",
       "5-role permission model, enforced via RLS",
+      "Gmail & YouTube OAuth, with encrypted token storage and refresh",
     ],
   },
   {
@@ -23,16 +24,17 @@ const COLUMNS: Column[] = [
     items: [
       "“Draft reply” / “Review contract” — template output, explicitly labeled",
       "“AI assist” on Drafts — canned structure, explicitly labeled",
+      "Automations — 2 of 3 default rules run on a real schedule; the third (video-published trigger) doesn't fire yet",
+      "Notifications — the in-app signal is live; there's no email/cron delivery layer",
     ],
   },
   {
     kind: "planned",
     heading: "Planned / not live",
     items: [
-      "Gmail & YouTube OAuth connections",
-      "Automation execution (toggle exists, no backend trigger yet)",
       "Full-text search across every module",
-      "Notifications, bulk actions",
+      "Automated trigger for the video-published → repurpose-suggestion rule",
+      "Email/cron notification delivery",
     ],
   },
 ];

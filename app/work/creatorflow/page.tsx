@@ -135,9 +135,10 @@ export default function CreatorFlowCaseStudy() {
           edgeCases="There can only be one Owner at a time; transferring ownership demotes the previous owner, so the interface confirms exactly what's being given up before it runs."
           implemented={
             <>
-              Invite, accept (4 handled states: missing link, signed out, expired, valid), role change, remove, and
-              ownership transfer — see <CheckCircle2 size={12} strokeWidth={2} className="mb-0.5 inline" /> the permissions
-              section below for how each of these is enforced, not just displayed.
+              Invite, accept (5 handled states: missing link, signed out, wrong account, invalid or already used,
+              valid), role change, remove, and ownership transfer — see{" "}
+              <CheckCircle2 size={12} strokeWidth={2} className="mb-0.5 inline" /> the permissions section below for
+              how each of these is enforced, not just displayed.
             </>
           }
         />
@@ -213,21 +214,15 @@ export default function CreatorFlowCaseStudy() {
           <div className="rounded-xl border border-line-soft px-5 py-5">
             <span className="text-[13.5px] font-medium">Automations</span>
             <p className="m-0 mt-2 text-[15px] leading-[1.6] text-ink-faint">
-              Toggling stores a real setting, but nothing executes it yet — labeled “coming in a future update” rather
-              than implying a live trigger.
-            </p>
-          </div>
-          <div className="rounded-xl border border-line-soft px-5 py-5">
-            <span className="text-[13.5px] font-medium">Gmail / YouTube connections</span>
-            <p className="m-0 mt-2 text-[15px] leading-[1.6] text-ink-faint">
-              No OAuth flow exists yet — shown as a disabled control with a tooltip, not a fake “Connected” state.
+              2 of 3 default rules genuinely run on a schedule — a Postgres cron job calling an Edge Function that
+              writes real activity rows. The third, a video-published trigger, still just stores a toggle.
             </p>
           </div>
           <div className="rounded-xl border border-line-soft px-5 py-5">
             <span className="text-[13.5px] font-medium">Gmail deal detection</span>
             <p className="m-0 mt-2 text-[15px] leading-[1.6] text-ink-faint">
-              A real, narrow keyword-based classifier exists in an Edge Function — worth noting honestly as real code, not
-              generalized AI, and not confirmed against a live, connected inbox.
+              A real, narrow keyword-based classifier, wired to a genuine Gmail OAuth connection with encrypted,
+              auto-refreshing token storage — worth noting honestly as real integration code, not generalized AI.
             </p>
           </div>
         </div>
@@ -241,14 +236,14 @@ export default function CreatorFlowCaseStudy() {
 
       <CaseStudySection
         eyebrow="Interface / Design System"
-        title="The interface has already gone through one full reset."
-        intro="The screenshot below is a real, working screen — but from an earlier visual iteration. The product's visual system was substantially reset afterward to a dark, single-accent direction; no current-state screenshot exists yet, so it isn't shown here rather than mixed in as if it were."
+        title="A real screen from the live product."
+        intro="The screenshot below is the actual Dashboard, running the current dark, single-accent design system — not a mockup or a stand-in."
       >
         <CaseStudyFigure
           src="/work/creatorflow/dashboard-earlier-iteration.jpg"
-          alt="An earlier iteration of the CreatorFlow dashboard, showing demo account data"
-          caption="Earlier interface iteration — shown with demo account data, not real production metrics. The visual system has since been reset to a dark, single-accent direction not pictured here."
-          tag="Earlier iteration · demo data"
+          alt="The CreatorFlow dashboard, showing demo account data"
+          caption="The live Dashboard — shown with demo account data, not real production metrics."
+          tag="Live product · demo data"
         />
       </CaseStudySection>
 

@@ -277,7 +277,7 @@ export const RESUME_PROJECTS = [
     bullets: [
       "Designed and built a full-stack creator platform for sponsorship management, content planning, analytics, AI-assisted repurposing, automation, and team collaboration.",
       "Defined information architecture, user flows, responsive interfaces, reusable UI patterns, and role-based experiences across 5 user roles, then implemented them in React and Next.js.",
-      "Built authentication, PostgreSQL RLS, permissions, Edge Functions, and Gmail and YouTube API integrations connecting real creator data with AI and automation workflows.",
+      "Built authentication, PostgreSQL RLS, permissions, Edge Functions, and Gmail and YouTube OAuth integrations connecting real creator data, plus scheduled automations and template-based AI-assist features labeled honestly as previews.",
     ],
   },
   {
