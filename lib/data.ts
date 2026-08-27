@@ -47,13 +47,6 @@ export const PILLARS = [
   },
 ];
 
-export const HOME_PROJECTS = [
-  { slug: "creatorflow", name: "CreatorFlow", meta: "PRODUCT / 2025-26", placeholder: "[ COVER IMAGE — CREATORFLOW ]" },
-  { slug: "kramflow", name: "KramFlow", meta: "PRODUCT / 2026", placeholder: "[ COVER IMAGE — KRAMFLOW ]" },
-  { slug: "care", name: "C.A.R.E. for Horses", meta: "UX RESEARCH / 2025", placeholder: "[ COVER IMAGE — C.A.R.E. ]" },
-  { slug: "glyph", name: "Glyph", meta: "APP DESIGN / 2025-26", placeholder: "[ COVER IMAGE — GLYPH ]" },
-];
-
 export const PROCESS = [
   {
     num: "/01",
