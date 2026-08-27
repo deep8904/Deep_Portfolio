@@ -4,7 +4,9 @@ import { CaseStudyHero } from "@/components/case-study/CaseStudyHero";
 import { CaseStudySection } from "@/components/case-study/CaseStudySection";
 import { CaseStudyFigure } from "@/components/case-study/CaseStudyFigure";
 import { CaseStudyDecision } from "@/components/case-study/CaseStudyDecision";
+import { CaseStudyStatus } from "@/components/case-study/CaseStudyStatus";
 import { CaseStudyNavigation } from "@/components/case-study/CaseStudyNavigation";
+import { ChapterNav } from "@/components/case-study/ChapterNav";
 import { ProductSystemMap } from "@/components/case-study/creatorflow/ProductSystemMap";
 import { WorkflowBlock, StageStrip, TeamFlowStrip } from "@/components/case-study/creatorflow/WorkflowBlock";
 import { RolesEnforcementDiagram } from "@/components/case-study/creatorflow/RolesEnforcementDiagram";
@@ -23,6 +25,17 @@ export const metadata: Metadata = {
   alternates: { canonical: "/work/creatorflow" },
   openGraph: { title: "CreatorFlow — Deep Chadamiya", description, url: "/work/creatorflow" },
 };
+
+const CHAPTERS = [
+  { id: "problem", label: "Problem" },
+  { id: "product", label: "Product" },
+  { id: "workflows", label: "Workflows" },
+  { id: "permissions", label: "Permissions" },
+  { id: "ai", label: "AI & Automations" },
+  { id: "status", label: "Status" },
+  { id: "stack", label: "Stack" },
+  { id: "outcome", label: "Outcome" },
+];
 
 const HAS_ROLE_ACCESS_SQL = `create or replace function public.has_role_access(
   target_account_id uuid,
@@ -68,31 +81,34 @@ export default function CreatorFlowCaseStudy() {
         ]}
       />
 
+      <ChapterNav chapters={CHAPTERS} />
+
       <CaseStudySection
+        id="problem"
         eyebrow="The Problem"
         title="A creator's workflow lives in more places than it should."
-        intro={
-          <>
-            <p className="m-0">
-              Sponsorship deals, content ideas, drafts, and collaborators tend to end up scattered across email, spreadsheets,
-              and whichever tool was closest at hand. CreatorFlow was designed around a specific product problem: give a
-              creator, and the people they work with, one connected place for that workflow — with real permissions once
-              more than one person is involved.
-            </p>
-          </>
-        }
+        intro="Sponsorship deals, content ideas, drafts, and collaborators tend to end up scattered across email, spreadsheets, and whichever tool was closest at hand. CreatorFlow was designed around a specific product problem: give a creator, and the people they work with, one connected place for that workflow — with real permissions once more than one person is involved."
         tight
       />
 
       <CaseStudySection
+        id="product"
         eyebrow="Defining the Product System"
         title="Not a set of screens — a system."
         intro="Every module below reads and writes against the same account, the same auth session, and the same role-based permission layer. That shared foundation is what turns a list of features into one product."
+        contentClassName="flex flex-col gap-9"
       >
         <ProductSystemMap />
+        <CaseStudyFigure
+          src="/work/creatorflow/dashboard-earlier-iteration.jpg"
+          alt="The CreatorFlow dashboard, showing demo account data"
+          caption="The live Dashboard, running the current dark, single-accent design system — shown with demo account data, not real production metrics."
+          tag="Live product · demo data"
+        />
       </CaseStudySection>
 
       <CaseStudySection
+        id="workflows"
         eyebrow="Key Workflows"
         title="Three workflows that carry the real product logic."
         intro="Rather than walk through every screen, these three show what actually had to be designed and built — a staged pipeline, a lifecycle with edit/delete, and a permissions-sensitive collaboration flow."
@@ -105,7 +121,13 @@ export default function CreatorFlowCaseStudy() {
           needed="A sponsorship deal moves through real stages, and a stalled or declined deal still needs a home."
           structured="A kanban board over a staged pipeline, with a dedicated terminal “Lost” stage added alongside the original four active stages."
           edgeCases="Moving a deal backward, or to Lost, requires confirmation; moving it forward doesn't. Deleting a deal is confirm-gated."
-          implemented="Full stage-move pipeline, edit, delete, and direct deep-linking from the Dashboard's “needs attention” list into the exact deal."
+          implemented="Full stage-move pipeline, edit, delete, bulk select/move/delete, and direct deep-linking from the Dashboard's “needs attention” list into the exact deal."
+        />
+        <CaseStudyFigure
+          src="/work/creatorflow/deals.png"
+          alt="The CreatorFlow Deals kanban board, showing sponsorship deals across pipeline stages"
+          caption="The Deals board — the same stage pipeline described above, with demo brand names and deal values."
+          tag="Live product · demo data"
         />
         <WorkflowBlock
           num="02"
@@ -142,63 +164,82 @@ export default function CreatorFlowCaseStudy() {
             </>
           }
         />
+        <CaseStudyFigure
+          src="/work/creatorflow/team-members.png"
+          alt="The CreatorFlow Team screen, showing two members with role dropdowns and one pending invite with a Revoke action"
+          caption="The Team screen — two real members with a live role dropdown, and a pending invite with a Revoke action. The same flow the diagram above describes."
+          tag="Live product · demo data"
+          aspect="aspect-[1182/490]"
+        />
       </CaseStudySection>
 
       <CaseStudySection
+        id="permissions"
         eyebrow="Permissions as Product Design"
         title="Five roles, enforced where it actually matters."
         intro="Permissions here aren't hidden buttons. Every role is checked again at the database layer, so a UI mistake or a bypassed request still can't reach data a role isn't allowed to touch."
+        contentClassName="flex flex-col gap-8"
       >
         <RolesEnforcementDiagram />
-        <div className="mt-8">
-          <CodeExcerpt label="has_role_access() — the single function every scoped policy calls" code={HAS_ROLE_ACCESS_SQL} />
+        <CodeExcerpt label="has_role_access() — the single function every scoped policy calls" code={HAS_ROLE_ACCESS_SQL} />
+        <div className="w-full max-w-[460px]">
+          <CaseStudyFigure
+            src="/work/creatorflow/team-role-matrix.png"
+            alt="The CreatorFlow 'What each role can do' matrix, listing which modules each of the five roles can access"
+            caption="The product's own “What each role can do” matrix — including an honest admission that Moderator has no assigned modules yet, since CreatorFlow has no community-facing features today."
+            tag="Live product · demo data"
+            aspect="aspect-[655/780]"
+            sizes="(min-width: 810px) 460px, 100vw"
+          />
         </div>
-        <div className="mt-6">
-          <CaseStudyDecision>
-            The permission model was designed as part of the product, not bolted on afterward — each table’s policy
-            reflects a real product decision about who should touch that kind of data, then that decision is enforced by
-            Postgres itself.
-          </CaseStudyDecision>
+        <CaseStudyDecision>
+          The permission model was designed as part of the product, not bolted on afterward — each table’s policy
+          reflects a real product decision about who should touch that kind of data, then that decision is enforced by
+          Postgres itself.
+        </CaseStudyDecision>
+
+        <div className="mt-2 flex flex-col gap-10 border-t border-line-soft pt-9">
+          <div className="flex flex-col gap-2">
+            <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">PERMISSIONS IN PRACTICE</span>
+            <h3 className="m-0 text-[19px] font-medium tracking-[-0.015em]">
+              Two cases where the happy path wasn’t enough.
+            </h3>
+            <p className="m-0 max-w-[600px] text-[15px] leading-[1.7] text-ink-secondary text-pretty">
+              Both came out of the QA process, chosen because each one required understanding the permission model
+              more deeply — not just patching a symptom.
+            </p>
+          </div>
+          <div className="flex flex-col gap-5">
+            <h4 className="m-0 text-[16px] font-medium tracking-[-0.01em] text-ink-secondary">Case A — Ownership transfer</h4>
+            <OwnershipTransferDiagram />
+            <CodeExcerpt label="transfer_account_ownership() — the working fix" code={TRANSFER_OWNERSHIP_SQL} />
+          </div>
+          <div className="flex flex-col gap-5">
+            <h4 className="m-0 text-[16px] font-medium tracking-[-0.01em] text-ink-secondary">Case B — Invite visibility</h4>
+            <InviteVisibilityDiagram />
+          </div>
+          <div className="flex flex-col gap-3.5 rounded-xl border border-line-soft px-5 py-5">
+            <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">
+              VERIFIED AGAINST THE CURRENT CODEBASE
+            </span>
+            <div className="flex flex-wrap gap-2">
+              <CaseStudyStatus kind="working" label="tsc --noEmit" />
+              <CaseStudyStatus kind="working" label="ESLint" />
+              <CaseStudyStatus kind="working" label="Vitest" />
+              <CaseStudyStatus kind="working" label="next build" />
+            </div>
+            <p className="m-0 text-[14px] leading-[1.6] text-ink-faint text-pretty">
+              Both bugs above came out of a multi-round QA process — each round re-testing prior fixes live against
+              the real database before looking for the next gap, rather than trusting that a passing type-check meant
+              a feature actually worked. The repository defines CI checks for the same four things; as of this case
+              study, all four pass cleanly against the current codebase.
+            </p>
+          </div>
         </div>
       </CaseStudySection>
 
       <CaseStudySection
-        eyebrow="When the System Broke"
-        title="When the happy path wasn't enough."
-        intro="Two examples from the QA process — chosen because each one required understanding the system more deeply, not just patching a symptom."
-        contentClassName="flex flex-col gap-10"
-      >
-        <div className="flex flex-col gap-5">
-          <h3 className="m-0 text-[16px] font-medium tracking-[-0.01em] text-ink-secondary">Case A — Ownership transfer</h3>
-          <OwnershipTransferDiagram />
-          <CodeExcerpt label="transfer_account_ownership() — the working fix" code={TRANSFER_OWNERSHIP_SQL} />
-        </div>
-        <div className="flex flex-col gap-5">
-          <h3 className="m-0 text-[16px] font-medium tracking-[-0.01em] text-ink-secondary">Case B — Invite visibility</h3>
-          <InviteVisibilityDiagram />
-        </div>
-      </CaseStudySection>
-
-      <CaseStudySection
-        eyebrow="QA as a Product Process"
-        title="QA happened in rounds, not once at the end."
-        intro={
-          <>
-            <p className="m-0">
-              The two bugs above came out of a multi-round QA process — each round re-testing prior fixes live against the
-              real database before looking for the next gap, rather than trusting that a passing type-check meant a
-              feature actually worked.
-            </p>
-            <p className="mt-3">
-              The repository defines CI checks for type-checking, linting, unit tests, and a production build. As of this
-              case study, the equivalent checks — <code>tsc --noEmit</code>, ESLint, Vitest, and <code>next build</code> —
-              all pass cleanly against the current codebase.
-            </p>
-          </>
-        }
-      />
-
-      <CaseStudySection
+        id="ai"
         eyebrow="Honest AI Product Design"
         title="Say what's real, clearly, before the click."
         intro="A few features are AI-adjacent but not backed by a live model call. Rather than presenting them as more finished than they are, the product decision was to label them plainly — before the user clicks, not just after."
@@ -214,8 +255,9 @@ export default function CreatorFlowCaseStudy() {
           <div className="rounded-xl border border-line-soft px-5 py-5">
             <span className="text-[13.5px] font-medium">Gmail deal detection</span>
             <p className="m-0 mt-2 text-[15px] leading-[1.6] text-ink-faint">
-              A real, narrow keyword-based classifier, wired to a genuine Gmail OAuth connection with encrypted,
-              auto-refreshing token storage — worth noting honestly as real integration code, not generalized AI.
+              A real, narrow keyword-based classifier, wired to a genuine Gmail OAuth connection with tokens stored in
+              Supabase Vault and refreshed automatically — worth noting honestly as real integration code, not
+              generalized AI.
             </p>
           </div>
         </div>
@@ -236,26 +278,7 @@ export default function CreatorFlowCaseStudy() {
       </CaseStudySection>
 
       <CaseStudySection
-        eyebrow="Interface / Design System"
-        title="Real screens from the live product."
-        intro="Both screenshots below are the actual application, running the current dark, single-accent design system — not a mockup or a stand-in."
-        contentClassName="flex flex-col gap-8"
-      >
-        <CaseStudyFigure
-          src="/work/creatorflow/dashboard-earlier-iteration.jpg"
-          alt="The CreatorFlow dashboard, showing demo account data"
-          caption="The live Dashboard — shown with demo account data, not real production metrics."
-          tag="Live product · demo data"
-        />
-        <CaseStudyFigure
-          src="/work/creatorflow/deals.png"
-          alt="The CreatorFlow Deals kanban board, showing sponsorship deals across pipeline stages"
-          caption="Deals — the sponsorship pipeline, from inbound to paid, with demo brand names."
-          tag="Live product · demo data"
-        />
-      </CaseStudySection>
-
-      <CaseStudySection
+        id="status"
         eyebrow="Current State"
         title="What's actually working, previewed, or not built yet."
         intro="No feature below is described as more finished than it is."
@@ -263,46 +286,36 @@ export default function CreatorFlowCaseStudy() {
         <StatusMatrix />
       </CaseStudySection>
 
-      <CaseStudySection
-        eyebrow="Engineering Stack"
-        title="What each piece is actually doing."
-      >
+      <CaseStudySection id="stack" eyebrow="Engineering Stack" title="What each piece is actually doing.">
         <StackList />
       </CaseStudySection>
 
       <CaseStudySection
-        eyebrow="Outcome"
+        id="outcome"
+        eyebrow="Outcome & Reflection"
         title="What this project actually is, right now."
-        intro={
-          <ul className="m-0 flex list-none flex-col gap-2.5 p-0">
-            <li>— A working full-stack application, not a static prototype.</li>
-            <li>— A five-role permission architecture, designed as product logic and enforced in the database.</li>
-            <li>— Core workflows (Deals, Ideas, Team) exercised end to end through multiple QA rounds.</li>
-            <li>— Two real correctness/security issues found through that process, root-caused, fixed, and re-verified live.</li>
-            <li>— Preview functionality clearly separated from live behavior throughout the interface.</li>
-          </ul>
-        }
-        tight
-      />
-
-      <CaseStudySection
-        eyebrow="Reflection"
-        title="What this project reinforced."
-        intro={
-          <>
-            <p className="m-0">
-              Permissions that only exist in the UI aren’t really permissions — the ownership-transfer and invite bugs
-              both happened at the layer beneath the interface, which is exactly where they needed to be caught and
-              fixed. Building the QA process as rounds, not a single pass, is what surfaced them at all.
-            </p>
-            <p className="mt-3">
-              The other lesson was about communication, not code: a feature that isn’t finished yet is fine to ship as a
-              preview. Presenting it as more finished than it is isn’t.
-            </p>
-          </>
-        }
-        tight
-      />
+        contentClassName="flex flex-col gap-9"
+      >
+        <ul className="m-0 flex list-none flex-col gap-2.5 p-0">
+          <li className="text-[15px] leading-[1.65] text-ink-secondary">— A working full-stack application, not a static prototype.</li>
+          <li className="text-[15px] leading-[1.65] text-ink-secondary">— A five-role permission architecture, designed as product logic and enforced in the database.</li>
+          <li className="text-[15px] leading-[1.65] text-ink-secondary">— Core workflows (Deals, Ideas, Team) exercised end to end through multiple QA rounds.</li>
+          <li className="text-[15px] leading-[1.65] text-ink-secondary">— Two real correctness/security issues found through that process, root-caused, fixed, and re-verified live.</li>
+          <li className="text-[15px] leading-[1.65] text-ink-secondary">— Preview functionality clearly separated from live behavior throughout the interface.</li>
+        </ul>
+        <div className="flex flex-col gap-3.5 border-t border-line-soft pt-9">
+          <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">WHAT THIS REINFORCED</span>
+          <p className="m-0 text-[15px] leading-[1.72] text-ink-secondary text-pretty">
+            Permissions that only exist in the UI aren’t really permissions — the ownership-transfer and invite bugs
+            both happened at the layer beneath the interface, which is exactly where they needed to be caught and
+            fixed. Building the QA process as rounds, not a single pass, is what surfaced them at all.
+          </p>
+          <p className="m-0 text-[15px] leading-[1.72] text-ink-secondary text-pretty">
+            The other lesson was about communication, not code: a feature that isn’t finished yet is fine to ship as a
+            preview. Presenting it as more finished than it is isn’t.
+          </p>
+        </div>
+      </CaseStudySection>
 
       <CaseStudyNavigation nextSlug="care" nextTitle="C.A.R.E. for Horses" />
     </>

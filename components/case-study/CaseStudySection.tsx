@@ -11,6 +11,7 @@ export function CaseStudySection({
   children,
   tight = false,
   contentClassName,
+  id,
 }: {
   eyebrow: string;
   title: string;
@@ -18,9 +19,13 @@ export function CaseStudySection({
   children?: ReactNode;
   tight?: boolean;
   contentClassName?: string;
+  id?: string;
 }) {
   return (
-    <Section tight={tight}>
+    // scroll-mt accounts for MobileNav's sticky bar (mobile/tablet) and
+    // ChapterNav's sticky bar (nav: and up) so an anchor jump doesn't land
+    // a section's heading underneath either one.
+    <Section tight={tight} id={id} className={id ? "scroll-mt-[60px] nav:scroll-mt-[54px]" : undefined}>
       <Reveal as="article">
         <div className="flex flex-col items-start gap-3.5">
           <SectionLabel>{eyebrow}</SectionLabel>

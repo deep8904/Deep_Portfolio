@@ -15,7 +15,7 @@ const COLUMNS: Column[] = [
       "Settings — profile, data export",
       "Basic search on Ideas and Deals",
       "5-role permission model, enforced via RLS",
-      "Gmail & YouTube OAuth, with encrypted token storage and refresh",
+      "Gmail & YouTube OAuth, tokens stored via Supabase Vault with automatic refresh",
     ],
   },
   {
