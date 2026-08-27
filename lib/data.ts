@@ -221,11 +221,6 @@ export const WORK_PROJECTS: WorkProject[] = [
 ];
 
 export const WORK_STUBS: Record<string, { label: string; title: string; body: string }> = {
-  kramflow: {
-    label: "KramFlow",
-    title: "KramFlow — case study in progress.",
-    body: "The full case study, covering product thinking, system design, and build, is coming in the next phase.",
-  },
   care: {
     label: "C.A.R.E. for Horses",
     title: "C.A.R.E. for Horses — case study in progress.",

@@ -8,7 +8,7 @@ import { CaseStudyNavigation } from "@/components/case-study/CaseStudyNavigation
 import { ProductSystemMap } from "@/components/case-study/creatorflow/ProductSystemMap";
 import { WorkflowBlock, StageStrip, TeamFlowStrip } from "@/components/case-study/creatorflow/WorkflowBlock";
 import { RolesEnforcementDiagram } from "@/components/case-study/creatorflow/RolesEnforcementDiagram";
-import { CodeExcerpt } from "@/components/case-study/creatorflow/CodeExcerpt";
+import { CodeExcerpt } from "@/components/case-study/CodeExcerpt";
 import { OwnershipTransferDiagram } from "@/components/case-study/creatorflow/OwnershipTransferDiagram";
 import { InviteVisibilityDiagram } from "@/components/case-study/creatorflow/InviteVisibilityDiagram";
 import { StatusMatrix } from "@/components/case-study/creatorflow/StatusMatrix";
