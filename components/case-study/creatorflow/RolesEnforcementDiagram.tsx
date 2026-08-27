@@ -1,5 +1,5 @@
 import { MousePointerClick, ServerCog, Database, ShieldCheck, Crown, Briefcase, PenLine, Palette, Megaphone } from "lucide-react";
-import { FlowDiagram } from "@/components/case-study/creatorflow/FlowDiagram";
+import { FlowDiagram } from "@/components/case-study/FlowDiagram";
 
 const FLOW = [
   { icon: MousePointerClick, label: "UI action", body: "A member clicks “move deal,” “invite,” or “remove.”" },

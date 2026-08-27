@@ -12,7 +12,7 @@ import { AnnotatedScreen } from "@/components/case-study/AnnotatedScreen";
 import { ProductSystemMap } from "@/components/case-study/creatorflow/ProductSystemMap";
 import { WorkflowBlock, StageStrip, TeamFlowStrip } from "@/components/case-study/creatorflow/WorkflowBlock";
 import { RolesEnforcementDiagram } from "@/components/case-study/creatorflow/RolesEnforcementDiagram";
-import { FlowDiagram } from "@/components/case-study/creatorflow/FlowDiagram";
+import { FlowDiagram } from "@/components/case-study/FlowDiagram";
 import { DecisionTraceTable } from "@/components/case-study/creatorflow/DecisionTraceTable";
 import { QaFindingsTable } from "@/components/case-study/creatorflow/QaFindingsTable";
 import { IntegrationsMatrix } from "@/components/case-study/creatorflow/IntegrationsMatrix";
