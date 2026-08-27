@@ -199,7 +199,7 @@ export const WORK_PROJECTS: WorkProject[] = [
     year: "2025",
     category: "UX RESEARCH · ACCESSIBILITY",
     description:
-      "A research-led redesign focused on simplifying information architecture, donation and volunteer journeys, usability, and accessibility for an equine nonprofit.",
+      "A team research project for an equine nonprofit — a 39-response survey, a heuristic evaluation, and an accessibility audit, translated into concrete information-architecture and usability recommendations.",
     cover: { kind: "none" },
     caseStudyStatus: "research",
     layout: "split",
@@ -221,11 +221,6 @@ export const WORK_PROJECTS: WorkProject[] = [
 ];
 
 export const WORK_STUBS: Record<string, { label: string; title: string; body: string }> = {
-  care: {
-    label: "C.A.R.E. for Horses",
-    title: "C.A.R.E. for Horses — case study in progress.",
-    body: "The full case study, covering research and redesign, is coming in the next phase.",
-  },
   glyph: {
     label: "Glyph",
     title: "Glyph — case study in progress.",
