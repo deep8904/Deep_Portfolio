@@ -3,7 +3,6 @@ const STACK = [
   { name: "Supabase Realtime", purpose: "Postgres change subscriptions driving every surface off one shared state row — no polling." },
   { name: "Supabase Auth", purpose: "Per-operator accounts, replacing an earlier shared-PIN cookie scheme." },
   { name: "PostgreSQL", purpose: "11-table schema covering sessions, programs, live state, displays, and broadcasts." },
-  { name: "pg_cron + pg_net", purpose: "Server-side scheduling for the automations that genuinely run on a timer." },
   { name: "Zod", purpose: "Request validation on the API routes that mutate shared live state." },
 ];
 

@@ -179,13 +179,13 @@ export const WORK_PROJECTS: WorkProject[] = [
     year: "2026",
     category: "PRODUCT · REALTIME SYSTEMS · UX",
     description:
-      "A live-event operating system built for a real event, keeping an operator console, a mobile remote, and role-specific TV displays synced around what's happening now and what's next.",
+      "A real-time production console for running a live, multi-day event — one shared state across six purpose-built surfaces, with a server-enforced control lock and a rehearsal mode isolated by construction.",
     cover: {
       kind: "image",
       src: "/work/kramflow/presenter.png",
       alt: "The KramFlow Presenter confidence monitor, showing a large countdown timer in standby",
     },
-    caseStudyStatus: "preview",
+    caseStudyStatus: "detailed",
     layout: "landscape",
     titleBlock: "category-year_title",
   },
