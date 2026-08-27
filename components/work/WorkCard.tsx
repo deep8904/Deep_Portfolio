@@ -1,7 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import { WorkCover } from "@/components/work/WorkCover";
+import { ProjectStatusBadge } from "@/components/work/ProjectStatusBadge";
 import { WORK_STUBS, type WorkProject } from "@/lib/data";
 
 const COVER_RATIO: Record<WorkProject["layout"], string> = {
@@ -91,27 +93,29 @@ function TitleBlock({ project }: { project: WorkProject }) {
   );
 }
 
-const PlaceholderFill = () => (
-  <span
-    data-img
-    className="placeholder-stripe absolute inset-0 transition-transform duration-[380ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.025]"
-  />
-);
-
 export function WorkCard({ project }: { project: WorkProject }) {
   const isStub = !!WORK_STUBS[project.slug];
-  const cover = (
+  const hasCover = project.cover.kind === "image";
+
+  const cover = hasCover ? (
     <WorkCover className={COVER_RATIO[project.layout]}>
-      <PlaceholderFill />
-      <span className="absolute inset-0 flex items-center justify-center px-6 text-center text-[12px] font-medium tracking-[0.09em] text-ink-num">
-        {project.coverLabel}
-      </span>
+      <Image
+        data-img
+        src={project.cover.kind === "image" ? project.cover.src : ""}
+        alt={project.cover.kind === "image" ? project.cover.alt : ""}
+        fill
+        sizes="(min-width: 1200px) 620px, (min-width: 810px) 60vw, 92vw"
+        className="object-cover object-top transition-transform duration-[380ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.025]"
+      />
     </WorkCover>
-  );
+  ) : null;
 
   const text = (
     <div className="flex flex-col gap-3">
-      <span className="text-[12px] font-semibold tracking-[0.14em] text-ink-num">{project.num}</span>
+      <div className="flex flex-wrap items-center gap-2.5">
+        <span className="text-[12px] font-semibold tracking-[0.14em] text-ink-num">{project.num}</span>
+        <ProjectStatusBadge level={project.caseStudyStatus} />
+      </div>
       <TitleBlock project={project} />
       <p className="m-0 max-w-[64ch] text-[15px] leading-[1.7] text-ink-secondary text-pretty">
         {project.description}
@@ -129,11 +133,6 @@ export function WorkCard({ project }: { project: WorkProject }) {
             <ArrowRight size={13} strokeWidth={2} />
           </span>
         </span>
-        {project.status && (
-          <span className="inline-flex h-[22px] w-fit items-center rounded-[6px] bg-surface px-[9px] text-[12px] font-medium tracking-[0.06em] text-ink-faint">
-            {project.status}
-          </span>
-        )}
       </div>
     </div>
   );
@@ -144,16 +143,18 @@ export function WorkCard({ project }: { project: WorkProject }) {
       aria-label={isStub ? `${project.title} — case study in progress` : `${project.title} case study`}
       className="group block border-b border-line-soft pb-[52px] tab:pb-[74px]"
     >
-      {project.layout === "split" ? (
+      {hasCover && project.layout === "split" ? (
         <div className="grid grid-cols-1 items-start gap-6 desk:grid-cols-[minmax(0,56%)_minmax(0,38%)] desk:gap-10">
           {cover}
           {text}
         </div>
-      ) : (
+      ) : hasCover ? (
         <div className="flex flex-col gap-[18px] tab:gap-[22px]">
           {cover}
           {text}
         </div>
+      ) : (
+        <div className="max-w-[68ch]">{text}</div>
       )}
     </Link>
   );

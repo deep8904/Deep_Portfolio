@@ -138,6 +138,19 @@ export const INTERESTS = [
   { title: "Live Production / AV", body: "Where software, hardware, people, and timing have to work together." },
 ];
 
+// What's actually on the other end of a project card. A card's status is
+// about the CASE STUDY's depth, independent of what stage the underlying
+// product is at (e.g. Glyph can be "in development" as a product while its
+// write-up is still just a preview, and CreatorFlow can be a finished
+// product with a fully detailed case study).
+export type CaseStudyStatusLevel = "detailed" | "preview" | "research" | "in-development";
+
+export type WorkProjectCover =
+  | { kind: "image"; src: string; alt: string }
+  // Deliberately no bracket-placeholder/fake-image option: a project without
+  // a real screenshot yet gets an honest text-only treatment instead.
+  | { kind: "none" };
+
 export type WorkProject = {
   slug: string;
   num: string;
@@ -145,11 +158,11 @@ export type WorkProject = {
   year: string;
   category: string;
   description: string;
-  coverLabel: string;
+  cover: WorkProjectCover;
+  caseStudyStatus: CaseStudyStatusLevel;
   layout: "landscape" | "split" | "wide";
   /** Bespoke text arrangement, matching the source design's per-card layout. */
   titleBlock: "title-year_category" | "category-year_title" | "title_category-year" | "title-category-year";
-  status?: string;
 };
 
 export const WORK_PROJECTS: WorkProject[] = [
@@ -161,7 +174,8 @@ export const WORK_PROJECTS: WorkProject[] = [
     category: "PRODUCT · FULL STACK · AI",
     description:
       "A creator workflow platform bringing content planning, brand deals, repurposing, analytics, and automation into one connected system.",
-    coverLabel: "[ COVER IMAGE — CREATORFLOW ]",
+    cover: { kind: "image", src: "/work/creatorflow/dashboard-earlier-iteration.jpg", alt: "The CreatorFlow dashboard, showing demo account data" },
+    caseStudyStatus: "detailed",
     layout: "landscape",
     titleBlock: "title-year_category",
   },
@@ -172,8 +186,9 @@ export const WORK_PROJECTS: WorkProject[] = [
     year: "2026",
     category: "PRODUCT · REALTIME SYSTEMS · UX",
     description:
-      "A live-event operating system that keeps operators, presenters, volunteers, and displays aligned around what is happening now and what happens next.",
-    coverLabel: "[ COVER IMAGE — KRAMFLOW ]",
+      "A live-event operating system built for a real event, keeping an operator console, a mobile remote, and role-specific TV displays synced around what's happening now and what's next.",
+    cover: { kind: "none" },
+    caseStudyStatus: "preview",
     layout: "landscape",
     titleBlock: "category-year_title",
   },
@@ -185,7 +200,8 @@ export const WORK_PROJECTS: WorkProject[] = [
     category: "UX RESEARCH · ACCESSIBILITY",
     description:
       "A research-led redesign focused on simplifying information architecture, donation and volunteer journeys, usability, and accessibility for an equine nonprofit.",
-    coverLabel: "[ COVER IMAGE — C.A.R.E. ]",
+    cover: { kind: "none" },
+    caseStudyStatus: "research",
     layout: "split",
     titleBlock: "title_category-year",
   },
@@ -197,10 +213,10 @@ export const WORK_PROJECTS: WorkProject[] = [
     category: "PRODUCT STRATEGY · FULL STACK",
     description:
       "An indie game developer platform exploring developer identity, projects, devlogs, structured playtesting feedback, collaboration, and local community.",
-    coverLabel: "[ COVER IMAGE — GLYPH ]",
+    cover: { kind: "none" },
+    caseStudyStatus: "in-development",
     layout: "wide",
     titleBlock: "title-category-year",
-    status: "IN DEVELOPMENT",
   },
 ];
 
