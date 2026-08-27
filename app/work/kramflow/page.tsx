@@ -4,6 +4,7 @@ import { CaseStudySection } from "@/components/case-study/CaseStudySection";
 import { CaseStudyDecision } from "@/components/case-study/CaseStudyDecision";
 import { CaseStudyNavigation } from "@/components/case-study/CaseStudyNavigation";
 import { CodeExcerpt } from "@/components/case-study/CodeExcerpt";
+import { CaseStudyFigure } from "@/components/case-study/CaseStudyFigure";
 import { SurfaceMap } from "@/components/case-study/kramflow/SurfaceMap";
 import { ControlLockDiagram } from "@/components/case-study/kramflow/ControlLockDiagram";
 import { KramflowStatusMatrix } from "@/components/case-study/kramflow/KramflowStatusMatrix";
@@ -74,6 +75,32 @@ export default function KramFlowCaseStudy() {
         intro="Every surface subscribes to the same Postgres row over Supabase Realtime's postgres_changes — a change from any client reaches every other client without anything polling for it."
       >
         <SurfaceMap />
+      </CaseStudySection>
+
+      <CaseStudySection
+        eyebrow="Interface"
+        title="Real screens from the live deployment."
+        intro="Captured from the actual production app, not a mockup. Operator and Remote sit behind an event PIN and aren't shown here; the four display surfaces don't require one."
+        contentClassName="flex flex-col gap-8"
+      >
+        <CaseStudyFigure
+          src="/work/kramflow/surfaces.png"
+          alt="The KramFlow role picker, listing Operator, Remote, AV, Green Room, General, and Presenter"
+          caption="The live app's own role picker — the same six surfaces described above, not a diagram standing in for them."
+          tag="Live product"
+        />
+        <CaseStudyFigure
+          src="/work/kramflow/presenter.png"
+          alt="The KramFlow Presenter confidence monitor, showing a large countdown timer, mode selectors, and manual time controls"
+          caption="The Presenter confidence monitor — Auto-follow, a Program/Stand-By mode switch, and manual time adjustment, shown in standby between cues."
+          tag="Live product"
+        />
+        <CaseStudyFigure
+          src="/work/kramflow/av-waiting-room.png"
+          alt="The KramFlow AV Waiting Room display, showing the current cue, a countdown, and a live timeline panel"
+          caption="The AV Waiting Room display — current cue and countdown, shown in standby since no session was running at capture time."
+          tag="Live product"
+        />
       </CaseStudySection>
 
       <CaseStudySection

@@ -180,7 +180,11 @@ export const WORK_PROJECTS: WorkProject[] = [
     category: "PRODUCT · REALTIME SYSTEMS · UX",
     description:
       "A live-event operating system built for a real event, keeping an operator console, a mobile remote, and role-specific TV displays synced around what's happening now and what's next.",
-    cover: { kind: "none" },
+    cover: {
+      kind: "image",
+      src: "/work/kramflow/presenter.png",
+      alt: "The KramFlow Presenter confidence monitor, showing a large countdown timer in standby",
+    },
     caseStudyStatus: "preview",
     layout: "landscape",
     titleBlock: "category-year_title",
