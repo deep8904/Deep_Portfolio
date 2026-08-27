@@ -212,19 +212,20 @@ export default function CreatorFlowCaseStudy() {
             </p>
           </div>
           <div className="rounded-xl border border-line-soft px-5 py-5">
-            <span className="text-[13.5px] font-medium">Automations</span>
-            <p className="m-0 mt-2 text-[15px] leading-[1.6] text-ink-faint">
-              2 of 3 default rules genuinely run on a schedule — a Postgres cron job calling an Edge Function that
-              writes real activity rows. The third, a video-published trigger, still just stores a toggle.
-            </p>
-          </div>
-          <div className="rounded-xl border border-line-soft px-5 py-5">
             <span className="text-[13.5px] font-medium">Gmail deal detection</span>
             <p className="m-0 mt-2 text-[15px] leading-[1.6] text-ink-faint">
               A real, narrow keyword-based classifier, wired to a genuine Gmail OAuth connection with encrypted,
               auto-refreshing token storage — worth noting honestly as real integration code, not generalized AI.
             </p>
           </div>
+        </div>
+        <div className="mt-8">
+          <CaseStudyFigure
+            src="/work/creatorflow/automations.png"
+            alt="The CreatorFlow Automations screen, showing which rules run on a real schedule and which are preview-only"
+            caption="Automations — the banner and “PREVIEW (NOT RUNNING)” badges are the actual product copy, not an annotation added for this case study."
+            tag="Live product · demo data"
+          />
         </div>
         <div className="mt-6">
           <CaseStudyDecision>
@@ -236,13 +237,20 @@ export default function CreatorFlowCaseStudy() {
 
       <CaseStudySection
         eyebrow="Interface / Design System"
-        title="A real screen from the live product."
-        intro="The screenshot below is the actual Dashboard, running the current dark, single-accent design system — not a mockup or a stand-in."
+        title="Real screens from the live product."
+        intro="Both screenshots below are the actual application, running the current dark, single-accent design system — not a mockup or a stand-in."
+        contentClassName="flex flex-col gap-8"
       >
         <CaseStudyFigure
           src="/work/creatorflow/dashboard-earlier-iteration.jpg"
           alt="The CreatorFlow dashboard, showing demo account data"
           caption="The live Dashboard — shown with demo account data, not real production metrics."
+          tag="Live product · demo data"
+        />
+        <CaseStudyFigure
+          src="/work/creatorflow/deals.png"
+          alt="The CreatorFlow Deals kanban board, showing sponsorship deals across pipeline stages"
+          caption="Deals — the sponsorship pipeline, from inbound to paid, with demo brand names."
           tag="Live product · demo data"
         />
       </CaseStudySection>
