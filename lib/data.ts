@@ -215,10 +215,37 @@ export const WORK_PROJECTS: WorkProject[] = [
 
 export const WORK_STUBS: Record<string, { label: string; title: string; body: string }> = {};
 
-// Ticketify, X-PASS, and Inventory System UI were removed after a targeted
-// verification pass (local files + GitHub) found no repo, design export, or
-// other real material behind any of the three — see the evidence summary.
-export const MORE_WORK = [{ name: "Xbox Game Camp" }, { name: "ZoomBuddy+" }];
+// Lighter than a full WorkProject: no dedicated case-study route, just a
+// compact card with real evidence (a live deployment and/or a public repo)
+// and honest outbound links instead of an internal /work/<slug> page.
+export type SelectedProject = {
+  slug: string;
+  name: string;
+  description: string;
+  stack: string;
+  role: string;
+  cover: WorkProjectCover;
+  links: { label: string; href: string }[];
+};
+
+// Xbox Game Camp and ZoomBuddy+ were removed after a targeted verification
+// pass (local files + GitHub) found no repo, design export, live deployment,
+// or other real material behind either — see the evidence summary.
+export const SELECTED_PROJECTS: SelectedProject[] = [
+  {
+    slug: "loose-thread",
+    name: "Loose Thread + ACM",
+    description:
+      "A personal writing site with three published essays, backed by an AI research-and-drafting pipeline: source-backed research, Gemini-based generation with multi-provider failover, and a Telegram approval gate before anything goes live.",
+    stack: "Next.js · TypeScript · Gemini API · PostgreSQL · Telegram Bot API · GitHub Actions · Vercel",
+    role: "Design & Full-Stack Engineering",
+    cover: { kind: "image", src: "/work/selected/loose-thread.png", alt: "The Loose Thread writing site home page" },
+    links: [
+      { label: "Live Site", href: "https://readloosethread.vercel.app" },
+      { label: "GitHub", href: "https://github.com/deep8904/ACM" },
+    ],
+  },
+];
 
 // Real photography data now lives in lib/photography-data.ts.
 
