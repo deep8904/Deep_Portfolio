@@ -212,21 +212,15 @@ export const WORK_PROJECTS: WorkProject[] = [
     year: "2026",
     category: "PRODUCT STRATEGY · FULL STACK",
     description:
-      "An indie game developer platform exploring developer identity, projects, devlogs, structured playtesting feedback, collaboration, and local community.",
-    cover: { kind: "none" },
+      "An indie game developer platform exploring developer identity, projects, devlogs, structured playtesting feedback, collaboration, and local community. A real waitlist and auth flow are live today; the rest is designed, not yet shipped.",
+    cover: { kind: "image", src: "/work/glyph/landing.png", alt: "The Glyph waitlist landing page" },
     caseStudyStatus: "in-development",
     layout: "wide",
     titleBlock: "title-category-year",
   },
 ];
 
-export const WORK_STUBS: Record<string, { label: string; title: string; body: string }> = {
-  glyph: {
-    label: "Glyph",
-    title: "Glyph — case study in progress.",
-    body: "The full case study, covering product strategy and build, is coming in the next phase.",
-  },
-};
+export const WORK_STUBS: Record<string, { label: string; title: string; body: string }> = {};
 
 // Ticketify, X-PASS, and Inventory System UI were removed after a targeted
 // verification pass (local files + GitHub) found no repo, design export, or
