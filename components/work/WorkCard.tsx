@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { WorkCover } from "@/components/work/WorkCover";
-import type { WorkProject } from "@/lib/data";
+import { InventoryFlowCover } from "@/components/case-study/inventory-flow/InventoryFlowCover";
+import { INVENTORY_FLOW_SLUG, type WorkProject } from "@/lib/data";
 
 const COVER_RATIO: Record<WorkProject["layout"], string> = {
   landscape: "aspect-[4/3] desk:aspect-[16/9]",
@@ -74,10 +75,16 @@ const PlaceholderFill = () => (
 export function WorkCard({ project }: { project: WorkProject }) {
   const cover = (
     <WorkCover className={COVER_RATIO[project.layout]}>
-      <PlaceholderFill />
-      <span className="absolute inset-0 flex items-center justify-center px-6 text-center text-[11.5px] font-medium tracking-[0.09em] text-ink-num">
-        {project.coverLabel}
-      </span>
+      {project.slug === INVENTORY_FLOW_SLUG ? (
+        <InventoryFlowCover className="absolute inset-0" />
+      ) : (
+        <>
+          <PlaceholderFill />
+          <span className="absolute inset-0 flex items-center justify-center px-6 text-center text-[11.5px] font-medium tracking-[0.09em] text-ink-num">
+            {project.coverLabel}
+          </span>
+        </>
+      )}
     </WorkCover>
   );
 
