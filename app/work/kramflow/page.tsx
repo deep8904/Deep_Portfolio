@@ -17,6 +17,8 @@ import { ControlLockDiagram } from "@/components/case-study/kramflow/ControlLock
 import { HoldResumeDiagram } from "@/components/case-study/kramflow/HoldResumeDiagram";
 import { RehearsalComparison } from "@/components/case-study/kramflow/RehearsalComparison";
 import { FailureStatesTable } from "@/components/case-study/kramflow/FailureStatesTable";
+import { ArchitectureEvolutionDiagram } from "@/components/case-study/kramflow/ArchitectureEvolutionDiagram";
+import { CapabilityMap } from "@/components/case-study/kramflow/CapabilityMap";
 import { KramflowStatusMatrix } from "@/components/case-study/kramflow/KramflowStatusMatrix";
 import { StackList } from "@/components/case-study/kramflow/StackList";
 
@@ -39,6 +41,7 @@ const CHAPTERS = [
   { id: "realtime", label: "Realtime" },
   { id: "rehearsal", label: "Rehearsal" },
   { id: "failures", label: "Failure States" },
+  { id: "evolution", label: "Evolution" },
   { id: "status", label: "Status" },
   { id: "outcome", label: "Outcome" },
 ];
@@ -80,7 +83,7 @@ export default function KramFlowCaseStudy() {
           { label: "ROLE", value: "Product design & full-stack build" },
           { label: "TIMELINE", value: "~5 weeks, 56 commits" },
           { label: "STACK", value: "Next.js · Supabase Realtime · Postgres" },
-          { label: "STATUS", value: "Deployed on an earlier architecture — see Status below" },
+          { label: "STATUS", value: "Live V1, deployed · architecture evolved significantly since" },
         ]}
       >
         <div className="mt-9 tab:mt-11">
@@ -253,6 +256,15 @@ export default function KramFlowCaseStudy() {
         <FailureStatesTable />
       </CaseStudySection>
 
+      <CaseStudySection
+        id="evolution"
+        eyebrow="Architectural Evolution"
+        title="A system that outgrew its first architecture."
+        intro="The repository has three real branches: main, frozen since July 17 — exactly what's running at the public deployment — and deep, roughly forty commits of continued work since, including everything from the Realtime migration onward. This isn't an unfinished project catching up to a plan; it's a working system that kept getting rebuilt on top of itself as the real requirements got clearer."
+      >
+        <ArchitectureEvolutionDiagram />
+      </CaseStudySection>
+
       <PhaseDivider label="WHAT SHIPPED" />
 
       <CaseStudySection
@@ -260,7 +272,12 @@ export default function KramFlowCaseStudy() {
         eyebrow="What's Actually Complete"
         title="What's live, what's implemented, and what hasn't shipped yet."
         intro="The public deployment and the current repository are not the same thing — this table says which is which for every claim above, not just the ones that are easy to admit."
+        contentClassName="flex flex-col gap-10"
       >
+        <div className="flex flex-col gap-4">
+          <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">CAPABILITY MAP</span>
+          <CapabilityMap />
+        </div>
         <KramflowStatusMatrix />
       </CaseStudySection>
 

@@ -1,13 +1,13 @@
-import { Radio, CheckCircle2, CircleDashed, HelpCircle, Clock, LucideIcon } from "lucide-react";
+import { Radio, CheckCircle2, CircleDashed, GitBranch, Clock, LucideIcon } from "lucide-react";
 import clsx from "clsx";
 
-type Tier = "live" | "implemented" | "partial" | "not-proven" | "planned";
+type Tier = "live" | "implemented" | "partial" | "current-arch" | "planned";
 
 const TIER_CONFIG: Record<Tier, { label: string; icon: LucideIcon; className: string }> = {
-  live: { label: "Live & Verified", icon: Radio, className: "border-line-strong text-ink-secondary" },
-  implemented: { label: "Implemented", icon: CheckCircle2, className: "border-line-strong text-ink-secondary" },
+  live: { label: "Live V1", icon: Radio, className: "border-line-strong text-ink-secondary" },
+  implemented: { label: "Implemented in Current Source", icon: CheckCircle2, className: "border-line-strong text-ink-secondary" },
   partial: { label: "Partial", icon: CircleDashed, className: "border-dashed border-line-strong text-ink-secondary" },
-  "not-proven": { label: "Not Proven Live", icon: HelpCircle, className: "border-dashed border-line-soft text-ink-faint" },
+  "current-arch": { label: "Current Architecture", icon: GitBranch, className: "border-line-strong text-ink-secondary" },
   planned: { label: "Planned", icon: Clock, className: "border-dashed border-line-soft text-ink-faint" },
 };
 
@@ -20,7 +20,7 @@ const ROWS: { name: string; tier: Tier; note: string }[] = [
   {
     name: "PIN-gated Operator/Remote console",
     tier: "live",
-    note: "The current public deployment's actual auth model — confirmed live, not from memory.",
+    note: "The public deployment's actual auth model, running from the main branch (frozen since Jul 17) — confirmed live, not from memory.",
   },
   {
     name: "Control ownership lock (claim/release/423)",
@@ -39,8 +39,8 @@ const ROWS: { name: string; tier: Tier; note: string }[] = [
   },
   {
     name: "Per-operator accounts, multi-tenant events, dashboard",
-    tier: "not-proven",
-    note: "Real, substantial code — signup/login, per-event routes, database-level tenant isolation — but the public deployment still runs the earlier single-tenant, PIN-gated version. This is a genuine architecture rebuild that hasn't reached production yet.",
+    tier: "current-arch",
+    note: "Real, substantial code on the deep branch — signup/login, per-event routes, database-level tenant isolation — built over a month past where the public deployment (main) is frozen. A deliberate architecture evolution, not a missing feature.",
   },
   {
     name: "Scheduled broadcast promotion",
