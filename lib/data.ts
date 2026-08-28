@@ -146,6 +146,8 @@ export type WorkProject = {
   status?: string;
 };
 
+export const INVENTORY_FLOW_SLUG = "inventory-flow";
+
 export const WORK_PROJECTS: WorkProject[] = [
   {
     slug: "creatorflow",
@@ -195,6 +197,19 @@ export const WORK_PROJECTS: WorkProject[] = [
     layout: "wide",
     titleBlock: "title-category-year",
     status: "IN DEVELOPMENT",
+  },
+  {
+    slug: "inventory-flow",
+    num: "SELECTED PROJECT",
+    title: "Inventory Flow",
+    year: "2026",
+    category: "GAME UX · INDEPENDENT CONCEPT",
+    description:
+      "An unofficial Minecraft inventory & crafting UX concept — keeps the grid, hotbar, and 2×2 crafting model unchanged and focuses on the repeated work of selecting, moving, sorting, and reading crafting state. Includes a working interactive prototype.",
+    coverLabel: "[ COVER — INVENTORY FLOW ]",
+    layout: "landscape",
+    titleBlock: "title-year_category",
+    status: "INDEPENDENT CONCEPT",
   },
 ];
 
