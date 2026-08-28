@@ -1,5 +1,4 @@
 import { ExternalLink, Check, X } from "lucide-react";
-import { EvidenceFigure } from "./EvidenceFigures";
 import { RejectedSketch } from "./StaticPanels";
 import {
   AUDIT_ROWS,
@@ -217,73 +216,74 @@ export function ReviewAndNextTest() {
   );
 }
 
-type RefBlock = { label: string; body: string };
 type ReferenceStudy = {
+  num: string;
   name: string;
-  meta: string;
+  project: string;
   href: string;
-  image: string;
-  imageAlt: string;
-  imageCaption: string;
-  blocks: [RefBlock, RefBlock, RefBlock, RefBlock];
+  focus: string;
+  learned: string;
+  didDifferently: string;
 };
 
+// Text-only citations — no images from either designer are hosted or
+// displayed anywhere in this case study. Readers reach their original work
+// through the source link. See docs/minecraft-case-study-asset-provenance.md.
 const REFERENCE_STUDIES: ReferenceStudy[] = [
   {
+    num: "01",
     name: "Jay Han",
-    meta: "Minecraft Inventory · student UX project",
+    project: "Minecraft Inventory",
     href: "https://jayhan.me/minecraft-inventory",
-    image: "/work/inventory-flow/reference/jay-han/smart-select-active.png",
-    imageAlt: "Jay Han's Smart Select mockup with several inventory stacks highlighted blue for a combined move",
-    imageCaption: "Smart Select — several stacks highlighted together before a combined move.",
-    blocks: [
-      { label: "What he explored", body: "Smart Select (multi-stack selection) and Compartments — persistent, color-coded, later player-customizable storage zones with tooltips." },
-      {
-        label: "What testing exposed",
-        body: "“Did not belong in Minecraft due to it being different to what it originally was,” and a second read that it “might be too complicated for an average player.”",
-      },
-      { label: "What I carried forward", body: "Multi-stack manipulation — selecting and moving several stacks as one action." },
-      { label: "What I did differently", body: "Optional, contextual tools instead of a persistent compartment structure a player has to set up and maintain." },
-    ],
+    focus: "Bulk selection and chest organization.",
+    learned: "Multi-stack interaction can reduce repetitive movement — but his own testing found some players felt persistent compartments no longer felt like Minecraft, and others found the added rules hard to hold in their head.",
+    didDifferently: "Avoided persistent compartment rules that add another organizational model — kept the underlying benefit (multi-stack selection) as a contextual, optional tool instead.",
   },
   {
+    num: "02",
     name: "Barbara Franco",
-    meta: "Minecraft Inventory UI/UX Redesign · design challenge",
+    project: "Minecraft Inventory UI/UX Redesign",
     href: "https://www.barbarafranco.design/post/minecraft-inventory-ui-ux-redesign-a-modern-approach",
-    image: "/work/inventory-flow/reference/barbara-franco/final-concept.png",
-    imageAlt: "Barbara Franco's final crafting redesign with green ready state and red missing state over a Minecraft gameplay background",
-    imageCaption: "Her final crafting screen — ready/missing states, quantity control, explicit Craft action.",
-    blocks: [
-      { label: "What she protected", body: "The 2×2 crafting grid and Minecraft's overall visual familiarity." },
-      { label: "What she improved", body: "Crafting hierarchy and feedback — ready/missing states, ingredient display, output clarity." },
-      { label: "What I carried forward", body: "Preserve the core mental model — same grid, same Recipe Book, clearer feedback around them." },
-      { label: "What I did differently", body: "Don't imply Recipe Book functionality is missing when vanilla Java Edition already supports search, tabs, and a craftable filter." },
-    ],
+    focus: "Crafting clarity while preserving Minecraft familiarity.",
+    learned: "Preserve the existing crafting mental model — she kept the 2×2 grid intact and rejected adding an inventory row because it would affect game balance, not just UI.",
+    didDifferently: "Focused on state hierarchy around existing Recipe Book behavior (owned-vs-required, made explicit) rather than replacing the crafting model or implying its search/filter/craftable features are missing.",
   },
 ];
 
 export function ReferenceStudyCards() {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col divide-y divide-line-soft border-y border-line-soft">
       {REFERENCE_STUDIES.map((s) => (
-        <div key={s.name} className="flex flex-col gap-5">
-          <EvidenceFigure
-            src={s.image}
-            alt={s.imageAlt}
-            caption={s.imageCaption}
-            tag="REFERENCE STUDY"
-            tagKind="reference"
-            credit={`${s.name} — ${s.meta}`}
-            href={s.href}
-          />
-          <div className="grid grid-cols-1 gap-4 tab:grid-cols-4">
-            {s.blocks.map((b) => (
-              <div key={b.label}>
-                <span className="text-[11px] font-semibold tracking-[0.1em] text-ink-num">{b.label.toUpperCase()}</span>
-                <p className="m-0 mt-1 text-[13px] leading-[1.6] text-ink-secondary text-pretty">{b.body}</p>
-              </div>
-            ))}
+        <div key={s.name} className="flex flex-col gap-3 py-6">
+          <div className="flex items-baseline gap-2">
+            <span className="text-[11px] font-semibold tracking-[0.1em] text-ink-num">REFERENCE {s.num}</span>
           </div>
+          <div>
+            <span className="text-[15px] font-medium tracking-[-0.01em] text-ink">{s.name}</span>
+            <span className="ml-2 text-[13.5px] text-ink-faint">{s.project}</span>
+          </div>
+          <div className="grid grid-cols-1 gap-3 tab:grid-cols-3">
+            <div>
+              <span className="text-[11px] font-semibold tracking-[0.08em] text-ink-num">FOCUS</span>
+              <p className="m-0 mt-1 text-[13.5px] leading-[1.6] text-ink-secondary text-pretty">{s.focus}</p>
+            </div>
+            <div>
+              <span className="text-[11px] font-semibold tracking-[0.08em] text-ink-num">WHAT I LEARNED</span>
+              <p className="m-0 mt-1 text-[13.5px] leading-[1.6] text-ink-secondary text-pretty">{s.learned}</p>
+            </div>
+            <div>
+              <span className="text-[11px] font-semibold tracking-[0.08em] text-ink-num">WHAT I DID DIFFERENTLY</span>
+              <p className="m-0 mt-1 text-[13.5px] leading-[1.6] text-ink-secondary text-pretty">{s.didDifferently}</p>
+            </div>
+          </div>
+          <a
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex w-fit items-center gap-1.5 text-[13px] font-medium text-ink-secondary hover:text-ink"
+          >
+            View original <ExternalLink size={12} strokeWidth={2} />
+          </a>
         </div>
       ))}
     </div>

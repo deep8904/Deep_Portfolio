@@ -8,8 +8,7 @@ import { CaseStudyNavigation } from "@/components/case-study/CaseStudyNavigation
 import { PhaseDivider } from "@/components/case-study/PhaseDivider";
 import { ChapterNav } from "@/components/case-study/ChapterNav";
 import { InventoryFlowPrototype } from "@/components/case-study/inventory-flow/InventoryFlowPrototype";
-import { HeroConceptPreview } from "@/components/case-study/inventory-flow/StaticPanels";
-import { EvidenceFigure } from "@/components/case-study/inventory-flow/EvidenceFigures";
+import { HeroConceptPreview, HeroCraftingPreview, VanillaBaselineRecreation } from "@/components/case-study/inventory-flow/StaticPanels";
 import { StateGallery } from "@/components/case-study/inventory-flow/StateGallery";
 import {
   EvidenceScopeBlock,
@@ -48,9 +47,10 @@ const CHAPTERS = [
 export default function InventoryFlowCaseStudy() {
   return (
     <>
-      {/* HERO — big project title, thesis, then a real vanilla screenshot
-          paired against the original concept, so the reader knows what
-          this is before reading a single paragraph. */}
+      {/* HERO — big project title, thesis, then the original Inventory Flow
+          UI itself (Chest mode large, Personal Inventory/Crafting small) so
+          the reader sees the actual design before reading a paragraph. No
+          external photography — the interface is the hero. */}
       <section className="pt-[34px] tab:pt-[46px]">
         <Container>
           <Reveal>
@@ -84,20 +84,14 @@ export default function InventoryFlowCaseStudy() {
       <div className="pt-9 tab:pt-12">
         <Container>
           <Reveal>
-            <div className="grid grid-cols-1 gap-3 tab:grid-cols-2">
-              <EvidenceFigure
-                src="/work/inventory-flow/vanilla/creative-inventory-tooltip.png"
-                alt="A real Minecraft Java Edition screenshot showing the inventory's Building Blocks tab with an item tooltip open"
-                caption="Real Java Edition capture — the baseline this concept starts from."
-                tag="VANILLA MINECRAFT"
-                tagKind="vanilla"
-                aspect="aspect-[4/3]"
-              />
+            <div className="grid grid-cols-1 gap-3 tab:grid-cols-[1.6fr_1fr]">
               <HeroConceptPreview />
+              <HeroCraftingPreview />
             </div>
             <p className="m-0 mt-3 text-[12px] text-ink-faint">
-              Left: unmodified Java Edition. Right: the original Inventory Flow concept, built for this case study.
-              Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.
+              Chest mode (left) and Personal Inventory / Crafting mode (right) — the original Inventory Flow UI,
+              built for this case study. Not an official Minecraft product. Not approved by or associated with
+              Mojang or Microsoft.
             </p>
           </Reveal>
         </Container>
@@ -117,31 +111,10 @@ export default function InventoryFlowCaseStudy() {
         id="baseline"
         eyebrow="Current Experience"
         title="What vanilla Minecraft already handles well — and where it doesn't."
-        intro="Real captures, not reconstructions. Shift+click and shift+double-click already exist; the Recipe Book already has search, category tabs, and a craftable filter. The audit below is scoped to what's genuinely still friction."
+        intro="The panel below is a recreation of vanilla structure, not a screenshot — built from this case study's own Minecraft UI system, cross-checked against Minecraft's documented slot counts and layout. Shift+click and shift+double-click already exist; the Recipe Book already has search, category tabs, and a craftable filter. The audit below is scoped to what's genuinely still friction."
         contentClassName="flex flex-col gap-8"
       >
-        <div className="grid grid-cols-1 gap-6 tab:grid-cols-2">
-          <EvidenceFigure
-            src="/work/inventory-flow/vanilla/survival-inventory-wiki.png"
-            alt="The vanilla Java Edition survival inventory with equipment slots, the 2x2 crafting grid, and hotbar"
-            caption="The survival inventory — equipment, the 2×2 crafting grid, hotbar."
-            tag="VANILLA MINECRAFT"
-            tagKind="vanilla"
-            aspect="aspect-[16/13]"
-            credit="Minecraft Wiki"
-            href="https://minecraft.wiki/w/Inventory"
-          />
-          <EvidenceFigure
-            src="/work/inventory-flow/vanilla/recipe-book-wiki.png"
-            alt="The vanilla Java Edition Recipe Book with search, category tabs, and a recipe highlighted red for a missing material"
-            caption="The Recipe Book — search, tabs, and a red highlight already mark missing materials."
-            tag="VANILLA MINECRAFT"
-            tagKind="vanilla"
-            aspect="aspect-[16/9]"
-            credit="Minecraft Wiki"
-            href="https://minecraft.wiki/w/Recipe_book"
-          />
-        </div>
+        <VanillaBaselineRecreation />
         <AuditTable />
       </CaseStudySection>
 

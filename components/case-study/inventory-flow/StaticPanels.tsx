@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Lock, Check } from "lucide-react";
+import { Lock, Check, ArrowRight } from "lucide-react";
 import { ItemGlyph, type ItemId } from "./ItemGlyph";
 import { MinecraftPanel } from "./MinecraftUI";
 
@@ -80,6 +80,85 @@ export function HeroConceptPreview() {
         </div>
         <StaticGrid slots={HERO_MAIN} cols={9} size={28} />
         <StaticGrid slots={HERO_HOTBAR} cols={9} size={28} />
+      </div>
+    </MinecraftPanel>
+  );
+}
+
+const HERO_CRAFT_BACKPACK: StaticSlot[] = [
+  { item: "oak-planks", qty: 12 }, { item: "diamond", qty: 2 }, null, null, null, null,
+];
+const HERO_CRAFT_HOTBAR: StaticSlot[] = [{ item: "torch", qty: 4 }, null, null, null, null, null];
+
+/** A small, secondary preview of Personal Inventory / Crafting mode — pairs
+ * with HeroConceptPreview in the hero so the reader sees both original
+ * contexts (Chest, Personal Inventory) before scrolling. */
+export function HeroCraftingPreview() {
+  return (
+    <MinecraftPanel className="p-4">
+      <div className="flex flex-col gap-2.5">
+        <span className="text-[12px] font-bold tracking-[0.02em] text-[#dcdcd4]" style={{ textShadow: "1px 1px 0 rgba(0,0,0,0.6)" }}>
+          Crafting Clarity
+        </span>
+        <div className="flex items-center gap-2">
+          <div className="grid grid-cols-2 grid-rows-2 gap-[3px] bg-[#545450] p-[6px]" style={{ boxShadow: "inset -1px -1px 0 rgba(255,255,255,0.08), inset 1px 1px 0 rgba(0,0,0,0.4)" }}>
+            <StaticSlotEl slot={{ item: "coal", qty: 1 }} size={26} />
+            <StaticSlotEl slot={null} size={26} />
+            <StaticSlotEl slot={{ item: "stick", qty: 1 }} size={26} />
+            <StaticSlotEl slot={null} size={26} />
+          </div>
+          <ArrowRight size={14} className="text-[#a8a89f]" />
+          <StaticSlotEl slot={{ item: "torch", qty: 4 }} size={30} />
+        </div>
+        <div className="flex items-center justify-between bg-[#3f5a26] px-2 py-1 text-[11px] font-semibold text-[#c9e8a8]">
+          Coal <span>1 / 1</span>
+        </div>
+        <div className="flex items-center justify-between bg-[#3f5a26] px-2 py-1 text-[11px] font-semibold text-[#c9e8a8]">
+          Stick <span>1 / 1</span>
+        </div>
+        <StaticGrid slots={HERO_CRAFT_BACKPACK} cols={6} size={24} />
+        <StaticGrid slots={HERO_CRAFT_HOTBAR} cols={6} size={24} />
+      </div>
+    </MinecraftPanel>
+  );
+}
+
+/** A plain, unaugmented recreation of vanilla Minecraft's inventory/hotbar/
+ * crafting structure — no Smart Select, no Quick Organize, no color-coded
+ * states. Built from the same MinecraftUI primitives as everything else on
+ * this page, informed by inspecting the supplied Figma resources and cross-
+ * checked against Minecraft's own documented slot counts and layout. Labeled
+ * as a recreation, not a screenshot — see docs/minecraft-case-study-asset-provenance.md. */
+export function VanillaBaselineRecreation() {
+  const main: StaticSlot[] = [
+    { item: "oak-log", qty: 12 }, { item: "stick", qty: 30 }, null, { item: "oak-planks", qty: 20 }, { item: "iron-ingot", qty: 5 }, null, { item: "coal", qty: 6 }, null, null,
+    { item: "cobblestone", qty: 64 }, null, { item: "oak-planks", qty: 14 }, null, { item: "wheat", qty: 9 }, null, null, { item: "cobblestone", qty: 22 }, null,
+    null, null, { item: "diamond", qty: 2 }, null, null, null, null, null, null,
+  ];
+  const hotbar: StaticSlot[] = [{ item: "torch", qty: 8 }, { item: "cobblestone", qty: 64 }, null, null, null, null, null, null, null];
+
+  return (
+    <MinecraftPanel className="p-4">
+      <div className="mx-auto flex max-w-[460px] flex-col gap-2.5">
+        <div className="flex items-center justify-between">
+          <span className="text-[12px] font-bold tracking-[0.02em] text-[#dcdcd4]" style={{ textShadow: "1px 1px 0 rgba(0,0,0,0.6)" }}>
+            Inventory &amp; Crafting
+          </span>
+          <span className="text-[10px] text-[#8a8a82]">no bulk actions, no highlights</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="grid grid-cols-2 grid-rows-2 gap-[3px] bg-[#545450] p-[6px]" style={{ boxShadow: "inset -1px -1px 0 rgba(255,255,255,0.08), inset 1px 1px 0 rgba(0,0,0,0.4)" }}>
+            <StaticSlotEl slot={null} size={26} />
+            <StaticSlotEl slot={null} size={26} />
+            <StaticSlotEl slot={null} size={26} />
+            <StaticSlotEl slot={null} size={26} />
+          </div>
+          <ArrowRight size={14} className="text-[#a8a89f]" />
+          <StaticSlotEl slot={null} size={30} />
+          <span className="text-[10px] text-[#8a8a82]">2×2 crafting, output</span>
+        </div>
+        <StaticGrid slots={main} cols={9} size={28} />
+        <StaticGrid slots={hotbar} cols={9} size={28} />
       </div>
     </MinecraftPanel>
   );
