@@ -167,7 +167,7 @@ export const WORK_PROJECTS: WorkProject[] = [
     category: "PRODUCT · FULL STACK · AI",
     description:
       "A creator workflow platform bringing content planning, brand deals, repurposing, analytics, and automation into one connected system.",
-    cover: { kind: "image", src: "/work/creatorflow/landing.png", alt: "The CreatorFlow landing page, showing the real product's hero section" },
+    cover: { kind: "image", src: "/work/creatorflow/macbook-cover.jpg", alt: "The CreatorFlow dashboard shown on a MacBook, angled on a stone surface" },
     caseStudyStatus: "detailed",
     layout: "landscape",
     titleBlock: "title-year_category",

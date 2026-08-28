@@ -6,14 +6,10 @@ import { WorkCover } from "@/components/work/WorkCover";
 import { ProjectStatusBadge } from "@/components/work/ProjectStatusBadge";
 import { WORK_STUBS, type WorkProject } from "@/lib/data";
 
-const COVER_RATIO: Record<WorkProject["layout"], string> = {
-  landscape: "aspect-[4/3] desk:aspect-[16/9]",
-  split: "aspect-[4/3] desk:aspect-[4/5]",
-  wide: "aspect-[4/3] desk:aspect-[21/7]",
-};
+const COVER_RATIO = "aspect-[4/3] desk:aspect-[16/10]";
 
 const titleClass =
-  "m-0 text-[23px] font-medium tracking-[-0.02em] transition-transform duration-[320ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:-translate-y-0.5 tab:text-[26px] desk:text-[30px]";
+  "m-0 text-[20px] font-medium tracking-[-0.02em] transition-transform duration-[320ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:-translate-y-0.5 tab:text-[21px] desk:text-[23px]";
 const categoryClass = "text-[12px] font-medium tracking-[0.07em] text-ink-faint";
 const yearClass = "whitespace-nowrap text-[13px] text-ink-faint";
 
@@ -98,13 +94,13 @@ export function WorkCard({ project }: { project: WorkProject }) {
   const hasCover = project.cover.kind === "image";
 
   const cover = hasCover ? (
-    <WorkCover className={COVER_RATIO[project.layout]}>
+    <WorkCover className={COVER_RATIO}>
       <Image
         data-img
         src={project.cover.kind === "image" ? project.cover.src : ""}
         alt={project.cover.kind === "image" ? project.cover.alt : ""}
         fill
-        sizes="(min-width: 1200px) 620px, (min-width: 810px) 60vw, 92vw"
+        sizes="(min-width: 1200px) 46vw, (min-width: 810px) 46vw, 92vw"
         className="object-cover object-top transition-transform duration-[380ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.025]"
       />
     </WorkCover>
@@ -141,14 +137,9 @@ export function WorkCard({ project }: { project: WorkProject }) {
     <Link
       href={`/work/${project.slug}`}
       aria-label={isStub ? `${project.title} — case study in progress` : `${project.title} case study`}
-      className="group block border-b border-line-soft pb-[52px] tab:pb-[74px]"
+      className="group block"
     >
-      {hasCover && project.layout === "split" ? (
-        <div className="grid grid-cols-1 items-start gap-6 desk:grid-cols-[minmax(0,56%)_minmax(0,38%)] desk:gap-10">
-          {cover}
-          {text}
-        </div>
-      ) : hasCover ? (
+      {hasCover ? (
         <div className="flex flex-col gap-[18px] tab:gap-[22px]">
           {cover}
           {text}

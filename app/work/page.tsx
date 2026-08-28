@@ -33,7 +33,7 @@ export default function WorkPage() {
       </section>
 
       <Section>
-        <div className="flex flex-col">
+        <div className="grid grid-cols-1 gap-x-8 gap-y-14 tab:grid-cols-2 tab:gap-y-16">
           {WORK_PROJECTS.map((project) => (
             <WorkCard key={project.slug} project={project} />
           ))}
