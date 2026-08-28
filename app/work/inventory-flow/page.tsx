@@ -97,7 +97,7 @@ export default function InventoryFlowCaseStudy() {
             </div>
             <p className="m-0 mt-3 text-[12px] text-ink-faint">
               Left: unmodified Java Edition. Right: the original Inventory Flow concept, built for this case study.
-              Independent concept project — not affiliated with or endorsed by Mojang Studios or Microsoft.
+              Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.
             </p>
           </Reveal>
         </Container>

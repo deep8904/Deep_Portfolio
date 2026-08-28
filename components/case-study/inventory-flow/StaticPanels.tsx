@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { Lock, Check } from "lucide-react";
 import { ItemGlyph, type ItemId } from "./ItemGlyph";
+import { MinecraftPanel } from "./MinecraftUI";
 
 const slotBevel = { boxShadow: "inset -2px -2px 0 rgba(0,0,0,0.35), inset 2px 2px 0 rgba(255,255,255,0.18)" };
 
@@ -58,7 +59,7 @@ const HERO_HOTBAR: StaticSlot[] = [{ item: "torch", qty: 8 }, { item: "cobblesto
  * language as the live prototype further down the page. */
 export function HeroConceptPreview() {
   return (
-    <div className="relative overflow-hidden rounded-lg border border-black/40 bg-gradient-to-b from-[#0f1a12] to-[#1c2b1c] p-4">
+    <MinecraftPanel className="p-4">
       <div className="mx-auto flex max-w-[420px] flex-col gap-2.5">
         <div className="flex items-center justify-between">
           <span className="text-[12px] font-bold tracking-[0.02em] text-[#dcdcd4]" style={{ textShadow: "1px 1px 0 rgba(0,0,0,0.6)" }}>
@@ -80,7 +81,7 @@ export function HeroConceptPreview() {
         <StaticGrid slots={HERO_MAIN} cols={9} size={28} />
         <StaticGrid slots={HERO_HOTBAR} cols={9} size={28} />
       </div>
-    </div>
+    </MinecraftPanel>
   );
 }
 

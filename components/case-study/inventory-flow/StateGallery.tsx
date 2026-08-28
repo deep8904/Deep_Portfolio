@@ -85,7 +85,7 @@ export function StateGallery() {
   return (
     <div className="grid grid-cols-2 gap-3 tab:grid-cols-4">
       {STATES.map((s) => (
-        <div key={s.label} className="flex flex-col items-start gap-2.5 rounded-lg border border-black/40 bg-gradient-to-b from-[#0f1a12] to-[#1c2b1c] p-4">
+        <div key={s.label} className="flex flex-col items-start gap-2.5 border border-black/40 bg-gradient-to-b from-[#0f1a12] to-[#1c2b1c] p-4">
           <div className="flex h-11 items-center">{s.render()}</div>
           <span className="text-[12.5px] font-medium tracking-[-0.01em] text-white">{s.label}</span>
           <p className="m-0 text-[12px] leading-[1.5] text-[#a8a89f] text-pretty">{s.note}</p>

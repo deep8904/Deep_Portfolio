@@ -2,8 +2,9 @@
 
 import { useMemo, useReducer, useState } from "react";
 import clsx from "clsx";
-import { ArrowDownToLine, ArrowUpFromLine, ArrowRightLeft, Layers, Lock, Unlock, RotateCcw, X, Check } from "lucide-react";
+import { ArrowDownToLine, ArrowUpFromLine, ArrowRightLeft, Layers, Lock, Unlock, RotateCcw, X } from "lucide-react";
 import { ItemGlyph, ITEM_META, type ItemId } from "./ItemGlyph";
+import { MinecraftPanel, MinecraftInset, MinecraftLabel, MinecraftSlotGrid, MinecraftButton, slotBevel } from "./MinecraftUI";
 
 // ---------------------------------------------------------------------------
 // Deterministic demo data. No persistence, no network — Reset Demo always
@@ -371,129 +372,8 @@ function reducer(state: State, action: Action): State {
 }
 
 // ---------------------------------------------------------------------------
-// Game-chrome presentational pieces — deliberately NOT the site's cream/
-// rounded design system. Square corners, stone-gray panels, beveled slot
-// edges: this is the one part of the page meant to read as Minecraft.
-// ---------------------------------------------------------------------------
-
-const slotBevel = {
-  boxShadow: "inset -2px -2px 0 rgba(0,0,0,0.35), inset 2px 2px 0 rgba(255,255,255,0.18)",
-};
-
-function SlotButton({
-  slot,
-  selectable,
-  selected,
-  onClick,
-  size = "normal",
-}: {
-  slot: Slot;
-  selectable: boolean;
-  selected: boolean;
-  onClick?: () => void;
-  size?: "normal" | "small";
-}) {
-  const dim = size === "small" ? "h-9 w-9" : "h-10 w-10 tab:h-11 tab:w-11";
-  return (
-    <button
-      type="button"
-      disabled={!selectable || !slot}
-      aria-pressed={selectable ? selected : undefined}
-      aria-label={slot ? `${itemLabel(slot.item)} × ${slot.qty}` : "Empty slot"}
-      onClick={onClick}
-      style={selected ? undefined : slotBevel}
-      className={clsx(
-        dim,
-        "relative flex items-center justify-center bg-[#8b8b8b] transition-[filter] duration-100",
-        selected && "ring-2 ring-inset ring-[#fbd35c]",
-        selectable && slot && "hover:brightness-110 focus-visible:brightness-110",
-        !selectable && "cursor-default",
-        !slot && "opacity-90"
-      )}
-    >
-      {slot && (
-        <>
-          <ItemGlyph id={slot.item} size={size === "small" ? 22 : 26} />
-          {slot.qty > 1 && (
-            <span
-              className="absolute bottom-0 right-0.5 text-[11px] font-bold text-white"
-              style={{ textShadow: "1px 1px 0 rgba(0,0,0,0.8)" }}
-            >
-              {slot.qty}
-            </span>
-          )}
-        </>
-      )}
-      {selected && (
-        <span className="absolute -right-1.5 -top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#fbd35c] text-[#3a2f10]">
-          <Check size={10} strokeWidth={3} />
-        </span>
-      )}
-    </button>
-  );
-}
-
-function ActionButton({
-  icon: Icon,
-  label,
-  onClick,
-  active,
-  disabled,
-}: {
-  icon: typeof ArrowRightLeft;
-  label: string;
-  onClick: () => void;
-  active?: boolean;
-  disabled?: boolean;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={disabled}
-      aria-pressed={active}
-      className={clsx(
-        "inline-flex h-8 items-center gap-1.5 border px-2.5 text-[11.5px] font-semibold tracking-[0.01em] transition-colors duration-150",
-        active
-          ? "border-[#fbd35c] bg-[#5b7a33] text-white"
-          : "border-black/30 bg-[#6b6b66] text-[#e8e6df] hover:bg-[#787873]",
-        disabled && "cursor-not-allowed opacity-40"
-      )}
-      style={{ boxShadow: "inset -1px -1px 0 rgba(0,0,0,0.35), inset 1px 1px 0 rgba(255,255,255,0.12)" }}
-    >
-      <Icon size={12} strokeWidth={2.25} />
-      {label}
-    </button>
-  );
-}
-
-function GridBlock({
-  slots,
-  selectable,
-  selected,
-  onSelect,
-  cols = 9,
-}: {
-  slots: Slot[];
-  selectable: boolean;
-  selected: number[];
-  onSelect?: (i: number) => void;
-  cols?: number;
-}) {
-  return (
-    <div
-      className="grid gap-[3px] bg-[#545450] p-[6px]"
-      style={{ gridTemplateColumns: `repeat(${cols}, minmax(0,1fr))`, boxShadow: "inset -2px -2px 0 rgba(255,255,255,0.08), inset 2px 2px 0 rgba(0,0,0,0.4)" }}
-    >
-      {slots.map((slot, i) => (
-        <SlotButton key={i} slot={slot} selectable={selectable} selected={selected.includes(i)} onClick={() => onSelect?.(i)} />
-      ))}
-    </div>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Main component
+// Main component — presentational pieces (slots, panel, buttons) now live in
+// ./MinecraftUI as a shared internal visual system, not duplicated here.
 // ---------------------------------------------------------------------------
 
 type Mode = "chest" | "personal";
@@ -533,7 +413,7 @@ export function InventoryFlowPrototype() {
       </div>
 
       {/* Simulated Minecraft panel — dark backdrop + stone-gray chrome. */}
-      <div className="relative overflow-hidden rounded-lg border border-black/40 bg-gradient-to-b from-[#0f1a12] to-[#1c2b1c] p-4 tab:p-7">
+      <MinecraftPanel>
         <div aria-live="polite" className="sr-only">
           {state.status}
         </div>
@@ -548,9 +428,9 @@ export function InventoryFlowPrototype() {
             </span>
             <div className="flex flex-wrap items-center gap-1.5">
               {mode === "chest" && (
-                <ActionButton icon={ArrowRightLeft} label="Smart Select" active={state.smartSelect} onClick={() => dispatch({ type: "TOGGLE_SMART_SELECT" })} />
+                <MinecraftButton icon={ArrowRightLeft} label="Smart Select" active={state.smartSelect} onClick={() => dispatch({ type: "TOGGLE_SMART_SELECT" })} />
               )}
-              <ActionButton
+              <MinecraftButton
                 icon={state.hotbarProtected ? Lock : Unlock}
                 label={state.hotbarProtected ? "Hotbar Locked" : "Hotbar Unlocked"}
                 active={state.hotbarProtected}
@@ -568,12 +448,12 @@ export function InventoryFlowPrototype() {
           </div>
 
           <div className="flex flex-wrap items-center gap-1.5">
-            <ActionButton icon={ArrowRightLeft} label="Sort" onClick={() => dispatch({ type: "SORT" })} />
-            <ActionButton icon={Layers} label="Stack" onClick={() => dispatch({ type: "STACK" })} />
+            <MinecraftButton icon={ArrowRightLeft} label="Sort" onClick={() => dispatch({ type: "SORT" })} />
+            <MinecraftButton icon={Layers} label="Stack" onClick={() => dispatch({ type: "STACK" })} />
             {mode === "chest" && (
               <>
-                <ActionButton icon={ArrowDownToLine} label="Deposit Matching" onClick={() => dispatch({ type: "DEPOSIT_MATCHING" })} />
-                <ActionButton icon={ArrowUpFromLine} label="Take Matching" onClick={() => dispatch({ type: "TAKE_MATCHING" })} />
+                <MinecraftButton icon={ArrowDownToLine} label="Deposit Matching" onClick={() => dispatch({ type: "DEPOSIT_MATCHING" })} />
+                <MinecraftButton icon={ArrowUpFromLine} label="Take Matching" onClick={() => dispatch({ type: "TAKE_MATCHING" })} />
               </>
             )}
           </div>
@@ -586,9 +466,9 @@ export function InventoryFlowPrototype() {
                   : `${state.selected.length} stack${state.selected.length === 1 ? "" : "s"} selected · ${selectedQty} items total`}
               </span>
               <div className="flex items-center gap-1.5">
-                <ActionButton icon={ArrowDownToLine} label="Move" onClick={() => dispatch({ type: "MOVE_SELECTION" })} disabled={state.selected.length === 0} />
-                <ActionButton icon={X} label="Drop" onClick={() => dispatch({ type: "DROP_SELECTION" })} disabled={state.selected.length === 0} />
-                <ActionButton icon={X} label="Cancel" onClick={() => dispatch({ type: "CANCEL_SELECTION" })} disabled={state.selected.length === 0} />
+                <MinecraftButton icon={ArrowDownToLine} label="Move" onClick={() => dispatch({ type: "MOVE_SELECTION" })} disabled={state.selected.length === 0} />
+                <MinecraftButton icon={X} label="Drop" onClick={() => dispatch({ type: "DROP_SELECTION" })} disabled={state.selected.length === 0} />
+                <MinecraftButton icon={X} label="Cancel" onClick={() => dispatch({ type: "CANCEL_SELECTION" })} disabled={state.selected.length === 0} />
               </div>
             </div>
           )}
@@ -596,139 +476,143 @@ export function InventoryFlowPrototype() {
           {mode === "chest" ? (
             <>
               <div className="flex flex-col gap-1">
-                <span className="text-[11px] font-bold tracking-[0.04em] text-[#a8a89f]">STORAGE CHEST</span>
-                <GridBlock slots={state.storage} selectable={false} selected={[]} />
+                <MinecraftLabel>STORAGE CHEST</MinecraftLabel>
+                <MinecraftSlotGrid slots={state.storage} selectable={false} selected={[]} />
               </div>
               <div className="flex flex-col gap-1">
-                <span className="text-[11px] font-bold tracking-[0.04em] text-[#a8a89f]">
+                <MinecraftLabel>
                   YOUR INVENTORY {state.hotbarProtected && <Lock size={9} className="ml-1 inline -translate-y-px" />}
-                </span>
-                <GridBlock
+                </MinecraftLabel>
+                <MinecraftSlotGrid
                   slots={state.inventory.slice(HOTBAR_SIZE)}
                   selectable={state.smartSelect}
                   selected={state.selected.filter((i) => i >= HOTBAR_SIZE)}
                   onSelect={(i) => dispatch({ type: "SELECT_SLOT", index: i + HOTBAR_SIZE })}
                 />
               </div>
-              <GridBlock
+              <MinecraftSlotGrid
                 slots={state.inventory.slice(0, HOTBAR_SIZE)}
                 selectable={state.smartSelect}
                 selected={state.selected.filter((i) => i < HOTBAR_SIZE)}
                 onSelect={(i) => dispatch({ type: "SELECT_SLOT", index: i })}
+                statusFor={() => (state.hotbarProtected ? "Protected" : undefined)}
               />
             </>
           ) : (
-            <>
-              <div className="grid grid-cols-1 gap-4 desk:grid-cols-[minmax(0,220px)_1fr]">
-                {/* Crafting Clarity panel */}
-                <div className="flex flex-col gap-3 bg-[#6b6b66]/40 p-3" style={{ boxShadow: "inset -1px -1px 0 rgba(255,255,255,0.08), inset 1px 1px 0 rgba(0,0,0,0.35)" }}>
-                  <span className="text-[11px] font-bold tracking-[0.04em] text-[#a8a89f]">CRAFTING CLARITY</span>
-                  <div className="flex flex-col gap-1" role="listbox" aria-label="Recipes">
-                    {RECIPES.map((r) => (
-                      <button
-                        key={r.id}
-                        type="button"
-                        role="option"
-                        aria-selected={state.recipeId === r.id}
-                        onClick={() => dispatch({ type: "SET_RECIPE", id: r.id })}
-                        className={clsx(
-                          "flex items-center gap-2 px-2 py-1.5 text-left text-[12.5px] font-medium transition-colors duration-150",
-                          state.recipeId === r.id ? "bg-[#fbd35c] text-[#3a2f10]" : "bg-[#4d4d49] text-[#dcdcd4] hover:bg-[#5a5a55]"
-                        )}
-                      >
-                        <ItemGlyph id={r.output.item} size={16} />
-                        {r.label}
-                      </button>
-                    ))}
-                  </div>
+            <div className="grid grid-cols-1 gap-4 desk:grid-cols-[minmax(0,220px)_1fr]">
+              {/* Crafting Clarity panel */}
+              <MinecraftInset className="flex flex-col gap-3">
+                <MinecraftLabel>CRAFTING CLARITY</MinecraftLabel>
+                <div className="flex flex-col gap-1" role="listbox" aria-label="Recipes">
+                  {RECIPES.map((r) => (
+                    <button
+                      key={r.id}
+                      type="button"
+                      role="option"
+                      aria-selected={state.recipeId === r.id}
+                      onClick={() => dispatch({ type: "SET_RECIPE", id: r.id })}
+                      className={clsx(
+                        "flex items-center gap-2 px-2 py-1.5 text-left text-[12.5px] font-medium transition-colors duration-150",
+                        state.recipeId === r.id ? "bg-[#fbd35c] text-[#3a2f10]" : "bg-[#4d4d49] text-[#dcdcd4] hover:bg-[#5a5a55]"
+                      )}
+                    >
+                      <ItemGlyph id={r.output.item} size={16} />
+                      {r.label}
+                    </button>
+                  ))}
+                </div>
 
-                  <div className="flex items-center justify-center py-1">
-                    <div className="grid grid-cols-2 grid-rows-2 gap-[3px] bg-[#545450] p-[6px]" style={{ boxShadow: "inset -1px -1px 0 rgba(255,255,255,0.08), inset 1px 1px 0 rgba(0,0,0,0.4)" }}>
-                      {[0, 1, 2, 3].map((cell) => {
-                        const col = cell % 2;
-                        const row = Math.floor(cell / 2);
-                        const ingredientIndex = recipe.gridPositions.findIndex(([c, r]) => c === col && r === row);
-                        const ing = ingredientIndex >= 0 ? recipe.ingredients[ingredientIndex] : null;
-                        return (
-                          <div key={cell} className="flex h-10 w-10 items-center justify-center bg-[#8b8b8b]" style={slotBevel}>
-                            {ing && <ItemGlyph id={ing.item} size={22} />}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-1">
-                    {ingredientStatus.map((ing) => {
-                      const ready = ing.owned >= ing.needed;
+                <div className="flex items-center justify-center py-1">
+                  <div className="grid grid-cols-2 grid-rows-2 gap-[3px] bg-[#545450] p-[6px]" style={{ boxShadow: "inset -1px -1px 0 rgba(255,255,255,0.08), inset 1px 1px 0 rgba(0,0,0,0.4)" }}>
+                    {[0, 1, 2, 3].map((cell) => {
+                      const col = cell % 2;
+                      const row = Math.floor(cell / 2);
+                      const ingredientIndex = recipe.gridPositions.findIndex(([c, r]) => c === col && r === row);
+                      const ing = ingredientIndex >= 0 ? recipe.ingredients[ingredientIndex] : null;
                       return (
-                        <div
-                          key={ing.item}
-                          className={clsx(
-                            "flex items-center justify-between gap-3 px-2 py-1 text-[12px] font-semibold",
-                            ready ? "bg-[#3f5a26] text-[#c9e8a8]" : "bg-[#5a2a26] text-[#f0b6ac]"
-                          )}
-                        >
-                          <span className="flex items-center gap-1.5">
-                            <ItemGlyph id={ing.item} size={13} />
-                            {itemLabel(ing.item)}
-                          </span>
-                          <span className="tabular-nums">
-                            {ing.owned} / {ing.needed}
-                          </span>
+                        <div key={cell} className="flex h-10 w-10 items-center justify-center bg-[#8b8b8b]" style={slotBevel}>
+                          {ing && <ItemGlyph id={ing.item} size={22} />}
                         </div>
                       );
                     })}
                   </div>
+                </div>
 
-                  <div className="flex items-center gap-2">
-                    <span className="text-[11px] text-[#a8a89f]">Qty</span>
-                    <button
-                      type="button"
-                      onClick={() => dispatch({ type: "SET_QUANTITY", qty: state.quantity - 1 })}
-                      aria-label="Decrease quantity"
-                      className="flex h-6 w-6 items-center justify-center bg-[#4d4d49] text-[#dcdcd4] hover:bg-[#5a5a55]"
-                    >
-                      −
-                    </button>
-                    <span className="w-6 text-center text-[12.5px] font-bold tabular-nums text-white">{state.quantity}</span>
-                    <button
-                      type="button"
-                      onClick={() => dispatch({ type: "SET_QUANTITY", qty: state.quantity + 1 })}
-                      aria-label="Increase quantity"
-                      className="flex h-6 w-6 items-center justify-center bg-[#4d4d49] text-[#dcdcd4] hover:bg-[#5a5a55]"
-                    >
-                      +
-                    </button>
-                  </div>
+                <div className="flex flex-col gap-1">
+                  {ingredientStatus.map((ing) => {
+                    const ready = ing.owned >= ing.needed;
+                    return (
+                      <div
+                        key={ing.item}
+                        className={clsx(
+                          "flex items-center justify-between gap-3 px-2 py-1 text-[12px] font-semibold",
+                          ready ? "bg-[#3f5a26] text-[#c9e8a8]" : "bg-[#5a2a26] text-[#f0b6ac]"
+                        )}
+                      >
+                        <span className="flex items-center gap-1.5">
+                          <ItemGlyph id={ing.item} size={13} />
+                          {itemLabel(ing.item)}
+                        </span>
+                        <span className="tabular-nums">
+                          {ing.owned} / {ing.needed}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
 
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] text-[#a8a89f]">Qty</span>
                   <button
                     type="button"
-                    onClick={() => dispatch({ type: "CRAFT" })}
-                    disabled={!canCraft}
-                    className={clsx(
-                      "flex h-9 items-center justify-center text-[12.5px] font-bold tracking-[0.01em] transition-colors duration-150",
-                      canCraft ? "bg-[#5b7a33] text-white hover:bg-[#6a8c3c]" : "cursor-not-allowed bg-[#4d4d49] text-[#8a8a82]"
-                    )}
+                    onClick={() => dispatch({ type: "SET_QUANTITY", qty: state.quantity - 1 })}
+                    aria-label="Decrease quantity"
+                    className="flex h-6 w-6 items-center justify-center bg-[#4d4d49] text-[#dcdcd4] hover:bg-[#5a5a55]"
                   >
-                    Craft {recipe.output.qty * state.quantity} {itemLabel(recipe.output.item)}
+                    −
+                  </button>
+                  <span className="w-6 text-center text-[12.5px] font-bold tabular-nums text-white">{state.quantity}</span>
+                  <button
+                    type="button"
+                    onClick={() => dispatch({ type: "SET_QUANTITY", qty: state.quantity + 1 })}
+                    aria-label="Increase quantity"
+                    className="flex h-6 w-6 items-center justify-center bg-[#4d4d49] text-[#dcdcd4] hover:bg-[#5a5a55]"
+                  >
+                    +
                   </button>
                 </div>
 
-                <div className="flex flex-col gap-3">
-                  <div className="flex flex-col gap-1">
-                    <span className="text-[11px] font-bold tracking-[0.04em] text-[#a8a89f]">
-                      BACKPACK {state.hotbarProtected && <Lock size={9} className="ml-1 inline -translate-y-px" />}
-                    </span>
-                    <GridBlock slots={state.inventory.slice(HOTBAR_SIZE)} selectable={false} selected={[]} />
-                  </div>
-                  <GridBlock slots={state.inventory.slice(0, HOTBAR_SIZE)} selectable={false} selected={[]} />
+                <button
+                  type="button"
+                  onClick={() => dispatch({ type: "CRAFT" })}
+                  disabled={!canCraft}
+                  className={clsx(
+                    "flex h-9 items-center justify-center text-[12.5px] font-bold tracking-[0.01em] transition-colors duration-150",
+                    canCraft ? "bg-[#5b7a33] text-white hover:bg-[#6a8c3c]" : "cursor-not-allowed bg-[#4d4d49] text-[#8a8a82]"
+                  )}
+                >
+                  Craft {recipe.output.qty * state.quantity} {itemLabel(recipe.output.item)}
+                </button>
+              </MinecraftInset>
+
+              <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-1">
+                  <MinecraftLabel>
+                    BACKPACK {state.hotbarProtected && <Lock size={9} className="ml-1 inline -translate-y-px" />}
+                  </MinecraftLabel>
+                  <MinecraftSlotGrid slots={state.inventory.slice(HOTBAR_SIZE)} selectable={false} selected={[]} />
                 </div>
+                <MinecraftSlotGrid
+                  slots={state.inventory.slice(0, HOTBAR_SIZE)}
+                  selectable={false}
+                  selected={[]}
+                  statusFor={() => (state.hotbarProtected ? "Protected" : undefined)}
+                />
               </div>
-            </>
+            </div>
           )}
         </div>
-      </div>
+      </MinecraftPanel>
 
       <p className="text-[12.5px] leading-[1.6] text-ink-faint">{state.status}</p>
     </div>

@@ -1,57 +1,55 @@
 # Inventory Flow — Asset Provenance
 
-Independent concept project. Not affiliated with or endorsed by Mojang Studios or Microsoft.
+Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.
 
-This document records the origin of every visual asset used in the "Inventory Flow" case study at `/work/inventory-flow`.
+This document records the origin of every visual asset used in the "Inventory Flow" case study at `/work/inventory-flow`, organized by how each one was actually used.
 
-## Vanilla Minecraft (real, unmodified captures)
+## Final asset strategy
 
-| Asset | Source | Creator | Usage basis | Modified | Used in |
-|---|---|---|---|---|---|
-| `public/work/inventory-flow/vanilla/creative-inventory-tooltip.png` | Provided by Deep (originally captured by Jay Han for his own case study's evidence section, filename matches Minecraft's native auto-screenshot convention `yyyy-MM-dd_HH.mm.ss`) | Jay Han (in-game capture of Mojang's software) | Real, unmodified gameplay screenshot used as current-baseline evidence; labeled "VANILLA MINECRAFT," never presented as Deep's work | Not modified | Hero (paired against the original concept) and "Current Experience" |
-| `public/work/inventory-flow/vanilla/survival-inventory-wiki.png` | `https://minecraft.wiki/images/Inventory.png` | Minecraft Wiki contributors (in-game capture of Mojang's software) | Wiki reference screenshot of the survival inventory (equipment, 2×2 crafting grid, hotbar), used to accurately ground the current-state audit | Not modified | "Current Experience" |
-| `public/work/inventory-flow/vanilla/recipe-book-wiki.png` | `https://minecraft.wiki/images/thumb/Crafting_Recipe_Book_%28inventory%29.png/1200px-Crafting_Recipe_Book_%28inventory%29.png` | Minecraft Wiki contributors (in-game capture of Mojang's software) | Wiki reference screenshot of the Recipe Book, showing search, category tabs, and the red missing-material highlight — directly supports this case study's claims about the current baseline | Not modified | "Current Experience" |
+1. **Real Minecraft screenshots** for current-state evidence.
+2. **Figma community files** inspected as visual/geometry reference only — never shipped, for the reasoning below.
+3. **Original Inventory Flow UI**, built in React (`MinecraftUI.tsx`, `InventoryFlowPrototype.tsx`).
+4. **Original pixel-art item assets** (`PixelIcon.tsx`) for in-prototype item art.
 
-## Reference study imagery (Jay Han and Barbara Franco's own work)
+Owning a copy of Minecraft doesn't change this — the constraint is redistribution rights over Mojang's copyrighted assets, not access to the game.
 
-These belong to the two designers. They are shown only inside the "Two Design Studies" section, always labeled **REFERENCE STUDY**, always attributed by name with an outbound link to the source, and never appear in the hero, "The System," the interactive prototype, states gallery, or the Work-page/home cover.
+## Category: USED DIRECTLY — real gameplay screenshot
 
-| Asset | Source | Creator | Usage basis | Modified | Used in |
-|---|---|---|---|---|---|
-| `reference/jay-han/smart-select-active.png` | jayhan.me/minecraft-inventory (file provided directly by Deep) | Jay Han | Editorial/research commentary — attributed, linked, labeled REFERENCE STUDY | Not modified | "Two Design Studies" |
-| `reference/jay-han/smart-select-idle.png` | jayhan.me/minecraft-inventory | Jay Han | Same as above (held in reserve; not currently placed on the page) | Not modified | — |
-| `reference/jay-han/compartments-grid.png` | jayhan.me/minecraft-inventory | Jay Han | Same as above (held in reserve) | Not modified | — |
-| `reference/jay-han/custom-compartments.png` | jayhan.me/minecraft-inventory | Jay Han | Same as above (held in reserve) | Not modified | — |
-| `reference/barbara-franco/final-concept.png` | barbarafranco.design (Wix-hosted image, file provided directly by Deep) | Barbara Franco | Editorial/research commentary — attributed, linked, labeled REFERENCE STUDY | Not modified | "Two Design Studies" |
-| `reference/barbara-franco/hero-cover.png` | barbarafranco.design | Barbara Franco | Same as above (held in reserve) | Not modified | — |
-| `reference/barbara-franco/wireframe-exploration.png` | barbarafranco.design | Barbara Franco | Same as above (held in reserve) | Not modified | — |
-
-## Original assets (built for this case study)
-
-| Asset | Creator | Notes |
-|---|---|---|
-| Item pixel art (`PixelIcon.tsx`) | Deep Chadamiya, this codebase | 12×12 original pixel grids, hand-authored per item (oak log, planks, stick, coal, torch, crafting table, cobblestone, iron ingot, wheat, diamond) — not Minecraft's own textures |
-| Interactive prototype UI (`InventoryFlowPrototype.tsx`) | Deep Chadamiya, this codebase | Original stone-panel game chrome (slot bevels, hotbar separation, selection/ready/missing states) |
-| Hero concept preview (`StaticPanels.tsx` → `HeroConceptPreview`) | Deep Chadamiya, this codebase | Frozen preview of the Chest-mode panel, same visual language as the live prototype |
-| Rejected-concept sketches (`StaticPanels.tsx` → `RejectedSketch`) | Deep Chadamiya, this codebase | Small mini-wireframes, deliberately rough |
-| Work-list / home cover art (`InventoryFlowCover.tsx`) | Deep Chadamiya, this codebase | Same dark stone-panel language as the prototype |
-| State gallery (`StateGallery.tsx`) | Deep Chadamiya, this codebase | Real-sized slot crops using the redesigned system, not Storybook-style documentation |
-
-## Figma community resources — inspected, not shipped
-
-Four Figma community files were reviewed as candidate visual foundations for the prototype's game chrome:
-
-| Resource | URL | What it actually is | Decision |
+| Asset | Source | Creator | How it affected the design |
 |---|---|---|---|
-| "Minecraft Assets — Community" | figma.com/design/2dk5Qczu2hiZlP9sIlyVGE | A sprite sheet of Mojang's own item/block textures (128×128 each), extracted and re-hosted in Figma. Layer names match Minecraft's real texture filenames exactly (e.g. `acacia_log`, `Grass_Block_(top_texture)_JE4_BE2`). | **Not shipped.** This is Mojang's copyrighted texture art republished by a community account with no visible redistribution license. Inspected only (e.g. `acacia_log`, node `2018:3757`) to sanity-check the color/shape of this project's own original pixel icons — nothing was exported into the repo. |
-| "MINECRAFT UI KIT — Community" | figma.com/design/IYzGa2yw2rqjYu67Wjv96H | Same situation as above: the file's own cover reads "MINECRAFT UI" over Mojang's dirt texture and Steve render, and the inspected canvas (`Blocks`) is another Mojang-texture sprite sheet with Wiki-style version-tagged filenames. Not an original UI redesign. | **Not shipped**, same reasoning. |
-| "Minecraft Inventory Template — Community" | figma.com/design/2boFyMI8C71kcr3pXh8iWo | A small, generic gray-slot inventory/hotbar/crafting-grid template. Low detail, no texture or attribution concerns, but adds nothing beyond what the real Minecraft Wiki screenshots already confirmed about vanilla layout. | Reviewed; not a meaningful upgrade over the Wiki screenshots already in use, so not adopted. |
-| "Redesign: Minecraft inventory UI — Community" | figma.com/design/bYHdcBCXZ49dzajEgfYISu | Another independent designer's **own original redesign concept** (wireframe → palette → warm rounded-panel final screen over blurred gameplay) — not vanilla Minecraft, and not Deep's work. | **Not used as a foundation.** Treating an uncredited third designer's original redesign as "the template to extend" would be the same problem this case study explicitly avoids with Jay Han and Barbara Franco — using someone else's design without attribution. If it were adopted, it would need the same REFERENCE STUDY treatment as the other two, and the case study is intentionally scoped to two research references, not three. |
+| `vanilla/creative-inventory-tooltip.png` | Provided by Deep; filename matches Minecraft's native auto-screenshot convention `yyyy-MM-dd_HH.mm.ss` (originally captured by Jay Han for his own case study) | Jay Han (in-game capture of Mojang's software) | Anchors the hero as a real screenshot, not an illustration — sets the "this is grounded in the real game" tone before any concept UI appears. Also the source for confirming the item-tooltip's info hierarchy (name, enchantment, effect, "From: Minecraft") referenced when designing the prototype's own hover tooltip. |
+| `vanilla/survival-inventory-wiki.png` | `minecraft.wiki/images/Inventory.png` | Minecraft Wiki contributors (in-game capture) | The direct source for this case study's slot/hotbar/2×2-grid layout claims in "Current Experience" — confirmed equipment sits left of the player model, crafting sits right, hotbar is visually separated below. |
+| `vanilla/recipe-book-wiki.png` | `minecraft.wiki/images/thumb/Crafting_Recipe_Book_(inventory).png/1200px-...` | Minecraft Wiki contributors (in-game capture) | The direct source for the claim that search, category tabs, a craftable filter, and a red missing-material highlight already exist — used to keep Crafting Clarity's copy honest about what's new versus already-vanilla. |
 
-Per this project's own asset policy — use a resource directly only when reuse rights are clear, otherwise treat it as reference and recreate — the two texture-sprite files were inspected for accuracy and then set aside, and the interactive prototype's item art and game-chrome styling remain the original system in `PixelIcon.tsx` and `InventoryFlowPrototype.tsx`, cross-checked against the real vanilla Java Edition screenshots above rather than rebuilt from Mojang's extracted textures.
+## Category: USED DIRECTLY — original asset (built for this case study)
 
-## Not used, and why
+| Asset | Creator | How it was built |
+|---|---|---|
+| `PixelIcon.tsx` | Deep Chadamiya, this codebase | 12×12 original pixel grids, hand-authored per item. Shape/color choices (e.g. the oak log's concentric-ring cross-section) were sanity-checked against a real Minecraft texture viewed via Figma (see below) for silhouette accuracy, then redrawn from scratch — no pixels copied. |
+| `MinecraftUI.tsx` | Deep Chadamiya, this codebase | The shared internal visual system for the simulated game UI: `MinecraftPanel` (square window, two-tone pixel bevel), `MinecraftSlot` (beveled slot + hover tooltip), `MinecraftSlotGrid`, `MinecraftButton`, `MinecraftInset`, `MinecraftLabel`. One system, reused by the prototype, the hero preview, and the Work-list cover instead of three separate approximations. |
+| `InventoryFlowPrototype.tsx` | Deep Chadamiya, this codebase | Chest mode and Personal Inventory mode, built on `MinecraftUI.tsx` |
+| `StaticPanels.tsx` (`HeroConceptPreview`, `RejectedSketch`) | Deep Chadamiya, this codebase | Frozen hero preview and rejected-concept mini-sketches, same visual system |
+| `InventoryFlowCover.tsx` | Deep Chadamiya, this codebase | Work-list/home cover, same visual system |
+| `StateGallery.tsx` | Deep Chadamiya, this codebase | Real-sized slot-state crops, same visual system |
 
-- **Jay Han's and Barbara Franco's full mockups beyond the one frame each currently placed** — kept in the asset folder in reserve but not placed on the page, to keep the reference section tight rather than exhaustive.
-- **Mojang's actual item textures/sprites**, including the two Figma community files packaging them — not used anywhere. All item art in the prototype, states gallery, and covers is original pixel art authored for this project.
-- **AI-generated "fake Minecraft" renders for the hero** — deliberately avoided. The hero pairs a real, unmodified vanilla screenshot against the original concept, not a synthetic image.
+## Category: VISUAL REFERENCE ONLY — not shipped
+
+Four Figma community files were opened and inspected in full (components, frames, layer names, proportions) — not just thumbnails.
+
+| Resource | URL | What it actually is | Why it wasn't shipped | What it did affect |
+|---|---|---|---|---|
+| "Minecraft Assets — Community" | figma.com/design/2dk5Qczu2hiZlP9sIlyVGE | A sprite sheet of Mojang's own item/block textures (128×128 each). Layer names match Minecraft's real texture filenames exactly (`acacia_log`, `Grass_Block_(top_texture)_JE4_BE2`). | Mojang's copyrighted texture art, re-hosted by a community account with no visible redistribution license — the same legal position as sourcing the raw textures directly. | Inspected one texture (`acacia_log`, node `2018:3757`) purely to check silhouette/color accuracy against this project's own hand-drawn oak-log pixel icon. Nothing exported. |
+| "MINECRAFT UI KIT — Community" | figma.com/design/IYzGa2yw2rqjYu67Wjv96H | Same situation: the cover reads "MINECRAFT UI" over Mojang's dirt texture and a Steve render; the inspected canvas is another Mojang-texture sprite sheet with Wiki version-tagged filenames, not an original UI redesign. | Same reasoning as above. | Confirmed (via the file's own cover art) that this is a texture library, not original UI chrome — informed the decision to build `MinecraftUI.tsx` from scratch, cross-checked against the real Wiki screenshots above, rather than against this file. |
+| "Minecraft Inventory Template — Community" | figma.com/design/2boFyMI8C71kcr3pXh8iWo | A small, generic gray-slot inventory/hotbar/crafting-grid template. No texture/attribution concerns. | Added nothing beyond what the real Wiki screenshots already confirmed about vanilla layout — grid-hotbar-crafting arrangement matched what was already verified. | Cross-check only; no direct effect on the final design. |
+| "Redesign: Minecraft inventory UI — Community" | figma.com/design/bYHdcBCXZ49dzajEgfYISu | Another independent designer's own original redesign concept (wireframe → palette → warm rounded-panel final screen over blurred gameplay) — not vanilla Minecraft, not Deep's work. | Adopting it as a structural foundation would repeat the exact uncredited-reuse problem this case study explicitly avoids with Jay Han and Barbara Franco. This case study cites two research references, not three. | Not used, and deliberately excluded from the public case study rather than added as a third reference study. |
+
+## Category: REFERENCE CASE STUDY — Jay Han and Barbara Franco's own work
+
+Shown only inside "Two Design Studies," always labeled **REFERENCE STUDY**, credited by name with an outbound link, never appearing in the hero, "The System," the interactive prototype, states gallery, or any cover.
+
+| Asset | Source | Creator | How it affected the design |
+|---|---|---|---|
+| `reference/jay-han/smart-select-active.png` | jayhan.me/minecraft-inventory (file provided by Deep) | Jay Han | Source for the "What He Explored" / "What Testing Exposed" framing — the multi-stack-selection idea it demonstrates became this concept's Smart Select; the compartments-complexity concern his own testing surfaced became a guardrail. |
+| `reference/barbara-franco/final-concept.png` | barbarafranco.design (file provided by Deep) | Barbara Franco | Source for the "What She Protected" / "What She Improved" framing — her ready/missing color treatment and preserved 2×2 grid directly informed Crafting Clarity's owned-vs-required states in this concept. |
+| `reference/jay-han/smart-select-idle.png`, `compartments-grid.png`, `custom-compartments.png` | jayhan.me/minecraft-inventory | Jay Han | Held in reserve; not currently placed on the page (kept the section to one frame per designer rather than exhaustive). |
+| `reference/barbara-franco/hero-cover.png`, `wireframe-exploration.png` | barbarafranco.design | Barbara Franco | Held in reserve, same reasoning. |
