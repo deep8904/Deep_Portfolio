@@ -41,7 +41,7 @@ const CHAPTERS = [
   { id: "permissions", label: "Permissions" },
   { id: "integrations", label: "Integrations" },
   { id: "ai", label: "AI, Honestly" },
-  { id: "interface", label: "Interface" },
+  { id: "interface", label: "Full Product" },
   { id: "qa", label: "QA" },
   { id: "status", label: "Status" },
   { id: "outcome", label: "Outcome" },
@@ -104,10 +104,11 @@ export default function CreatorFlowCaseStudy() {
       >
         <div className="mt-9 tab:mt-11">
           <CaseStudyFigure
-            src="/work/creatorflow/dashboard-earlier-iteration.jpg"
-            alt="The CreatorFlow dashboard, showing demo account data"
-            caption="The live Dashboard — shown with demo account data, not real production metrics."
-            tag="Live product · demo data"
+            src="/work/creatorflow/landing.png"
+            alt="The CreatorFlow landing page, showing the real product's dark hero section with the headline 'Fewer dropped ideas. More consistent you.'"
+            caption="The live marketing site — real product, real copy, not a placeholder splash page."
+            tag="Live product"
+            aspect="aspect-[3456/2234]"
           />
         </div>
       </CaseStudyHero>
@@ -167,6 +168,7 @@ export default function CreatorFlowCaseStudy() {
           alt="The CreatorFlow Deals kanban board, showing sponsorship deals across pipeline stages"
           caption="The Deals board — the same stage pipeline described above, with demo brand names and deal values."
           tag="Live product · demo data"
+          aspect="aspect-[3456/2234]"
         />
         <WorkflowBlock
           num="02"
@@ -208,7 +210,7 @@ export default function CreatorFlowCaseStudy() {
           alt="The CreatorFlow Team screen, showing two members with role dropdowns and one pending invite with a Revoke action"
           caption="The Team screen — two real members with a live role dropdown, and a pending invite with a Revoke action. The same flow the diagram above describes."
           tag="Live product · demo data"
-          aspect="aspect-[1182/490]"
+          aspect="aspect-[1392/1008]"
         />
       </CaseStudySection>
 
@@ -229,7 +231,7 @@ export default function CreatorFlowCaseStudy() {
             alt="The CreatorFlow 'What each role can do' matrix, listing which modules each of the five roles can access"
             caption="The product's own “What each role can do” matrix — real UI, not a mockup of the permission model."
             tag="Live product · demo data"
-            aspect="aspect-[655/780]"
+            aspect="aspect-[1392/1644]"
             hotspots={[
               { index: 1, x: 25.8, y: 15 },
               { index: 2, x: 25.8, y: 92.9 },
@@ -304,6 +306,7 @@ export default function CreatorFlowCaseStudy() {
             alt="The CreatorFlow Automations screen, showing which rules run on a real schedule and which are preview-only"
             caption="Automations — the banner and “PREVIEW (NOT RUNNING)” badges are the actual product copy, not an annotation added for this case study."
             tag="Live product · demo data"
+            aspect="aspect-[3456/2234]"
             hotspots={[
               { index: 1, x: 44.8, y: 20.4 },
               { index: 2, x: 64.9, y: 39.7 },
@@ -340,29 +343,79 @@ export default function CreatorFlowCaseStudy() {
         </div>
       </CaseStudySection>
 
-      <PhaseDivider label="THE INTERFACE" />
+      <PhaseDivider label="THE FULL PRODUCT" />
 
       <CaseStudySection
         id="interface"
-        eyebrow="Building the Experience"
-        title="Ideas and Drafts, side by side."
-        intro="An idea becomes a draft through a real handoff — not a separate app, a click that carries the idea's title and notes straight into a new draft."
+        eyebrow="The Full Product"
+        title="Twelve modules. One connected surface."
+        intro="Deals and Team already appeared above, tied to the workflows they support. This is the rest of the product — the same account, the same design system, the same honesty about what's real."
         contentClassName="flex flex-col gap-10"
       >
+        <AnnotatedScreen
+          src="/work/creatorflow/dashboard.png"
+          alt="The CreatorFlow Dashboard, showing pipeline stats, a channel-views chart, and an ideas-shipped progress ring"
+          caption="The Dashboard — the account's front page. Shown with demo account data, not real production metrics."
+          tag="Live product · demo data"
+          aspect="aspect-[3456/2234]"
+          hotspots={[
+            { index: 1, x: 24.2, y: 17.4 },
+            { index: 2, x: 44.6, y: 89.5 },
+          ]}
+          annotations={[
+            {
+              index: 1,
+              title: "One glance, no digging",
+              body: "Open deals, pipeline value, and what needs follow-up sit in the same stat row — the questions a creator actually opens the app to answer.",
+            },
+            {
+              index: 2,
+              title: "Said plainly, in the product itself",
+              body: "“Seeded demo data. In production this pulls live from the YouTube Analytics API” — the app's own caption, not an annotation added for this case study.",
+            },
+          ]}
+        />
+
         <div className="grid grid-cols-1 gap-6 tab:grid-cols-2">
           <CaseStudyFigure
             src="/work/creatorflow/ideas.png"
             alt="The CreatorFlow Ideas board, showing captured ideas with status tabs and tag chips"
             caption="Ideas — 12 captured, with New/In Progress/Scheduled/Done tabs and Table/Board/Gallery/Calendar views."
             tag="Live product · demo data"
+            aspect="aspect-[3456/2234]"
           />
           <CaseStudyFigure
             src="/work/creatorflow/drafts.png"
             alt="The CreatorFlow Drafts screen, showing a list of drafts and an open editor with a Submit for review action"
             caption="Drafts — a real editor with dictation, a “Submit for review” approval step, and the honestly-labeled “AI assist (preview).”"
             tag="Live product · demo data"
+            aspect="aspect-[3456/2234]"
           />
         </div>
+
+        <AnnotatedScreen
+          src="/work/creatorflow/repurpose.png"
+          alt="The CreatorFlow Repurpose screen, showing best-time-to-publish analytics and a list of published videos"
+          caption="Repurpose — turns a published video into short-form clips and posts, starting from real publish-time analytics."
+          tag="Live product · demo data"
+          aspect="aspect-[3456/2234]"
+          hotspots={[
+            { index: 1, x: 32.7, y: 18.7 },
+            { index: 2, x: 66, y: 61.1 },
+          ]}
+          annotations={[
+            {
+              index: 1,
+              title: "Computed, not guessed",
+              body: "Best day and best time to publish are averaged from the account's own last 10 published videos — real aggregation, not a generic best-practice tip.",
+            },
+            {
+              index: 2,
+              title: "Real AI, scoped honestly",
+              body: "The product's own copy: generating a new suggestion “calls Gemini against the video's real transcript” in production — the demo account ships pre-generated results instead of requiring a live API key.",
+            },
+          ]}
+        />
 
         <div className="flex flex-col gap-6 border-t border-line-soft pt-9">
           <div className="flex flex-col gap-2">

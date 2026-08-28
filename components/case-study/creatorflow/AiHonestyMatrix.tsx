@@ -1,15 +1,21 @@
-import { CircleDashed, CircleSlash, Sparkles, LucideIcon } from "lucide-react";
+import { CircleDashed, CircleSlash, Sparkles, CheckCircle2, LucideIcon } from "lucide-react";
 import clsx from "clsx";
 
-type Tier = "template" | "not-ai" | "not-implemented";
+type Tier = "real-ai" | "template" | "not-ai" | "not-implemented";
 
 const TIER_CONFIG: Record<Tier, { label: string; icon: LucideIcon; className: string }> = {
+  "real-ai": { label: "Real AI", icon: CheckCircle2, className: "border-line-strong text-ink-secondary" },
   template: { label: "Template / Preview", icon: CircleDashed, className: "border-dashed border-line-strong text-ink-secondary" },
   "not-ai": { label: "Real, not AI", icon: Sparkles, className: "border-line-strong text-ink-secondary" },
   "not-implemented": { label: "Not implemented", icon: CircleSlash, className: "border-dashed border-line-soft text-ink-faint" },
 };
 
 const ROWS: { name: string; tier: Tier; note: string }[] = [
+  {
+    name: "Repurpose suggestions",
+    tier: "real-ai",
+    note: "In production, generating a new suggestion calls Gemini against the video's real transcript — genuinely model-backed. The demo account ships pre-generated results for a few videos instead of requiring a live API key, and says so in the UI.",
+  },
   {
     name: "AI Assistant",
     tier: "template",
