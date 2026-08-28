@@ -4,7 +4,7 @@ import { useMemo, useReducer, useState } from "react";
 import clsx from "clsx";
 import { ArrowDownToLine, ArrowUpFromLine, ArrowRightLeft, Layers, Lock, Unlock, RotateCcw, X } from "lucide-react";
 import { ItemGlyph, ITEM_META, type ItemId } from "./ItemGlyph";
-import { MinecraftPanel, MinecraftInset, MinecraftLabel, MinecraftSlotGrid, MinecraftButton, MinecraftPlayerFrame, slotBevel } from "./MinecraftUI";
+import { MinecraftPanel, MinecraftInset, MinecraftLabel, MinecraftSlotGrid, MinecraftButton, MinecraftPlayerFrame, slotShadow } from "./MinecraftUI";
 
 // ---------------------------------------------------------------------------
 // Deterministic demo data. No persistence, no network — Reset Demo always
@@ -412,7 +412,8 @@ export function InventoryFlowPrototype() {
         ))}
       </div>
 
-      {/* Simulated Minecraft panel — dark backdrop + stone-gray chrome. */}
+      {/* Simulated Minecraft panel — light gray, rounded, matching the
+          supplied Figma inventory template's actual appearance. */}
       <MinecraftPanel>
         <div aria-live="polite" className="sr-only">
           {state.status}
@@ -420,10 +421,7 @@ export function InventoryFlowPrototype() {
 
         <div className="mx-auto flex max-w-[720px] flex-col gap-4">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <span
-              className="text-[13px] font-bold tracking-[0.02em] text-[#dcdcd4]"
-              style={{ textShadow: "1px 1px 0 rgba(0,0,0,0.6)" }}
-            >
+            <span className="text-[13px] font-bold tracking-[0.02em] text-[#3a3a3a]">
               {mode === "chest" ? "Large Chest" : "Inventory & Crafting"}
             </span>
             <div className="flex flex-wrap items-center gap-1.5">
@@ -439,7 +437,7 @@ export function InventoryFlowPrototype() {
               <button
                 type="button"
                 onClick={() => dispatch({ type: "RESET" })}
-                className="inline-flex h-8 items-center gap-1.5 px-2 text-[11.5px] font-medium text-[#b9b9b0] hover:text-white"
+                className="inline-flex h-8 items-center gap-1.5 px-2 text-[11.5px] font-medium text-[#7a7a7a] hover:text-[#2a2a2a]"
               >
                 <RotateCcw size={12} strokeWidth={2.25} />
                 Reset
@@ -459,7 +457,7 @@ export function InventoryFlowPrototype() {
           </div>
 
           {mode === "chest" && state.smartSelect && (
-            <div className="flex flex-wrap items-center justify-between gap-3 border border-[#fbd35c]/50 bg-black/25 px-3 py-2 text-[12.5px] text-[#e8e6df]">
+            <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-[#f5b83d]/70 bg-[#fdf1d9] px-3 py-2 text-[12.5px] text-[#4a3410]">
               <span>
                 {state.selected.length === 0
                   ? "Select stacks below to move them together."
@@ -512,8 +510,8 @@ export function InventoryFlowPrototype() {
                       aria-selected={state.recipeId === r.id}
                       onClick={() => dispatch({ type: "SET_RECIPE", id: r.id })}
                       className={clsx(
-                        "flex items-center gap-2 px-2 py-1.5 text-left text-[12.5px] font-medium transition-colors duration-150",
-                        state.recipeId === r.id ? "bg-[#fbd35c] text-[#3a2f10]" : "bg-[#4d4d49] text-[#dcdcd4] hover:bg-[#5a5a55]"
+                        "flex items-center gap-2 rounded-md px-2 py-1.5 text-left text-[12.5px] font-medium transition-colors duration-150",
+                        state.recipeId === r.id ? "bg-[#f5b83d] text-[#4a3410]" : "bg-[#c8c8c8] text-[#3a3a3a] hover:bg-[#bcbcbc]"
                       )}
                     >
                       <ItemGlyph id={r.output.item} size={16} />
@@ -523,14 +521,14 @@ export function InventoryFlowPrototype() {
                 </div>
 
                 <div className="flex items-center justify-center py-1">
-                  <div className="grid grid-cols-2 grid-rows-2 gap-[3px] bg-[#545450] p-[6px]" style={{ boxShadow: "inset -1px -1px 0 rgba(255,255,255,0.08), inset 1px 1px 0 rgba(0,0,0,0.4)" }}>
+                  <div className="grid grid-cols-2 grid-rows-2 gap-[3px]">
                     {[0, 1, 2, 3].map((cell) => {
                       const col = cell % 2;
                       const row = Math.floor(cell / 2);
                       const ingredientIndex = recipe.gridPositions.findIndex(([c, r]) => c === col && r === row);
                       const ing = ingredientIndex >= 0 ? recipe.ingredients[ingredientIndex] : null;
                       return (
-                        <div key={cell} className="flex h-10 w-10 items-center justify-center bg-[#8b8b8b]" style={slotBevel}>
+                        <div key={cell} className="flex h-10 w-10 items-center justify-center rounded-[6px] bg-[#9a9a9a]" style={slotShadow}>
                           {ing && <ItemGlyph id={ing.item} size={22} />}
                         </div>
                       );
@@ -545,8 +543,8 @@ export function InventoryFlowPrototype() {
                       <div
                         key={ing.item}
                         className={clsx(
-                          "flex items-center justify-between gap-3 px-2 py-1 text-[12px] font-semibold",
-                          ready ? "bg-[#3f5a26] text-[#c9e8a8]" : "bg-[#5a2a26] text-[#f0b6ac]"
+                          "flex items-center justify-between gap-3 rounded-md px-2 py-1 text-[12px] font-semibold",
+                          ready ? "bg-[#dbedc9] text-[#3f5a26]" : "bg-[#f5d6d0] text-[#7a2a20]"
                         )}
                       >
                         <span className="flex items-center gap-1.5">
@@ -562,21 +560,21 @@ export function InventoryFlowPrototype() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <span className="text-[11px] text-[#a8a89f]">Qty</span>
+                  <span className="text-[11px] text-[#6b6b6b]">Qty</span>
                   <button
                     type="button"
                     onClick={() => dispatch({ type: "SET_QUANTITY", qty: state.quantity - 1 })}
                     aria-label="Decrease quantity"
-                    className="flex h-6 w-6 items-center justify-center bg-[#4d4d49] text-[#dcdcd4] hover:bg-[#5a5a55]"
+                    className="flex h-6 w-6 items-center justify-center rounded-md bg-[#c8c8c8] text-[#3a3a3a] hover:bg-[#bcbcbc]"
                   >
                     −
                   </button>
-                  <span className="w-6 text-center text-[12.5px] font-bold tabular-nums text-white">{state.quantity}</span>
+                  <span className="w-6 text-center text-[12.5px] font-bold tabular-nums text-[#3a3a3a]">{state.quantity}</span>
                   <button
                     type="button"
                     onClick={() => dispatch({ type: "SET_QUANTITY", qty: state.quantity + 1 })}
                     aria-label="Increase quantity"
-                    className="flex h-6 w-6 items-center justify-center bg-[#4d4d49] text-[#dcdcd4] hover:bg-[#5a5a55]"
+                    className="flex h-6 w-6 items-center justify-center rounded-md bg-[#c8c8c8] text-[#3a3a3a] hover:bg-[#bcbcbc]"
                   >
                     +
                   </button>
@@ -587,8 +585,8 @@ export function InventoryFlowPrototype() {
                   onClick={() => dispatch({ type: "CRAFT" })}
                   disabled={!canCraft}
                   className={clsx(
-                    "flex h-9 items-center justify-center text-[12.5px] font-bold tracking-[0.01em] transition-colors duration-150",
-                    canCraft ? "bg-[#5b7a33] text-white hover:bg-[#6a8c3c]" : "cursor-not-allowed bg-[#4d4d49] text-[#8a8a82]"
+                    "flex h-9 items-center justify-center rounded-md text-[12.5px] font-bold tracking-[0.01em] transition-colors duration-150",
+                    canCraft ? "bg-[#5b8a3f] text-white hover:bg-[#6a9c49]" : "cursor-not-allowed bg-[#c8c8c8] text-[#8a8a8a]"
                   )}
                 >
                   Craft {recipe.output.qty * state.quantity} {itemLabel(recipe.output.item)}

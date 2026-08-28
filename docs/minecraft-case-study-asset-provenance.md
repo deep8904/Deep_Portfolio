@@ -18,6 +18,10 @@ $ find public/work -type f
 
 This is a deliberate change from an earlier revision, which did use real screenshots (a genuine Java Edition capture, two Minecraft Wiki images) and attributed frames from Jay Han's and Barbara Franco's own work. All of that was removed on request — see "Removed in this revision" below.
 
+## Visual style correction
+
+An earlier revision styled `MinecraftUI.tsx` as a dark, stone-gray, square-cornered panel — an assumption about "authentic pixel Minecraft," not a match to the supplied Figma template. Sent a rendered crop of the "Minecraft Inventory Template" file's actual appearance: light gray panel, rounded corners throughout (panel and slots alike), a black character-preview rectangle, and a green Recipe Book button. The whole system (`MinecraftPanel`, `MinecraftSlot`, `MinecraftSlotGrid`, `MinecraftButton`, `MinecraftInset`, `MinecraftPlayerFrame`) was re-skinned to match that reference directly — light gray (`#e6e6e6`) panels with soft drop shadows instead of dark bevels, `rounded-[6px]` slots instead of square ones, and a green `BookOpen` (Lucide, portfolio chrome) recipe-book button in `MinecraftPlayerFrame`. This propagated to every consumer: the live prototype, the hero previews, the vanilla-baseline recreation, the states gallery, and the Work-list cover.
+
 ## Classification system
 
 | Category | Meaning |
@@ -60,7 +64,7 @@ This is the first (and so far only) supplied Figma resource that functioned as g
 | Asset | Built in | Notes |
 |---|---|---|
 | Item pixel art | `PixelIcon.tsx` | 12×12 original pixel grids, hand-authored per item. Silhouette/color choices (e.g. the oak log's concentric-ring cross-section) were checked against one real Minecraft texture viewed via Figma (`acacia_log`, node `2018:3757` in the Assets file) for shape accuracy, then redrawn from scratch — no pixels copied, nothing exported. |
-| Minecraft UI system | `MinecraftUI.tsx` | `MinecraftPanel`, `MinecraftSlot`, `MinecraftSlotGrid`, `MinecraftButton`, `MinecraftInset`, `MinecraftLabel`, `MinecraftPlayerFrame`. Square geometry, two-tone pixel bevels, stone-gray surfaces. `MinecraftPlayerFrame` (armor column + preview + offhand) is built directly from the Inventory Template file's measurements — see above; everything else was verified independently against Minecraft's documented UI, since the other three files contained no usable template. |
+| Minecraft UI system | `MinecraftUI.tsx` | `MinecraftPanel`, `MinecraftSlot`, `MinecraftSlotGrid`, `MinecraftButton`, `MinecraftInset`, `MinecraftLabel`, `MinecraftPlayerFrame`. Light gray, rounded surfaces with soft drop shadows — matched directly against the Inventory Template file's actual rendered appearance (see "Visual style correction" above), not an assumed "authentic pixel Minecraft" look. `MinecraftPlayerFrame` (armor column + preview + offhand + Recipe Book button) is built from that same file's measurements and layout. |
 | Vanilla baseline recreation | `StaticPanels.tsx` → `VanillaBaselineRecreation` | Plain, unaugmented inventory/hotbar/2×2-crafting layout, now including the armor/preview/offhand column — no Smart Select, no color-coded states — used in "Current Experience" in place of a screenshot. Explicitly labeled as a recreation, not a capture. |
 
 ## ORIGINAL INVENTORY FLOW EXTENSION
