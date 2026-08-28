@@ -6,9 +6,9 @@ import { CaseStudyDecision } from "@/components/case-study/CaseStudyDecision";
 import { CaseStudyNavigation } from "@/components/case-study/CaseStudyNavigation";
 import { ChapterNav } from "@/components/case-study/ChapterNav";
 import { PhaseDivider } from "@/components/case-study/PhaseDivider";
-import { AnnotatedScreen } from "@/components/case-study/AnnotatedScreen";
+import { ProductBrowserFrame } from "@/components/case-study/ProductBrowserFrame";
+import { FeatureNote } from "@/components/case-study/FeatureNote";
 import { CodeExcerpt } from "@/components/case-study/CodeExcerpt";
-import { CaseStudyFigure } from "@/components/case-study/CaseStudyFigure";
 import { FlowDiagram } from "@/components/case-study/FlowDiagram";
 import { SurfaceMap } from "@/components/case-study/kramflow/SurfaceMap";
 import { AudienceSplit } from "@/components/case-study/kramflow/AudienceSplit";
@@ -87,11 +87,12 @@ export default function KramFlowCaseStudy() {
         ]}
       >
         <div className="mt-9 tab:mt-11">
-          <CaseStudyFigure
+          <ProductBrowserFrame
             src="/work/kramflow/presenter.png"
             alt="The KramFlow Presenter confidence monitor, showing a large countdown timer and mode controls"
             caption="The Presenter confidence monitor — the actual public deployment, shown in standby between cues."
-            tag="Live product"
+            url="kramflow.vercel.app/presenter"
+            title="Presenter"
           />
         </div>
       </CaseStudyHero>
@@ -118,28 +119,25 @@ export default function KramFlowCaseStudy() {
         contentClassName="flex flex-col gap-9"
       >
         <SurfaceMap />
-        <AnnotatedScreen
-          src="/work/kramflow/surfaces.png"
-          alt="The KramFlow role picker, listing Operator, Remote, AV, Green Room, General, and Presenter"
-          caption="The live app's own role picker — the actual public deployment, not a diagram standing in for it."
-          tag="Live product"
-          hotspots={[
-            { index: 1, x: 35.6, y: 47.1 },
-            { index: 2, x: 64.4, y: 47.1 },
-          ]}
-          annotations={[
-            {
-              index: 1,
-              title: "Behind a login",
-              body: "Operator and Remote need an account (and, on this build, a PIN) — the people driving the show are trained on the tool and come back to it repeatedly.",
-            },
-            {
-              index: 2,
-              title: "No login at all",
-              body: "AV, Green Room, General, and Presenter are public. Nobody glancing at a lobby TV should need credentials to see what's happening now.",
-            },
-          ]}
-        />
+        <div className="flex flex-col gap-6">
+          <ProductBrowserFrame
+            src="/work/kramflow/surfaces.png"
+            alt="The KramFlow role picker, listing Operator, Remote, AV, Green Room, General, and Presenter"
+            caption="The live app's own role picker — the actual public deployment, not a diagram standing in for it."
+            url="kramflow.vercel.app"
+            title="KramFlow"
+          />
+          <div className="grid gap-6 tab:grid-cols-2">
+            <FeatureNote num="01" title="Behind a login">
+              Operator and Remote need an account (and, on this build, a PIN) — the people driving the show are
+              trained on the tool and come back to it repeatedly.
+            </FeatureNote>
+            <FeatureNote num="02" title="No login at all">
+              AV, Green Room, General, and Presenter are public. Nobody glancing at a lobby TV should need
+              credentials to see what’s happening now.
+            </FeatureNote>
+          </div>
+        </div>
       </CaseStudySection>
 
       <CaseStudySection
@@ -150,28 +148,35 @@ export default function KramFlowCaseStudy() {
         contentClassName="flex flex-col gap-9"
       >
         <ReadHierarchy />
-        <AnnotatedScreen
-          src="/work/kramflow/av-waiting-room.png"
-          alt="The KramFlow AV Waiting Room display, showing a large current-cue readout, a countdown, and a smaller live timeline panel"
-          caption="The AV Waiting Room display, shown in standby — the real hierarchy described above, not a mockup of it."
-          tag="Live product"
-          hotspots={[
-            { index: 1, x: 28.7, y: 44.1 },
-            { index: 2, x: 77, y: 18.5 },
-          ]}
-          annotations={[
-            {
-              index: 1,
-              title: "Dominant, by size alone",
-              body: "The current cue and its countdown are the only two things that must survive a glance from across the room — everything else is smaller by design, not by accident.",
-            },
-            {
-              index: 2,
-              title: "Detail, kept secondary",
-              body: "The live timeline is real information the AV crew needs, but it doesn't compete with the countdown for attention — General and Presenter don't carry this panel at all.",
-            },
-          ]}
-        />
+        <div className="flex flex-col gap-6">
+          <ProductBrowserFrame
+            src="/work/kramflow/av-waiting-room.png"
+            alt="The KramFlow AV Waiting Room display, showing a large current-cue readout, a countdown, and a smaller live timeline panel"
+            caption="The AV Waiting Room display, shown in standby — the real hierarchy described above, not a mockup of it."
+            url="kramflow.vercel.app/av"
+            title="AV — Waiting Room"
+          />
+          <div className="grid gap-6 tab:grid-cols-2">
+            <FeatureNote num="01" title="Dominant, by size alone">
+              The current cue and its countdown are the only two things that must survive a glance from across the
+              room — everything else is smaller by design, not by accident.
+            </FeatureNote>
+            <FeatureNote num="02" title="Detail, kept secondary">
+              The live timeline is real information the AV crew needs, but it doesn’t compete with the countdown for
+              attention — General and Presenter don’t carry this panel at all.
+            </FeatureNote>
+          </div>
+        </div>
+        <div className="flex flex-col gap-3">
+          <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">GREEN ROOM</span>
+          <ProductBrowserFrame
+            src="/work/kramflow/green-room.png"
+            alt="The KramFlow Green Room display, showing the current and next cue for a speaker waiting backstage"
+            caption="A calmer version of the same read for a speaker waiting backstage — current cue, what's next, nothing else competing for attention."
+            url="kramflow.vercel.app/green-room"
+            title="Green Room"
+          />
+        </div>
       </CaseStudySection>
 
       <PhaseDivider label="OPERATING UNDER PRESSURE" />
