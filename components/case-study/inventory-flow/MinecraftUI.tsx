@@ -74,7 +74,11 @@ export function MinecraftSlot({
   statusLine?: string;
 }) {
   const [hovered, setHovered] = useState(false);
-  const dim = size === "small" ? "h-9 w-9" : "h-10 w-10 tab:h-11 tab:w-11";
+  // Fills its grid track (w-full/h-full + aspect-square) instead of a fixed
+  // pixel box — a fixed size fought the grid's fr-based columns and pushed
+  // a 9-wide row past the panel edge on narrow viewports. A max-width caps
+  // how large a slot gets on spacious desktop layouts.
+  const maxDim = size === "small" ? "max-w-9" : "max-w-11";
   return (
     // Hover/focus tracking lives on this wrapper, not the button itself —
     // the button is legitimately `disabled` outside Smart Select mode (it
@@ -83,7 +87,7 @@ export function MinecraftSlot({
     // selection wasn't active. The wrapper has no disabled state, so hover
     // always works regardless of whether the slot is currently selectable.
     <span
-      className="relative inline-block"
+      className={clsx("relative block w-full", maxDim)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onFocus={() => setHovered(true)}
@@ -97,8 +101,7 @@ export function MinecraftSlot({
         onClick={onClick}
         style={selected ? undefined : slotBevel}
         className={clsx(
-          dim,
-          "relative flex items-center justify-center bg-[#8b8b8b] transition-[filter] duration-100",
+          "relative flex aspect-square w-full items-center justify-center bg-[#8b8b8b] transition-[filter] duration-100",
           selected && "ring-2 ring-inset ring-[#fbd35c]",
           selectable && slot && "hover:brightness-110 focus-visible:brightness-110",
           !selectable && "cursor-default",
