@@ -93,6 +93,7 @@ export default function KramFlowCaseStudy() {
             caption="The Presenter confidence monitor — the actual public deployment, shown in standby between cues."
             url="kramflow.vercel.app/presenter"
             title="Presenter"
+            chrome="mac"
           />
         </div>
       </CaseStudyHero>

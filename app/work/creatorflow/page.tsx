@@ -111,6 +111,7 @@ export default function CreatorFlowCaseStudy() {
             url="creatorflow.app"
             title="CreatorFlow"
             aspect="aspect-[3456/2234]"
+            chrome="mac"
           />
         </div>
       </CaseStudyHero>
