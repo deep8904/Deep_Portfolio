@@ -34,17 +34,34 @@ Zero assets were exported from either supplied Figma file. Both were inspected a
 - **"Minecraft Assets — Community"** (`figma.com/design/2dk5Qczu2hiZlP9sIlyVGE`): one canvas, literally named `"images"`, containing only `Image=<texture_name>` symbols — e.g. `acacia_planks`, `amethyst_block`, `crafting_table_(front_texture)_JE4`. These are Mojang's own item/block textures, extracted and re-hosted in Figma with layer names matching Minecraft's real texture filenames exactly. No frame named anything resembling inventory, GUI, HUD, hotbar, or crafting exists in the file.
 - **"MINECRAFT UI KIT — Community"** (`figma.com/design/IYzGa2yw2rqjYu67Wjv96H`): same situation, and more directly confirmed — the file contains a text node reading `https://minecraft.fandom.com/wiki/List_of_block_textures`, i.e. it is a Figma re-hosting of the Minecraft Wiki's own block-texture list page, not an original UI kit. Searched the full node tree for "hotbar," "craft," "inventory," "slot," "armor," "recipe," "HUD," "panel," "layout" — no matches outside individual item/block texture names.
 
-**Conclusion:** neither file contains an inventory/GUI layout to extend, and both are Mojang's copyrighted texture art with no visible redistribution license. Nothing was exported. This is a factual finding from inspecting the files directly, not a guess from their titles.
+**Conclusion:** neither of the two primary files contains an inventory/GUI layout to extend, and both are Mojang's copyrighted texture art with no visible redistribution license. Nothing was exported from either. This is a factual finding from inspecting the files directly, not a guess from their titles. Re-checked again at a specific node (`1:4`) in the UI KIT file on request — it's a canvas named "Special blocks," empty of content, consistent with the rest of that file being a Wiki texture library organized by category, not GUI chrome.
 
-Two additional community files were also reviewed and found not to change this conclusion: "Minecraft Inventory Template — Community" (a small generic gray-slot mockup, added nothing not already known) and "Redesign: Minecraft inventory UI — Community" (another independent designer's own original redesign concept — not vanilla Minecraft, not adopted as a foundation, since doing so would repeat the uncredited-reuse problem this case study avoids with Jay Han and Barbara Franco).
+A third community file, **"Minecraft Inventory Template — Community"** (`figma.com/design/2boFyMI8C71kcr3pXh8iWo`), turned out to be genuinely different on closer inspection (an initial pass had wrongly filed it alongside the texture libraries). Its node tree contains real, named, componentized structure — `Armor Slots` (4 stacked instances), `Offhand`, `Inventory Slots` (9×4 grid of `Item Slot` instances), `Crafting 4x4` (a true 2×2), `Crafting Result`, `Recipe Button` with a separate `Hovered Recipe Button` state, and a `Tool Tips` frame with four differently-sized tooltip variants. Screenshotting the individual components (`Inventory Window`, `Tool Tips`) confirmed they're flat, abstract placeholder shapes — solid gray fills, a plain black square standing in for the character-preview area, rounded dark tooltip boxes with a cyan accent border — not Mojang texture art. This one **was** used as a measurements source; see the table below. Still not exported directly (its shapes are placeholder-plain, not styled to match this case study), but its proportions are real and now reflected in the implementation.
+
+A fourth file, **"Redesign: Minecraft inventory UI — Community,"** is another independent designer's own original redesign concept — not vanilla Minecraft, not adopted as a foundation, since doing so would repeat the uncredited-reuse problem this case study avoids with Jay Han and Barbara Franco.
+
+### Measurements taken from the Inventory Template file (node `0:1`)
+
+| Structure | What was measured | Where it's now reflected |
+|---|---|---|
+| Armor column | 4 slots, 18px each, zero gap between them (contiguous) | `MinecraftUI.tsx` → `MinecraftPlayerFrame` |
+| Character-preview area | A distinct square region beside the armor column, separate from the offhand slot | `MinecraftPlayerFrame` |
+| Offhand slot | Single slot, positioned below-right of the preview area | `MinecraftPlayerFrame` |
+| Main inventory grid | 9 columns × 3 rows, contiguous (zero gap) | `MinecraftSlotGrid` (existing) |
+| Gap before hotbar | A visibly larger gap between the 3-row main grid and the 1-row hotbar than between rows within the main grid | Reflected via the existing `gap-4` separation between the two `MinecraftSlotGrid` calls in `InventoryFlowPrototype.tsx` |
+| Crafting grid | True 2×2, contiguous, with a directional arrow to a single offset result slot | Existing crafting-grid markup (unchanged, already matched) |
+| Recipe button | Two distinct states (default / hovered) | Not yet built — the prototype doesn't have a Recipe Book entry point; noted for a future pass |
+| Tooltip | Rounded corners (~3px), dark flat fill, one variant with a cyan accent border | `MinecraftSlot`'s tooltip now has `rounded-[3px]` corners (added this revision) |
+
+This is the first (and so far only) supplied Figma resource that functioned as genuine structural reference rather than a texture dump — the distinction matters and is recorded here precisely rather than lumped in with the other three.
 
 ## FIGMA-REFERENCED RECREATION
 
 | Asset | Built in | Notes |
 |---|---|---|
 | Item pixel art | `PixelIcon.tsx` | 12×12 original pixel grids, hand-authored per item. Silhouette/color choices (e.g. the oak log's concentric-ring cross-section) were checked against one real Minecraft texture viewed via Figma (`acacia_log`, node `2018:3757` in the Assets file) for shape accuracy, then redrawn from scratch — no pixels copied, nothing exported. |
-| Minecraft UI system | `MinecraftUI.tsx` | `MinecraftPanel`, `MinecraftSlot`, `MinecraftSlotGrid`, `MinecraftButton`, `MinecraftInset`, `MinecraftLabel`. Square geometry, two-tone pixel bevels, stone-gray surfaces — built to match Java Edition's general slot/window construction (verified independently against Minecraft's documented UI, since neither Figma file contained a usable template), not against the Figma files directly. |
-| Vanilla baseline recreation | `StaticPanels.tsx` → `VanillaBaselineRecreation` | Plain, unaugmented inventory/hotbar/2×2-crafting layout — no Smart Select, no color-coded states — used in "Current Experience" in place of a screenshot. Explicitly labeled as a recreation, not a capture. |
+| Minecraft UI system | `MinecraftUI.tsx` | `MinecraftPanel`, `MinecraftSlot`, `MinecraftSlotGrid`, `MinecraftButton`, `MinecraftInset`, `MinecraftLabel`, `MinecraftPlayerFrame`. Square geometry, two-tone pixel bevels, stone-gray surfaces. `MinecraftPlayerFrame` (armor column + preview + offhand) is built directly from the Inventory Template file's measurements — see above; everything else was verified independently against Minecraft's documented UI, since the other three files contained no usable template. |
+| Vanilla baseline recreation | `StaticPanels.tsx` → `VanillaBaselineRecreation` | Plain, unaugmented inventory/hotbar/2×2-crafting layout, now including the armor/preview/offhand column — no Smart Select, no color-coded states — used in "Current Experience" in place of a screenshot. Explicitly labeled as a recreation, not a capture. |
 
 ## ORIGINAL INVENTORY FLOW EXTENSION
 
@@ -60,6 +77,10 @@ Two additional community files were also reviewed and found not to change this c
 ## PORTFOLIO CHROME
 
 Sidebar, nav, footer, section labels, typography — Deep's existing site-wide design system, untouched. Lucide icons are used only here (back arrow, external-link, reset, lock/unlock) — never for in-game item art.
+
+## Not used: Mojang's official Minecraft icon/logo
+
+The "MINECRAFT UI KIT" file's cover art displays Mojang's actual "MINECRAFT" wordmark/logo treatment and a Steve character render. This wasn't adopted anywhere on the page — using Mojang's own brand icon in this case study would cut directly against the "Not an official Minecraft product" positioning stated at the top of this page and in the hero. An unofficial concept study using the actual brand mark risks implying official endorsement, which is the opposite of what the disclaimer says. Deep's own "Inventory Flow" wordmark (plain text, portfolio typography) is the only project identity mark used.
 
 ## Removed in this revision
 

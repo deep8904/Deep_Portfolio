@@ -4,7 +4,7 @@ import { useMemo, useReducer, useState } from "react";
 import clsx from "clsx";
 import { ArrowDownToLine, ArrowUpFromLine, ArrowRightLeft, Layers, Lock, Unlock, RotateCcw, X } from "lucide-react";
 import { ItemGlyph, ITEM_META, type ItemId } from "./ItemGlyph";
-import { MinecraftPanel, MinecraftInset, MinecraftLabel, MinecraftSlotGrid, MinecraftButton, slotBevel } from "./MinecraftUI";
+import { MinecraftPanel, MinecraftInset, MinecraftLabel, MinecraftSlotGrid, MinecraftButton, MinecraftPlayerFrame, slotBevel } from "./MinecraftUI";
 
 // ---------------------------------------------------------------------------
 // Deterministic demo data. No persistence, no network — Reset Demo always
@@ -596,6 +596,7 @@ export function InventoryFlowPrototype() {
               </MinecraftInset>
 
               <div className="flex flex-col gap-3">
+                <MinecraftPlayerFrame armor={[null, null, null, null]} offhand={null} />
                 <div className="flex flex-col gap-1">
                   <MinecraftLabel>
                     BACKPACK {state.hotbarProtected && <Lock size={9} className="ml-1 inline -translate-y-px" />}

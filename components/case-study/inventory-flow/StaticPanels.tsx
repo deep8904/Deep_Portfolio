@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { Lock, Check, ArrowRight } from "lucide-react";
 import { ItemGlyph, type ItemId } from "./ItemGlyph";
-import { MinecraftPanel } from "./MinecraftUI";
+import { MinecraftPanel, MinecraftPlayerFrame } from "./MinecraftUI";
 
 const slotBevel = { boxShadow: "inset -2px -2px 0 rgba(0,0,0,0.35), inset 2px 2px 0 rgba(255,255,255,0.18)" };
 
@@ -139,23 +139,25 @@ export function VanillaBaselineRecreation() {
 
   return (
     <MinecraftPanel className="p-4">
-      <div className="mx-auto flex max-w-[460px] flex-col gap-2.5">
+      <div className="mx-auto flex max-w-[520px] flex-col gap-2.5">
         <div className="flex items-center justify-between">
           <span className="text-[12px] font-bold tracking-[0.02em] text-[#dcdcd4]" style={{ textShadow: "1px 1px 0 rgba(0,0,0,0.6)" }}>
             Inventory &amp; Crafting
           </span>
           <span className="text-[10px] text-[#8a8a82]">no bulk actions, no highlights</span>
         </div>
-        <div className="flex items-center gap-2">
-          <div className="grid grid-cols-2 grid-rows-2 gap-[3px] bg-[#545450] p-[6px]" style={{ boxShadow: "inset -1px -1px 0 rgba(255,255,255,0.08), inset 1px 1px 0 rgba(0,0,0,0.4)" }}>
-            <StaticSlotEl slot={null} size={26} />
-            <StaticSlotEl slot={null} size={26} />
-            <StaticSlotEl slot={null} size={26} />
-            <StaticSlotEl slot={null} size={26} />
+        <div className="flex items-start justify-between gap-3">
+          <MinecraftPlayerFrame armor={[null, null, null, null]} offhand={null} />
+          <div className="flex items-center gap-2">
+            <div className="grid grid-cols-2 grid-rows-2 gap-[3px] bg-[#545450] p-[6px]" style={{ boxShadow: "inset -1px -1px 0 rgba(255,255,255,0.08), inset 1px 1px 0 rgba(0,0,0,0.4)" }}>
+              <StaticSlotEl slot={null} size={26} />
+              <StaticSlotEl slot={null} size={26} />
+              <StaticSlotEl slot={null} size={26} />
+              <StaticSlotEl slot={null} size={26} />
+            </div>
+            <ArrowRight size={14} className="text-[#a8a89f]" />
+            <StaticSlotEl slot={null} size={30} />
           </div>
-          <ArrowRight size={14} className="text-[#a8a89f]" />
-          <StaticSlotEl slot={null} size={30} />
-          <span className="text-[10px] text-[#8a8a82]">2×2 crafting, output</span>
         </div>
         <StaticGrid slots={main} cols={9} size={28} />
         <StaticGrid slots={hotbar} cols={9} size={28} />

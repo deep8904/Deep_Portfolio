@@ -127,7 +127,7 @@ export function MinecraftSlot({
       {hovered && slot && (
         <span
           role="tooltip"
-          className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-1.5 flex -translate-x-1/2 flex-col items-center whitespace-nowrap px-2 py-1 text-[11px] font-medium text-white"
+          className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-1.5 flex -translate-x-1/2 flex-col items-center whitespace-nowrap rounded-[3px] px-2 py-1 text-[11px] font-medium text-white"
           style={{ background: "#100010e6", border: "1px solid #2c1f4a" }}
         >
           <span className="font-bold">{itemLabel(slot.item)}</span>
@@ -135,6 +135,35 @@ export function MinecraftSlot({
         </span>
       )}
     </span>
+  );
+}
+
+/**
+ * Armor column + character-preview area + offhand slot — the piece the
+ * prototype was missing entirely. Proportions (4 stacked armor slots to the
+ * left of a preview square, one offhand slot below-right of it) come from
+ * measuring the "Minecraft Inventory Template — Community" Figma file's
+ * Armor Slots / Offhand frames (18px slots, zero gap between armor slots,
+ * a distinct preview region) rather than being invented. See
+ * docs/minecraft-case-study-asset-provenance.md.
+ */
+export function MinecraftPlayerFrame({ armor, offhand }: { armor: MinecraftSlotData[]; offhand: MinecraftSlotData }) {
+  return (
+    <div className="flex items-stretch gap-[3px]">
+      <div className="grid grid-rows-4 gap-[3px] bg-[#545450] p-[6px]" style={gridBevel}>
+        {armor.map((slot, i) => (
+          <MinecraftSlot key={i} slot={slot} selectable={false} selected={false} size="small" />
+        ))}
+      </div>
+      <div className="flex flex-1 flex-col justify-between bg-[#545450] p-[6px]" style={gridBevel}>
+        <div className="flex-1 bg-black/70" aria-hidden />
+        <div className="mt-[3px] flex justify-end">
+          <div className="w-9">
+            <MinecraftSlot slot={offhand} selectable={false} selected={false} size="small" />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
