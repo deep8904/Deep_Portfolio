@@ -12,8 +12,8 @@
 
 import { ReactNode, useState } from "react";
 import clsx from "clsx";
-import { BookOpen } from "lucide-react";
 import { ItemGlyph, ITEM_META, type ItemId } from "./ItemGlyph";
+import { RecipeBookIcon } from "./PixelIcon";
 
 export type MinecraftSlotData = { item: ItemId; qty: number } | null;
 
@@ -136,10 +136,15 @@ export function MinecraftSlot({
 
 /**
  * Armor column + character-preview area + offhand slot, plus the Recipe
- * Book button — measured and styled directly from the "Minecraft Inventory
- * Template — Community" Figma file: a 4-slot armor column beside a black
- * character-preview panel, an offhand slot at its lower-right corner, and a
- * green Recipe Book button beneath. See docs/minecraft-case-study-asset-provenance.md.
+ * Book button — measured and styled from two supplied Figma files: the
+ * "Minecraft Inventory Template" file's overall layout (4-slot armor column
+ * beside a black character-preview panel, offhand slot at its lower-right
+ * corner) and the "MINECRAFT UI KIT" file's real "UI KIT" page (canvas
+ * `2:554`, frame "Inventory", node `5:234`) for the Recipe Button's own
+ * construction — a beveled button (light top/left edge, dark bottom/right
+ * edge, confirmed vector-built, not a texture) holding a pixel-built green
+ * book icon (`RecipeBookIcon` in PixelIcon.tsx). See
+ * docs/minecraft-case-study-asset-provenance.md.
  */
 export function MinecraftPlayerFrame({ armor, offhand }: { armor: MinecraftSlotData[]; offhand: MinecraftSlotData }) {
   // Fixed pixel widths throughout, not flex-1/aspect-square chains — a flex
@@ -165,10 +170,13 @@ export function MinecraftPlayerFrame({ armor, offhand }: { armor: MinecraftSlotD
       <button
         type="button"
         aria-label="Recipe Book"
-        className="flex h-7 w-7 items-center justify-center rounded-[6px] bg-[#5b8a3f]"
-        style={slotShadow}
+        className="flex h-7 w-7 items-center justify-center rounded-[3px] bg-[#5b8a3f]"
+        style={{
+          boxShadow:
+            "inset 1px 1px 0 rgba(255,255,255,0.45), inset -1px -1px 0 rgba(0,0,0,0.35)",
+        }}
       >
-        <BookOpen size={14} strokeWidth={2} className="text-white" />
+        <RecipeBookIcon size={14} />
       </button>
     </div>
   );

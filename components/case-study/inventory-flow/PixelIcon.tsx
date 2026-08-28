@@ -184,12 +184,9 @@ const PALETTES: Record<PixelItemId, Record<string, string>> = {
   diamond: { "1": "#3f9e97", "2": "#7fe0d6" },
 };
 
-export function PixelIcon({ id, size = 22 }: { id: PixelItemId; size?: number }) {
-  const grid = ITEM_GRIDS[id];
-  const palette = PALETTES[id];
+function renderGrid(grid: Grid, palette: Record<string, string>, size: number) {
   const cols = grid[0].length;
   const rows = grid.length;
-
   return (
     <svg
       width={size}
@@ -206,4 +203,48 @@ export function PixelIcon({ id, size = 22 }: { id: PixelItemId; size?: number })
       )}
     </svg>
   );
+}
+
+export function PixelIcon({ id, size = 22 }: { id: PixelItemId; size?: number }) {
+  return renderGrid(ITEM_GRIDS[id], PALETTES[id], size);
+}
+
+// The "Recipe Book" UI icon — not a craftable item, so kept separate from
+// ITEM_GRIDS/PALETTES above. Shape and palette informed by inspecting the
+// "MINECRAFT UI KIT — Community" Figma file's real Recipe Button component
+// (canvas "UI KIT", frame "Inventory", node 5:59) — a pixel-built green book
+// with a near-black spine, layered green shading, and a gray page edge. The
+// nine hex values below are copied exactly from that component's fills; the
+// 9x8 pixel layout itself is redrawn from scratch at this icon's own
+// resolution, not a pixel-for-pixel export. See
+// docs/minecraft-case-study-asset-provenance.md.
+const RECIPE_BOOK: Grid = [
+  "............",
+  "............",
+  ".111111111..",
+  ".163333332..",
+  ".154444442..",
+  ".154444442..",
+  ".143333332..",
+  ".143333332..",
+  ".178888889..",
+  ".111111111..",
+  "............",
+  "............",
+];
+
+const RECIPE_BOOK_PALETTE: Record<string, string> = {
+  "1": "#161005",
+  "2": "#1b361b",
+  "3": "#2a592a",
+  "4": "#3d7a3d",
+  "5": "#478e47",
+  "6": "#56ad56",
+  "7": "#d6d6d6",
+  "8": "#999999",
+  "9": "#5b5b5b",
+};
+
+export function RecipeBookIcon({ size = 16 }: { size?: number }) {
+  return renderGrid(RECIPE_BOOK, RECIPE_BOOK_PALETTE, size);
 }
