@@ -209,9 +209,9 @@ export const WORK_PROJECTS: WorkProject[] = [
     year: "2026",
     category: "PRODUCT STRATEGY · FULL STACK",
     description:
-      "An indie game developer platform exploring developer identity, projects, devlogs, structured playtesting feedback, collaboration, and local community. A real waitlist and auth flow are live today; the rest is designed, not yet shipped.",
-    cover: { kind: "image", src: "/work/glyph/landing.png", alt: "The Glyph waitlist landing page" },
-    caseStudyStatus: "in-development",
+      "A developer-identity and pre-launch coordination platform for indie game makers — private-by-default projects, structured playtesting, devlogs, and local community, verified end to end against a real seeded backend.",
+    cover: { kind: "image", src: "/work/glyph/landing.png", alt: "The Glyph landing page, reading 'Build your reputation before launch'" },
+    caseStudyStatus: "detailed",
     layout: "wide",
     titleBlock: "title-category-year",
   },
