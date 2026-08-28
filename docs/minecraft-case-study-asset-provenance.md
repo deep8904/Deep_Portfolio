@@ -37,8 +37,21 @@ These belong to the two designers. They are shown only inside the "Two Design St
 | Work-list / home cover art (`InventoryFlowCover.tsx`) | Deep Chadamiya, this codebase | Same dark stone-panel language as the prototype |
 | State gallery (`StateGallery.tsx`) | Deep Chadamiya, this codebase | Real-sized slot crops using the redesigned system, not Storybook-style documentation |
 
+## Figma community resources — inspected, not shipped
+
+Four Figma community files were reviewed as candidate visual foundations for the prototype's game chrome:
+
+| Resource | URL | What it actually is | Decision |
+|---|---|---|---|
+| "Minecraft Assets — Community" | figma.com/design/2dk5Qczu2hiZlP9sIlyVGE | A sprite sheet of Mojang's own item/block textures (128×128 each), extracted and re-hosted in Figma. Layer names match Minecraft's real texture filenames exactly (e.g. `acacia_log`, `Grass_Block_(top_texture)_JE4_BE2`). | **Not shipped.** This is Mojang's copyrighted texture art republished by a community account with no visible redistribution license. Inspected only (e.g. `acacia_log`, node `2018:3757`) to sanity-check the color/shape of this project's own original pixel icons — nothing was exported into the repo. |
+| "MINECRAFT UI KIT — Community" | figma.com/design/IYzGa2yw2rqjYu67Wjv96H | Same situation as above: the file's own cover reads "MINECRAFT UI" over Mojang's dirt texture and Steve render, and the inspected canvas (`Blocks`) is another Mojang-texture sprite sheet with Wiki-style version-tagged filenames. Not an original UI redesign. | **Not shipped**, same reasoning. |
+| "Minecraft Inventory Template — Community" | figma.com/design/2boFyMI8C71kcr3pXh8iWo | A small, generic gray-slot inventory/hotbar/crafting-grid template. Low detail, no texture or attribution concerns, but adds nothing beyond what the real Minecraft Wiki screenshots already confirmed about vanilla layout. | Reviewed; not a meaningful upgrade over the Wiki screenshots already in use, so not adopted. |
+| "Redesign: Minecraft inventory UI — Community" | figma.com/design/bYHdcBCXZ49dzajEgfYISu | Another independent designer's **own original redesign concept** (wireframe → palette → warm rounded-panel final screen over blurred gameplay) — not vanilla Minecraft, and not Deep's work. | **Not used as a foundation.** Treating an uncredited third designer's original redesign as "the template to extend" would be the same problem this case study explicitly avoids with Jay Han and Barbara Franco — using someone else's design without attribution. If it were adopted, it would need the same REFERENCE STUDY treatment as the other two, and the case study is intentionally scoped to two research references, not three. |
+
+Per this project's own asset policy — use a resource directly only when reuse rights are clear, otherwise treat it as reference and recreate — the two texture-sprite files were inspected for accuracy and then set aside, and the interactive prototype's item art and game-chrome styling remain the original system in `PixelIcon.tsx` and `InventoryFlowPrototype.tsx`, cross-checked against the real vanilla Java Edition screenshots above rather than rebuilt from Mojang's extracted textures.
+
 ## Not used, and why
 
 - **Jay Han's and Barbara Franco's full mockups beyond the one frame each currently placed** — kept in the asset folder in reserve but not placed on the page, to keep the reference section tight rather than exhaustive.
-- **Mojang's actual item textures/sprites** — not used anywhere. All item art in the prototype, states gallery, and covers is original pixel art authored for this project.
+- **Mojang's actual item textures/sprites**, including the two Figma community files packaging them — not used anywhere. All item art in the prototype, states gallery, and covers is original pixel art authored for this project.
 - **AI-generated "fake Minecraft" renders for the hero** — deliberately avoided. The hero pairs a real, unmodified vanilla screenshot against the original concept, not a synthetic image.
