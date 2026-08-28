@@ -196,9 +196,9 @@ export const WORK_PROJECTS: WorkProject[] = [
     year: "2025",
     category: "UX RESEARCH · ACCESSIBILITY",
     description:
-      "A team research project for an equine nonprofit — a 39-response survey, a heuristic evaluation, and an accessibility audit, translated into concrete information-architecture and usability recommendations.",
-    cover: { kind: "none" },
-    caseStudyStatus: "research",
+      "A team UX research and redesign project for an equine nonprofit — a 39-response survey, a heuristic evaluation, and an accessibility audit, synthesized into a working high-fidelity website redesign.",
+    cover: { kind: "image", src: "/work/care/redesign-home.png", alt: "The redesigned C.A.R.E. for Horses Foundation homepage" },
+    caseStudyStatus: "detailed",
     layout: "split",
     titleBlock: "title_category-year",
   },
