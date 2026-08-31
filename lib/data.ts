@@ -209,8 +209,8 @@ export const WORK_PROJECTS: WorkProject[] = [
     year: "2026",
     category: "PRODUCT STRATEGY · FULL STACK",
     description:
-      "A developer-identity and pre-launch coordination platform for indie game makers — private-by-default projects, structured playtesting, devlogs, and local community, verified end to end against a real seeded backend.",
-    cover: { kind: "image", src: "/work/glyph/landing.png", alt: "The Glyph landing page, reading 'Build your reputation before launch'" },
+      "A private-first identity and progress platform for indie game developers — private-by-default projects, project-attached devlogs, structured playtest requests, and discovery, in active development.",
+    cover: { kind: "image", src: "/work/glyph/project-detail-hero.png", alt: "The Emberfall Keep project page on Glyph, showing its status, media, developer, an open playtest, and devlog history" },
     caseStudyStatus: "detailed",
     layout: "wide",
     titleBlock: "title-category-year",

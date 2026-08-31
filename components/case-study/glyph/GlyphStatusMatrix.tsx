@@ -1,61 +1,28 @@
-import { CheckCircle2, GitBranch, CircleDashed, Clock, LucideIcon } from "lucide-react";
+import { CheckCircle2, GitBranch, CircleDashed, Clock, Globe, LucideIcon } from "lucide-react";
 import clsx from "clsx";
 
-type Tier = "verified" | "implemented" | "partial" | "planned";
+type Tier = "current" | "built" | "active" | "next" | "lineage";
 
 const TIER_CONFIG: Record<Tier, { label: string; icon: LucideIcon; className: string }> = {
-  verified: { label: "Verified in Local Build", icon: CheckCircle2, className: "border-line-strong text-ink-secondary" },
-  implemented: { label: "Implemented in Current Source", icon: GitBranch, className: "border-line-strong text-ink-secondary" },
-  partial: { label: "Partial", icon: CircleDashed, className: "border-dashed border-line-strong text-ink-secondary" },
-  planned: { label: "Product Direction", icon: Clock, className: "border-dashed border-line-soft text-ink-faint" },
+  current: { label: "Current Product", icon: CheckCircle2, className: "border-line-strong text-ink-secondary" },
+  built: { label: "Built in Current Source", icon: GitBranch, className: "border-line-strong text-ink-secondary" },
+  active: { label: "Active Development", icon: CircleDashed, className: "border-dashed border-line-strong text-ink-secondary" },
+  next: { label: "Product Direction", icon: Clock, className: "border-dashed border-line-soft text-ink-faint" },
+  lineage: { label: "Public Lineage Only", icon: Globe, className: "border-dashed border-line-soft text-ink-faint" },
 };
 
 const ROWS: { name: string; tier: Tier; note: string }[] = [
-  {
-    name: "Auth, developer profiles, onboarding",
-    tier: "verified",
-    note: "Signed in and captured screenshots against a real (temporary) Supabase project seeded with fictional demo accounts.",
-  },
-  {
-    name: "Projects — private by default, visibility control",
-    tier: "verified",
-    note: "Confirmed a private project stays owner-only while a public one appears in Discover, against real RLS policies.",
-  },
-  {
-    name: "Devlogs, reactions, comments, follow feed",
-    tier: "verified",
-    note: "Found and fixed a real PostgREST embed-ambiguity bug in the feed query during this pass — documented below.",
-  },
-  {
-    name: "Structured playtests — requests, signups, feedback",
-    tier: "verified",
-    note: "Created a real playtest request, signed up a second demo account, and left rated feedback end-to-end.",
-  },
-  {
-    name: "Collaboration board, local/online events",
-    tier: "verified",
-    note: "Both render real seeded rows through their own RLS-gated read policies, not a stubbed list.",
-  },
-  {
-    name: "Discover & public-work browsing",
-    tier: "verified",
-    note: "Shows an honest empty state when Supabase isn't configured, and real public projects once it is — same code path either way.",
-  },
-  {
-    name: "GitHub OAuth sign-in",
-    tier: "implemented",
-    note: "Present in the auth route and UI; this pass verified email/password sign-in only, not the OAuth round-trip.",
-  },
-  {
-    name: "Notifications table",
-    tier: "partial",
-    note: "Schema and RLS exist; no dedicated notifications UI route was found in the current source.",
-  },
-  {
-    name: "Public deployment of the current build",
-    tier: "planned",
-    note: "The only public GitHub history for this repo name is an earlier, unrelated waitlist-page lineage — the substantial build documented here exists only in local source today.",
-  },
+  { name: "Developer identity, private-first projects", tier: "current", note: "Verified against a disposable seeded backend: private default, owner edit, deliberate publish." },
+  { name: "Discover, public devlog feed", tier: "current", note: "Populated and permission-filtered against real seeded data." },
+  { name: "Devlogs, comments, reactions, follow", tier: "built", note: "Built in the current uncommitted Stage 5 work; a final live two-user E2E rerun is still outstanding." },
+  { name: "Playtest request creation", tier: "built", note: "Form, action, and a private build-link table exist and were exercised." },
+  { name: "Collaboration post listing/creation", tier: "built", note: "Read/create verified; no application workflow locally." },
+  { name: "Event listing", tier: "built", note: "Read surface verified; no local organizer/RSVP UI." },
+  { name: "GitHub OAuth round-trip", tier: "active", note: "UI and callback code exist; not exercised in this pass." },
+  { name: "Playtest discovery, signup, feedback", tier: "next", note: "Schema exists; no current-local routes. Not claimed as a working loop." },
+  { name: "Event authoring / RSVP, collaboration applications", tier: "next", note: "Schema only; product direction, not current behavior." },
+  { name: "Notifications", tier: "next", note: "Table and RLS only — no dedicated route in current source." },
+  { name: "Broad public deployment (Explore, playtests, publisher tools)", tier: "lineage", note: "Exists on a separate public lineage with a different schema and privacy model. Not this product's evidence." },
 ];
 
 export function GlyphStatusMatrix() {

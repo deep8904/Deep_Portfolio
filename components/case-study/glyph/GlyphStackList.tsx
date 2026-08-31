@@ -1,10 +1,11 @@
 const STACK = [
-  { name: "Next.js 16 + TypeScript", purpose: "Server Components by default, Server Actions for mutations, Route Handlers for reads that need pagination." },
-  { name: "Supabase Postgres", purpose: "19-table schema — identity, projects, devlogs, playtests, social graph, events, collaboration." },
-  { name: "Supabase Auth + RLS", purpose: "Email/password and GitHub OAuth; every table enforces ownership and visibility at the database layer." },
-  { name: "Supabase Storage", purpose: "Project covers and screenshots resolved to short-lived signed URLs, scoped by owner and project visibility." },
-  { name: "Zod", purpose: "Request validation on server actions — project creation, devlog publishing, playtest requests." },
-  { name: "Tailwind v4", purpose: "A dark, editorial visual system — peach/sand/coral tokens over Inter and JetBrains Mono." },
+  { name: "Next.js 16 + TypeScript", purpose: "App Router, Server Components by default, Server Actions for mutations." },
+  { name: "Supabase Postgres", purpose: "19-table schema — identity, projects, devlogs, social graph, playtests, events, collaboration." },
+  { name: "Supabase Auth", purpose: "Email/password and GitHub OAuth, session refresh via SSR middleware." },
+  { name: "Row Level Security", purpose: "Declared across all 19 tables; private-default projects enforced at the database layer." },
+  { name: "Supabase Storage", purpose: "Owner-scoped project media, resolved to short-lived signed URLs." },
+  { name: "Zod", purpose: "Server Action payload validation before any mutation runs." },
+  { name: "Tailwind v4", purpose: "Warm near-black/sand/peach editorial system, configured via @theme." },
 ];
 
 export function GlyphStackList() {
