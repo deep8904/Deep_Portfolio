@@ -173,6 +173,57 @@
   }
 }
 
+/* After Hours "coming soon" placeholder — ambient background + ticker. */
+@keyframes ahSoonDriftA {
+  0%, 100% { transform: translate(-6%, -4%) scale(1); }
+  50% { transform: translate(4%, 5%) scale(1.12); }
+}
+
+@keyframes ahSoonDriftB {
+  0%, 100% { transform: translate(5%, 4%) scale(1.05); }
+  50% { transform: translate(-4%, -6%) scale(0.95); }
+}
+
+.ah-soon-blob {
+  position: absolute;
+  width: 46vw;
+  height: 46vw;
+  max-width: 620px;
+  max-height: 620px;
+  border-radius: 9999px;
+  filter: blur(60px);
+  opacity: 0.6;
+}
+
+.ah-soon-blob-a {
+  top: 8%;
+  left: 8%;
+  background: var(--color-accent);
+  animation: ahSoonDriftA 16s ease-in-out infinite;
+}
+
+.ah-soon-blob-b {
+  bottom: 6%;
+  right: 8%;
+  background: var(--color-status);
+  animation: ahSoonDriftB 18s ease-in-out infinite;
+}
+
+@keyframes ahSoonMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.ah-soon-ticker {
+  mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent);
+}
+
+.ah-soon-ticker-track {
+  display: inline-flex;
+  width: max-content;
+  animation: ahSoonMarquee 22s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

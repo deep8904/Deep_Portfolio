@@ -3,7 +3,7 @@ import { HandHeart, Users, HeartHandshake, Eye, LucideIcon } from "lucide-react"
 const SEGMENTS: { icon: LucideIcon; name: string; body: string }[] = [
   { icon: HandHeart, name: "Prospective adopters", body: "Want to see which horses are currently available and read a real history before reaching out." },
   { icon: Users, name: "Donors & supporters", body: "Want to understand what a gift actually funds before deciding how much to give." },
-  { icon: HeartHandshake, name: "Volunteers", body: "Want a clear next step — what's needed, what it involves, how to sign up." },
+  { icon: HeartHandshake, name: "Volunteers", body: "Want a clear next step: what's needed, what it involves, how to sign up." },
   { icon: Eye, name: "General visitors", body: "Arrive with a broad interest in the organization and need the site to orient them quickly." },
 ];
 
@@ -20,7 +20,7 @@ export function CareAudienceSegments() {
         ))}
       </div>
       <p className="m-0 text-[13px] leading-[1.6] text-ink-faint text-pretty">
-        These are audience segments drawn from the survey and the site’s own stated purpose — not personas built
+        These are audience segments drawn from the survey and the site’s own stated purpose, not personas built
         from individual interviews.
       </p>
     </div>

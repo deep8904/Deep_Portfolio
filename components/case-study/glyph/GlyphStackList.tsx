@@ -1,6 +1,6 @@
 const STACK = [
   { name: "Next.js 16 + TypeScript", purpose: "App Router, Server Components by default, Server Actions for mutations." },
-  { name: "Supabase Postgres", purpose: "19-table schema — identity, projects, devlogs, social graph, playtests, events, collaboration." },
+  { name: "Supabase Postgres", purpose: "19-table schema: identity, projects, devlogs, social graph, playtests, events, collaboration." },
   { name: "Supabase Auth", purpose: "Email/password and GitHub OAuth, session refresh via SSR middleware." },
   { name: "Row Level Security", purpose: "Declared across all 19 tables; private-default projects enforced at the database layer." },
   { name: "Supabase Storage", purpose: "Owner-scoped project media, resolved to short-lived signed URLs." },

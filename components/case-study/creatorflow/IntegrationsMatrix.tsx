@@ -24,7 +24,7 @@ const ROWS: { name: string; tier: Tier; note: string }[] = [
   {
     name: "YouTube Analytics (views/watch-time trend)",
     tier: "partial",
-    note: "Needs a separate Analytics API grant beyond the Data API scope most connections have — the UI shows the real video list either way, never a fake trend.",
+    note: "Needs a separate Analytics API grant beyond the Data API scope most connections have; the UI shows the real video list either way, never a fake trend.",
   },
   {
     name: "Automations execution",

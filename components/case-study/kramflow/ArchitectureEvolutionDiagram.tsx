@@ -5,7 +5,7 @@ const STAGES: { icon: LucideIcon; label: string; sub: string; body: string }[] =
     icon: Radio,
     label: "Live V1",
     sub: "main branch · frozen since Jul 17",
-    body: "Single-tenant, PIN-gated. This is exactly what's running at the public deployment today — the screenshots in this case study are from it.",
+    body: "Single-tenant, PIN-gated. This is exactly what's running at the public deployment today. The screenshots in this case study are from it.",
   },
   {
     icon: GitBranch,
@@ -17,7 +17,7 @@ const STAGES: { icon: LucideIcon; label: string; sub: string; body: string }[] =
     icon: ArrowRight,
     label: "Current Architecture",
     sub: "deep branch · current",
-    body: "Rebuilt around real per-operator accounts, multi-tenant events, and per-event routing — a deliberate move from a single-crew tool to one any operator can run their own events on.",
+    body: "Rebuilt around real per-operator accounts, multi-tenant events, and per-event routing: a deliberate move from a single-crew tool to one any operator can run their own events on.",
   },
 ];
 

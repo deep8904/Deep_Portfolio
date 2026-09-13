@@ -2,26 +2,26 @@ const CASES = [
   {
     title: "Finished session, stale countdown",
     expected: "When a session finishes, its displays show a clean “Session Finished” state.",
-    failure: "Green Room and AV kept showing a countdown next to “Session Finished” — contradictory, not just stale.",
-    response: "The countdown wasn't literally the last real number — when the live item becomes null, the timer hook fell back to an unrelated manual-timer default that happened to look like a countdown.",
+    failure: "Speaker Ready and AV kept showing a countdown next to “Session Finished”: contradictory, not just stale.",
+    response: "The countdown wasn't literally the last real number. When the live item becomes null, the timer hook fell back to an unrelated manual-timer default that happened to look like a countdown.",
     feedback: "The countdown block is now suppressed entirely once a session is finished, on both displays.",
-    why: "A number that looks live but isn't is worse than no number — it reads as a functioning system giving wrong information, not a broken one giving none.",
+    why: "A number that looks live but isn't is worse than no number: it reads as a functioning system giving wrong information, not a broken one giving none.",
   },
   {
     title: "Hold screen covering its own toggle",
     expected: "An operator can release a Hold from the same control that activated it.",
-    failure: "The full-screen Hold takeover rendered above everything, including the Presenter page's own control bar — the only way to turn Hold off.",
+    failure: "The full-screen Hold takeover rendered above everything, including the Presenter page's own control bar, the only way to turn Hold off.",
     response: "A z-index ordering bug: Hold at a higher layer than the control that toggles it.",
     feedback: "The Presenter control bar now sits above the Hold overlay specifically, so a real click still reaches it while Hold is active.",
-    why: "A safety feature that can't be turned off isn't safe — it's a new failure mode wearing the shape of one.",
+    why: "A safety feature that can't be turned off isn't safe. It's a new failure mode wearing the shape of one.",
   },
   {
     title: "TV content clipped at short/landscape viewports",
     expected: "Display content stays fully visible and scrollable on any real TV or tablet aspect ratio.",
-    failure: "Content overlapped and clipped at short, wide viewports — a queue-position label sat on top of the countdown.",
+    failure: "Content overlapped and clipped at short, wide viewports: a queue-position label sat on top of the countdown.",
     response: "Two independent root causes in the same screen: a flexbox container computing negative free space once content overflowed, and a CSS Grid cell whose implicit row sizing overflowed its parent independently of the flexbox fix.",
     feedback: "Both were fixed separately; overflow is now reachable by scroll instead of silently clipped.",
-    why: "One plausible-looking fix (the flexbox change) didn't actually solve it — the second root cause needed its own pass, which is the normal shape of a real bug, not a clean one-line patch.",
+    why: "One plausible-looking fix (the flexbox change) didn't actually solve it. The second root cause needed its own pass, which is the normal shape of a real bug, not a clean one-line patch.",
   },
 ];
 

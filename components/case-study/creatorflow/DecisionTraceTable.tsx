@@ -13,11 +13,11 @@ const ROWS = [
   },
   {
     constraint: "A scheduled action needs to run without anyone's browser open.",
-    decision: "Real Postgres cron jobs call an Edge Function directly — not a client-side timer pretending to be one.",
+    decision: "Real Postgres cron jobs call an Edge Function directly, not a client-side timer pretending to be one.",
   },
   {
     constraint: "Some AI-adjacent features aren't backed by a model call yet.",
-    decision: "Labeled “— preview” on the control itself, before the click, not disclosed only after.",
+    decision: "Labeled “preview” on the control itself, before the click, not disclosed only after.",
   },
 ];
 

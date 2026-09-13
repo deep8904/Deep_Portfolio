@@ -5,13 +5,13 @@ const AUDIENCES: { icon: LucideIcon; name: string; distance: string; body: strin
     icon: Gamepad2,
     name: "Operators",
     distance: "18–24in, or one-handed on a phone",
-    body: "The person actually running the show — laptop at the console or a phone backstage. Task-focused, trained on the tool, back in it repeatedly across a multi-day event.",
+    body: "The person actually running the show: laptop at the console or a phone backstage. Task-focused, trained on the tool, back in it repeatedly across a multi-day event.",
   },
   {
     icon: Eye,
     name: "Everyone else in the venue",
     distance: "5–15ft, glancing, never touching it",
-    body: "Performers, AV crew, presenters, attendees — reading a TV or a confidence monitor from across a room. Reached by a no-login link, not an account.",
+    body: "Performers, AV crew, presenters, attendees, reading a TV or a confidence monitor from across a room. Reached by a no-login link, not an account.",
   },
 ];
 

@@ -12,6 +12,7 @@ export function CaseStudySection({
   tight = false,
   contentClassName,
   id,
+  num,
 }: {
   eyebrow: string;
   title: string;
@@ -20,6 +21,8 @@ export function CaseStudySection({
   tight?: boolean;
   contentClassName?: string;
   id?: string;
+  /** Optional chapter numeral ("01", "06") rendered beside the eyebrow — gives a long, linear case study a visible sense of progression. */
+  num?: string;
 }) {
   return (
     // scroll-mt accounts for MobileNav's sticky bar (mobile/tablet) and
@@ -28,7 +31,10 @@ export function CaseStudySection({
     <Section tight={tight} id={id} className={id ? "scroll-mt-[60px] nav:scroll-mt-[54px]" : undefined}>
       <Reveal as="article">
         <div className="flex flex-col items-start gap-3.5">
-          <SectionLabel>{eyebrow}</SectionLabel>
+          <div className="flex items-center gap-2.5">
+            {num && <span className="font-mono text-[13px] font-semibold tabular-nums text-ink-num">{num}</span>}
+            <SectionLabel>{eyebrow}</SectionLabel>
+          </div>
           <h2 className="m-0 max-w-[640px] text-[26px] font-medium leading-[1.18] tracking-[-0.025em] text-pretty tab:text-[31px] desk:text-[35px]">
             {title}
           </h2>

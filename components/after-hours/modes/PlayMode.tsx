@@ -145,7 +145,7 @@ export function PlayMode({ onComplete }: { onComplete: () => void }) {
       </div>
 
       <p aria-live="polite" className="m-0 min-h-[1.4em] text-[13px] font-medium tracking-[0.02em] text-ink-faint">
-        {done ? "Found everything." : allFound ? "All found — head to the marked corner." : ""}
+        {done ? "Found everything." : allFound ? "All found. Head to the marked corner." : ""}
       </p>
     </div>
   );

@@ -1,6 +1,6 @@
 const GROUPS: { group: string; items: string[] }[] = [
   { group: "Control", items: ["Next / Previous / Jump to item", "Hold / Resume (shift-on-resume)", "Session switching", "Control ownership lock (423)"] },
-  { group: "Display", items: ["Operator console", "Remote (one-handed)", "Presenter confidence monitor", "AV, Green Room, General displays"] },
+  { group: "Display", items: ["Operator console", "Remote (one-handed)", "Presenter confidence monitor", "AV, Speaker Ready, General displays"] },
   { group: "Timing", items: ["Hold-aware countdown", "Auto-follow + manual timer modes", "5-step overtime escalation", "Server-computed resume offset"] },
   { group: "Communication", items: ["Targeted broadcasts (all / type / display / group)", "Emergency takeover vs. dismissible banner", "Stage notes with live overrides", "Alert banners across all displays"] },
   { group: "Safety", items: ["Rehearsal Mode, isolated by construction", "Confirm dialogs on destructive actions", "Double-submit guards", "prefers-reduced-motion respected app-wide"] },

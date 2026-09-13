@@ -136,7 +136,7 @@ export function WorkCard({ project }: { project: WorkProject }) {
   return (
     <Link
       href={`/work/${project.slug}`}
-      aria-label={isStub ? `${project.title} — case study in progress` : `${project.title} case study`}
+      aria-label={isStub ? `${project.title}, case study in progress` : `${project.title} case study`}
       className="group block"
     >
       {hasCover ? (

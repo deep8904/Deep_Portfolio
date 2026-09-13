@@ -10,9 +10,9 @@ import { prefersReducedMotion, registerGsap } from "@/lib/motion";
 // meaningful here, and these photos are a purely atmospheric mood collage
 // with no adjacent caption or independent informational role.
 const HERO_PHOTOS = [
-  { src: "/photography/purple-dusk.jpg", alt: "", w: 2400, h: 1350, objectPosition: "center 55%" },
+  { src: "/photography/creatorflow-macbook.jpg", alt: "", w: 3840, h: 2160, objectPosition: "center 55%" },
   { src: "/photography/behind-the-lights.jpg", alt: "", w: 2400, h: 1800, objectPosition: "center" },
-  { src: "/photography/palms-and-stone.jpg", alt: "", w: 2400, h: 1800, objectPosition: "center" },
+  { src: "/photography/care-macbook-desk.jpg", alt: "", w: 3000, h: 2000, objectPosition: "center" },
 ];
 
 export function Hero() {
@@ -127,10 +127,10 @@ export function Hero() {
                 Hey, Deep here{" "}
                 <Image
                   ref={stripRef}
-                  src="/images/hero/strip-architecture.png"
+                  src="/photography/stadium-lights.jpg"
                   alt="Deep Chadamiya"
-                  width={626}
-                  height={626}
+                  width={2400}
+                  height={1440}
                   className="inline-block h-7 w-[72px] rounded-[13px] bg-image-bg align-[-0.18em] object-cover transition-transform duration-300 ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:scale-[1.06] tab:h-10 tab:w-[106px] tab:rounded-[17px]"
                 />{" "}
                 I design and build thoughtful digital experiences.

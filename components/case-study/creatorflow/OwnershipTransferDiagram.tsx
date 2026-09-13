@@ -9,7 +9,7 @@ const STEPS: { icon: LucideIcon; label: string; body: string }[] = [
   {
     icon: AlertTriangle,
     label: "The failure",
-    body: "A single UPDATE swapping two members' roles violated that constraint mid-statement — Postgres checks a partial unique index per row written, even inside one statement.",
+    body: "A single UPDATE swapping two members' roles violated that constraint mid-statement; Postgres checks a partial unique index per row written, even inside one statement.",
   },
   {
     icon: CheckCircle2,

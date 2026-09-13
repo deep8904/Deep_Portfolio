@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import clsx from "clsx";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/ui/Reveal";
@@ -21,7 +22,7 @@ export function CaseStudyHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="pt-[34px] tab:pt-[46px]">
+    <section className="pt-[34px] pb-[34px] tab:pt-[46px] tab:pb-[46px]">
       <Container>
         <Reveal>
           <Link
@@ -46,11 +47,18 @@ export function CaseStudyHero({
             </p>
           </div>
 
-          <div className="mt-9 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-line-soft pt-6 tab:mt-11 tab:grid-cols-4 tab:pt-7">
+          <div
+            className={clsx(
+              "mt-9 border-t border-line-soft pt-6 tab:mt-11 tab:pt-7",
+              meta.length >= 4 ? "grid grid-cols-2 gap-x-6 gap-y-6 tab:grid-cols-4" : "flex flex-wrap gap-x-14 gap-y-6"
+            )}
+          >
             {meta.map((item) => (
               <div key={item.label} className="flex flex-col gap-1.5">
                 <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">{item.label}</span>
-                <span className="text-[14px] leading-[1.4] text-ink-secondary">{item.value}</span>
+                <span className="max-w-[280px] text-[14px] leading-[1.4] text-ink-secondary text-pretty">
+                  {item.value}
+                </span>
               </div>
             ))}
           </div>

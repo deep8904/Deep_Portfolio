@@ -1,12 +1,12 @@
 import { Gamepad2, Smartphone, Tv, Radio, Users, MonitorPlay, LucideIcon } from "lucide-react";
 
 const SURFACES: { icon: LucideIcon; name: string; body: string }[] = [
-  { icon: Gamepad2, name: "Operator", body: "The desktop control room — session switcher, controls, live details." },
+  { icon: Gamepad2, name: "Operator", body: "The desktop control room: session switcher, controls, live details." },
   { icon: Smartphone, name: "Remote", body: "A one-handed mobile controller sharing the same lock/control logic as Operator." },
   { icon: Tv, name: "General display", body: "The default audience-facing screen." },
   { icon: Radio, name: "AV display", body: "Technical-requirements view for the AV team." },
-  { icon: Users, name: "Green Room", body: "Speaker-facing view with a ready-to-go toggle." },
-  { icon: MonitorPlay, name: "Presenter", body: "A confidence monitor — 6 modes, keyboard shortcuts, wake lock." },
+  { icon: Users, name: "Speaker Ready", body: "Speaker-facing view with a ready-to-go toggle." },
+  { icon: MonitorPlay, name: "Presenter", body: "A confidence monitor: 6 modes, keyboard shortcuts, wake lock." },
 ];
 
 export function SurfaceMap() {
@@ -16,7 +16,7 @@ export function SurfaceMap() {
         <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">ONE LIVE STATE</span>
         <span className="text-[19px] font-medium tracking-[-0.02em]">Supabase Realtime</span>
         <span className="text-[15px] leading-[1.6] text-ink-faint">
-          Every surface below subscribes to the same Postgres row over a Realtime channel — nothing polls.
+          Every surface below subscribes to the same Postgres row over a Realtime channel. Nothing polls.
         </span>
       </div>
 
@@ -36,7 +36,7 @@ export function SurfaceMap() {
       </div>
 
       <p className="m-0 max-w-[600px] text-center text-[15px] leading-[1.6] text-ink-faint text-pretty">
-        Six purpose-built surfaces reading one shared truth about what’s happening now and what’s next — not six
+        Six purpose-built surfaces reading one shared truth about what’s happening now and what’s next, not six
         screens each guessing independently.
       </p>
     </div>

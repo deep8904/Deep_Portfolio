@@ -13,7 +13,7 @@ const ROWS = [
   },
   {
     evidence: "11 / 39 requested adoption stories with photos",
-    problem: "The organization's actual impact — horses helped — wasn't visible anywhere.",
+    problem: "The organization's actual impact (horses helped) wasn't visible anywhere.",
     priority: "Surface real horse stories and outcomes as a first-class part of the site.",
     response: "Our Horses now lists all current residents with photos and status, plus Adopted and In Memory tabs; Home features a horse's story directly.",
   },

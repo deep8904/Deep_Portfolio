@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "About",
   description,
   alternates: { canonical: "/about" },
-  openGraph: { title: "About — Deep Chadamiya", description, url: "/about" },
+  openGraph: { title: "About · Deep Chadamiya", description, url: "/about" },
 };
 
 export default function AboutPage() {

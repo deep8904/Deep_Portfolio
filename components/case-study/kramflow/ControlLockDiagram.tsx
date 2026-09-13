@@ -9,12 +9,12 @@ const STEPS: { icon: LucideIcon; label: string; body: string }[] = [
   {
     icon: Timer,
     label: "The staleness window",
-    body: "A claim expires after 45 seconds of silence, so a dropped connection can't lock a live event forever — a fresh claim after that window is allowed through.",
+    body: "A claim expires after 45 seconds of silence, so a dropped connection can't lock a live event forever. A fresh claim after that window is allowed through.",
   },
   {
     icon: ShieldCheck,
     label: "The enforcement",
-    body: "Every locked action re-checks ownership server-side, not just in the UI — a second client attempting a locked action gets a 423, not a race.",
+    body: "Every locked action re-checks ownership server-side, not just in the UI, so a second client attempting a locked action gets a 423, not a race.",
   },
 ];
 

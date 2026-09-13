@@ -1,15 +1,15 @@
 const STEPS = [
   {
     label: "Problem",
-    body: "Sending or viewing a team invite silently failed — no error visible in the UI.",
+    body: "Sending or viewing a team invite silently failed; no error visible in the UI.",
   },
   {
     label: "Root cause",
-    body: "The invite-visibility RLS policy queried auth.users directly in its USING clause. RLS policies run as the querying role, which has no grant on auth.users — so that one policy throwing broke every authenticated query against team_invites, including the owner's own.",
+    body: "The invite-visibility RLS policy queried auth.users directly in its USING clause. RLS policies run as the querying role, which has no grant on auth.users, so that one policy throwing broke every authenticated query against team_invites, including the owner's own.",
   },
   {
     label: "Fix",
-    body: "Replaced the auth.users lookup with auth.jwt() ->> 'email' — reading the caller's own email off their session token instead of querying a table they can't access.",
+    body: "Replaced the auth.users lookup with auth.jwt() ->> 'email': reading the caller's own email off their session token instead of querying a table they can't access.",
   },
   {
     label: "Verification",

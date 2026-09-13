@@ -8,9 +8,8 @@ export const SITE = {
   phoneDisplay: "+1 (480) 572-6950",
   linkedin: "https://www.linkedin.com/in/deepchadamiya",
   github: "https://github.com/deep8904",
-  instagram: "https://www.instagram.com/",
-  twitter: "https://x.com",
-  youtube: "https://www.youtube.com/",
+  instagram: "https://www.instagram.com/_de3__",
+  x: "https://x.com/pateldeep8904",
 };
 
 export const NAV_ITEMS = [
@@ -19,11 +18,14 @@ export const NAV_ITEMS = [
   { id: "visuals", label: "Visuals", href: "/visuals" },
   { id: "about", label: "About", href: "/about" },
   { id: "resume", label: "Resume", href: "/resume" },
+  { id: "contact", label: "Contact", href: "/contact" },
 ] as const;
 
 export const SOCIAL_LINKS = [
   { label: "LinkedIn", href: SITE.linkedin },
   { label: "GitHub", href: SITE.github },
+  { label: "Instagram", href: SITE.instagram },
+  { label: "X", href: SITE.x },
 ];
 
 export const PILLARS = [
@@ -70,39 +72,31 @@ export const TESTIMONIALS = [
     text: "“Reliable, creative, and always willing to take ownership. He consistently delivered thoughtful solutions and was a great person to have on the team.”",
     name: "Arjun Shinojiya",
     role: "CMO, Tibicle",
-    // avatar-1.png was previously assigned here, but it's also the file
-    // assigned to Melissa Dickman and Nicholas Seidel below — three real,
-    // distinct people cannot share one photo. There's no source evidence
-    // (metadata, manifest, or otherwise) confirming which of the three the
-    // photo actually belongs to, so per policy none of them keeps it.
-    avatar: null,
+    avatar: "/images/testimonials/avatar-arjun-v2.png",
   },
   {
     text: "“The redesign gave our business a completely new presence online. He understood our products, our customers, and created something that genuinely represented our brand.”",
     name: "Dev Patel",
     role: "Founder, Akshar Antique",
-    avatar: "/images/testimonials/avatar-2.png",
+    avatar: "/images/testimonials/avatar-dev.jpg",
   },
   {
     text: "“Having him on the team made a real difference during the event. He adapted quickly, handled technical needs smoothly, and brought a great creative eye to the photography.”",
     name: "Scarlett Kim",
     role: "Co-Founder, Worlds in Play",
-    avatar: "/images/testimonials/avatar-3.webp",
+    avatar: "/images/testimonials/avatar-scarlett.webp",
   },
   {
     text: "“He made complicated student data much easier for us to understand and work with. The dashboards and visualizations were clear, practical, and genuinely useful.”",
     name: "Melissa Dickman",
     role: "ASU HIDA",
-    // Was previously assigned avatar-1.png — see the note on Arjun Shinojiya
-    // above. No verified photo exists for this person; initials fallback.
-    avatar: null,
+    avatar: "/images/testimonials/avatar-melissa.png",
   },
   {
     text: "“He has a strong eye for design and understands how to turn an idea into something polished. The work he created for our department was consistently excellent.”",
     name: "Nicholas Seidel",
     role: "ASU HIDA",
-    // Same as above — no verified real photo; initials fallback.
-    avatar: null,
+    avatar: "/images/testimonials/avatar-nicholas.png",
   },
 ];
 
@@ -115,8 +109,8 @@ export const CAPABILITIES = [
 
 export const JOURNEY = [
   { org: "Endless", role: "(Software & Game Development)", years: "2026 – Present", logo: "/images/logos/endless-journey.png" },
-  { org: "Arizona State University", role: "(Data & Dashboard Designer)", years: "2025", logo: "/images/logos/asu-journey.png" },
-  { org: "Tibicle", role: "(Software Developer & UI/UX Designer)", years: "2022 – 2023", logo: "/images/logos/tibicle-journey.png" },
+  { org: "Arizona State University", role: "Design Technology Teaching Assistant / Database Assistant", years: "2024 – 2025", logo: "/images/logos/asu-journey.png" },
+  { org: "Tibicle", role: "Software Developer / Full-Stack Developer", years: "2022 – 2023", logo: "/images/logos/tibicle-journey.png" },
 ];
 
 export const EDUCATION = [
@@ -166,11 +160,11 @@ export const WORK_PROJECTS: WorkProject[] = [
     year: "2025–26",
     category: "PRODUCT · FULL STACK · AI",
     description:
-      "A creator workflow platform bringing content planning, brand deals, repurposing, analytics, and automation into one connected system.",
+      "A creator business platform connecting content planning, brand deals, publishing, analytics, and automation in one workflow.",
     cover: { kind: "image", src: "/work/creatorflow/macbook-cover.jpg", alt: "The CreatorFlow dashboard shown on a MacBook, angled on a stone surface" },
     caseStudyStatus: "detailed",
     layout: "landscape",
-    titleBlock: "title-year_category",
+    titleBlock: "category-year_title",
   },
   {
     slug: "kramflow",
@@ -179,57 +173,62 @@ export const WORK_PROJECTS: WorkProject[] = [
     year: "2026",
     category: "PRODUCT · REALTIME SYSTEMS · UX",
     description:
-      "A real-time production console for running a live, multi-day event — one shared state across six purpose-built surfaces, with a server-enforced control lock and a rehearsal mode isolated by construction.",
+      "A live event operating system connecting operators, presenters, AV teams, and displays through one shared real-time state.",
     cover: {
       kind: "image",
-      src: "/work/kramflow/presenter.png",
-      alt: "The KramFlow Presenter confidence monitor, showing a large countdown timer in standby",
+      src: "/work/kramflow/cover-live-truth-v2.jpg",
+      alt: "The KramFlow cover: 'One live event. One shared truth.' beside the Operator Console, Remote, and Speaker Ready display, angled on a dark green gradient",
     },
     caseStudyStatus: "detailed",
     layout: "landscape",
     titleBlock: "category-year_title",
   },
   {
-    slug: "care",
-    num: "PROJECT 03",
-    title: "C.A.R.E. for Horses",
-    year: "2025",
-    category: "UX RESEARCH · ACCESSIBILITY",
-    description:
-      "A team UX research and redesign project for an equine nonprofit — a 39-response survey, a heuristic evaluation, and an accessibility audit, synthesized into a working high-fidelity website redesign.",
-    cover: { kind: "image", src: "/work/care/redesign-home.png", alt: "The redesigned C.A.R.E. for Horses Foundation homepage" },
-    caseStudyStatus: "detailed",
-    layout: "split",
-    titleBlock: "title_category-year",
-  },
-  {
     slug: "glyph",
-    num: "PROJECT 04",
+    num: "PROJECT 03",
     title: "Glyph",
     year: "2026",
     category: "PRODUCT STRATEGY · FULL STACK",
     description:
-      "A private-first identity and progress platform for indie game developers — private-by-default projects, project-attached devlogs, structured playtest requests, and discovery, in active development.",
-    cover: { kind: "image", src: "/work/glyph/project-detail-hero.png", alt: "The Emberfall Keep project page on Glyph, showing its status, media, developer, an open playtest, and devlog history" },
+      "A private-first identity and progress platform for indie game developers: private-by-default projects, project-attached devlogs, structured playtest requests, and discovery, in active development.",
+    cover: {
+      kind: "image",
+      src: "/work/glyph/landing-cover-v2.jpg",
+      alt: "The Glyph landing page, 'Your home base before launch,' shown in a browser window on a light gradient background",
+    },
     caseStudyStatus: "detailed",
     layout: "wide",
-    titleBlock: "title-category-year",
+    titleBlock: "category-year_title",
+  },
+  {
+    slug: "care",
+    num: "PROJECT 04",
+    title: "C.A.R.E. for Horses",
+    year: "2025",
+    category: "UX RESEARCH · ACCESSIBILITY",
+    description:
+      "A team UX research and redesign project for an equine nonprofit: a 39-response survey, a heuristic evaluation, and an accessibility audit, synthesized into a working high-fidelity website redesign.",
+    cover: {
+      kind: "image",
+      src: "/work/care/macbook-desk-cover.jpg",
+      alt: "The redesigned C.A.R.E. for Horses Foundation homepage shown on a MacBook on a sunlit wooden desk",
+    },
+    caseStudyStatus: "detailed",
+    layout: "split",
+    titleBlock: "category-year_title",
   },
 ];
 
 export const WORK_STUBS: Record<string, { label: string; title: string; body: string }> = {};
 
-// Lighter than a full WorkProject: no dedicated case-study route, just a
-// compact card with real evidence (a live deployment and/or a public repo)
-// and honest outbound links instead of an internal /work/<slug> page.
+// Lighter than a full WorkProject card: no num/category/year title-block, no
+// "Selected Work" grid slot — but still a real, openable card linking to its
+// own /work/<slug> case study, same as the four main projects.
 export type SelectedProject = {
   slug: string;
   name: string;
   description: string;
-  stack: string;
-  role: string;
   cover: WorkProjectCover;
-  links: { label: string; href: string }[];
 };
 
 // Xbox Game Camp and ZoomBuddy+ were removed after a targeted verification
@@ -238,16 +237,21 @@ export type SelectedProject = {
 export const SELECTED_PROJECTS: SelectedProject[] = [
   {
     slug: "loose-thread",
-    name: "Loose Thread + ACM",
+    name: "AI Content Machine + Loose Thread",
     description:
-      "A personal writing site with three published essays, backed by an AI research-and-drafting pipeline: source-backed research, Gemini-based generation with multi-provider failover, and a Telegram approval gate before anything goes live.",
-    stack: "Next.js · TypeScript · Gemini API · PostgreSQL · Telegram Bot API · GitHub Actions · Vercel",
-    role: "Design & Full-Stack Engineering",
+      "An editorial pipeline connecting trend discovery, source-backed research, AI-assisted drafting, and Telegram-gated approval, feeding Loose Thread, the Next.js publication where the finished writing lives.",
     cover: { kind: "image", src: "/work/selected/loose-thread.png", alt: "The Loose Thread writing site home page" },
-    links: [
-      { label: "Live Site", href: "https://readloosethread.vercel.app" },
-      { label: "GitHub", href: "https://github.com/deep8904/ACM" },
-    ],
+  },
+  {
+    slug: "ticketify",
+    name: "Ticketify",
+    description:
+      "A decentralized event-ticketing app built at a hackathon: wallet-tied tickets, location-aware validation, and on-chain verification, with no centralized store of user identities.",
+    cover: {
+      kind: "image",
+      src: "/work/selected/ticketify-icon.jpg",
+      alt: "The Ticketify app icon on an iPhone home screen, next to Calendar, Mail, and Notes",
+    },
   },
 ];
 
@@ -256,7 +260,7 @@ export const SELECTED_PROJECTS: SelectedProject[] = [
 export const RESUME_EXPERIENCE = [
   {
     id: "endless",
-    dates: "Aug 2026 — Present",
+    dates: "Aug 2026 – Present",
     org: "Endless Games Studio",
     location: "Mesa, AZ",
     role: "Software and Game Development",
@@ -268,7 +272,7 @@ export const RESUME_EXPERIENCE = [
   },
   {
     id: "asu",
-    dates: "Oct 2024 — Dec 2025",
+    dates: "Oct 2024 – Dec 2025",
     org: "Arizona State University",
     location: "Tempe, AZ",
     role: "Design Technology Teaching Assistant / Database Assistant",
@@ -280,7 +284,7 @@ export const RESUME_EXPERIENCE = [
   },
   {
     id: "tibicle",
-    dates: "Dec 2022 — Nov 2023",
+    dates: "Dec 2022 – Nov 2023",
     org: "Tibicle LLP",
     location: "Ahmedabad, India",
     role: "Software Developer / Full-Stack Developer",
@@ -311,7 +315,7 @@ export const RESUME_PROJECTS = [
     route: "care",
     bullets: [
       "Conducted surveys, heuristic evaluation, competitive analysis, personas, and journey mapping to identify navigation, usability, accessibility, and content problems.",
-      "Used findings from 16 survey responses to redesign information architecture, user flows, page hierarchy, and interaction patterns around clearer user tasks.",
+      "Used findings from a 39-response survey (16 sourced personally) to redesign information architecture, user flows, page hierarchy, and interaction patterns around clearer user tasks.",
     ],
   },
   {

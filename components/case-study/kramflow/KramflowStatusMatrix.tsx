@@ -13,19 +13,19 @@ const TIER_CONFIG: Record<Tier, { label: string; icon: LucideIcon; className: st
 
 const ROWS: { name: string; tier: Tier; note: string }[] = [
   {
-    name: "6-surface role picker, AV / Green Room / Presenter displays",
+    name: "6-surface role picker, AV / Speaker Ready / Presenter displays",
     tier: "live",
-    note: "Directly observed running at the public deployment — the screenshots in this case study are from it.",
+    note: "Directly observed running at the public deployment. The screenshots in this case study are from it.",
   },
   {
     name: "PIN-gated Operator/Remote console",
     tier: "live",
-    note: "The public deployment's actual auth model, running from the main branch (frozen since Jul 17) — confirmed live, not from memory.",
+    note: "The public deployment's actual auth model, running from the main branch (frozen since Jul 17): confirmed live, not from memory.",
   },
   {
     name: "Control ownership lock (claim/release/423)",
     tier: "implemented",
-    note: "Verified against the source and its own end-to-end test log (including a fabricated-clientId 423 check) — not re-observed live, since it sits behind a login this session doesn't hold credentials for.",
+    note: "Verified against the source and its own end-to-end test log (including a fabricated-clientId 423 check). Not re-observed live, since it sits behind a login this session doesn't hold credentials for.",
   },
   {
     name: "Hold/Resume, shift-on-resume timing",
@@ -35,17 +35,17 @@ const ROWS: { name: string; tier: Tier; note: string }[] = [
   {
     name: "Rehearsal Mode",
     tier: "implemented",
-    note: "Verified against source — architecturally isolated by construction, not a runtime flag.",
+    note: "Verified against source: architecturally isolated by construction, not a runtime flag.",
   },
   {
     name: "Per-operator accounts, multi-tenant events, dashboard",
     tier: "current-arch",
-    note: "Real, substantial code on the deep branch — signup/login, per-event routes, database-level tenant isolation — built over a month past where the public deployment (main) is frozen. A deliberate architecture evolution, not a missing feature.",
+    note: "Real, substantial code on the deep branch: signup/login, per-event routes, database-level tenant isolation, built over a month past where the public deployment (main) is frozen. A deliberate architecture evolution, not a missing feature.",
   },
   {
     name: "Scheduled broadcast promotion",
     tier: "partial",
-    note: "One-shot sends work; promotion relies on an in-tab poller, not a server-side cron — a known, documented limitation, not an oversight.",
+    note: "One-shot sends work; promotion relies on an in-tab poller, not a server-side cron. A known, documented limitation, not an oversight.",
   },
   {
     name: "Recurring broadcasts",

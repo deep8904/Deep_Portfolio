@@ -21,7 +21,7 @@ export function GlyphAudienceSegments() {
         ))}
       </div>
       <p className="m-0 text-[13px] leading-[1.6] text-ink-faint text-pretty">
-        Drawn from the product’s own brief and scope documents — not from interviews. There is no direct user
+        Drawn from the product’s own brief and scope documents, not from interviews. There is no direct user
         research in the current source.
       </p>
     </div>

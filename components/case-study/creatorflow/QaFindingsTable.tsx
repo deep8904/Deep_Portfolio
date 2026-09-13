@@ -3,7 +3,7 @@ const CASES = [
     title: "Drafts “Unsaved changes”",
     expected: "Saving a draft clears the “Unsaved changes” indicator.",
     observed: "The indicator stayed on indefinitely after a successful save, until the next full page load.",
-    cause: "The dirty check compared live content against a snapshot that only ever came from the server-rendered prop — a successful save doesn't itself refresh that prop.",
+    cause: "The dirty check compared live content against a snapshot that only ever came from the server-rendered prop; a successful save doesn't itself refresh that prop.",
     fix: "After a confirmed save, the component's own copy of the snapshot is patched with the saved values, so the comparison has something current to check against.",
   },
   {
@@ -15,8 +15,8 @@ const CASES = [
   },
   {
     title: "Silent failures",
-    expected: "A failed database read either shows real data or a visible error — never a false empty state.",
-    observed: "Several query functions returned an empty array on a genuine Supabase error, which the UI then rendered as an honest \"nothing here yet\" — indistinguishable from a real empty state.",
+    expected: "A failed database read either shows real data or a visible error, never a false empty state.",
+    observed: "Several query functions returned an empty array on a genuine Supabase error, which the UI then rendered as an honest \"nothing here yet\"; indistinguishable from a real empty state.",
     cause: "Error handling had been written to keep pages from crashing, without distinguishing \"no rows\" from \"the query itself failed.\"",
     fix: "Query functions now throw on a real error; a group-level error boundary catches it with a calm, non-alarming message instead of a red crash screen.",
   },

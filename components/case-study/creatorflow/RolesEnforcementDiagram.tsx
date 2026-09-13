@@ -5,7 +5,7 @@ const FLOW = [
   { icon: MousePointerClick, label: "UI action", body: "A member clicks “move deal,” “invite,” or “remove.”" },
   { icon: ServerCog, label: "Application logic", body: "A server action runs, scoped to the caller's account." },
   { icon: Database, label: "Database permission check", body: "has_role_access() asks: is this caller a member of this account, in an allowed role?" },
-  { icon: ShieldCheck, label: "RLS enforcement", body: "Postgres allows or denies the row — not just the button." },
+  { icon: ShieldCheck, label: "RLS enforcement", body: "Postgres allows or denies the row, not just the button." },
 ];
 
 const ROLES = [

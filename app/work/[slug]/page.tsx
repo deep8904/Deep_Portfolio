@@ -22,7 +22,7 @@ export async function generateMetadata({
     title: stub.label,
     description: stub.body,
     alternates: { canonical: `/work/${slug}` },
-    openGraph: { title: `${stub.label} — Deep Chadamiya`, description: stub.body, url: `/work/${slug}` },
+    openGraph: { title: `${stub.label} · Deep Chadamiya`, description: stub.body, url: `/work/${slug}` },
   };
 }
 

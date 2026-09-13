@@ -4,7 +4,7 @@ import { SiteChrome } from "@/components/layout/SiteChrome";
 import { SITE_URL } from "@/lib/site";
 import { SITE } from "@/lib/data";
 
-const TITLE = "Deep Chadamiya — Product · Design · Dev";
+const TITLE = "Deep Chadamiya · Product · Design · Dev";
 const DESCRIPTION =
   "Deep Chadamiya is a product designer, design engineer, and frontend developer designing and building thoughtful digital experiences.";
 
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: TITLE,
-    template: "%s — Deep Chadamiya",
+    template: "%s · Deep Chadamiya",
   },
   description: DESCRIPTION,
   alternates: {
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
   },

@@ -32,7 +32,7 @@ export function Interests() {
             </div>
             <Link
               href="/after-hours"
-              className="group mt-1 inline-flex w-fit items-center gap-1.5 text-[13.5px] font-medium text-ink-secondary transition-colors duration-200 hover:text-ink"
+              className="group -my-2 mt-1 inline-flex w-fit items-center gap-1.5 py-2 text-[13.5px] font-medium text-ink-secondary transition-colors duration-200 hover:text-ink"
             >
               Enter After Hours
               <ArrowRight

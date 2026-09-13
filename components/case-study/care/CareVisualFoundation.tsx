@@ -25,7 +25,7 @@ export function CareVisualFoundation() {
           <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">TYPE</span>
           <span className="text-[40px] font-medium leading-[1.05] tracking-[-0.02em]">Aa</span>
           <p className="m-0 text-[14px] leading-[1.6] text-ink-faint text-pretty">
-            Inter throughout, at a medium 520 weight for headlines rather than a heavier display cut — the same
+            Inter throughout, at a medium 520 weight for headlines rather than a heavier display cut. The same
             typeface for body and headings keeps the site feeling calm rather than “brochure.”
           </p>
         </div>
@@ -40,7 +40,7 @@ export function CareVisualFoundation() {
             </span>
           </div>
           <p className="m-0 text-[14px] leading-[1.6] text-ink-faint text-pretty">
-            Fully pill-shaped buttons (999px radius), a filled near-black primary and an outlined secondary — the
+            Fully pill-shaped buttons (999px radius), a filled near-black primary and an outlined secondary. The
             same two-button pattern repeats on every page rather than introducing new button styles per section.
           </p>
         </div>

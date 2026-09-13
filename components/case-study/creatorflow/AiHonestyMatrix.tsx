@@ -14,7 +14,7 @@ const ROWS: { name: string; tier: Tier; note: string }[] = [
   {
     name: "Repurpose suggestions",
     tier: "real-ai",
-    note: "In production, generating a new suggestion calls Gemini against the video's real transcript — genuinely model-backed. The demo account ships pre-generated results for a few videos instead of requiring a live API key, and says so in the UI.",
+    note: "In production, generating a new suggestion calls Gemini against the video's real transcript, genuinely model-backed. The demo account ships pre-generated results for a few videos instead of requiring a live API key, and says so in the UI.",
   },
   {
     name: "AI Assistant",
@@ -24,12 +24,12 @@ const ROWS: { name: string; tier: Tier; note: string }[] = [
   {
     name: "“Draft reply” / “Review contract”",
     tier: "template",
-    note: "Template-based output built from a rate card and structure. Labeled “— preview” on the button itself.",
+    note: "Template-based output built from a rate card and structure. Labeled “preview” on the button itself.",
   },
   {
     name: "Gmail deal detection",
     tier: "not-ai",
-    note: "A real, narrow keyword-based classifier — genuine integration code, but not a model call. Worth stating plainly either way.",
+    note: "A real, narrow keyword-based classifier: genuine integration code, but not a model call. Worth stating plainly either way.",
   },
   {
     name: "Draft dictation (mic)",

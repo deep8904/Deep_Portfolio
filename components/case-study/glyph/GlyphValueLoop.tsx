@@ -1,7 +1,7 @@
 import { UserCircle2, Lock, Eye, ScrollText, Compass, LucideIcon } from "lucide-react";
 
 const STEPS: { icon: LucideIcon; label: string; body: string }[] = [
-  { icon: UserCircle2, label: "Developer profile", body: "Role, engines, skills, and availability — created once." },
+  { icon: UserCircle2, label: "Developer profile", body: "Role, engines, skills, and availability, created once." },
   { icon: Lock, label: "Private project", body: "Every new project starts private. Nothing is exposed by default." },
   { icon: Eye, label: "Deliberate visibility", body: "The owner chooses when a project becomes unlisted or public." },
   { icon: ScrollText, label: "Devlog", body: "Progress posts attach to the project, not a separate timeline." },

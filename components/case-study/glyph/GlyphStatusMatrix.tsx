@@ -21,7 +21,7 @@ const ROWS: { name: string; tier: Tier; note: string }[] = [
   { name: "GitHub OAuth round-trip", tier: "active", note: "UI and callback code exist; not exercised in this pass." },
   { name: "Playtest discovery, signup, feedback", tier: "next", note: "Schema exists; no current-local routes. Not claimed as a working loop." },
   { name: "Event authoring / RSVP, collaboration applications", tier: "next", note: "Schema only; product direction, not current behavior." },
-  { name: "Notifications", tier: "next", note: "Table and RLS only — no dedicated route in current source." },
+  { name: "Notifications", tier: "next", note: "Table and RLS only, no dedicated route in current source." },
   { name: "Broad public deployment (Explore, playtests, publisher tools)", tier: "lineage", note: "Exists on a separate public lineage with a different schema and privacy model. Not this product's evidence." },
 ];
 

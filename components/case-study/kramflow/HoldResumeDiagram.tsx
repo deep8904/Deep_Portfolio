@@ -4,12 +4,12 @@ const STATES: { icon: LucideIcon; label: string; body: string }[] = [
   {
     icon: Play,
     label: "Running",
-    body: "The countdown ticks against the item's real startedAt time — every display computes the same number independently, from the same timestamp.",
+    body: "The countdown ticks against the item's real startedAt time, so every display computes the same number independently, from the same timestamp.",
   },
   {
     icon: Pause,
     label: "Hold",
-    body: "pausedAt is set to now. Every display freezes its own countdown against that timestamp instead of the live clock — no per-client pause bookkeeping needed.",
+    body: "pausedAt is set to now. Every display freezes its own countdown against that timestamp instead of the live clock, so no per-client pause bookkeeping is needed.",
   },
   {
     icon: RotateCcw,

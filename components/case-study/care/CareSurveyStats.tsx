@@ -49,7 +49,7 @@ export function CareRecurringNeeds() {
         </div>
       ))}
       <p className="m-0 mt-1 text-[13px] leading-[1.6] text-ink-faint text-pretty">
-        Bars are scaled to the largest response count, not to 39 — read each as a share of the same 39 responses,
+        Bars are scaled to the largest response count, not to 39; read each as a share of the same 39 responses,
         not a percentage of visitors overall.
       </p>
     </div>

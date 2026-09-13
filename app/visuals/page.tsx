@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Visuals",
   description,
   alternates: { canonical: "/visuals" },
-  openGraph: { title: "Visuals — Deep Chadamiya", description, url: "/visuals" },
+  openGraph: { title: "Visuals · Deep Chadamiya", description, url: "/visuals" },
 };
 
 export default function VisualsPage() {

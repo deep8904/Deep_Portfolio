@@ -29,7 +29,7 @@ export function LabMode({ onComplete }: { onComplete: () => void }) {
   return (
     <div className="flex flex-col gap-6">
       <p className="m-0 max-w-[520px] text-[15px] leading-[1.6] text-ink-muted">
-        A small experiment connected to the design system this portfolio is actually built on — pick two colors and
+        A small experiment connected to the design system this portfolio is actually built on. Pick two colors and
         see their real WCAG contrast ratio, computed the same way an accessibility audit would.
       </p>
 
@@ -74,7 +74,7 @@ export function LabMode({ onComplete }: { onComplete: () => void }) {
         style={{ background: bg }}
       >
         <span className="text-[26px] font-medium tracking-[-0.02em] transition-colors duration-150" style={{ color: fg }}>
-          Aa — sample text
+          Aa sample text
         </span>
       </div>
 

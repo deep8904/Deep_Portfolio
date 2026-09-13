@@ -16,7 +16,7 @@ const ROWS = [
   },
   {
     heuristic: "Match Between System and the Real World",
-    observation: "'Meet Our Horses' is a nav item with a hidden dropdown rather than a browsable page — there's no way to see how many horses are in care or search by name.",
+    observation: "'Meet Our Horses' is a nav item with a hidden dropdown rather than a browsable page: there's no way to see how many horses are in care or search by name.",
     consequence: "A visitor interested in a specific horse or in adoption history has no page built for that question.",
   },
 ];

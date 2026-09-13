@@ -22,7 +22,7 @@ const MODULES: { icon: LucideIcon; name: string; body: string }[] = [
   { icon: FileText, name: "Drafts", body: "Where an idea becomes written content, ready to publish." },
   { icon: Repeat, name: "Repurpose", body: "Turns a published video into short-form clips and posts." },
   { icon: ImageIcon, name: "Media Kit", body: "A shareable one-pager for brands, built from real account data." },
-  { icon: Zap, name: "Automations", body: "Rules that save repetitive steps — some real, some previewed honestly." },
+  { icon: Zap, name: "Automations", body: "Rules that save repetitive steps: some real, some previewed honestly." },
   { icon: LineChart, name: "Analytics", body: "Channel performance, once a real YouTube connection is in place." },
   { icon: Sparkles, name: "AI Assistant", body: "Answers assembled from templates against real account data." },
   { icon: Users, name: "Team", body: "Invites collaborators into the account under a specific role." },
@@ -56,7 +56,7 @@ export function ProductSystemMap() {
       </div>
 
       <p className="m-0 max-w-[560px] text-center text-[15px] leading-[1.6] text-ink-faint text-pretty">
-        Search works as a lightweight layer across Ideas and Deals rather than a separate module — twelve real
+        Search works as a lightweight layer across Ideas and Deals rather than a separate module: twelve real
         surfaces reading and writing against the same account, not twelve disconnected screens.
       </p>
     </div>

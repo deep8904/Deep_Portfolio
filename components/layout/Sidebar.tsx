@@ -3,10 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Briefcase, Camera, CircleUser, FileText } from "lucide-react";
+import { Home, Briefcase, Camera, CircleUser, FileText, Mail } from "lucide-react";
 import { NAV_ITEMS, SOCIAL_LINKS } from "@/lib/data";
 
-const ICONS = { home: Home, work: Briefcase, visuals: Camera, about: CircleUser, resume: FileText };
+const ICONS = { home: Home, work: Briefcase, visuals: Camera, about: CircleUser, resume: FileText, contact: Mail };
 
 function isActive(pathname: string, id: string) {
   if (id === "home") return pathname === "/";

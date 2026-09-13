@@ -4,14 +4,14 @@ const COLUMNS = [
     items: [
       "Writes to the real live_state row",
       "Opens a Realtime channel every display subscribes to",
-      "Reaches AV, Green Room, General, Presenter, and any open share link",
+      "Reaches AV, Speaker Ready, General, Presenter, and any open share link",
       "State: shared, persisted, multi-operator",
     ],
   },
   {
     heading: "Rehearsal",
     items: [
-      "Never calls the live API — no write path to live_state exists on this page",
+      "Never calls the live API: no write path to live_state exists on this page",
       "Opens no Realtime channel other pages could subscribe to",
       "Reaches nothing outside the tab it's running in",
       "State: local to one browser tab, disposable on refresh",

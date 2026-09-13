@@ -5,7 +5,7 @@ export function CareIAComparison() {
   return (
     <div className="grid grid-cols-1 gap-6 tab:grid-cols-2">
       <div className="flex flex-col gap-3 rounded-xl border border-line-soft px-5 py-5">
-        <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">CURRENT — 8 ITEMS</span>
+        <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">CURRENT: 8 ITEMS</span>
         <ul className="m-0 flex list-none flex-col gap-2 p-0">
           {CURRENT.map((item) => (
             <li key={item} className="text-[14.5px] leading-[1.5] text-ink-faint">{item}</li>
@@ -17,7 +17,7 @@ export function CareIAComparison() {
         </p>
       </div>
       <div className="flex flex-col gap-3 rounded-xl border border-line-strong px-5 py-5">
-        <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">PROPOSED — 7 ITEMS</span>
+        <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">PROPOSED: 7 ITEMS</span>
         <ul className="m-0 flex list-none flex-col gap-2 p-0">
           {PROPOSED.map((item) => (
             <li key={item} className="text-[14.5px] leading-[1.5] text-ink">{item}</li>

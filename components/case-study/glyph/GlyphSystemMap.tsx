@@ -11,7 +11,7 @@ export function GlyphSystemMap() {
       <div className="flex w-full flex-col items-center gap-2 rounded-2xl border border-line-strong bg-surface px-6 py-6 text-center">
         <span className="text-[12px] font-semibold tracking-[0.1em] text-ink-num">DEVELOPER + PROJECT ARE THE ROOTS</span>
         <span className="text-[15px] leading-[1.6] text-ink-faint">
-          Every other table exists to attach progress, feedback, or connection to one of these two — never as a
+          Every other table exists to attach progress, feedback, or connection to one of these two, never as a
           disconnected feature island.
         </span>
       </div>

@@ -45,7 +45,7 @@ export function SignalMode({ onComplete }: { onComplete: () => void }) {
       }
     } else {
       setProgress([]);
-      setMessage("Wrong path — try again.");
+      setMessage("Wrong path. Try again.");
     }
   };
 
@@ -64,7 +64,7 @@ export function SignalMode({ onComplete }: { onComplete: () => void }) {
   return (
     <div className="flex flex-col gap-6">
       <p className="m-0 text-[15px] leading-[1.6] text-ink-muted">
-        Route the signal — select the four nodes in the order a signal actually travels, from source to screen.
+        Route the signal: select the four nodes in the order a signal actually travels, from source to screen.
       </p>
 
       <div className="flex flex-wrap items-center justify-center gap-2 tab:flex-nowrap tab:gap-0">

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Work",
   description,
   alternates: { canonical: "/work" },
-  openGraph: { title: "Work — Deep Chadamiya", description, url: "/work" },
+  openGraph: { title: "Work · Deep Chadamiya", description, url: "/work" },
 };
 
 export default function WorkPage() {

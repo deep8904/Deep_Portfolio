@@ -2,7 +2,7 @@ import { UserCheck, UserX, EyeOff, Globe2, LucideIcon } from "lucide-react";
 
 const ROWS: { icon: LucideIcon; who: string; result: string }[] = [
   { icon: UserCheck, who: "Owner", result: "Full read and edit access to their private project." },
-  { icon: UserX, who: "Other signed-in developer", result: "No access — the route behaves exactly as it does for a stranger." },
+  { icon: UserX, who: "Other signed-in developer", result: "No access: the route behaves exactly as it does for a stranger." },
   { icon: EyeOff, who: "Anonymous visitor", result: "A non-disclosing 404. The response does not confirm the project exists." },
   { icon: Globe2, who: "Anyone, for a public project", result: "Readable through Discover, the profile, and the direct URL." },
 ];

@@ -1,6 +1,6 @@
 const STACK = [
   { name: "Next.js + TypeScript", purpose: "Application framework and type safety across operator, remote, and display surfaces." },
-  { name: "Supabase Realtime", purpose: "Postgres change subscriptions driving every surface off one shared state row — no polling." },
+  { name: "Supabase Realtime", purpose: "Postgres change subscriptions driving every surface off one shared state row, no polling." },
   { name: "Supabase Auth", purpose: "Per-operator accounts, replacing an earlier shared-PIN cookie scheme." },
   { name: "PostgreSQL", purpose: "11-table schema covering sessions, programs, live state, displays, and broadcasts." },
   { name: "Zod", purpose: "Request validation on the API routes that mutate shared live state." },

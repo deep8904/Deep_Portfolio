@@ -4,23 +4,23 @@ const TIERS = [
     size: "text-[22px] tab:text-[26px]",
     items: [
       { label: "Time remaining", note: "The single number a performer or AV tech needs from across a room." },
-      { label: "Current item", note: "What's live right now — the other half of the two questions this exists to answer." },
+      { label: "Current item", note: "What's live right now: the other half of the two questions this exists to answer." },
     ],
   },
   {
     tier: "Secondary",
     size: "text-[16px]",
     items: [
-      { label: "Standby / live status", note: "A short state word, not a paragraph — glanceable, not read." },
-      { label: "Live timeline (AV only)", note: "Detail for the crew that needs it; other displays don't carry this weight." },
+      { label: "Standby / live status", note: "A short state word, not a paragraph: glanceable, not read." },
+      { label: "Prep checklist (AV only)", note: "Mic, video, lighting, curtains: detail for the crew that needs it; other displays don't carry this weight." },
     ],
   },
   {
-    tier: "Operator-only — never on a public display",
+    tier: "Operator-only, never on a public display",
     size: "text-[16px]",
     items: [
       { label: "Control ownership", note: "Only the person with the lock needs to know who has it." },
-      { label: "Hold status control", note: "A toggle, not a readout — the public displays show the effect (a Hold screen), not the control." },
+      { label: "Hold status control", note: "A toggle, not a readout. The public displays show the effect (a Hold screen), not the control." },
     ],
   },
 ];

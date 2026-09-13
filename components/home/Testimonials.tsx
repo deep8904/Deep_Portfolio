@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Section } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -10,46 +10,30 @@ import { TESTIMONIALS } from "@/lib/data";
 
 export function Testimonials() {
   const trackRef = useRef<HTMLDivElement>(null);
-  const [atStart, setAtStart] = useState(true);
-  const [atEnd, setAtEnd] = useState(false);
-
-  const updateEdges = () => {
-    const el = trackRef.current;
-    if (!el) return;
-    setAtStart(el.scrollLeft <= 8);
-    setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 8);
-  };
-
-  useEffect(() => {
-    updateEdges();
-    // Scroll-snap can settle a frame or two after mount (observed resting at
-    // ~4px instead of 0), which briefly left "Previous" wrongly enabled.
-    const raf = requestAnimationFrame(updateEdges);
-    const el = trackRef.current;
-    if (!el) return;
-    el.addEventListener("scroll", updateEdges, { passive: true });
-    window.addEventListener("resize", updateEdges);
-    return () => {
-      cancelAnimationFrame(raf);
-      el.removeEventListener("scroll", updateEdges);
-      window.removeEventListener("resize", updateEdges);
-    };
-  }, []);
 
   const step = (dir: 1 | -1) => {
     const el = trackRef.current;
     if (!el) return;
     const card = el.querySelector<HTMLElement>("[data-card]");
     const amount = card ? card.getBoundingClientRect().width + 14 : el.clientWidth;
-    el.scrollBy({ left: dir * amount, behavior: "smooth" });
+    const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 8;
+    const atStart = el.scrollLeft <= 8;
+
+    if (dir === 1 && atEnd) {
+      el.scrollTo({ left: 0, behavior: "smooth" });
+    } else if (dir === -1 && atStart) {
+      el.scrollTo({ left: el.scrollWidth, behavior: "smooth" });
+    } else {
+      el.scrollBy({ left: dir * amount, behavior: "smooth" });
+    }
   };
 
   // Outer button is a full 44x44 hit target (WCAG 2.5.5); the visible circle
   // inside it stays the original 34px so the design doesn't visually change.
   const btnBase =
-    "group flex h-11 w-11 items-center justify-center rounded-full transition-transform duration-[180ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] enabled:active:scale-[0.94] disabled:opacity-40";
+    "group flex h-11 w-11 items-center justify-center rounded-full transition-transform duration-[180ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] active:scale-[0.94]";
   const btnCircle =
-    "flex h-[34px] w-[34px] items-center justify-center rounded-full border border-line-strong bg-surface text-ink transition-colors duration-[180ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-enabled:group-hover:bg-[#E6E4DF]";
+    "flex h-[34px] w-[34px] items-center justify-center rounded-full border border-line-strong bg-surface text-ink transition-colors duration-[180ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:bg-[#E6E4DF]";
 
   return (
     <Section>
@@ -62,12 +46,12 @@ export function Testimonials() {
             </h2>
           </div>
           <div className="flex gap-2">
-            <button type="button" onClick={() => step(-1)} disabled={atStart} aria-label="Previous testimonial" className={btnBase}>
+            <button type="button" onClick={() => step(-1)} aria-label="Previous testimonial" className={btnBase}>
               <span className={btnCircle}>
                 <ChevronLeft size={14} strokeWidth={2} />
               </span>
             </button>
-            <button type="button" onClick={() => step(1)} disabled={atEnd} aria-label="Next testimonial" className={btnBase}>
+            <button type="button" onClick={() => step(1)} aria-label="Next testimonial" className={btnBase}>
               <span className={btnCircle}>
                 <ChevronRight size={14} strokeWidth={2} />
               </span>

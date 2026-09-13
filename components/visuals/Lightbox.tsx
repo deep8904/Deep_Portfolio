@@ -137,7 +137,7 @@ export function Lightbox({
           <span className="text-sm font-medium">{photo.title}</span>
           {(photo.location || photo.date) && (
             <span className="text-[12px] tracking-[0.04em] text-ink-faint">
-              {[photo.location, photo.date].filter(Boolean).join(" — ")}
+              {[photo.location, photo.date].filter(Boolean).join(" · ")}
             </span>
           )}
           {photo.description && (

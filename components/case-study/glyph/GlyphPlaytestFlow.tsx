@@ -31,7 +31,7 @@ export function GlyphPlaytestFlow() {
       <p className="m-0 text-[13px] leading-[1.6] text-ink-faint text-pretty">
         Request creation, platform/time/capacity/focus fields, and a private build-link table are implemented in
         current source. Tester discovery, signup, acceptance, private build access, and feedback submission are the
-        next layer — not yet routes in the current-local product.
+        next layer, not yet routes in the current-local product.
       </p>
     </div>
   );

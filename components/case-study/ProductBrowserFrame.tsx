@@ -23,6 +23,7 @@ export function ProductBrowserFrame({
   sizes = "(min-width: 1200px) 1160px, 100vw",
   dark = false,
   chrome = "browser",
+  priority = false,
 }: {
   src: string;
   alt: string;
@@ -33,6 +34,7 @@ export function ProductBrowserFrame({
   sizes?: string;
   dark?: boolean;
   chrome?: "mac" | "browser";
+  priority?: boolean;
 }) {
   return (
     <figure className="m-0 min-w-0">
@@ -108,7 +110,7 @@ export function ProductBrowserFrame({
           </>
         )}
         <div className={clsx("relative w-full overflow-hidden", aspect)}>
-          <Image src={src} alt={alt} fill sizes={sizes} className="object-cover object-top" />
+          <Image src={src} alt={alt} fill sizes={sizes} priority={priority} className="object-cover object-top" />
         </div>
       </div>
       {caption && <figcaption className="mt-3 text-[13px] leading-[1.5] text-ink-faint">{caption}</figcaption>}
