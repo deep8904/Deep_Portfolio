@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -40,7 +41,10 @@ yarn-error.log*
 /qa-screenshots/
 /qa-screenshots-v2/
 /qa-screenshots*/
-*-qa-screenshots.zip
+*-qa-screenshots*.zip
+
+# Claude Desktop runtime state (not project source)
+/.claude/scheduled_tasks.lock
 
 # typescript
 *.tsbuildinfo

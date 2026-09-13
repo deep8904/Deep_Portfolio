@@ -13,6 +13,10 @@ import { buildRevealScene, prefersReducedMotion, registerGsap } from "@/lib/moti
 
 export function SiteChrome({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  // After Hours renders its own Footer instance inside its dark, route-scoped
+  // theme (.ah-scope) — rendering the default one here too would duplicate it
+  // in the light theme right after.
+  const rendersOwnFooter = pathname === "/after-hours";
 
   useEffect(() => {
     registerGsap();
@@ -32,22 +36,39 @@ export function SiteChrome({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+    let cleanup = () => {};
     const frame = requestAnimationFrame(() => {
-      const cleanup = buildRevealScene();
+      cleanup = buildRevealScene();
       ScrollTrigger.refresh();
-      return cleanup;
     });
-    return () => cancelAnimationFrame(frame);
+    // Web fonts and below-the-fold images can resize content after this
+    // route's initial reveal-scene is built; re-measure so ScrollTrigger's
+    // start positions don't go stale for a route the user is still on.
+    const refresh = () => ScrollTrigger.refresh();
+    document.fonts?.ready?.then(refresh).catch(() => {});
+    window.addEventListener("load", refresh);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      cleanup();
+      window.removeEventListener("load", refresh);
+    };
   }, [pathname]);
 
   return (
     <div className="min-h-screen bg-bg">
+      <a
+        href="#main-content"
+        className="fixed left-4 top-4 z-[400] -translate-y-20 rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-accent-cream transition-transform duration-150 focus:translate-y-0"
+      >
+        Skip to content
+      </a>
       <IntroOverlay />
       <MobileNav key={pathname} />
       <Sidebar />
-      <main className="tab:ml-[214px] desk:ml-[264px]">
+      <main id="main-content" tabIndex={-1} className="outline-none nav:ml-[264px]">
         {children}
-        <Footer />
+        {!rendersOwnFooter && <Footer />}
       </main>
     </div>
   );

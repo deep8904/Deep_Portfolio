@@ -7,13 +7,13 @@ import { Testimonials } from "@/components/home/Testimonials";
 
 export default function HomePage() {
   return (
-    <>
+    <div className="flex flex-col">
       <Hero />
-      <WhatIBring />
       <AboutPreview />
-      <SelectedWork />
+      <WhatIBring />
       <Process />
+      <SelectedWork />
       <Testimonials />
-    </>
+    </div>
   );
 }

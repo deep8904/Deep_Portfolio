@@ -9,7 +9,7 @@ export function ResumeHeader() {
   return (
     <div className="flex max-w-[720px] flex-col items-start gap-3.5">
       <SectionLabel>Resume</SectionLabel>
-      <h1 className="m-0 text-[34px] font-medium leading-[1.1] tracking-[-0.03em] tab:text-[42px] desk:text-[48px]">
+      <h1 className="m-0 text-h1 font-medium tracking-[-0.03em]">
         Deepkumar Chadamiya
       </h1>
       <p className="m-0 text-[15.5px] text-ink-secondary">
@@ -29,11 +29,11 @@ export function ResumeHeader() {
           <Phone size={14} strokeWidth={1.8} className="flex-none" />
           {SITE.phoneDisplay}
         </a>
-        <a href={SITE.linkedin} target="_blank" rel="noopener" className={contactLinkClass}>
+        <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Deep Chadamiya on LinkedIn (opens in a new tab)" className={contactLinkClass}>
           <ExternalLink size={14} strokeWidth={1.8} className="flex-none" />
           LinkedIn
         </a>
-        <a href={SITE.github} target="_blank" rel="noopener" className={contactLinkClass}>
+        <a href={SITE.github} target="_blank" rel="noopener noreferrer" aria-label="Deep Chadamiya on GitHub (opens in a new tab)" className={contactLinkClass}>
           <ExternalLink size={14} strokeWidth={1.8} className="flex-none" />
           GitHub
         </a>

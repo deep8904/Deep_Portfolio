@@ -10,7 +10,7 @@ export function Experience() {
         <Reveal>
           <div className="flex flex-col items-start gap-4">
             <SectionLabel>Experience</SectionLabel>
-            <h2 className="m-0 max-w-full text-[26px] font-medium leading-[1.16] tracking-[-0.028em] text-balance tab:max-w-[13ch] tab:text-[30px] desk:text-[34px]">
+            <h2 className="m-0 max-w-full text-h2 font-medium tracking-[-0.028em] text-balance tab:max-w-[13ch]">
               Where I’ve contributed.
             </h2>
           </div>
@@ -18,7 +18,7 @@ export function Experience() {
             {RESUME_EXPERIENCE.map((x) => (
               <article
                 key={x.id}
-                className="group border-b border-line-soft py-5 transition-colors duration-[220ms] ease-linear tab:py-[26px] hover:border-[#CFCCC5]"
+                className="group border-b border-line-soft py-5 transition-colors duration-[220ms] ease-linear tab:py-[26px] hover:border-line-hover"
               >
                 <div className="flex flex-wrap items-baseline justify-between gap-4">
                   <div>
@@ -29,9 +29,9 @@ export function Experience() {
                   </div>
                   <span className="whitespace-nowrap text-[13px] text-ink-faint">{x.dates}</span>
                 </div>
-                <ul className="m-0 mt-3.5 flex flex-col gap-2 pl-[19px]">
+                <ul className="m-0 mt-3.5 flex flex-col gap-2 pl-4 tab:pl-[19px]">
                   {x.bullets.map((b) => (
-                    <li key={b} className="text-[13.75px] leading-[1.62] text-ink-secondary">
+                    <li key={b} className="text-[15px] leading-[1.62] text-ink-secondary">
                       {b}
                     </li>
                   ))}

@@ -24,13 +24,15 @@ export function Section({
   children,
   className,
   tight = false,
+  id,
 }: {
   children: ReactNode;
   className?: string;
   tight?: boolean;
+  id?: string;
 }) {
   return (
-    <section className={clsx(tight ? "pt-[34px] tab:pt-[46px]" : "pt-[78px] tab:pt-[118px]", className)}>
+    <section id={id} className={clsx(tight ? "pt-[34px] tab:pt-[46px]" : "pt-[78px] tab:pt-[118px]", className)}>
       <Container>{children}</Container>
     </section>
   );

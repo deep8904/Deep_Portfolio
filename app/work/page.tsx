@@ -5,9 +5,13 @@ import { WorkCard } from "@/components/work/WorkCard";
 import { MoreWork } from "@/components/work/MoreWork";
 import { WORK_PROJECTS } from "@/lib/data";
 
+const description = "Products, interfaces, and systems across product design, UX, software engineering, and research.";
+
 export const metadata: Metadata = {
   title: "Work",
-  description: "Products, interfaces, and systems across product design, UX, software engineering, and research.",
+  description,
+  alternates: { canonical: "/work" },
+  openGraph: { title: "Work · Deep Chadamiya", description, url: "/work" },
 };
 
 export default function WorkPage() {
@@ -17,7 +21,7 @@ export default function WorkPage() {
         <Container>
           <div className="flex max-w-[680px] flex-col items-start gap-4">
             <SectionLabel>Work</SectionLabel>
-            <h1 className="m-0 text-[34px] font-medium leading-[1.1] tracking-[-0.03em] tab:text-[42px] desk:text-[48px]">
+            <h1 className="m-0 text-h1 font-medium tracking-[-0.03em]">
               Products shaped from problem to working system.
             </h1>
             <p className="m-0 text-[15px] leading-[1.72] text-ink-secondary text-pretty">
@@ -29,7 +33,7 @@ export default function WorkPage() {
       </section>
 
       <Section>
-        <div className="flex flex-col">
+        <div className="grid grid-cols-1 gap-x-8 gap-y-14 tab:grid-cols-2 tab:gap-y-16">
           {WORK_PROJECTS.map((project) => (
             <WorkCard key={project.slug} project={project} />
           ))}

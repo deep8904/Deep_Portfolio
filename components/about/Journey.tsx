@@ -10,7 +10,7 @@ export function Journey() {
       <Reveal>
         <div className="flex flex-col items-center gap-3.5">
           <SectionLabel>My Journey</SectionLabel>
-          <h2 className="m-0 max-w-full text-center text-[27px] font-medium leading-[1.16] tracking-[-0.028em] text-balance tab:max-w-[620px] tab:text-[32px] desk:text-[37px]">
+          <h2 className="m-0 max-w-full text-center text-h2 font-medium tracking-[-0.028em] text-balance tab:max-w-[620px]">
             How I got here.
           </h2>
         </div>

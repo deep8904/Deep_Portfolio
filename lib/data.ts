@@ -6,11 +6,10 @@ export const SITE = {
   email: "deeppatel8904@gmail.com",
   phone: "+14805726950",
   phoneDisplay: "+1 (480) 572-6950",
-  linkedin: "https://www.linkedin.com",
-  github: "https://github.com",
-  instagram: "https://www.instagram.com/",
-  twitter: "https://x.com",
-  youtube: "https://www.youtube.com/",
+  linkedin: "https://www.linkedin.com/in/deepchadamiya",
+  github: "https://github.com/deep8904",
+  instagram: "https://www.instagram.com/_de3__",
+  x: "https://x.com/pateldeep8904",
 };
 
 export const NAV_ITEMS = [
@@ -19,13 +18,14 @@ export const NAV_ITEMS = [
   { id: "visuals", label: "Visuals", href: "/visuals" },
   { id: "about", label: "About", href: "/about" },
   { id: "resume", label: "Resume", href: "/resume" },
+  { id: "contact", label: "Contact", href: "/contact" },
 ] as const;
 
 export const SOCIAL_LINKS = [
+  { label: "LinkedIn", href: SITE.linkedin },
+  { label: "GitHub", href: SITE.github },
   { label: "Instagram", href: SITE.instagram },
-  { label: "Twitter-X", href: SITE.twitter },
-  { label: "Linkedin", href: SITE.linkedin },
-  { label: "Youtube", href: SITE.youtube },
+  { label: "X", href: SITE.x },
 ];
 
 export const PILLARS = [
@@ -47,13 +47,6 @@ export const PILLARS = [
     meta: "FRONTEND · FULL STACK · IMPLEMENTATION",
     body: "I carry ideas into working software, building interfaces, connecting data and APIs, handling edge cases, and refining performance until the experience works beyond the prototype.",
   },
-];
-
-export const HOME_PROJECTS = [
-  { slug: "creatorflow", name: "CreatorFlow", meta: "PRODUCT / 2025-26", placeholder: "[ COVER IMAGE — CREATORFLOW ]" },
-  { slug: "kramflow", name: "KramFlow", meta: "PRODUCT / 2026", placeholder: "[ COVER IMAGE — KRAMFLOW ]" },
-  { slug: "care", name: "C.A.R.E. for Horses", meta: "UX RESEARCH / 2025", placeholder: "[ COVER IMAGE — C.A.R.E. ]" },
-  { slug: "glyph", name: "Glyph", meta: "APP DESIGN / 2025-26", placeholder: "[ COVER IMAGE — GLYPH ]" },
 ];
 
 export const PROCESS = [
@@ -79,31 +72,31 @@ export const TESTIMONIALS = [
     text: "“Reliable, creative, and always willing to take ownership. He consistently delivered thoughtful solutions and was a great person to have on the team.”",
     name: "Arjun Shinojiya",
     role: "CMO, Tibicle",
-    avatar: "/images/testimonials/avatar-1.png",
+    avatar: "/images/testimonials/avatar-arjun-v2.png",
   },
   {
     text: "“The redesign gave our business a completely new presence online. He understood our products, our customers, and created something that genuinely represented our brand.”",
     name: "Dev Patel",
     role: "Founder, Akshar Antique",
-    avatar: "/images/testimonials/avatar-2.png",
+    avatar: "/images/testimonials/avatar-dev.jpg",
   },
   {
     text: "“Having him on the team made a real difference during the event. He adapted quickly, handled technical needs smoothly, and brought a great creative eye to the photography.”",
     name: "Scarlett Kim",
     role: "Co-Founder, Worlds in Play",
-    avatar: "/images/testimonials/avatar-3.webp",
+    avatar: "/images/testimonials/avatar-scarlett.webp",
   },
   {
     text: "“He made complicated student data much easier for us to understand and work with. The dashboards and visualizations were clear, practical, and genuinely useful.”",
     name: "Melissa Dickman",
     role: "ASU HIDA",
-    avatar: "/images/testimonials/avatar-1.png",
+    avatar: "/images/testimonials/avatar-melissa.png",
   },
   {
     text: "“He has a strong eye for design and understands how to turn an idea into something polished. The work he created for our department was consistently excellent.”",
     name: "Nicholas Seidel",
     role: "ASU HIDA",
-    avatar: "/images/testimonials/avatar-1.png",
+    avatar: "/images/testimonials/avatar-nicholas.png",
   },
 ];
 
@@ -116,8 +109,8 @@ export const CAPABILITIES = [
 
 export const JOURNEY = [
   { org: "Endless", role: "(Software & Game Development)", years: "2026 – Present", logo: "/images/logos/endless-journey.png" },
-  { org: "Arizona State University", role: "(Data & Dashboard Designer)", years: "2025", logo: "/images/logos/asu-journey.png" },
-  { org: "Tibicle", role: "(Software Developer & UI/UX Designer)", years: "2022 – 2023", logo: "/images/logos/tibicle-journey.png" },
+  { org: "Arizona State University", role: "Design Technology Teaching Assistant / Database Assistant", years: "2024 – 2025", logo: "/images/logos/asu-journey.png" },
+  { org: "Tibicle", role: "Software Developer / Full-Stack Developer", years: "2022 – 2023", logo: "/images/logos/tibicle-journey.png" },
 ];
 
 export const EDUCATION = [
@@ -132,6 +125,19 @@ export const INTERESTS = [
   { title: "Live Production / AV", body: "Where software, hardware, people, and timing have to work together." },
 ];
 
+// What's actually on the other end of a project card. A card's status is
+// about the CASE STUDY's depth, independent of what stage the underlying
+// product is at (e.g. Glyph can be "in development" as a product while its
+// write-up is still just a preview, and CreatorFlow can be a finished
+// product with a fully detailed case study).
+export type CaseStudyStatusLevel = "detailed" | "preview" | "research" | "in-development";
+
+export type WorkProjectCover =
+  | { kind: "image"; src: string; alt: string }
+  // Deliberately no bracket-placeholder/fake-image option: a project without
+  // a real screenshot yet gets an honest text-only treatment instead.
+  | { kind: "none" };
+
 export type WorkProject = {
   slug: string;
   num: string;
@@ -139,11 +145,11 @@ export type WorkProject = {
   year: string;
   category: string;
   description: string;
-  coverLabel: string;
+  cover: WorkProjectCover;
+  caseStudyStatus: CaseStudyStatusLevel;
   layout: "landscape" | "split" | "wide";
   /** Bespoke text arrangement, matching the source design's per-card layout. */
   titleBlock: "title-year_category" | "category-year_title" | "title_category-year" | "title-category-year";
-  status?: string;
 };
 
 export const WORK_PROJECTS: WorkProject[] = [
@@ -154,10 +160,11 @@ export const WORK_PROJECTS: WorkProject[] = [
     year: "2025–26",
     category: "PRODUCT · FULL STACK · AI",
     description:
-      "A creator workflow platform bringing content planning, brand deals, repurposing, analytics, and automation into one connected system.",
-    coverLabel: "[ COVER IMAGE — CREATORFLOW ]",
+      "A creator business platform connecting content planning, brand deals, publishing, analytics, and automation in one workflow.",
+    cover: { kind: "image", src: "/work/creatorflow/macbook-cover.jpg", alt: "The CreatorFlow dashboard shown on a MacBook, angled on a stone surface" },
+    caseStudyStatus: "detailed",
     layout: "landscape",
-    titleBlock: "title-year_category",
+    titleBlock: "category-year_title",
   },
   {
     slug: "kramflow",
@@ -166,106 +173,94 @@ export const WORK_PROJECTS: WorkProject[] = [
     year: "2026",
     category: "PRODUCT · REALTIME SYSTEMS · UX",
     description:
-      "A live-event operating system that keeps operators, presenters, volunteers, and displays aligned around what is happening now and what happens next.",
-    coverLabel: "[ COVER IMAGE — KRAMFLOW ]",
+      "A live event operating system connecting operators, presenters, AV teams, and displays through one shared real-time state.",
+    cover: {
+      kind: "image",
+      src: "/work/kramflow/cover-live-truth-v2.jpg",
+      alt: "The KramFlow cover: 'One live event. One shared truth.' beside the Operator Console, Remote, and Speaker Ready display, angled on a dark green gradient",
+    },
+    caseStudyStatus: "detailed",
     layout: "landscape",
     titleBlock: "category-year_title",
   },
   {
-    slug: "care",
-    num: "PROJECT 03",
-    title: "C.A.R.E. for Horses",
-    year: "2025",
-    category: "UX RESEARCH · ACCESSIBILITY",
-    description:
-      "A research-led redesign focused on simplifying information architecture, donation and volunteer journeys, usability, and accessibility for an equine nonprofit.",
-    coverLabel: "[ COVER IMAGE — C.A.R.E. ]",
-    layout: "split",
-    titleBlock: "title_category-year",
-  },
-  {
     slug: "glyph",
-    num: "PROJECT 04",
+    num: "PROJECT 03",
     title: "Glyph",
     year: "2026",
     category: "PRODUCT STRATEGY · FULL STACK",
     description:
-      "An indie game developer platform exploring developer identity, projects, devlogs, structured playtesting feedback, collaboration, and local community.",
-    coverLabel: "[ COVER IMAGE — GLYPH ]",
+      "A private-first identity and progress platform for indie game developers: private-by-default projects, project-attached devlogs, structured playtest requests, and discovery, in active development.",
+    cover: {
+      kind: "image",
+      src: "/work/glyph/landing-cover-v2.jpg",
+      alt: "The Glyph landing page, 'Your home base before launch,' shown in a browser window on a light gradient background",
+    },
+    caseStudyStatus: "detailed",
     layout: "wide",
-    titleBlock: "title-category-year",
-    status: "IN DEVELOPMENT",
+    titleBlock: "category-year_title",
+  },
+  {
+    slug: "care",
+    num: "PROJECT 04",
+    title: "C.A.R.E. for Horses",
+    year: "2025",
+    category: "UX RESEARCH · ACCESSIBILITY",
+    description:
+      "A team UX research and redesign project for an equine nonprofit: a 39-response survey, a heuristic evaluation, and an accessibility audit, synthesized into a working high-fidelity website redesign.",
+    cover: {
+      kind: "image",
+      src: "/work/care/macbook-desk-cover.jpg",
+      alt: "The redesigned C.A.R.E. for Horses Foundation homepage shown on a MacBook on a sunlit wooden desk",
+    },
+    caseStudyStatus: "detailed",
+    layout: "split",
+    titleBlock: "category-year_title",
   },
 ];
 
-export const WORK_STUBS: Record<string, { label: string; title: string; body: string }> = {
-  creatorflow: {
-    label: "CreatorFlow",
-    title: "CreatorFlow — case study in progress.",
-    body: "The full case study, covering product thinking, system design, and build, is coming in the next phase.",
-  },
-  kramflow: {
-    label: "KramFlow",
-    title: "KramFlow — case study in progress.",
-    body: "The full case study, covering product thinking, system design, and build, is coming in the next phase.",
-  },
-  care: {
-    label: "C.A.R.E. for Horses",
-    title: "C.A.R.E. for Horses — case study in progress.",
-    body: "The full case study, covering research and redesign, is coming in the next phase.",
-  },
-  glyph: {
-    label: "Glyph",
-    title: "Glyph — case study in progress.",
-    body: "The full case study, covering product strategy and build, is coming in the next phase.",
-  },
+export const WORK_STUBS: Record<string, { label: string; title: string; body: string }> = {};
+
+// Lighter than a full WorkProject card: no num/category/year title-block, no
+// "Selected Work" grid slot — but still a real, openable card linking to its
+// own /work/<slug> case study, same as the four main projects.
+export type SelectedProject = {
+  slug: string;
+  name: string;
+  description: string;
+  cover: WorkProjectCover;
 };
 
-export const MORE_WORK = [
-  { name: "Xbox Game Camp" },
-  { name: "Ticketify" },
-  { name: "X-PASS" },
-  { name: "Inventory System UI" },
-  { name: "ZoomBuddy+" },
+// Xbox Game Camp and ZoomBuddy+ were removed after a targeted verification
+// pass (local files + GitHub) found no repo, design export, live deployment,
+// or other real material behind either — see the evidence summary.
+export const SELECTED_PROJECTS: SelectedProject[] = [
+  {
+    slug: "loose-thread",
+    name: "AI Content Machine + Loose Thread",
+    description:
+      "An editorial pipeline connecting trend discovery, source-backed research, AI-assisted drafting, and Telegram-gated approval, feeding Loose Thread, the Next.js publication where the finished writing lives.",
+    cover: { kind: "image", src: "/work/selected/loose-thread.png", alt: "The Loose Thread writing site home page" },
+  },
+  {
+    slug: "ticketify",
+    name: "Ticketify",
+    description:
+      "A decentralized event-ticketing app built at a hackathon: wallet-tied tickets, location-aware validation, and on-chain verification, with no centralized store of user identities.",
+    cover: {
+      kind: "image",
+      src: "/work/selected/ticketify-icon.jpg",
+      alt: "The Ticketify app icon on an iPhone home screen, next to Calendar, Mail, and Notes",
+    },
+  },
 ];
 
-export const PHOTO_CATEGORIES = ["Portraits", "Events", "Street", "Architecture", "Places", "Details"] as const;
-
-export type Photo = {
-  id: string;
-  title: string;
-  category: (typeof PHOTO_CATEGORIES)[number];
-  width: number;
-  height: number;
-  alt: string;
-  placeholderLabel: string;
-};
-
-export const PHOTOS: Photo[] = [
-  { id: "photo-01", title: "Photograph — Portrait", category: "Portraits", width: 1600, height: 2400, alt: "Placeholder portrait photograph", placeholderLabel: "PHOTO / PORTRAIT / 01" },
-  { id: "photo-02", title: "Photograph — Portrait", category: "Portraits", width: 1500, height: 2000, alt: "Placeholder portrait photograph", placeholderLabel: "PHOTO / PORTRAIT / 02" },
-  { id: "photo-03", title: "Photograph — Portrait", category: "Portraits", width: 1400, height: 1750, alt: "Placeholder portrait photograph", placeholderLabel: "PHOTO / PORTRAIT / 03" },
-  { id: "photo-04", title: "Photograph — Landscape", category: "Events", width: 2400, height: 1600, alt: "Placeholder event photograph", placeholderLabel: "PHOTO / LANDSCAPE / 04" },
-  { id: "photo-05", title: "Photograph — Landscape", category: "Events", width: 2000, height: 1333, alt: "Placeholder event photograph", placeholderLabel: "PHOTO / LANDSCAPE / 05" },
-  { id: "photo-06", title: "Photograph — Square", category: "Events", width: 1800, height: 1800, alt: "Placeholder event photograph", placeholderLabel: "PHOTO / SQUARE / 06" },
-  { id: "photo-07", title: "Photograph — Portrait", category: "Street", width: 1600, height: 2400, alt: "Placeholder street photograph", placeholderLabel: "PHOTO / PORTRAIT / 07" },
-  { id: "photo-08", title: "Photograph — Landscape", category: "Street", width: 2400, height: 1600, alt: "Placeholder street photograph", placeholderLabel: "PHOTO / LANDSCAPE / 08" },
-  { id: "photo-09", title: "Photograph — Landscape", category: "Street", width: 1800, height: 1200, alt: "Placeholder street photograph", placeholderLabel: "PHOTO / LANDSCAPE / 09" },
-  { id: "photo-10", title: "Photograph — Portrait", category: "Architecture", width: 1600, height: 2000, alt: "Placeholder architecture photograph", placeholderLabel: "PHOTO / PORTRAIT / 10" },
-  { id: "photo-11", title: "Photograph — Landscape", category: "Architecture", width: 2400, height: 1500, alt: "Placeholder architecture photograph", placeholderLabel: "PHOTO / LANDSCAPE / 11" },
-  { id: "photo-12", title: "Photograph — Portrait", category: "Architecture", width: 1800, height: 2400, alt: "Placeholder architecture photograph", placeholderLabel: "PHOTO / PORTRAIT / 12" },
-  { id: "photo-13", title: "Photograph — Landscape", category: "Places", width: 2400, height: 1600, alt: "Placeholder place photograph", placeholderLabel: "PHOTO / LANDSCAPE / 13" },
-  { id: "photo-14", title: "Photograph — Portrait", category: "Places", width: 1600, height: 2100, alt: "Placeholder place photograph", placeholderLabel: "PHOTO / PORTRAIT / 14" },
-  { id: "photo-15", title: "Photograph — Landscape", category: "Places", width: 2000, height: 1333, alt: "Placeholder place photograph", placeholderLabel: "PHOTO / LANDSCAPE / 15" },
-  { id: "photo-16", title: "Photograph — Square", category: "Details", width: 1800, height: 1800, alt: "Placeholder detail photograph", placeholderLabel: "PHOTO / SQUARE / 16" },
-  { id: "photo-17", title: "Photograph — Portrait", category: "Details", width: 1500, height: 2000, alt: "Placeholder detail photograph", placeholderLabel: "PHOTO / PORTRAIT / 17" },
-  { id: "photo-18", title: "Photograph — Landscape", category: "Details", width: 2200, height: 1500, alt: "Placeholder detail photograph", placeholderLabel: "PHOTO / LANDSCAPE / 18" },
-];
+// Real photography data now lives in lib/photography-data.ts.
 
 export const RESUME_EXPERIENCE = [
   {
     id: "endless",
-    dates: "Aug 2026 — Present",
+    dates: "Aug 2026 – Present",
     org: "Endless Games Studio",
     location: "Mesa, AZ",
     role: "Software and Game Development",
@@ -277,7 +272,7 @@ export const RESUME_EXPERIENCE = [
   },
   {
     id: "asu",
-    dates: "Oct 2024 — Dec 2025",
+    dates: "Oct 2024 – Dec 2025",
     org: "Arizona State University",
     location: "Tempe, AZ",
     role: "Design Technology Teaching Assistant / Database Assistant",
@@ -289,12 +284,12 @@ export const RESUME_EXPERIENCE = [
   },
   {
     id: "tibicle",
-    dates: "Jan 2022 — Nov 2023",
+    dates: "Dec 2022 – Nov 2023",
     org: "Tibicle LLP",
     location: "Ahmedabad, India",
-    role: "Software Developer Intern / Full-Stack Software Developer",
+    role: "Software Developer / Full-Stack Developer",
     bullets: [
-      "Worked across product, design, and engineering on 3 SaaS and EdTech products, turning requirements and interface concepts into responsive applications using Angular, TypeScript, Java, REST APIs, and relational databases.",
+      "Worked across product, design, and engineering on SaaS and EdTech products, turning requirements and interface concepts into responsive applications using Angular, TypeScript, Java, REST APIs, and relational databases.",
       "Built reusable UI components, forms, dashboards, navigation, and role-based workflows for platforms supporting 500+ users, improving consistency and usability across product interfaces.",
       "Improved frontend architecture, state management, and API performance, reducing page load times by 40%; rebuilt third-party integrations and reduced integration defects by 60%.",
     ],
@@ -310,7 +305,7 @@ export const RESUME_PROJECTS = [
     bullets: [
       "Designed and built a full-stack creator platform for sponsorship management, content planning, analytics, AI-assisted repurposing, automation, and team collaboration.",
       "Defined information architecture, user flows, responsive interfaces, reusable UI patterns, and role-based experiences across 5 user roles, then implemented them in React and Next.js.",
-      "Built authentication, PostgreSQL RLS, permissions, Edge Functions, and Gmail and YouTube API integrations connecting real creator data with AI and automation workflows.",
+      "Built authentication, PostgreSQL RLS, permissions, Edge Functions, and Gmail and YouTube OAuth integrations connecting real creator data, plus scheduled automations and template-based AI-assist features labeled honestly as previews.",
     ],
   },
   {
@@ -320,7 +315,7 @@ export const RESUME_PROJECTS = [
     route: "care",
     bullets: [
       "Conducted surveys, heuristic evaluation, competitive analysis, personas, and journey mapping to identify navigation, usability, accessibility, and content problems.",
-      "Used findings from 16 survey responses to redesign information architecture, user flows, page hierarchy, and interaction patterns around clearer user tasks.",
+      "Used findings from a 39-response survey (16 sourced personally) to redesign information architecture, user flows, page hierarchy, and interaction patterns around clearer user tasks.",
     ],
   },
   {
@@ -335,6 +330,10 @@ export const RESUME_PROJECTS = [
   },
 ];
 
+// Split from a single 16-item "Development" bucket into three narrower
+// categories (Frontend / Backend & Data / Delivery & Tooling) so each group
+// scans as one coherent skill area instead of one dense catch-all list.
+// Every item below already existed in the resume — nothing added or removed.
 export const RESUME_SKILLS = [
   {
     category: "Product & UX",
@@ -345,14 +344,22 @@ export const RESUME_SKILLS = [
     items: ["Figma", "Framer", "Design Systems", "Component Libraries", "Auto Layout", "Variables", "Design Tokens", "Responsive Design", "Data Visualization"],
   },
   {
-    category: "Development",
-    items: ["React", "Next.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Angular", "Node.js", "Java", "REST APIs", "Supabase", "PostgreSQL", "Git", "GitHub Actions", "Vercel"],
+    category: "Frontend",
+    items: ["React", "Next.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Angular"],
+  },
+  {
+    category: "Backend / Data",
+    items: ["Node.js", "Java", "REST APIs", "Supabase", "PostgreSQL"],
   },
   {
     category: "AI & Prototyping",
     items: ["LLM Integration", "Gemini API", "Claude Code", "Structured Outputs", "AI-Assisted Prototyping", "Workflow Automation", "Human-in-the-Loop Workflows", "Playtesting"],
   },
+  {
+    category: "Delivery / Tooling",
+    items: ["Git", "GitHub Actions", "Vercel"],
+  },
 ];
 
 export const RESUME_SUMMARY =
-  "Product Designer and Design Engineer with 4+ years building digital products across professional, academic, and independent work. Experience spans product design, UI/UX, frontend development, design systems, game technology, data visualization, and AI-powered products. Comfortable taking ideas from research and user flows through prototypes, responsive interfaces, production code, APIs, testing, and deployment.";
+  "Product Designer and Design Engineer building digital products across professional, academic, and independent work. Experience spans product design, UI/UX, frontend development, design systems, game technology, data visualization, and AI-powered products. Comfortable taking ideas from research and user flows through prototypes, responsive interfaces, production code, APIs, testing, and deployment.";

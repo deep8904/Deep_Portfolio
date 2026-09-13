@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import type { Photo } from "@/lib/data";
+import type { Photo } from "@/lib/photography-data";
 
 const btnBase =
   "absolute flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/[0.06] text-accent-cream transition-colors duration-[180ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:bg-white/[0.14]";
@@ -23,6 +24,7 @@ export function Lightbox({
   onNext: () => void;
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const touchX = useRef<number | null>(null);
 
   useEffect(() => {
@@ -31,9 +33,25 @@ export function Lightbox({
     closeRef.current?.focus();
 
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-      else if (e.key === "ArrowLeft") onPrev();
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (e.key === "ArrowLeft") onPrev();
       else if (e.key === "ArrowRight") onNext();
+
+      if (e.key !== "Tab") return;
+      const focusable = dialogRef.current?.querySelectorAll<HTMLElement>("button");
+      if (!focusable || !focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => {
@@ -46,6 +64,7 @@ export function Lightbox({
 
   return (
     <div
+      ref={dialogRef}
       role="dialog"
       aria-modal="true"
       aria-label="Photograph viewer"
@@ -105,17 +124,26 @@ export function Lightbox({
             width: `min(90vw, calc(75vh * ${(photo.width / photo.height).toFixed(4)}))`,
           }}
         >
-          <span
-            className="absolute inset-0"
-            style={{ background: "repeating-linear-gradient(135deg,#2b2a28 0 11px,#242322 11px 22px)" }}
+          <Image
+            src={photo.src}
+            alt={photo.alt}
+            fill
+            sizes="90vw"
+            priority
+            className="object-contain"
           />
-          <span className="absolute inset-0 flex items-center justify-center px-5 text-center text-[11px] tracking-[0.08em] text-ink-faint">
-            {photo.placeholderLabel}
-          </span>
         </div>
         <div className="flex max-w-[560px] flex-col items-center gap-1 text-center text-accent-cream">
           <span className="text-sm font-medium">{photo.title}</span>
-          <span className="mt-1 text-[11px] tracking-[0.06em] text-ink-faint">
+          {(photo.location || photo.date) && (
+            <span className="text-[12px] tracking-[0.04em] text-ink-faint">
+              {[photo.location, photo.date].filter(Boolean).join(" · ")}
+            </span>
+          )}
+          {photo.description && (
+            <p className="mt-1 max-w-[46ch] text-[12.5px] leading-[1.6] text-ink-faint">{photo.description}</p>
+          )}
+          <span className="mt-1 text-[12px] tracking-[0.06em] text-ink-faint">
             {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
           </span>
         </div>

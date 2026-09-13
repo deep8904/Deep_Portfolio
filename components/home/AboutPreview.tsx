@@ -15,8 +15,11 @@ export function AboutPreview() {
       <Reveal>
         <div className="grid grid-cols-1 items-start gap-8 desk:grid-cols-[minmax(0,58%)_minmax(0,34%)] desk:justify-between desk:gap-14">
           <div className="flex flex-col items-start gap-5">
-            <SectionLabel>About Me</SectionLabel>
-            <p className="m-0 max-w-[66ch] text-[16.5px] leading-[1.74] text-ink-secondary text-pretty">
+            <SectionLabel>Who Am I</SectionLabel>
+            <h2 className="m-0 max-w-full text-h2 font-medium tracking-[-0.028em] text-balance tab:max-w-[20ch]">
+              Product design, engineering, and visual storytelling.
+            </h2>
+            <p className="m-0 max-w-[66ch] text-p1 text-ink-secondary text-pretty">
               I’m Deep Chadamiya, a software engineer, product designer, and visual storyteller. I enjoy turning
               complex ideas into clear digital experiences, combining systems thinking, UX, interface design, and
               engineering to take products from early concept to working implementation. Outside product work,
@@ -24,9 +27,9 @@ export function AboutPreview() {
               drawn to projects where technology and creativity come together to solve real problems in a thoughtful,
               practical way.
             </p>
-            <div className="mt-[26px]">
-              <span className="text-[12.5px] text-ink-faint">Experience across</span>
-              <div className="mt-4 flex flex-wrap items-center gap-[30px]">
+            <div className="mt-8">
+              <span className="text-label text-ink-faint">Experience across</span>
+              <div className="mt-5 flex flex-wrap items-center gap-[30px]">
                 {LOGOS.map((logo) => (
                   <Image
                     key={logo.alt}
@@ -41,15 +44,17 @@ export function AboutPreview() {
             </div>
           </div>
 
-          <div className="group relative w-full max-w-[420px] overflow-hidden rounded-[14px] bg-image-bg desk:max-w-[380px]">
+          <div
+            className="group relative w-full max-w-[440px] overflow-hidden rounded-[14px] bg-image-bg desk:max-w-[400px]"
+            style={{ aspectRatio: "1023/1120" }}
+          >
             <Image
               src="/images/about/preview-portrait.png"
               alt="Portrait of Deep Chadamiya"
-              width={1023}
-              height={1120}
+              fill
+              sizes="(min-width: 1200px) 400px, (min-width: 810px) 440px, 90vw"
               data-img
-              className="block w-full object-cover transition-transform duration-[480ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.018]"
-              style={{ aspectRatio: "1023/1120" }}
+              className="object-cover transition-transform duration-[480ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.018]"
             />
             <Image
               src="/images/about/signature.png"

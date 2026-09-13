@@ -6,10 +6,13 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { prefersReducedMotion, registerGsap } from "@/lib/motion";
 
+// Alt is "" for all three: the H1 + subhead already convey everything
+// meaningful here, and these photos are a purely atmospheric mood collage
+// with no adjacent caption or independent informational role.
 const HERO_PHOTOS = [
-  { src: "/images/hero/photo-workspace.png", alt: "Workspace photograph", w: 1200, h: 1200 },
-  { src: "/images/hero/photo-notebook.png", alt: "Notebook photograph", w: 1168, h: 1752 },
-  { src: "/images/hero/photo-studio.png", alt: "Studio photograph", w: 768, h: 1130 },
+  { src: "/photography/creatorflow-macbook.jpg", alt: "", w: 3840, h: 2160, objectPosition: "center 55%" },
+  { src: "/photography/behind-the-lights.jpg", alt: "", w: 2400, h: 1800, objectPosition: "center" },
+  { src: "/photography/care-macbook-desk.jpg", alt: "", w: 3000, h: 2000, objectPosition: "center" },
 ];
 
 export function Hero() {
@@ -17,7 +20,7 @@ export function Hero() {
   const headRef = useRef<HTMLSpanElement>(null);
   const stripRef = useRef<HTMLImageElement>(null);
   const subRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLAnchorElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
   const photoRefs = useRef<Array<HTMLDivElement | null>>([]);
   const cueRef = useRef<HTMLDivElement>(null);
   const cueLineRef = useRef<HTMLSpanElement>(null);
@@ -100,7 +103,7 @@ export function Hero() {
   }, []);
 
   return (
-    <div className="flex min-h-[100svh] flex-col tab:min-h-screen">
+    <div className="flex min-h-[100svh] flex-col">
       <div className="mx-auto flex w-full max-w-[1240px] flex-none items-center justify-between gap-4 px-5 pt-[18px] text-[12.5px] tab:max-w-[1260px] tab:px-[30px] desk:max-w-[1268px] desk:px-[34px]">
         <div ref={metaRef} className="flex w-full items-center justify-between gap-4">
           <span className="inline-flex items-center gap-[7px] whitespace-nowrap text-ink-tertiary">
@@ -111,45 +114,79 @@ export function Hero() {
         </div>
       </div>
 
-      <section className="mx-auto flex w-full max-w-[1240px] flex-1 flex-col items-center justify-center gap-5 px-5 py-[52px] tab:max-w-[1260px] tab:gap-[26px] tab:px-[30px] tab:py-16 desk:max-w-[1268px] desk:px-[34px]">
-        <h1 className="m-0 max-w-full text-center text-[32px] font-medium leading-[1.24] tracking-[-0.03em] text-balance tab:max-w-[880px] tab:text-[42px] desk:text-[52px]">
-          <span className="block overflow-hidden pb-[0.08em]">
-            <span ref={headRef} className="block">
-              Hey, Deep here{" "}
-              <Image
-                ref={stripRef}
-                src="/images/hero/strip-architecture.png"
-                alt="Deep Chadamiya"
-                width={626}
-                height={626}
-                className="inline-block h-7 w-[72px] rounded-[13px] bg-image-bg align-[-0.18em] object-cover transition-transform duration-300 ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:scale-[1.06] tab:h-10 tab:w-[106px] tab:rounded-[17px]"
-              />{" "}
-              I design and build thoughtful digital experiences.
+      {/*
+        Central region: headline block + photo row travel together as one
+        centered group, so extra vertical space on tall viewports becomes
+        balanced outer breathing room instead of one arbitrary gap.
+      */}
+      <div className="mx-auto flex w-full max-w-[1240px] flex-1 flex-col justify-center gap-8 px-5 py-6 tab:max-w-[1260px] tab:gap-10 tab:px-[30px] tab:py-8 desk:max-w-[1268px] desk:px-[34px]">
+        <section className="flex flex-col items-center gap-5 tab:gap-[26px]">
+          <h1 className="m-0 max-w-full text-center text-h1 font-medium tracking-[-0.03em] text-balance tab:max-w-[880px]">
+            <span className="block overflow-hidden pb-[0.08em]">
+              <span ref={headRef} className="block">
+                Hey, Deep here{" "}
+                <Image
+                  ref={stripRef}
+                  src="/photography/stadium-lights.jpg"
+                  alt="Deep Chadamiya"
+                  width={2400}
+                  height={1440}
+                  className="inline-block h-7 w-[72px] rounded-[13px] bg-image-bg align-[-0.18em] object-cover transition-transform duration-300 ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:scale-[1.06] tab:h-10 tab:w-[106px] tab:rounded-[17px]"
+                />{" "}
+                I design and build thoughtful digital experiences.
+              </span>
             </span>
-          </span>
-        </h1>
-        <p ref={subRef} className="m-0 max-w-full text-center text-[15px] leading-[1.66] text-ink-muted text-pretty tab:max-w-[560px]">
-          I work across software, product design, UX, and interactive technology, taking ideas from early systems
-          thinking to working products.
-        </p>
-        <Link
-          ref={ctaRef}
-          href="/about"
-          className="group inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-[9px] bg-accent px-[22px] text-[13.5px] font-medium text-accent-cream transition-[background,transform] duration-[220ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:bg-accent-hover hover:-translate-y-px active:translate-y-0 active:scale-[0.985]"
-        >
-          About Me
-        </Link>
-      </section>
+          </h1>
+          <p ref={subRef} className="m-0 max-w-full text-center text-p1 text-ink-muted text-pretty tab:max-w-[560px]">
+            I work across software, product design, UX, and interactive technology, taking ideas from early systems
+            thinking to working products.
+          </p>
+          <div ref={ctaRef} className="flex items-center gap-6">
+            <a
+              href="#selected-work"
+              onClick={(e) => {
+                // Only intercept a plain, unmodified left-click for the smooth-scroll
+                // enhancement — Cmd/Ctrl/Shift/middle-click "open in new tab/window"
+                // and keyboard activation without modifiers still work either way,
+                // since the real href is always there as the fallback.
+                if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+                e.preventDefault();
+                document.getElementById("selected-work")?.scrollIntoView({
+                  behavior: prefersReducedMotion() ? "auto" : "smooth",
+                  block: "start",
+                });
+              }}
+              className="group inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-[9px] bg-accent px-[22px] text-[13.5px] font-medium text-accent-cream transition-[background,transform] duration-[220ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:bg-accent-hover hover:-translate-y-px active:translate-y-0 active:scale-[0.985]"
+            >
+              View Selected Work
+            </a>
+            <Link
+              href="/about"
+              className="inline-flex h-10 items-center whitespace-nowrap text-[13.5px] font-medium text-ink-secondary underline decoration-line-strong underline-offset-4 transition-colors duration-200 hover:text-ink"
+            >
+              About Me
+            </Link>
+          </div>
+        </section>
 
-      <section className="mx-auto w-full max-w-[1240px] flex-none px-5 pb-0 tab:max-w-[1260px] tab:px-[30px] tab:pb-[52px] desk:max-w-[1268px] desk:px-[34px]">
-        <div className="grid grid-cols-1 gap-3 tab:grid-cols-3 tab:gap-3.5">
+        {/*
+          Mobile: one wide primary shot + two small supporting shots, to keep
+          the photography without it consuming most of the viewport height.
+          Tablet+ restores the original even 3-column row, untouched.
+        */}
+        <div className="grid grid-cols-2 gap-3 [grid-template-areas:'a_a'_'b_c'] tab:grid-cols-3 tab:gap-3.5 tab:[grid-template-areas:none]">
           {HERO_PHOTOS.map((photo, i) => (
             <div
               key={photo.src}
               ref={(el) => {
                 photoRefs.current[i] = el;
               }}
-              className="group aspect-[4/3] max-h-none overflow-hidden rounded-xl bg-image-bg tab:aspect-[3/2] tab:max-h-[250px]"
+              className={[
+                "group max-h-none overflow-hidden rounded-xl bg-image-bg tab:aspect-[3/2] tab:max-h-[250px] tab:[grid-area:auto]",
+                i === 0 ? "aspect-[16/9] [grid-area:a]" : "aspect-square",
+                i === 1 ? "[grid-area:b]" : "",
+                i === 2 ? "[grid-area:c]" : "",
+              ].join(" ")}
             >
               <Image
                 data-img
@@ -157,16 +194,20 @@ export function Hero() {
                 alt={photo.alt}
                 width={photo.w}
                 height={photo.h}
+                priority={i === 0}
+                sizes={i === 0 ? "(min-width: 810px) 33vw, 100vw" : "(min-width: 810px) 33vw, 50vw"}
+                style={{ objectPosition: photo.objectPosition }}
                 className="block h-full w-full object-cover transition-transform duration-[420ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.022]"
               />
             </div>
           ))}
         </div>
-        <div ref={cueRef} className="hidden flex-col items-center gap-2 pt-[26px] tab:flex">
-          <span className="text-[9px] font-medium tracking-[0.2em] text-ink-num">SCROLL</span>
-          <span ref={cueLineRef} className="h-[22px] w-px origin-top bg-line-strong" />
-        </div>
-      </section>
+      </div>
+
+      <div ref={cueRef} className="hidden flex-none flex-col items-center gap-2 pb-6 tab:flex tab:pb-8">
+        <span className="text-[12px] font-medium tracking-[0.2em] text-ink-num">SCROLL</span>
+        <span ref={cueLineRef} className="h-[22px] w-px origin-top bg-line-strong" />
+      </div>
     </div>
   );
 }

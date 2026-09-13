@@ -3,10 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Briefcase, Camera, CircleUser, FileText } from "lucide-react";
+import { Home, Briefcase, Camera, CircleUser, FileText, Mail } from "lucide-react";
 import { NAV_ITEMS, SOCIAL_LINKS } from "@/lib/data";
 
-const ICONS = { home: Home, work: Briefcase, visuals: Camera, about: CircleUser, resume: FileText };
+const ICONS = { home: Home, work: Briefcase, visuals: Camera, about: CircleUser, resume: FileText, contact: Mail };
 
 function isActive(pathname: string, id: string) {
   if (id === "home") return pathname === "/";
@@ -18,25 +18,28 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-20 hidden w-[214px] flex-col justify-between gap-8 overflow-y-auto overflow-x-hidden bg-sidebar p-[26px_16px] tab:flex desk:w-[264px] desk:p-[30px_20px]">
+    <aside className="fixed inset-y-0 left-0 z-20 hidden w-[264px] flex-col justify-between gap-8 overflow-y-auto overflow-x-hidden bg-sidebar p-[30px_20px] nav:flex">
       <div>
-        <Link href="/" className="group mb-14 flex items-center gap-[11px]">
-          <Image
-            src="/images/profile/avatar.png"
-            alt=""
-            width={38}
-            height={38}
-            className="h-[38px] w-[38px] flex-none rounded-full bg-image-bg object-cover transition-transform duration-300 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-105"
-          />
+        <Link href="/" className="group mb-14 flex items-center gap-[11px] py-1">
+          <span className="relative h-[38px] w-[38px] flex-none overflow-hidden rounded-full bg-image-bg">
+            <Image
+              src="/images/profile/avatar.png"
+              alt=""
+              fill
+              sizes="38px"
+              priority
+              className="object-cover transition-transform duration-300 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-105"
+            />
+          </span>
           <span className="flex flex-col gap-0.5">
             <span className="whitespace-nowrap text-[15px] font-semibold tracking-[-0.012em]">Deep Chadamiya</span>
-            <span className="whitespace-nowrap text-[8.5px] font-medium tracking-[0.13em] text-ink-faint">
+            <span className="whitespace-nowrap text-[12px] font-medium tracking-[0.13em] text-ink-faint">
               PRODUCT · DESIGN · DEV
             </span>
           </span>
         </Link>
 
-        <nav className="flex flex-col gap-1">
+        <nav aria-label="Primary" className="flex flex-col gap-1">
           {NAV_ITEMS.map((item) => {
             const Icon = ICONS[item.id];
             const active = isActive(pathname, item.id);
@@ -59,7 +62,7 @@ export function Sidebar() {
         </nav>
       </div>
 
-      <div className="flex flex-col gap-[13px]">
+      <nav aria-label="Social" className="flex flex-col gap-[13px]">
         <span className="text-[13px] text-ink-faint">Follow me</span>
         {SOCIAL_LINKS.map((s) => (
           <a
@@ -67,12 +70,13 @@ export function Sidebar() {
             href={s.href}
             target="_blank"
             rel="noopener"
-            className="w-fit whitespace-nowrap text-[13.5px] text-ink-secondary transition-all duration-[180ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:translate-x-1 hover:text-ink"
+            aria-label={`${s.label} (opens in a new tab)`}
+            className="-my-1.5 flex w-full items-center whitespace-nowrap py-1.5 text-[13.5px] text-ink-secondary transition-all duration-[180ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] hover:translate-x-1 hover:text-ink"
           >
             {s.label}
           </a>
         ))}
-      </div>
+      </nav>
     </aside>
   );
 }

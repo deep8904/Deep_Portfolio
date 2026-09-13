@@ -3,6 +3,13 @@
 @theme {
   --breakpoint-tab: 810px;
   --breakpoint-desk: 1200px;
+  /* Dedicated to the sidebar/top-nav switch only — kept independent of
+     --breakpoint-tab (used broadly for general content layout) so raising
+     this doesn't cascade into every tab: grid/spacing rule sitewide. At
+     810-1199px the 214px sidebar left too little room for editorial content
+     and clipped the brand subtitle; top nav now covers that whole range and
+     the sidebar only activates once there's enough width for it. */
+  --breakpoint-nav: 1200px;
 
   --font-sans: "General Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -16,9 +23,15 @@
   --color-ink: #131210;
   --color-ink-secondary: #4b4a46;
   --color-ink-tertiary: #5d5c58;
-  --color-ink-muted: #6e6d69;
-  --color-ink-faint: #8b8984;
-  --color-ink-num: #9a9893;
+  /* ink-muted/faint/num darkened from the original design's #6e6d69/#8b8984/#9a9893 —
+     those failed WCAG AA (2.4-4.35:1 on --color-bg/--color-surface, verified via
+     the WCAG contrast formula and confirmed by axe-core). A first pass landed at
+     ~4.6-4.7:1, which axe still flagged, so these carry a real margin (>=5.2:1 on
+     both bg and surface) rather than sitting right at the 4.5 line. Same hue, same
+     relative ordering (muted > faint > num) — they read as one quiet tier now. */
+  --color-ink-muted: #62615d;
+  --color-ink-faint: #61605c;
+  --color-ink-num: #61605d;
 
   --color-line: #e2e0db;
   --color-line-strong: #dcd9d4;
@@ -36,38 +49,78 @@
   --color-image-bg: #dedbd5;
 
   --ease-std: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /*
+    Sitewide type scale. Before this, headings and body text used ~39 distinct
+    one-off px values (13.5, 13, 12.5, 26, 27, 28, 32, 34... for what were
+    conceptually the same handful of roles), drifting further apart every time
+    a new component was added. These seven roles replace that drift with one
+    definition per role, applied everywhere via the auto-generated text-h1,
+    text-h2, text-h3, text-p1, text-p2, text-label, text-meta utilities.
+    Headings/lead body use clamp() so one class scales fluidly across the
+    whole viewport range instead of needing separate tab:/desk: overrides at
+    every call site; standard body and label/meta tiers stay fixed since they
+    were already reasonably breakpoint-stable and don't need to grow further.
+    The Footer's "Let's Connect" display treatment is a deliberate one-off
+    outside this scale, not a fourth heading level.
+  */
+  --text-h1: clamp(2rem, 1.55rem + 1.9vw, 3.25rem); /* 32px -> 52px: page-level hero headline */
+  --text-h1--line-height: 1.15;
+  --text-h2: clamp(1.625rem, 1.42rem + 0.85vw, 2.4375rem); /* 26px -> 39px: section headline */
+  --text-h2--line-height: 1.18;
+  --text-h3: clamp(1.125rem, 1.06rem + 0.27vw, 1.25rem); /* 18px -> 20px: card/subsection title */
+  --text-h3--line-height: 1.3;
+  --text-p1: clamp(1rem, 0.96rem + 0.18vw, 1.125rem); /* 16px -> 18px: lead/primary body */
+  --text-p1--line-height: 1.6;
+  --text-p2: 1rem; /* 16px: standard body */
+  --text-p2--line-height: 1.6;
+  --text-label: 0.8125rem; /* 13px: eyebrow/section labels */
+  --text-label--line-height: 1.4;
+  --text-meta: 0.75rem; /* 12px: fine print, timestamps, counters */
+  --text-meta--line-height: 1.4;
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  background: var(--color-bg);
-}
+/*
+  Base resets live in Tailwind's own `base` layer (not left unlayered) so that
+  utility classes — e.g. text-accent-cream on a <Link> — always win over these
+  defaults, the same as Tailwind's own preflight. An unlayered rule sits after
+  every @layer regardless of specificity, which silently overrides any color/
+  utility applied directly to an <a>; that was a real bug here (the Download
+  Resume button rendered near-black text on its dark background) until this
+  was moved into @layer base.
+*/
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--color-bg);
+  }
 
-body {
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  color: var(--color-ink);
-}
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    color: var(--color-ink);
+  }
 
-* {
-  box-sizing: border-box;
-}
+  * {
+    box-sizing: border-box;
+  }
 
-a {
-  color: var(--color-ink);
-  text-decoration: none;
-}
+  a {
+    color: var(--color-ink);
+    text-decoration: none;
+  }
 
-::selection {
-  background: #dedbd5;
-}
+  ::selection {
+    background: #dedbd5;
+  }
 
-:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
-  border-radius: 6px;
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
 }
 
 @keyframes enter {
@@ -81,6 +134,36 @@ a {
   }
 }
 
+@keyframes ahFlash {
+  from {
+    opacity: 0.45;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes ahPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ahPulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 @keyframes enterSoft {
   from {
     opacity: 0;
@@ -88,6 +171,57 @@ a {
   to {
     opacity: 1;
   }
+}
+
+/* After Hours "coming soon" placeholder — ambient background + ticker. */
+@keyframes ahSoonDriftA {
+  0%, 100% { transform: translate(-6%, -4%) scale(1); }
+  50% { transform: translate(4%, 5%) scale(1.12); }
+}
+
+@keyframes ahSoonDriftB {
+  0%, 100% { transform: translate(5%, 4%) scale(1.05); }
+  50% { transform: translate(-4%, -6%) scale(0.95); }
+}
+
+.ah-soon-blob {
+  position: absolute;
+  width: 46vw;
+  height: 46vw;
+  max-width: 620px;
+  max-height: 620px;
+  border-radius: 9999px;
+  filter: blur(60px);
+  opacity: 0.6;
+}
+
+.ah-soon-blob-a {
+  top: 8%;
+  left: 8%;
+  background: var(--color-accent);
+  animation: ahSoonDriftA 16s ease-in-out infinite;
+}
+
+.ah-soon-blob-b {
+  bottom: 6%;
+  right: 8%;
+  background: var(--color-status);
+  animation: ahSoonDriftB 18s ease-in-out infinite;
+}
+
+@keyframes ahSoonMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.ah-soon-ticker {
+  mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent);
+}
+
+.ah-soon-ticker-track {
+  display: inline-flex;
+  width: max-content;
+  animation: ahSoonMarquee 22s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -98,6 +232,92 @@ a {
     animation-delay: 0ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/*
+  Shared placeholder-image texture. Previously copy-pasted as a literal hex
+  repeating-linear-gradient in 4 separate components (SelectedWork, MoreWork,
+  WorkCard, Gallery) — consolidated here against the actual placeholder
+  tokens so all placeholder imagery stays in sync if that texture ever changes.
+*/
+.placeholder-stripe {
+  background: repeating-linear-gradient(
+    135deg,
+    var(--color-placeholder-a) 0 11px,
+    var(--color-placeholder-b) 11px 22px
+  );
+}
+
+/*
+  Footer's "Built by Deep" doubles as the After Hours entry point. Desktop:
+  hidden until hover/focus (no flash, just a quiet reveal). Touch has no
+  hover, so it stays permanently visible there at reduced emphasis instead —
+  the (hover: hover) query is what tells the two cases apart.
+*/
+.footer-built-hint {
+  opacity: 0.55;
+  transition: opacity 200ms var(--ease-std);
+}
+@media (hover: hover) {
+  .footer-built-hint {
+    opacity: 0;
+  }
+  .group:hover .footer-built-hint,
+  .group:focus-visible .footer-built-hint {
+    opacity: 1;
+  }
+}
+
+/*
+  After Hours: "the portfolio after the lights go down." Re-declaring the
+  same --color-* custom properties Tailwind's utilities already reference
+  (bg-surface, text-ink-faint, etc.) means every existing shared component
+  — Section, SectionLabel, Cta, Footer — re-skins to this warm-dark palette
+  automatically inside .ah-scope, with zero component forking. Scoped to
+  this one wrapper only; the rest of the site never sees these values.
+  Contrast re-verified with the same WCAG formula used for the light theme
+  (ink-muted/faint/num carry a >=4.5:1 margin against both bg and surface).
+*/
+.ah-scope {
+  --color-bg: #221e1a;
+  --color-sidebar: #201c18;
+  --color-surface: #2c2620;
+  --color-surface-hover: #332c25;
+  --color-surface-active: #342d26;
+  --color-connect: #2a241f;
+
+  --color-ink: #f3eee6;
+  --color-ink-secondary: #cbc1b4;
+  --color-ink-tertiary: #a89d8f;
+  --color-ink-muted: #9a8f81;
+  --color-ink-faint: #998e80;
+  --color-ink-num: #978c7e;
+
+  --color-line: #362f28;
+  --color-line-strong: #453d33;
+  --color-line-soft: #322b25;
+  --color-line-hairline: #302a24;
+  --color-line-hover: #4c4336;
+
+  --color-accent: #d99a5b;
+  --color-accent-hover: #e3a768;
+  --color-accent-cream: #241c14;
+  --color-status: #d99a5b;
+
+  --color-placeholder-a: #2e2822;
+  --color-placeholder-b: #292319;
+  --color-image-bg: #2e2822;
+
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+
+/* Scoped only to After Hours — the sitewide ::selection stays untouched.
+   Reuses --color-line-hover (already the "hover highlight" token) rather
+   than a new hardcoded color; verified at 8.4:1 against --color-ink. */
+.ah-scope ::selection {
+  background: var(--color-line-hover);
+  color: var(--color-ink);
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -111,13 +331,14 @@ a {
   aside,
   header,
   footer,
-  [data-intro] {
+  a[download],
+  [data-intro-overlay] {
     display: none !important;
   }
-  html,
-  body {
+  * {
     background: #fff !important;
     color: #000 !important;
+    box-shadow: none !important;
   }
   main {
     margin-left: 0 !important;
