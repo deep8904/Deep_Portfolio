@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Signature Preview — Deep Chadamiya</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 40px 20px; }
+  .preview-section { max-width: 680px; margin: 0 auto 48px; }
+  .preview-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e2e0db;
+  }
+  .preview-card { padding: 32px; border-radius: 12px; }
+  .light-bg { background: #ffffff; }
+  .dark-bg { background: #1a1a1a; }
+  .warm-bg { background: #edebe8; }
+
+  .email-mock { max-width: 600px; margin: 0 auto; }
+  .email-body {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 24px;
+  }
+  .email-separator {
+    border: none;
+    border-top: 1px solid #e2e0db;
+    margin: 20px 0;
+  }
+  .dark-bg .preview-label { color: #ccc; border-bottom-color: #333; }
+  .warm-bg .preview-label { color: #62615d; border-bottom-color: #e2e0db; }
+  .light-bg .preview-label { color: #62615d; border-bottom-color: #e2e0db; }
+</style>
+</head>
+<body style="background:#f5f5f5;">
+
+<!-- 1. White background -->
+<div class="preview-section">
+  <div class="preview-card light-bg">
+    <div class="preview-label" style="color:#62615d;">Light background (Gmail default)</div>
+    <table cellpadding="0" cellspacing="0" border="0" style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#131210;font-size:14px;line-height:1.4;max-width:420px;">
+      <tr>
+        <td style="padding:0 0 10px 0;border-bottom:2px solid #4a3b33;">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="vertical-align:top;padding-right:14px;">
+                <img src="https://deepchadamiya.com/images/profile/avatar.png" alt="Deep Chadamiya" width="48" height="48" style="border-radius:50%;display:block;" />
+              </td>
+              <td style="vertical-align:top;">
+                <span style="font-size:16px;font-weight:600;color:#131210;letter-spacing:-0.01em;display:block;line-height:1.25;">Deep Chadamiya</span>
+                <span style="font-size:12px;font-weight:500;color:#4b4a46;letter-spacing:0.08em;display:block;margin-top:2px;">SOFTWARE ENGINEER &nbsp;·&nbsp; PRODUCT &amp; UI/UX</span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:10px 0 0 0;">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="font-size:13px;color:#4b4a46;padding-right:16px;">
+                <a href="https://deepchadamiya.com" style="color:#4a3b33;text-decoration:none;font-weight:500;" target="_blank">Portfolio</a>
+              </td>
+              <td style="font-size:13px;color:#4b4a46;padding-right:16px;">
+                <a href="https://www.linkedin.com/in/deepchadamiya" style="color:#4a3b33;text-decoration:none;font-weight:500;" target="_blank">LinkedIn</a>
+              </td>
+              <td style="font-size:13px;color:#4b4a46;padding-right:16px;">
+                <a href="https://github.com/deep8904" style="color:#4a3b33;text-decoration:none;font-weight:500;" target="_blank">GitHub</a>
+              </td>
+              <td style="font-size:13px;color:#62615d;">
+                Tempe, AZ
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- 2. Dark background -->
+<div class="preview-section">
+  <div class="preview-card dark-bg">
+    <div class="preview-label">Dark background (Gmail dark mode)</div>
+    <table cellpadding="0" cellspacing="0" border="0" style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#131210;font-size:14px;line-height:1.4;max-width:420px;">
+      <tr>
+        <td style="padding:0 0 10px 0;border-bottom:2px solid #4a3b33;">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="vertical-align:top;padding-right:14px;">
+                <img src="https://deepchadamiya.com/images/profile/avatar.png" alt="Deep Chadamiya" width="48" height="48" style="border-radius:50%;display:block;" />
+              </td>
+              <td style="vertical-align:top;">
+                <span style="font-size:16px;font-weight:600;color:#131210;letter-spacing:-0.01em;display:block;line-height:1.25;">Deep Chadamiya</span>
+                <span style="font-size:12px;font-weight:500;color:#4b4a46;letter-spacing:0.08em;display:block;margin-top:2px;">SOFTWARE ENGINEER &nbsp;·&nbsp; PRODUCT &amp; UI/UX</span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:10px 0 0 0;">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="font-size:13px;color:#4b4a46;padding-right:16px;">
+                <a href="https://deepchadamiya.com" style="color:#4a3b33;text-decoration:none;font-weight:500;" target="_blank">Portfolio</a>
+              </td>
+              <td style="font-size:13px;color:#4b4a46;padding-right:16px;">
+                <a href="https://www.linkedin.com/in/deepchadamiya" style="color:#4a3b33;text-decoration:none;font-weight:500;" target="_blank">LinkedIn</a>
+              </td>
+              <td style="font-size:13px;color:#4b4a46;padding-right:16px;">
+                <a href="https://github.com/deep8904" style="color:#4a3b33;text-decoration:none;font-weight:500;" target="_blank">GitHub</a>
+              </td>
+              <td style="font-size:13px;color:#62615d;">
+                Tempe, AZ
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- 3. Inside a sample email -->
+<div class="preview-section">
+  <div class="preview-card light-bg" style="border:1px solid #e2e0db;">
+    <div class="preview-label">Inside a sample email</div>
+    <div class="email-mock">
+      <div class="email-body">
+        <p>Hi Sarah,</p>
+        <br>
+        <p>Thank you for reaching out about the Senior Frontend Engineer role. I'd love to learn more about the team and the product challenges you're working on.</p>
+        <br>
+        <p>I've attached my resume and would be happy to schedule a call at your convenience.</p>
+        <br>
+        <p>Best,<br>Deep</p>
+      </div>
+      <hr class="email-separator">
+      <table cellpadding="0" cellspacing="0" border="0" style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#131210;font-size:14px;line-height:1.4;max-width:420px;">
+        <tr>
+          <td style="padding:0 0 10px 0;border-bottom:2px solid #4a3b33;">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="vertical-align:top;padding-right:14px;">
+                  <img src="https://deepchadamiya.com/images/profile/avatar.png" alt="Deep Chadamiya" width="48" height="48" style="border-radius:50%;display:block;" />
+                </td>
+                <td style="vertical-align:top;">
+                  <span style="font-size:16px;font-weight:600;color:#131210;letter-spacing:-0.01em;display:block;line-height:1.25;">Deep Chadamiya</span>
+                  <span style="font-size:12px;font-weight:500;color:#4b4a46;letter-spacing:0.08em;display:block;margin-top:2px;">SOFTWARE ENGINEER &nbsp;·&nbsp; PRODUCT &amp; UI/UX</span>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:10px 0 0 0;">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="font-size:13px;color:#4b4a46;padding-right:16px;">
+                  <a href="https://deepchadamiya.com" style="color:#4a3b33;text-decoration:none;font-weight:500;" target="_blank">Portfolio</a>
+                </td>
+                <td style="font-size:13px;color:#4b4a46;padding-right:16px;">
+                  <a href="https://www.linkedin.com/in/deepchadamiya" style="color:#4a3b33;text-decoration:none;font-weight:500;" target="_blank">LinkedIn</a>
+                </td>
+                <td style="font-size:13px;color:#4b4a46;padding-right:16px;">
+                  <a href="https://github.com/deep8904" style="color:#4a3b33;text-decoration:none;font-weight:500;" target="_blank">GitHub</a>
+                </td>
+                <td style="font-size:13px;color:#62615d;">
+                  Tempe, AZ
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
