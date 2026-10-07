@@ -6,7 +6,7 @@ import { Reveal } from "@/components/ui/Reveal";
 const LOGOS = [
   { src: "/images/logos/asu-preview.png", alt: "Arizona State University", h: 22, w: 57 },
   { src: "/images/logos/tibicle-preview.png", alt: "Tibicle", h: 23, w: 74 },
-  { src: "/images/logos/endless-preview.png", alt: "Endless", h: 16, w: 122 },
+  { src: "/images/logos/endless-preview.png", alt: "Endless Games & Learning Lab", h: 22, w: 68 },
 ];
 
 export function AboutPreview() {

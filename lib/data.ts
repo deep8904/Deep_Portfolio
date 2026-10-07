@@ -108,7 +108,7 @@ export const CAPABILITIES = [
 ];
 
 export const JOURNEY = [
-  { org: "Endless", role: "(Software & Game Development)", years: "2026 – Present", logo: "/images/logos/endless-journey.png" },
+  { org: "Endless Games & Learning Lab", role: "(Software & Game Development)", years: "2026 – Present", logo: "/images/logos/endless-journey.png" },
   { org: "Arizona State University", role: "Design Technology Teaching Assistant / Database Assistant", years: "2024 – 2025", logo: "/images/logos/asu-journey.png" },
   { org: "Tibicle", role: "Software Developer / Full-Stack Developer", years: "2022 – 2023", logo: "/images/logos/tibicle-journey.png" },
 ];
@@ -261,7 +261,7 @@ export const RESUME_EXPERIENCE = [
   {
     id: "endless",
     dates: "Aug 2026 – Present",
-    org: "Endless Games Studio",
+    org: "Endless Games & Learning Lab",
     location: "Mesa, AZ",
     role: "Software and Game Development",
     bullets: [
